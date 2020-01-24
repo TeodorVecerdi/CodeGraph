@@ -3,4 +3,8 @@
             OutputType = typeof(UnityEngine.Vector2);
             ParentNodeReference = parent;
         }
-    }
+
+        public override bool CanAcceptNode(InputNode inputNode) {
+            return inputNode.InputType == OutputType;
+        }
+     }

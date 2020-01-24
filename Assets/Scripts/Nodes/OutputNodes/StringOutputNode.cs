@@ -1,6 +1,7 @@
-    public class BooleanOutputNode : OutputNode {
-        public BooleanOutputNode(Node parent) {
-            OutputType = typeof(bool);
+namespace Nodes {
+    public class StringOutputNode : OutputNode{
+        public StringOutputNode(Node parent) {
+            OutputType = typeof(string);
             ParentNodeReference = parent;
         }
 
@@ -8,3 +9,4 @@
             return inputNode.InputType == OutputType;
         }
     }
+}

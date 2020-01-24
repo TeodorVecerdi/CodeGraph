@@ -6,7 +6,7 @@ namespace Nodes {
             NodeValueType = typeof(int);
             Outputs = new List<OutputNode> {new IntegerOutputNode(this)};
         }
-        public override string GetCode() {
+        public override string GetCode(int callStackLevel) {
             return $"{NodeValue}";
         }
 

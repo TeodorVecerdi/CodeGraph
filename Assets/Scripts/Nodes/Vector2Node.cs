@@ -7,8 +7,8 @@ namespace Nodes {
             Outputs = new List<OutputNode> {new Vector2OutputNode(this)};
         }
 
-        public override string GetCode() {
-            return $"new Vector2({Inputs[0].OutputLocationReference.ParentNodeReference.GetCode()}, {Inputs[1].OutputLocationReference.ParentNodeReference.GetCode()})";
+        public override string GetCode(int callStackLevel) {
+            return $"new Vector2({Inputs[0].OutputLocationReference.ParentNodeReference.GetCode(callStackLevel+1)}, {Inputs[1].OutputLocationReference.ParentNodeReference.GetCode(callStackLevel+1)})";
         }
     }
 }

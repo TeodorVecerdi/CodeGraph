@@ -6,7 +6,7 @@ namespace Nodes {
             NodeValueType = typeof(float);
             Outputs = new List<OutputNode> {new FloatOutputNode(this)};
         }
-        public override string GetCode() {
+        public override string GetCode(int callStackLevel) {
             return $"{NodeValue}f";
         }
 

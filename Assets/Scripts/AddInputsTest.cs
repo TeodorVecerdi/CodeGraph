@@ -8,7 +8,7 @@ public class AddInputsTest : MonoBehaviour {
     public GameObject InputsGroup;
     public List<NodeInputMB> Inputs;
 
-    void Start() {
+    private void Start() {
         /*Inputs = new List<NodeInputMB>();
         var method = typeof(Vector3).GetMethod("RotateTowards");
         var parameters = method.GetParameters();
@@ -17,29 +17,26 @@ public class AddInputsTest : MonoBehaviour {
             nodeInputMb.SetLabel($"{parameter.Name} ({parameter.ParameterType.Name})");
             Inputs.Add(nodeInputMb);
         }*/
-        var floatValueNode1 = new FloatValueNode();
-        var floatValueNode2 = new FloatValueNode();
-        floatValueNode1.SetValue(1.5f);
-        floatValueNode2.SetValue(3.7f);
-        var equalsNode = new EqualsNode();
-        equalsNode.SetNodeInput(0, floatValueNode1.Outputs[0]);
-        equalsNode.SetNodeInput(1, floatValueNode2.Outputs[0]);
-        var lessNode = new LessNode();
-        lessNode.SetNodeInput(0, floatValueNode1.Outputs[0]);
-        lessNode.SetNodeInput(1, floatValueNode2.Outputs[0]);
-        var vector2Node = new Vector2Node();
-        vector2Node.SetNodeInput(0, floatValueNode1.Outputs[0]);
-        vector2Node.SetNodeInput(1, floatValueNode2.Outputs[0]);
+        var stringValueNode1 = new StringValueNode();
+        var stringValueNode2 = new StringValueNode();
         var printNode1 = new DebugLogNode();
         var printNode2 = new DebugLogNode();
-        printNode1.SetNodeInput(0, equalsNode.Outputs[0]);
-        printNode2.SetNodeInput(0, vector2Node.Outputs[0]);
-        // print(floatValueNode1.GetCode());   
-        // print(floatValueNode2.GetCode());   
-        Debug.Log($"Equals Node: {equalsNode.GetCode()}");
-        Debug.Log($"Less Node: {lessNode.GetCode()}");
-        Debug.Log($"Vector2 Node: {vector2Node.GetCode()}");
-        Debug.Log($"PrintNode1 Node: {printNode1.GetCode()}");
-        Debug.Log($"PrintNode2 Node: {printNode2.GetCode()}");
+        var endNode1 = new TEMP_SemicolonNode();
+        var endNode2 = new TEMP_SemicolonNode();
+        var startEventNode = new StartEventNode();
+        var updateEventNode = new UpdateEventNode();
+        stringValueNode1.SetValue("Start method called");
+        stringValueNode2.SetValue("Update method called");
+        printNode1.SetNodeInput(0, stringValueNode1.Outputs[0], true);
+        printNode2.SetNodeInput(0, stringValueNode2.Outputs[0], true);
+        endNode1.SetNodeInput(0, printNode1.Outputs[0], true);
+        endNode2.SetNodeInput(0, printNode2.Outputs[0], true);
+        startEventNode.AddChildNode(endNode1);
+        startEventNode.AddChildNode(printNode1);
+        startEventNode.AddChildNode(stringValueNode1);
+        updateEventNode.AddChildNode(endNode2);
+        updateEventNode.AddChildNode(printNode2);
+        updateEventNode.AddChildNode(stringValueNode2);
+        print($"{startEventNode.GetCode(0)}\n\n{updateEventNode.GetCode(0)}");
     }
 }

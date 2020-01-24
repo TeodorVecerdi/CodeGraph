@@ -7,7 +7,7 @@ namespace Nodes {
             NodeValueType = typeof(bool);
             Outputs = new List<OutputNode> {new BooleanOutputNode(this)};
         }
-        public override string GetCode() {
+        public override string GetCode(int callStackLevel) {
             return (bool)NodeValue ? "true" : "false";
         }
 
