@@ -10,10 +10,10 @@ namespace Nodes {
 
         public override string GetCode(int callStackLevel) {
             var code = $"if({Inputs[0].OutputLocationReference.ParentNodeReference.GetCode(callStackLevel + 1)})\n" +
-                       $"{Outputs[0].InputLocationReference.ParentNodeReference.GetCode(callStackLevel + 1)}";
-            if (Outputs[1].InputLocationReference != null) {
+                       $"{Outputs[0].InputLocationReferences[0].ParentNodeReference.GetCode(callStackLevel + 1)}";
+            if (Outputs[1].InputLocationReferences[0] != null) {
                 code += $"else\n" +
-                        $"{Outputs[1].InputLocationReference.ParentNodeReference.GetCode(callStackLevel + 1)}";
+                        $"{Outputs[1].InputLocationReferences[0].ParentNodeReference.GetCode(callStackLevel + 1)}";
             }
             return code;
         }

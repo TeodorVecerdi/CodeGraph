@@ -9,14 +9,17 @@ public abstract class Node {
         if(inputIndex >= Inputs.Count) throw new IndexOutOfRangeException();
         if (!Inputs[inputIndex].CanAcceptNode(outputNode)) return false;
         Inputs[inputIndex].OutputLocationReference = outputNode;
-        if(alsoSetOutput) outputNode.InputLocationReference = Inputs[inputIndex];
+        if (alsoSetOutput) {
+            if(!outputNode.InputLocationReferences.Contains(Inputs[inputIndex]))
+                outputNode.InputLocationReferences.Add(Inputs[inputIndex]);
+        }
         return true;
     }
 
     public bool SetNodeOutput(int outputIndex, InputNode inputNode, bool alsoSetInput = false) {
         if (outputIndex > Outputs.Count) throw new IndexOutOfRangeException();
         if (!Outputs[outputIndex].CanAcceptNode(inputNode)) return false;
-        Outputs[outputIndex].InputLocationReference = inputNode;
+        Outputs[outputIndex].InputLocationReferences.Add(inputNode);
         if(alsoSetInput) inputNode.OutputLocationReference = Outputs[outputIndex];
         return true;
     }
