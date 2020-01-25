@@ -33,7 +33,7 @@ public class AddInputsTest : MonoBehaviour {
         var classNode = new ClassNode();
 
         stringValueNode1.SetValue("Start method called");
-        stringValueNode2.SetValue("Update method\\\"\\\\\"\"\\\r\\\n\n this should break");
+        stringValueNode2.SetValue("Update method called");
         printNode1.SetNodeInput(0, stringValueNode1.Outputs[0], true);
         printNode2.SetNodeInput(0, stringValueNode2.Outputs[0], true);
 
