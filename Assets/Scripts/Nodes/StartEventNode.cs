@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Nodes {
     public class StartEventNode : Node { 
@@ -10,7 +11,10 @@ namespace Nodes {
         }
         public override string GetCode(int callStackLevel) {
             var code =  "private void Start() {\n";
-            ChildrenNodes.ForEach(node => code += node.Outputs.Count == 0 ? node.GetCode(callStackLevel+1) + "\n" : "");
+            ChildrenNodes.ForEach(node => {
+                if (node.Outputs.Count == 0 || node.Outputs.All(nodeOutput => nodeOutput.InputLocationReferences.Count == 0))
+                    code += node.GetCode(callStackLevel + 1) + "\n";
+            });
             code += "}";
             return code;
         }

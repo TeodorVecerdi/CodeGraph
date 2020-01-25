@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
 namespace Nodes {
-    public class StringValueNode : ValueNode{
-        public StringValueNode() {
+    public class TextValueNode : ValueNode {
+        public TextValueNode() {
             NodeValueType = typeof(string);
             Outputs = new List<OutputNode>{new StringOutputNode(this)};
         }
@@ -19,7 +19,7 @@ namespace Nodes {
             if (nv.Contains("\r")) nv = nv.Replace("\r", "\\r");
             if (nv.Contains("\t")) nv = nv.Replace("\t", "\\t");
             if (nv.Contains("\v")) nv = nv.Replace("\v", "\\v");
-            return $"\"{nv}\"";
+            return $"{nv}";
         }
 
         public override void SetValue(object value) {

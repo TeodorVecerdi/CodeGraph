@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Nodes\Boolean\LessEqualNode.cs" />
      <Compile Include="Assets\Scripts\Nodes\Boolean\LessNode.cs" />
      <Compile Include="Assets\Scripts\Nodes\Boolean\NotEqualsNode.cs" />
+     <Compile Include="Assets\Scripts\Nodes\ClassNode.cs" />
      <Compile Include="Assets\Scripts\Nodes\CodeBranchNode.cs" />
      <Compile Include="Assets\Scripts\Nodes\DebugLogNode.cs" />
      <Compile Include="Assets\Scripts\Nodes\IfNode.cs" />
@@ -95,6 +96,7 @@
      <Compile Include="Assets\Scripts\Nodes\ValueNodes\FloatValueNode.cs" />
      <Compile Include="Assets\Scripts\Nodes\ValueNodes\IntegerValueNode.cs" />
      <Compile Include="Assets\Scripts\Nodes\ValueNodes\StringValueNode.cs" />
+     <Compile Include="Assets\Scripts\Nodes\ValueNodes\TextValueNode.cs" />
      <Compile Include="Assets\Scripts\Nodes\Vector2Node.cs" />
      <Compile Include="Assets\unity-ui-extensions\Examples\ComboBox\ComboBoxChanged.cs" />
      <Compile Include="Assets\unity-ui-extensions\Examples\Cooldown\CooldownEffect_Image.cs" />

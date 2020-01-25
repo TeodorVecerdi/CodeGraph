@@ -1,9 +1,7 @@
 ﻿using TMPro;
-using UnityEngine;
-
-public class NodeInputMB : MonoBehaviour {
+public class NodeInputMB : UnityEngine.MonoBehaviour {
     public InputNode InputNode;
-    public GameObject KnobSelected;
+    public UnityEngine.GameObject KnobSelected;
     public TMP_Text Label;
     public void SetLabel(string labelText) {
         Label.text = labelText;

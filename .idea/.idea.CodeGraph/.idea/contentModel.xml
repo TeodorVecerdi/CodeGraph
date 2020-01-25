@@ -26,6 +26,7 @@
               <e p="LessNode.cs" t="Include" />
               <e p="NotEqualsNode.cs" t="Include" />
             </e>
+            <e p="ClassNode.cs" t="Include" />
             <e p="CodeBranchNode.cs" t="Include" />
             <e p="DebugLogNode.cs" t="Include" />
             <e p="IfNode.cs" t="Include" />
@@ -59,6 +60,7 @@
               <e p="FloatValueNode.cs" t="Include" />
               <e p="IntegerValueNode.cs" t="Include" />
               <e p="StringValueNode.cs" t="Include" />
+              <e p="TextValueNode.cs" t="Include" />
             </e>
             <e p="Vector2Node.cs" t="Include" />
           </e>
