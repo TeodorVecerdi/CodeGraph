@@ -11,10 +11,7 @@ public abstract class Node {
     public abstract string GetCode(int callStackLevel);
 
     public void AddConnection(int inputIndex, OutputNode outputNode) {
-        if (inputIndex >= Inputs.Count) {
-            Debug.LogError($"Index {inputIndex} out of range {Inputs.Count} on node {GetType().Name}");
-            throw new IndexOutOfRangeException();
-        }
+        Debug.Assert(inputIndex >= Inputs.Count, $"Index {inputIndex} out of range {Inputs.Count} on node {GetType().Name}");
 
         if (!Inputs[inputIndex].CanAcceptNode(outputNode)) {
             Debug.LogError($"Input {Inputs[inputIndex].GetType().Name} cannot accept output node {outputNode.GetType().Name}");
@@ -29,10 +26,8 @@ public abstract class Node {
     }
 
     public void RemoveConnection(int inputIndex, OutputNode outputNode) {
-        if (inputIndex >= Inputs.Count) {
-            Debug.LogError($"Index {inputIndex} out of range {Inputs.Count} on node {GetType().Name}");
-            throw new IndexOutOfRangeException();
-        }
+        Debug.Assert(inputIndex >= Inputs.Count, $"Index {inputIndex} out of range {Inputs.Count} on node {GetType().Name}");
+
         if (Connections.All(connection => connection.To != Inputs[inputIndex])) {
             Debug.LogError($"Could not find connection from {Inputs[inputIndex].GetType().Name} to {outputNode.GetType().Name}");
             return;
@@ -43,7 +38,7 @@ public abstract class Node {
         outputNode.InputLocationReferences.Remove(Inputs[inputIndex]);
     }
     public bool SetNodeInput(int inputIndex, OutputNode outputNode, bool alsoSetOutput = false) {
-        if(inputIndex >= Inputs.Count) throw new IndexOutOfRangeException();
+        Debug.Assert(inputIndex >= Inputs.Count, $"Index {inputIndex} out of range {Inputs.Count} on node {GetType().Name}");
         if (!Inputs[inputIndex].CanAcceptNode(outputNode)) return false;
         Inputs[inputIndex].OutputLocationReference = outputNode;
         if (alsoSetOutput) {
@@ -54,7 +49,7 @@ public abstract class Node {
     }
 
     public bool SetNodeOutput(int outputIndex, InputNode inputNode, bool alsoSetInput = false) {
-        if (outputIndex > Outputs.Count) throw new IndexOutOfRangeException();
+        Debug.Assert(outputIndex > Outputs.Count, $"Index {outputIndex} out of range {Outputs.Count} on node {GetType().Name}");
         if (!Outputs[outputIndex].CanAcceptNode(inputNode)) return false;
         Outputs[outputIndex].InputLocationReferences.Add(inputNode);
         if(alsoSetInput) inputNode.OutputLocationReference = Outputs[outputIndex];
