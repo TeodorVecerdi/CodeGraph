@@ -7,9 +7,9 @@ CodeGraph
   <b>Code Graph</b> is an open-source <b>visual programming</b> tool for artists, designers and other non-programmers alike who want to make games but don't know how to program. Code Graph is similar in functionality to the Shader Graph addon by Unity.
 </p>
 
-# TODO (Last edited 27/01/2020 at 14:37)
+# TODO (Last edited 27/01/2020 at 15:12)
 ## Frontend
-- [ ] Implement a basic UI using the in-game UI elements
+~~- [ ] Implement a basic UI using the in-game UI elements~~
 - [ ] Implement UI using a custom EditorWindow
 ## Backend
 - [x] Add a way to remove connection between nodes
