@@ -9,16 +9,19 @@ public class TestWindow : EditorWindow {
     public Vector2 DragOffset = new Vector2(-50000f, -50000f);
     private Rect window1;
     private Rect window2;
-    private Connection connection = new Connection(new Vector2(50000, 51000), new Vector2(50500, 50500));
-    private Box box1 = new Box(new Vector2(50300, 50000), new Vector2(100, 100), "Node 1");
+    private Connection connection;
+    private Box box1 = new Box(new Vector2(50900, 50000), new Vector2(100, 100), "Node 1");
     private Box box2 = new Box(new Vector2(50600, 50300), new Vector2(100, 100), "Node 2");
     private float zoom = 1f;
     private float zoomSpeed = -0.01F;
+    private bool startedConnection;
+    private bool finishedConnection;
     private Vector2 vanishingPoint = new Vector2(0, 21);
 
     [MenuItem("Window/Code Graph")]
     public static void ShowExample() {
-        GetWindow<TestWindow>("Code Graph");
+        var window = GetWindow<TestWindow>("Code Graph");
+        window.wantsMouseMove = true;
 
         // TestWindow wnd = GetWindow<TestWindow>();
         // wnd.titleContent = new GUIContent("Code Graph");
@@ -26,16 +29,18 @@ public class TestWindow : EditorWindow {
 
     private void OnGUI() {
         // Check out this http://martinecker.com/martincodes/unity-editor-window-zooming/
-        GUI.EndGroup();
+        // GUI.EndGroup();
         bool didPan = false;
 
-        GUI.Label(new Rect(0, 40 + 0, 1000, 20), $"offset: {DragOffset}");
-        GUI.Label(new Rect(0, 40 + 20, 1000, 20), $"box1 Pos: {box1.Position}");
-        GUI.Label(new Rect(0, 40 + 40, 1000, 20), $"box2 Pos: {box2.Position}");
-        GUI.Label(new Rect(0, 40 + 60, 1000, 20), $"line start: {connection.Start}");
-        GUI.Label(new Rect(0, 40 + 80, 1000, 20), $"line end: {connection.End}");
-        GUI.Label(new Rect(0, 40 + 100, 1000, 20), $"zoom: {zoom}");
-        vanishingPoint = EditorGUILayout.Vector2Field("vanishing point", vanishingPoint);
+        // GUI.Label(new Rect(0, 40 + 0, 1000, 20), $"offset: {DragOffset}");
+        // GUI.Label(new Rect(0, 40 + 20, 1000, 20), $"box1 Pos: {box1.Position}");
+        // GUI.Label(new Rect(0, 40 + 40, 1000, 20), $"box2 Pos: {box2.Position}");
+        // GUI.Label(new Rect(0, 40 + 60, 1000, 20), $"mouse Pos: {Event.current.mousePosition}");
+
+        // GUI.Label(new Rect(0, 40 + 60, 1000, 20), $"line start: {connection.Start}");
+        // GUI.Label(new Rect(0, 40 + 80, 1000, 20), $"line end: {connection.End}");
+        GUI.Label(new Rect(0, 40 + 0, 1000, 20), $"zoom: {zoom}");
+        // vanishingPoint = EditorGUILayout.Vector2Field("vanishing point", vanishingPoint);
 
         if (Event.current.type == EventType.ScrollWheel) {
             float scroll = Event.current.delta.y;
@@ -46,14 +51,31 @@ public class TestWindow : EditorWindow {
             zoom = Mathf.Clamp(zoom, 0.2f, 5f);
 
             var mousePosition = Event.current.mousePosition;
+
             // vanishingPoint.x = position.height / 2f + mousePosition.x * zoom;
             // vanishingPoint.y = position.width / 2f + mousePosition.y * zoom;
             Repaint();
         }
 
+        if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Space) {
+            if (!startedConnection && Event.current.mousePosition.x >= box1.Position.x + DragOffset.x && Event.current.mousePosition.x <= box1.Position.x + DragOffset.x + box1.Size.x && Event.current.mousePosition.y >= box1.Position.y + DragOffset.y && Event.current.mousePosition.y <= box1.Position.y + DragOffset.y + box1.Size.y) {
+                startedConnection = true;
+                connection = new Connection(box1.Position, Event.current.mousePosition);
+            } else if (startedConnection && Event.current.mousePosition.x >= box2.Position.x + DragOffset.x && Event.current.mousePosition.x <= box2.Position.x + DragOffset.x + box2.Size.x && Event.current.mousePosition.y >= box2.Position.y + DragOffset.y && Event.current.mousePosition.y <= box2.Position.y + DragOffset.y + box2.Size.y) {
+                finishedConnection = true;
+                startedConnection = false;
+            }
+        }
+
         box1.Update(this);
         box2.Update(this);
-        connection.Update(box1, box2, this);
+        if (startedConnection) {
+            var pos = box1.Position;
+            pos.x += box1.Size.x;
+            connection.Update(pos, Event.current.mousePosition - DragOffset, this);
+        } else if (finishedConnection) {
+            connection.Update(box1, box2, this);
+        }
 
         if (Event.current.type == EventType.MouseDrag) {
             if (Event.current.button == 1) {
@@ -78,18 +100,20 @@ public class TestWindow : EditorWindow {
         Matrix4x4 Translation = Matrix4x4.TRS(vanishingPoint, Quaternion.identity, Vector3.one);
         Matrix4x4 Scale = Matrix4x4.Scale(new Vector3(zoom, zoom, 1.0f));
         GUI.matrix = Translation * Scale * Translation.inverse;
-        
+
         GUI.BeginGroup(new Rect(DragOffset.x, DragOffset.y, 100000, 100000));
-        
-        connection.Render();
+
+        connection?.Render();
         box1.Render();
         box2.Render();
-        GUI.matrix = oldMatrix;
+
+        // GUI.matrix = oldMatrix;
 
         BeginWindows();
         window1 = GUI.Window(2, window1, DrawNodeWindow, "Node A"); // Updates the Rect's when these are dragged
         window2 = GUI.Window(3, window2, DrawNodeWindow, "Node B");
         EndWindows();
+
         GUI.matrix = oldMatrix;
         GUI.EndGroup();
         if (didPan) {
@@ -100,7 +124,7 @@ public class TestWindow : EditorWindow {
     void DrawNodeWindow(int id) {
         GUI.DragWindow();
     }
-    
+
     public void OnEnable() {
         return;
 
@@ -191,15 +215,25 @@ public class TestWindow : EditorWindow {
             Handles.DrawBezier(Start, End, Start + Offset, endTangent, Color.yellow, Texture2D.whiteTexture, 2);
         }
 
-        public void Update(Box box1, Box box2, TestWindow window) {
-            var newStartPosition = box1.Position;
-            newStartPosition.x += box1.Size.x;
-            var newEndPosition = box2.Position;
+        public void Update(Box start, Box end, TestWindow window) {
+            var newStartPosition = start.Position;
+            newStartPosition.x += start.Size.x;
+            var newEndPosition = end.Position;
             if (End != newEndPosition) {
                 End = newEndPosition;
                 window.Repaint();
             } else if (Start != newStartPosition) {
                 Start = newStartPosition;
+                window.Repaint();
+            }
+        }
+
+        public void Update(Vector2 start, Vector2 end, TestWindow window) {
+            if (End != end) {
+                End = end;
+                window.Repaint();
+            } else if (Start != start) {
+                Start = start;
                 window.Repaint();
             }
         }
