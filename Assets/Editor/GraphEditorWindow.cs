@@ -1,38 +1,33 @@
 using System;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
-using AssetModificationProcessor = UnityEditor.AssetModificationProcessor;
 
-namespace CodeGraph {
-    public class TestWindow2 : EditorWindow {
-        public TestScriptableObject CurrentAsset;
-        public TestScriptableObject CurrentAssetUnsaved;
+namespace CodeGraph.Editor {
+    public class GraphEditorWindow : EditorWindow {
+        public GraphFile CurrentGraph;
         private const float topPanelHeight = 32f;
         private const float leftPanelWidth = 240f;
         private const float mainPanelMinWidth = 400f;
         private const float mainPanelMinHeight = 400f;
 
-        [MenuItem("Window/CodeGraph2")]
+        [MenuItem("Code Graph/Open graph editor")]
         private static void ShowWindow() {
-            var window = GetWindow<TestWindow2>();
+            var window = GetWindow<GraphEditorWindow>();
             window.Init();
         }
 
         public void Init() {
-            titleContent = new GUIContent("CodeGraph");
+            titleContent = new GUIContent("CodeGraph Editor");
             minSize = new Vector2(leftPanelWidth + mainPanelMinWidth, topPanelHeight + mainPanelMinHeight);
             wantsMouseMove = true;
             Show();
-            FocusWindowIfItsOpen<TestWindow2>();
+            FocusWindowIfItsOpen<GraphEditorWindow>();
         }
 
-        public void SetScriptableObject(TestScriptableObject scriptableObject) {
-            CurrentAsset = scriptableObject;
-            CurrentAssetUnsaved = new TestScriptableObject();
-            CurrentAssetUnsaved.Boxes = new List<TestBox>(CurrentAsset.Boxes);
-            EditorUtility.SetDirty(CurrentAsset);
+        public void SetGraph(GraphFile graph) {
+            Debug.Log("Set graph " + graph.GraphName);
+            CurrentGraph = graph;
         }
 
         private const float zoomMin = 0.1f;
@@ -53,10 +48,10 @@ namespace CodeGraph {
             // Within the zoom area all coordinates are relative to the top left corner of the zoom area
             // with the width and height being scaled versions of the original/unzoomed area's width and height.
             EditorZoomArea.Begin(zoom, zoomArea);
-            
-            if (CurrentAsset != null) {
-                foreach (var asset in CurrentAssetUnsaved.Boxes) {
-                    GUI.Box(new Rect(asset.Position.x- zoomCoordsOrigin.x, asset.Position.y - zoomCoordsOrigin.y, asset.Size.x, asset.Size.y), asset.Title);
+
+            if (CurrentGraph != null) {
+                foreach (var asset in CurrentGraph.Nodes) {
+                    GUI.Box(new Rect(asset.Position.x - zoomCoordsOrigin.x, asset.Position.y - zoomCoordsOrigin.y, asset.Size.x, asset.Size.y), asset.Title);
                 }
             }
 
@@ -79,11 +74,12 @@ namespace CodeGraph {
             Handles.DrawDottedLine(new Vector3(leftPanelWidth, topPanelHeight), new Vector3(leftPanelWidth, position.height), 2f);
 
             if (GUI.Button(new Rect(0f, 0f, 100f, 32f), "Save Asset")) {
-                CurrentAsset.Boxes = new List<TestBox>(CurrentAssetUnsaved.Boxes);
-                AssetDatabase.SaveAssets();
+                GraphFileSaveManager.SaveGraphFile(CurrentGraph);
                 AssetDatabase.Refresh();
             }
+
             GUI.Button(new Rect(100f, 0f, 100f, 32f), "Compile Asset");
+
             // GUI.Box(new Rect(0.0f, 20.0f, 600.0f, 50.0f), "Adjust zoom of middle box with slider or mouse wheel.\nMove zoom area dragging with middle mouse button or Alt+left mouse button.");
             GUI.Label(new Rect(216f, 0, 600f, 32f), $"Size: {position.size} - Mouse: {Event.current.mousePosition}");
         }
@@ -105,8 +101,10 @@ namespace CodeGraph {
                 Event.current.Use();
             }
 
-            if (Event.current.type == EventType.KeyDown && CurrentAsset != null && Event.current.keyCode == KeyCode.Space) {
-                CurrentAssetUnsaved.Boxes.Add(new TestBox(ConvertScreenCoordsToZoomCoords(Event.current.mousePosition), new Vector2(100, 100), $"Node_{GUID.Generate()}"));
+            if (Event.current.type == EventType.KeyDown && CurrentGraph != null && Event.current.keyCode == KeyCode.Space) {
+                var guid = Guid.NewGuid();
+                CurrentGraph.Nodes.Add(new GraphFileNode(ConvertScreenCoordsToZoomCoords(Event.current.mousePosition), new Vector2(100, 100), $"Node_{guid}", guid));
+                Repaint();
             }
 
             // Allow moving the zoom area's origin by dragging with the middle mouse button or dragging

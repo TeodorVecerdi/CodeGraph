@@ -59,6 +59,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\EditorZoomArea.cs" />
+     <Compile Include="Assets\Scripts\GraphFile.cs" />
+     <Compile Include="Assets\Scripts\GraphFileConnection.cs" />
+     <Compile Include="Assets\Scripts\GraphFileNode.cs" />
+     <Compile Include="Assets\Scripts\GraphFileSaveManager.cs" />
      <Compile Include="Assets\Scripts\Math.cs" />
      <Compile Include="Assets\Scripts\NodeBackend\AddInputsTest.cs" />
      <Compile Include="Assets\Scripts\NodeBackend\Nodes\Abstracts\InputNode.cs" />

@@ -9,14 +9,19 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
-          <e p="CustomAssetOpener.cs" t="Include" />
+          <e p="CodeGraphFileOpener.cs" t="Include" />
+          <e p="CreateNewGraphWizard.cs" t="Include" />
+          <e p="GraphEditorWindow.cs" t="Include" />
           <e p="TestWindow.cs" t="Include" />
           <e p="TestWindow.uss" t="Include" />
           <e p="TestWindow.uxml" t="Include" />
-          <e p="TestWindow2.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="EditorZoomArea.cs" t="Include" />
+          <e p="GraphFile.cs" t="Include" />
+          <e p="GraphFileConnection.cs" t="Include" />
+          <e p="GraphFileNode.cs" t="Include" />
+          <e p="GraphFileSaveManager.cs" t="Include" />
           <e p="Math.cs" t="Include" />
           <e p="NodeBackend" t="Include">
             <e p="AddInputsTest.cs" t="Include" />
