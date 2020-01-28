@@ -58,7 +58,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\CustomAssetOpener.cs" />
      <Compile Include="Assets\Editor\TestWindow.cs" />
+     <Compile Include="Assets\Editor\TestWindow2.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\AccordionElementEditor.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\BezierLineRendererEditor.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\BoxSliderEditor.cs" />

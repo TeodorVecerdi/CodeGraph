@@ -6,7 +6,7 @@ using UnityEditor;
 namespace UnityEngine.UI.Extensions
 {
     [CustomEditor(typeof(UILineRenderer))]
-    public class BezierLineRendererEditor : Editor
+    public class BezierLineRendererEditor : UnityEditor.Editor
     {
         void OnSceneGUI()
         {

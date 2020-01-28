@@ -7,7 +7,7 @@ namespace UnityEngine.UI.Extensions
 {
     [CustomEditor(typeof(CUIBezierCurve))]
     [CanEditMultipleObjects]
-    public class CUIBezierCurveEditor : Editor
+    public class CUIBezierCurveEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
