@@ -10,12 +10,17 @@ namespace CodeGraph.Editor {
         private const float leftPanelWidth = 240f;
         private const float mainPanelMinWidth = 400f;
         private const float mainPanelMinHeight = 400f;
+        #region Zoom Area variables
+        private const float zoomMin = 0.1f;
+        private const float zoomMax = 4.0f;
+        private float zoom = 1.0f;
+        private Rect zoomArea = new Rect(leftPanelWidth, topPanelHeight, mainPanelMinWidth, mainPanelMinHeight);
+        private Vector2 zoomCoordsOrigin = Vector2.zero;
+        private Vector2 lastWindowSize = Vector2.zero;
+        #endregion
 
-        [MenuItem("Code Graph/Open graph editor")]
-        private static void ShowWindow() {
-            var window = GetWindow<GraphEditorWindow>();
-            window.Init();
-        }
+        private bool showNodeCreator;
+        private NewNodeWindow newNodeWindow;
 
         public void Init() {
             titleContent = new GUIContent("CodeGraph Editor");
@@ -29,14 +34,6 @@ namespace CodeGraph.Editor {
             Debug.Log("Set graph " + graph.GraphName);
             CurrentGraph = graph;
         }
-
-        private const float zoomMin = 0.1f;
-        private const float zoomMax = 4.0f;
-
-        private Rect zoomArea = new Rect(leftPanelWidth, topPanelHeight, mainPanelMinWidth, mainPanelMinHeight);
-        private float zoom = 1.0f;
-        private Vector2 zoomCoordsOrigin = Vector2.zero;
-        private Vector2 lastWindowSize = Vector2.zero;
 
         private Vector2 ConvertScreenCoordsToZoomCoords(Vector2 screenCoords) {
             return (screenCoords - zoomArea.TopLeft()) / zoom + zoomCoordsOrigin;
@@ -82,13 +79,20 @@ namespace CodeGraph.Editor {
 
             // GUI.Box(new Rect(0.0f, 20.0f, 600.0f, 50.0f), "Adjust zoom of middle box with slider or mouse wheel.\nMove zoom area dragging with middle mouse button or Alt+left mouse button.");
             GUI.Label(new Rect(216f, 0, 600f, 32f), $"Size: {position.size} - Mouse: {Event.current.mousePosition}");
+
+            if (showNodeCreator) {
+                newNodeWindow.Render();
+            }
         }
 
         private void HandleEvents() {
+            if (showNodeCreator) {
+                newNodeWindow.Update();
+            }
             // Allow adjusting the zoom with the mouse wheel as well. In this case, use the mouse coordinates
             // as the zoom center instead of the top left corner of the zoom area. This is achieved by
             // maintaining an origin that is used as offset when drawing any GUI elements in the zoom area.
-            if (Event.current.type == EventType.ScrollWheel) {
+            if (Event.current.type == EventType.ScrollWheel && !showNodeCreator) {
                 Vector2 screenCoordsMousePos = Event.current.mousePosition;
                 Vector2 delta = Event.current.delta;
                 Vector2 zoomCoordsMousePos = ConvertScreenCoordsToZoomCoords(screenCoordsMousePos);
@@ -97,26 +101,35 @@ namespace CodeGraph.Editor {
                 zoom += zoomDelta;
                 zoom = Mathf.Clamp(zoom, zoomMin, zoomMax);
                 zoomCoordsOrigin += (zoomCoordsMousePos - zoomCoordsOrigin) - (oldZoom / zoom) * (zoomCoordsMousePos - zoomCoordsOrigin);
-
                 Event.current.Use();
             }
-
-            if (Event.current.type == EventType.KeyDown && CurrentGraph != null && Event.current.keyCode == KeyCode.Space) {
-                var guid = Guid.NewGuid();
-                CurrentGraph.Nodes.Add(new GraphFileNode(ConvertScreenCoordsToZoomCoords(Event.current.mousePosition), new Vector2(100, 100), $"Node_{guid}", guid));
-                Repaint();
-            }
-
-            // Allow moving the zoom area's origin by dragging with the middle mouse button or dragging
-            // with the left mouse button with Alt pressed.
+            // Move
             if (Event.current.type == EventType.MouseDrag && ((Event.current.button == 0 && Event.current.modifiers == EventModifiers.Alt) || Event.current.button == 2)) {
                 Vector2 delta = Event.current.delta;
                 delta /= zoom;
                 zoomCoordsOrigin -= delta;
-
                 Event.current.Use();
             }
 
+            if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.A && !showNodeCreator) {
+                var guid = Guid.NewGuid();
+                CurrentGraph.Nodes.Add(new GraphFileNode(ConvertScreenCoordsToZoomCoords(Event.current.mousePosition), new Vector2(100, 100), $"Node_{guid}", guid));
+                Repaint();
+                Event.current.Use();
+            }
+            if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Space && !showNodeCreator) {
+                showNodeCreator = true;
+                Repaint();
+                Event.current.Use();
+                newNodeWindow = new NewNodeWindow(Event.current.mousePosition, this);
+            }
+            if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Escape) {
+                showNodeCreator = false;
+                newNodeWindow = null;
+                Repaint();
+                Event.current.Use();
+            }
+            
             if (position.size != lastWindowSize) {
                 lastWindowSize = position.size;
                 HandleResize();

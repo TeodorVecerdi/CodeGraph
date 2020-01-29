@@ -8,10 +8,6 @@ using Nodes;
 using UnityEngine;
 
 public class AddInputsTest : MonoBehaviour {
-    public GameObject InputPrefab;
-    public GameObject InputsGroup;
-    public List<NodeInputMB> Inputs;
-
     private void OnGUI() {
         if (GUI.Button(new Rect(0, 0, 300, 60), "Run Code")) {
             TestCode();
@@ -19,14 +15,6 @@ public class AddInputsTest : MonoBehaviour {
     }
 
     public void TestCode() {
-        /*Inputs = new List<NodeInputMB>();
-        var method = typeof(Vector3).GetMethod("RotateTowards");
-        var parameters = method.GetParameters();
-        foreach (ParameterInfo parameter in parameters) {
-            NodeInputMB nodeInputMb = Instantiate(InputPrefab, InputsGroup.transform).GetComponent<NodeInputMB>();
-            nodeInputMb.SetLabel($"{parameter.Name} ({parameter.ParameterType.Name})");
-            Inputs.Add(nodeInputMb);
-        }*/
         var stringValueNode1 = new StringValueNode();
         var stringValueNode2 = new StringValueNode();
         var printNode1 = new DebugLogNode();
@@ -42,24 +30,16 @@ public class AddInputsTest : MonoBehaviour {
         stringValueNode2.SetValue("Update method called");
         printNode1.AddConnection(0, stringValueNode1.Outputs[0]);
         printNode2.AddConnection(0, stringValueNode1.Outputs[0]);
-        // printNode1.SetNodeInput(0, stringValueNode1.Outputs[0], true);
-        // printNode2.SetNodeInput(0, stringValueNode2.Outputs[0], true);
-        
         endNode1.AddConnection(0, printNode1.Outputs[0]);
         endNode2.AddConnection(0, printNode2.Outputs[0]);
-        // endNode1.SetNodeInput(0, printNode1.Outputs[0], true);
-        // endNode2.SetNodeInput(0, printNode2.Outputs[0], true);
-
         startEventNode.AddChildNode(endNode1);
         startEventNode.AddChildNode(printNode1);
         startEventNode.AddChildNode(stringValueNode1);
         updateEventNode.AddChildNode(endNode2);
         updateEventNode.AddChildNode(printNode2);
-        // updateEventNode.AddChildNode(stringValueNode2);
 
         textValueNode.SetValue("ExampleClass");
         classNode.AddConnection(0, textValueNode.Outputs[0]);
-        // classNode.SetNodeInput(0, textValueNode.Outputs[0], true);
         classNode.AddChildNode(startEventNode);
         classNode.AddChildNode(updateEventNode);
         
@@ -69,7 +49,6 @@ public class AddInputsTest : MonoBehaviour {
         
         var code = classNode.GetCode(0);
         print(code);
-
         var provider = CodeDomProvider.CreateProvider("CSharp");
         var assemblies = AppDomain.CurrentDomain
             .GetAssemblies()

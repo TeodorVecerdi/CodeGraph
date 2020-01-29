@@ -7,7 +7,7 @@ namespace Nodes {
         public InputNode To;
 
         public static NodeConnection Create(OutputNode from, InputNode to) {
-            return new NodeConnection {From = @from, To = to};
+            return new NodeConnection {From = from, To = to};
         }
     }
 }
