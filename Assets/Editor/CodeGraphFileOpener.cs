@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
-    public class CodeGraphFileOpener {
+    public static class CodeGraphFileOpener {
         
         [UnityEditor.Callbacks.OnOpenAsset(1)]
         public static bool OnOpenAsset(int instanceID, int line) {

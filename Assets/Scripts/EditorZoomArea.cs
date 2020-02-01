@@ -45,7 +45,7 @@ public static class RectExtensions
     }
 }
  
-public class EditorZoomArea
+public static class EditorZoomArea
 {
     private const float kEditorWindowTabHeight = 21.0f;
     private static Matrix4x4 _prevGuiMatrix;

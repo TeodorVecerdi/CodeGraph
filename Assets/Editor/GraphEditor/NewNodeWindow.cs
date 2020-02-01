@@ -7,7 +7,7 @@ namespace CodeGraph.Editor {
     public class NewNodeWindow {
         private Vector2 position;
         private GraphEditorWindow window;
-        private int selected = 0;
+        private int selected;
         private float width = 200f;
         private float height = 200f;
         private float itemHeight = 20f;

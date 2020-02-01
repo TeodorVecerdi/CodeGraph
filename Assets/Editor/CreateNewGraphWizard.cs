@@ -26,7 +26,5 @@ namespace CodeGraph.Editor {
         private void OnWizardOtherButton() {
             Close();
         }
-
-        public void OnWizardUpdate() { }
     }
 }
