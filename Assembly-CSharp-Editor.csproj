@@ -58,10 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\AssetCallbacks\CreateCodeGraph.cs" />
      <Compile Include="Assets\Editor\CodeGraphFileOpener.cs" />
      <Compile Include="Assets\Editor\CreateNewGraphWizard.cs" />
      <Compile Include="Assets\Editor\GraphEditor\GraphEditorWindow.cs" />
      <Compile Include="Assets\Editor\GraphEditor\NewNodeWindow.cs" />
+     <Compile Include="Assets\Editor\Importers\CodeGraphImporter.cs" />
      <Compile Include="Assets\Editor\TestWindow.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\AccordionElementEditor.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\BezierLineRendererEditor.cs" />

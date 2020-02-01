@@ -9,11 +9,17 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
+          <e p="AssetCallbacks" t="Include">
+            <e p="CreateCodeGraph.cs" t="Include" />
+          </e>
           <e p="CodeGraphFileOpener.cs" t="Include" />
           <e p="CreateNewGraphWizard.cs" t="Include" />
           <e p="GraphEditor" t="Include">
             <e p="GraphEditorWindow.cs" t="Include" />
             <e p="NewNodeWindow.cs" t="Include" />
+          </e>
+          <e p="Importers" t="Include">
+            <e p="CodeGraphImporter.cs" t="Include" />
           </e>
           <e p="TestWindow.cs" t="Include" />
           <e p="TestWindow.uss" t="Include" />

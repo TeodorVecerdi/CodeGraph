@@ -8,7 +8,7 @@ namespace CodeGraph.Editor {
         public string GeneratedMonoBehaviourName;
         public string GraphName;
 
-        [MenuItem("Code Graph/Create new graph")]
+        [MenuItem(itemName:"Assets/Create/Code Graph/New Empty Graph", isValidateFunction: false, priority: 0)]
         public static void CreateWizard() {
             var wizard = DisplayWizard<CreateNewGraphWizard>("Create new graph", "Create", "Cancel");
             wizard.GraphName = "NewCodeGraph";
@@ -18,8 +18,9 @@ namespace CodeGraph.Editor {
         public void OnWizardCreate() {
             if (!Directory.Exists(Application.dataPath + "/Code Graph"))
                 AssetDatabase.CreateFolder("Assets", "Code Graph");
-            var graph = new GraphFile(GraphName, GeneratedMonoBehaviourName, new List<GraphFileNode>(), new List<GraphFileConnection>());
-            GraphFileSaveManager.SaveGraphFile(graph);
+            var path = Path.Combine(Application.dataPath, "Code Graph", GraphName + ".codegraph");
+            var graph = new GraphFile(GraphName, GeneratedMonoBehaviourName, new List<GraphFileNode>(), new List<GraphFileConnection>(), path);
+            GraphFileSaveManager.SaveGraphFile(path, graph);
         }
 
         private void OnWizardOtherButton() {
