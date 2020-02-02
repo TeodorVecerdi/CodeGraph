@@ -9,21 +9,32 @@
   <br><sup><sub align="justify"><b>Code Graph is in a very early development stage. Most important features and probably missing at this point. If you want a working tool follow the repo and check back later</b></sub></sup>
 </p>
 
+<h1 align="center">CONTRIBUTORS</h1>
 
-# TODO (Last edited 27/01/2020 at 15:12)
-## Frontend
+If you would like to contribute to this project feel free to submit a **pull request**. I need help mostly on the frontend side of the project, with the UI, nodes, files and importer, but help in other places such as the backend is always welcome. To see where help is needed check out the *Todo* Section below to get a broad overview of main features that need to be implemented.
+
+<h1 align="center">TODO (Last edited 02/02/2020 at 12:47)</h1>
+<h3>Frontend</h3>
+
 ~~- [ ] Implement a basic UI using the in-game UI elements~~
-- [ ] Implement UI using a custom EditorWindow
-## Backend
+- [x] Implement UI using a custom EditorWindow (*Custom EditorWindow is done*)
+  - [ ] Implement nodes and connections on the UI
+<h3>Backend</h3>
+
 - [x] Add a way to remove connection between nodes
 - [x] Add a way to have multiple connections from one Output node to Input nodes
 - [ ] Provide error checking in a more useful way (aka don't tell the user that a ; is missing on line #xxxx when the user doesn't even look at the code generated)
+- [ ] Add properties / variables
+- [ ] Add functions (with inputs and outputs defined, aka user can create own nodes in the graph and reuse them later)
 
-# Progress so far
+
+<h1 align="center">Progress so far</h1>
+
 - Basic fundamental nodes defined on the backend
 - Able to generate code, compile said code and check for errors
+- Custom EditorWindow is mostly implemented
+- CodeGraph files are mostly implemented & have a custom importer (Some errors happen on reimport that don't affect the user at all)
 
 
-**Example of generated code from nodes and error given**
-
+**Example of generated code from nodes and error given**  
 ![Example of generated code from nodes and error](img/readme_img1.jpeg "Example of generated code from nodes and error")
