@@ -1,5 +1,5 @@
 namespace CodeGraph {
-    public interface IHasCode {
+    internal interface IGeneratesCode {
         string GetCode();
     }
 }

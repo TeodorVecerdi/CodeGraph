@@ -14,10 +14,10 @@ namespace CodeGraph {
             var graph = GraphFileSaveManager.LoadGraphFile(ctx.assetPath);
             
             Texture2D texture = Resources.Load<Texture2D>("Icons/sg_graph_icon@64");
-            var obj = ScriptableObject.CreateInstance<GraphFileObject>();
-            obj.Init(graph);
-            ctx.AddObjectToAsset("MainAsset", obj, texture);
-            ctx.SetMainObject(obj);
+            // var obj = ScriptableObject.CreateInstance<CodeGraphObject>();
+            // obj.Init(graph);
+            ctx.AddObjectToAsset("MainAsset", graph, texture);
+            ctx.SetMainObject(graph);
         }
     }
 }

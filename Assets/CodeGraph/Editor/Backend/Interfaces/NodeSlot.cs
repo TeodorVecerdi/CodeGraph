@@ -8,12 +8,23 @@ namespace CodeGraph {
         [NonSerialized] private Guid nodeGuid;
         [SerializeField] private string serializedNodeGuid;
 
+        public Guid NodeGuid => nodeGuid;
+        public int SlotId => slotId;
+
         public NodeSlot(int slotId, Guid nodeGuid) {
             this.slotId = slotId;
             this.nodeGuid = nodeGuid;
             serializedNodeGuid = string.Empty;
         }
 
+        public void OnBeforeSerialize() {
+            serializedNodeGuid = nodeGuid.ToString();
+        }
+
+        public void OnAfterDeserialize() {
+            nodeGuid = new Guid(serializedNodeGuid);
+        }
+        
         public bool Equals(NodeSlot other) {
             return slotId == other.slotId && nodeGuid.Equals(other.nodeGuid);
         }
@@ -29,12 +40,5 @@ namespace CodeGraph {
             }
         }
 
-        public void OnBeforeSerialize() {
-            serializedNodeGuid = nodeGuid.ToString();
-        }
-
-        public void OnAfterDeserialize() {
-            nodeGuid = new Guid(serializedNodeGuid);
-        }
     }
 }

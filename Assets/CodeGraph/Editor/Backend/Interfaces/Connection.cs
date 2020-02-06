@@ -3,21 +3,20 @@ using UnityEngine;
 
 namespace CodeGraph {
     [Serializable]
-    public class Connection : IConnection {
+    public class Connection : IEquatable<Connection> {
         [SerializeField] private NodeSlot inputSlot;
         [SerializeField] private NodeSlot outputSlot;
+        
+        public NodeSlot InputSlot => inputSlot;
+        public NodeSlot OutputSlot => outputSlot;
 
         public Connection(NodeSlot inputSlot, NodeSlot outputSlot) {
             this.inputSlot = inputSlot;
             this.outputSlot = outputSlot;
         }
 
-        protected bool Equals(Connection other) {
+        public bool Equals(Connection other) {
             return inputSlot.Equals(other.inputSlot) && outputSlot.Equals(other.outputSlot);
-        }
-
-        public bool Equals(IConnection other) {
-            return Equals(other as object);
         }
 
         public override bool Equals(object obj) {
@@ -31,8 +30,5 @@ namespace CodeGraph {
                 return (inputSlot.GetHashCode() * 397) ^ outputSlot.GetHashCode();
             }
         }
-        
-        public NodeSlot InputSlot => inputSlot;
-        public NodeSlot OutputSlot => outputSlot;
     }
 }

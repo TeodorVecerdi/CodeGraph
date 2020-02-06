@@ -18,7 +18,9 @@ namespace CodeGraph {
             var startIndex = pathName.LastIndexOf('/');
             var endIndex = pathName.LastIndexOf('.');
             var graphName = pathName.Substring(startIndex + 1, endIndex - startIndex - 1);
-            var graph = new GraphFile(graphName, graphName, new List<GraphFileNode>(), new List<GraphFileConnection>(), pathName);
+            var graph = CreateInstance<CodeGraphObject>();
+            graph.Graph = new CodeGraphData();
+            graph.Init(graphName, AssetDatabase.AssetPathToGUID(pathName), graphName);
             GraphFileSaveManager.SaveGraphFile(pathName, graph);
             AssetDatabase.Refresh();
         }

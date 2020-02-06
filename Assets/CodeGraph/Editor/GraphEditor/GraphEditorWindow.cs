@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
+using CodeGraph.Nodes;
 using UnityEditor;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
     public class GraphEditorWindow : EditorWindow {
-        public GraphFile CurrentGraph;
+        public CodeGraphObject GraphObject;
         private const float topPanelHeight = 32f;
         private const float leftPanelWidth = 240f;
         private const float mainPanelMinWidth = 400f;
@@ -30,9 +30,9 @@ namespace CodeGraph.Editor {
             FocusWindowIfItsOpen<GraphEditorWindow>();
         }
 
-        public void SetGraph(GraphFile graph) {
-            Debug.Log("Set graph " + graph.GraphName);
-            CurrentGraph = graph;
+        public void SetGraph(CodeGraphObject graphObject) {
+            Debug.Log("Set graph " + graphObject.GraphName);
+            GraphObject = graphObject;
         }
 
         private Vector2 ConvertScreenCoordsToZoomCoords(Vector2 screenCoords) {
@@ -46,9 +46,10 @@ namespace CodeGraph.Editor {
             // with the width and height being scaled versions of the original/unzoomed area's width and height.
             EditorZoomArea.Begin(zoom, zoomArea);
 
-            if (CurrentGraph != null) {
-                foreach (var asset in CurrentGraph.Nodes) {
-                    GUI.Box(new Rect(asset.Position.x - zoomCoordsOrigin.x, asset.Position.y - zoomCoordsOrigin.y, asset.Size.x, asset.Size.y), asset.Title);
+            if (GraphObject != null) {
+                foreach (var asset in GraphObject.Graph.GetNodes<AbstractNode>()) {
+                    // TODO REMAKE
+                    // GUI.Box(new Rect(asset.Position.x - zoomCoordsOrigin.x, asset.Position.y - zoomCoordsOrigin.y, asset.Size.x, asset.Size.y), asset.Title);
                 }
             }
 
@@ -63,7 +64,7 @@ namespace CodeGraph.Editor {
             Handles.DrawDottedLine(new Vector3(leftPanelWidth, topPanelHeight), new Vector3(leftPanelWidth, position.height), 2f);
 
             if (GUI.Button(new Rect(0f, 0f, 100f, 32f), "Save Asset")) {
-                GraphFileSaveManager.SaveGraphFile(AssetDatabase.GUIDToAssetPath(CurrentGraph.AssetGuid), CurrentGraph);
+                GraphFileSaveManager.SaveGraphFile(AssetDatabase.GUIDToAssetPath(GraphObject.AssetGuid), GraphObject);
                 AssetDatabase.Refresh();
             }
 
@@ -105,7 +106,8 @@ namespace CodeGraph.Editor {
 
             if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.A && !showNodeCreator) {
                 var guid = Guid.NewGuid();
-                CurrentGraph.Nodes.Add(new GraphFileNode(ConvertScreenCoordsToZoomCoords(Event.current.mousePosition), new Vector2(100, 100), $"Node_{guid}", guid));
+                // TODO REMAKE
+                // GraphObject.Nodes.Add(new GraphFileNode(ConvertScreenCoordsToZoomCoords(Event.current.mousePosition), new Vector2(100, 100), $"Node_{guid}", guid));
                 Repaint();
                 Event.current.Use();
             }

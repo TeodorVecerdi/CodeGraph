@@ -15,25 +15,27 @@
             </e>
             <e p="Backend" t="Include">
               <e p="AddInputsTest.cs" t="Include" />
+              <e p="CodeGraphData.cs" t="Include" />
               <e p="EditorZoomArea.cs" t="Include" />
-              <e p="GraphFile.cs" t="Include" />
               <e p="GraphFileConnection.cs" t="Include" />
               <e p="GraphFileNode.cs" t="Include" />
               <e p="GraphFileSaveManager.cs" t="Include" />
               <e p="Interfaces" t="Include">
                 <e p="Connection.cs" t="Include" />
-                <e p="IConnection.cs" t="Include" />
-                <e p="IHasCode.cs" t="Include" />
+                <e p="IGeneratesCode.cs" t="Include" />
+                <e p="INode.cs" t="Include" />
                 <e p="NodeSlot.cs" t="Include" />
               </e>
               <e p="Math.cs" t="Include" />
               <e p="Nodes" t="Include">
+                <e p="AbstractNode.cs" t="Include" />
                 <e p="Abstracts" t="Include">
                   <e p="InputNode.cs" t="Include" />
                   <e p="Node.cs" t="Include" />
                   <e p="OutputNode.cs" t="Include" />
                   <e p="ValueNode.cs" t="Include" />
                 </e>
+                <e p="AbstractSlot.cs" t="Include" />
                 <e p="Boolean" t="Include">
                   <e p="EqualsNode.cs" t="Include" />
                   <e p="GreaterEqualNode.cs" t="Include" />
@@ -73,6 +75,9 @@
                   <e p="StringOutputNode.cs" t="Include" />
                   <e p="Vector2OutputNode.cs" t="Include" />
                 </e>
+                <e p="SlotAttribute.cs" t="Include" />
+                <e p="SlotType.cs" t="Include" />
+                <e p="SlotValueType.cs" t="Include" />
                 <e p="ValueNodes" t="Include">
                   <e p="BooleanValueNode.cs" t="Include" />
                   <e p="FloatValueNode.cs" t="Include" />
@@ -80,6 +85,9 @@
                   <e p="StringValueNode.cs" t="Include" />
                   <e p="TextValueNode.cs" t="Include" />
                 </e>
+              </e>
+              <e p="Utils" t="Include">
+                <e p="CodeGraphUtils.cs" t="Include" />
               </e>
             </e>
             <e p="CodeGraphFileOpener.cs" t="Include" />
