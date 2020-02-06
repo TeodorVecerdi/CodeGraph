@@ -64,6 +64,7 @@ namespace CodeGraph.Editor {
             Handles.DrawDottedLine(new Vector3(leftPanelWidth, topPanelHeight), new Vector3(leftPanelWidth, position.height), 2f);
 
             if (GUI.Button(new Rect(0f, 0f, 100f, 32f), "Save Asset")) {
+                Debug.Log(GraphObject.AssetGuid);
                 GraphFileSaveManager.SaveGraphFile(AssetDatabase.GUIDToAssetPath(GraphObject.AssetGuid), GraphObject);
                 AssetDatabase.Refresh();
             }

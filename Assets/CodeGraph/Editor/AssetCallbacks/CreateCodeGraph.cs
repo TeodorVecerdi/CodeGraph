@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using CodeGraph;
 using UnityEditor;
 using UnityEditor.ProjectWindowCallback;
-using UnityEngine;
 
 namespace CodeGraph {
     public class CreateCodeGraph : EndNameEditAction {
-        [MenuItem(itemName: "Assets/Create/Code Graph/Empty Graph", isValidateFunction: false, priority: 0)]
+        [MenuItem("Assets/Create/Code Graph/Empty Graph", false, 0)]
         public static void CreateEmptyCodeGraph() {
             ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, CreateInstance<CreateCodeGraph>(),
                 "New Code Graph.codegraph", null, null);
@@ -20,7 +15,10 @@ namespace CodeGraph {
             var graphName = pathName.Substring(startIndex + 1, endIndex - startIndex - 1);
             var graph = CreateInstance<CodeGraphObject>();
             graph.Graph = new CodeGraphData();
-            graph.Init(graphName, AssetDatabase.AssetPathToGUID(pathName), graphName);
+            graph.Graph.AssetGuid = AssetDatabase.AssetPathToGUID(pathName);
+            graph.Graph.GraphName = graphName;
+            graph.Graph.MonoBehaviourName = graphName;
+            graph.Init(graphName, graphName, graph.Graph.AssetGuid);
             GraphFileSaveManager.SaveGraphFile(pathName, graph);
             AssetDatabase.Refresh();
         }

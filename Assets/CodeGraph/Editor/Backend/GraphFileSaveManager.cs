@@ -6,10 +6,10 @@ using UnityEngine;
 namespace CodeGraph {
     public static class GraphFileSaveManager {
         public static void SaveGraphFile(string path, CodeGraphObject graphObject) {
-            string savePath = path;
+            var savePath = path;
             var binaryFormatter = new BinaryFormatter();
             var fileStream = File.Create(savePath);
-            binaryFormatter.Serialize(fileStream, graphObject);
+            binaryFormatter.Serialize(fileStream, graphObject.Graph);
             fileStream.Close();
             AssetDatabase.Refresh();
         }
@@ -23,8 +23,11 @@ namespace CodeGraph {
             }
             var binaryFormatter = new BinaryFormatter();
             var fileStream = File.Open(path, FileMode.Open);
-            var graph = (CodeGraphObject)binaryFormatter.Deserialize(fileStream);
-            if (graph != null) graph.AssetGuid = AssetDatabase.AssetPathToGUID(path);
+            var graphData = (CodeGraphData)binaryFormatter.Deserialize(fileStream);
+            var graph = ScriptableObject.CreateInstance<CodeGraphObject>();
+            graph.Graph = graphData;
+            Debug.Log(AssetDatabase.AssetPathToGUID(path));
+            graph.Init(graphData.GraphName, graphData.MonoBehaviourName, AssetDatabase.AssetPathToGUID(path));
             fileStream.Close();
             return graph;
         }

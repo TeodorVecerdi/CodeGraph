@@ -6,8 +6,11 @@ using UnityEngine;
 
 namespace CodeGraph {
     [Serializable]
-    public sealed class CodeGraphData {
-        public CodeGraphObject Owner { get; set; }
+    public class CodeGraphData {
+        [SerializeField] public string GraphName;
+        [SerializeField] public string MonoBehaviourName;
+        [SerializeField] public string AssetGuid;
+        [NonSerialized] public CodeGraphObject Owner;
         [SerializeField] private List<AbstractNode> nodes = new List<AbstractNode>();
         [SerializeField] private Dictionary<Guid, AbstractNode> nodeDictionary = new Dictionary<Guid, AbstractNode>();
         public IEnumerable<T> GetNodes<T>() => nodes.Where(x => x != null).OfType<T>();
@@ -94,7 +97,7 @@ namespace CodeGraph {
             }
         }
 
-        public void Init(string graphName, string assetGuid, string generatedMonoBehaviourName) {
+        public void Init(string graphName, string generatedMonoBehaviourName, string assetGuid) {
             this.graphName = graphName;
             this.assetGuid = assetGuid;
             this.generatedMonoBehaviourName = generatedMonoBehaviourName;

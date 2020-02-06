@@ -7,6 +7,7 @@ namespace CodeGraph.Editor {
         [UnityEditor.Callbacks.OnOpenAsset(1)]
         public static bool OnOpenAsset(int instanceID, int line) {
             string assetPath = AssetDatabase.GetAssetPath(instanceID);
+            Debug.Log(AssetDatabase.AssetPathToGUID(assetPath));
             var graph = GraphFileSaveManager.LoadGraphFile(assetPath);
             if (graph != null) {
                 var window = EditorWindow.GetWindow<GraphEditorWindow>();
