@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using CodeGraph.Utils;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -8,11 +9,11 @@ using Debug = System.Diagnostics.Debug;
 
 namespace CodeGraph.Nodes {
     [Serializable]
-    public abstract class AbstractNode : IGeneratesCode, ISerializationCallbackReceiver {
+    public abstract class NodeBase : IGeneratesCode, ISerializationCallbackReceiver {
         [NonSerialized] private Guid guid;
         [SerializeField] private string guidSerialized;
         [SerializeField] private string name;
-        [SerializeField] private List<AbstractSlot> slots = new List<AbstractSlot>();
+        [SerializeField] private List<SlotBase> slots = new List<SlotBase>();
         public CodeGraphData Owner { get; set; }
         
         private OnNodeModified onNodeModified;
@@ -42,7 +43,7 @@ namespace CodeGraph.Nodes {
             }
         }
 
-        protected AbstractNode() {
+        protected NodeBase() {
             guid = Guid.NewGuid();
         }
 
@@ -51,21 +52,63 @@ namespace CodeGraph.Nodes {
             return guid;
         }
         
-        public void GetInputSlots<T>(List<T> foundSlots) where T : AbstractSlot {
+        public void GetInputSlots<T>(List<T> foundSlots) where T : SlotBase {
             foundSlots.AddRange(slots.Where(slot => slot.IsInputSlot && slot is T).Cast<T>());
         }
-
-        public void GetOutputSlots<T>(List<T> foundSlots) where T : AbstractSlot {
+        public void GetOutputSlots<T>(List<T> foundSlots) where T : SlotBase {
             foundSlots.AddRange(slots.Where(slot => slot.IsOutputSlot && slot is T).Cast<T>());
         }
-
-        public void GetSlots<T>(List<T> foundSlots) where T : AbstractSlot {
+        public void GetSlots<T>(List<T> foundSlots) where T : SlotBase {
             foundSlots.AddRange(slots.OfType<T>());
+        }
+        
+        public T FindSlot<T>(int slotId) where T : SlotBase {
+            foreach (var slot in slots) {
+                if (slot.Id == slotId && slot is T)
+                    return (T)slot;
+            }
+            return default;
+        }
+        public T FindInputSlot<T>(int slotId) where T : SlotBase {
+            foreach (var slot in slots) {
+                if (slot.IsInputSlot && slot.Id == slotId && slot is T)
+                    return (T)slot;
+            }
+            return default;
+        }
+        public T FindOutputSlot<T>(int slotId) where T : SlotBase {
+            foreach (var slot in slots) {
+                if (slot.IsOutputSlot && slot.Id == slotId && slot is T)
+                    return (T)slot;
+            }
+            return default;
+        }
+        
+        public void AddSlot(SlotBase slot) {
+            slots.RemoveAll(x => x.Id == slot.Id);
+            slots.Add(slot);
+            slot.Owner = this;
+        }
+
+        public void RemoveSlot(int slotId)
+        {
+            // Remove edges that use this slot
+            // no owner can happen after creation
+            // but before added to graph
+            if (Owner != null)
+            {
+                var connections = Owner.GetConnections(GetSlotReference(slotId));
+
+                foreach (var connection in connections.ToArray())
+                    Owner.RemoveConnection(connection);
+            }
+
+            slots.RemoveAll(x => x.Id == slotId);
         }
         
         public virtual string GetVariableNameForSlot(int slotId)
         {
-            var slot = FindSlot<AbstractSlot>(slotId);
+            var slot = FindSlot<SlotBase>(slotId);
             if (slot == null)
                 throw new ArgumentException($"Attempting to use AbstractSlot({slotId}) on node of type {this} where this slot can not be found", nameof(slotId));
             return string.Format("_{0}_{1}_{2}", GetVariableNameForNode(), CodeGraphUtils.GetCodeSafeName(slot.Owner.Owner.Owner.MonoBehaviourName), unchecked((uint)slotId));
@@ -78,38 +121,15 @@ namespace CodeGraph.Nodes {
         
         public NodeSlot GetSlotReference(int slotId)
         {
-            var slot = FindSlot<AbstractSlot>(slotId);
+            var slot = FindSlot<SlotBase>(slotId);
             if (slot == null)
                 throw new ArgumentException("Slot could not be found", nameof(slotId));
             return new NodeSlot(slotId,guid);
         }
         
-        public T FindSlot<T>(int slotId) where T : AbstractSlot {
-            foreach (var slot in slots) {
-                if (slot.Id == slotId && slot is T)
-                    return (T)slot;
-            }
-            return default;
-        }
-
-        public T FindInputSlot<T>(int slotId) where T : AbstractSlot {
-            foreach (var slot in slots) {
-                if (slot.IsInputSlot && slot.Id == slotId && slot is T)
-                    return (T)slot;
-            }
-            return default;
-        }
-
-        public T FindOutputSlot<T>(int slotId) where T : AbstractSlot {
-            foreach (var slot in slots) {
-                if (slot.IsOutputSlot && slot.Id == slotId && slot is T)
-                    return (T)slot;
-            }
-            return default;
-        }
-        
-        public virtual IEnumerable<AbstractSlot> GetInputsWithNoConnection() {
-            return this.GetInputSlots<AbstractSlot>().Where(x => !Owner.GetConnections(GetSlotReference(x.Id)).Any());
+        protected abstract MethodInfo GetFunctionToConvert();
+        public virtual IEnumerable<SlotBase> GetInputsWithNoConnection() {
+            return this.GetInputSlots<SlotBase>().Where(x => !Owner.GetConnections(GetSlotReference(x.Id)).Any());
         }
         
         public void OnBeforeSerialize() {

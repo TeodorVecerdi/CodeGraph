@@ -4,17 +4,15 @@ using UnityEngine;
 
 namespace CodeGraph.Nodes {
     [Serializable]
-    public abstract class AbstractSlot : IEquatable<AbstractSlot> {
-        private const string notInit = "Not Initialized";
-
+    public abstract class SlotBase : IEquatable<SlotBase> {
         [SerializeField] private int id;
-        [SerializeField] private string displayName = notInit;
+        [SerializeField] private string displayName = "";
         [SerializeField] private SlotType slotType = SlotType.Input;
         [SerializeField] private bool hidden;
 
-        protected AbstractSlot() { }
+        protected SlotBase() { }
 
-        protected AbstractSlot(int slotId, string displayName, SlotType slotType, bool hidden = false) {
+        protected SlotBase(int slotId, string displayName, SlotType slotType, bool hidden = false) {
             id = slotId;
             this.displayName = displayName;
             this.slotType = slotType;
@@ -69,7 +67,7 @@ namespace CodeGraph.Nodes {
         }
 
         public NodeSlot SlotReference => new NodeSlot(id, Owner.Guid);
-        public AbstractNode Owner { get; set; }
+        public NodeBase Owner { get; set; }
         public bool Hidden {
             get => hidden;
             set => hidden = value;
@@ -87,21 +85,21 @@ namespace CodeGraph.Nodes {
 
         public abstract ConcreteSlotValueType concreteValueType { get; }
 
-        public bool IsCompatibleWith(AbstractSlot otherSlot) {
-            return otherSlot != null
-                   && otherSlot.Owner != Owner
-                   && otherSlot.IsInputSlot != IsInputSlot
+        public bool IsCompatibleWith(SlotBase otherSlotBase) {
+            return otherSlotBase != null
+                   && otherSlotBase.Owner != Owner
+                   && otherSlotBase.IsInputSlot != IsInputSlot
                    && (IsInputSlot
-                       ? SlotValueTypeHelper.AreCompatible(valueType, otherSlot.concreteValueType)
-                       : SlotValueTypeHelper.AreCompatible(otherSlot.valueType, concreteValueType));
+                       ? SlotValueTypeHelper.AreCompatible(valueType, otherSlotBase.concreteValueType)
+                       : SlotValueTypeHelper.AreCompatible(otherSlotBase.valueType, concreteValueType));
         }
 
-        public bool Equals(AbstractSlot other) => Equals(other as object);
+        public bool Equals(SlotBase other) => Equals(other as object);
 
         public override bool Equals(object obj) {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((AbstractSlot) obj);
+            return obj.GetType() == GetType() && Equals((SlotBase) obj);
         }
 
         public override int GetHashCode() {

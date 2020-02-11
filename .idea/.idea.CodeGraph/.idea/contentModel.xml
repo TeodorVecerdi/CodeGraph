@@ -28,14 +28,12 @@
               </e>
               <e p="Math.cs" t="Include" />
               <e p="Nodes" t="Include">
-                <e p="AbstractNode.cs" t="Include" />
                 <e p="Abstracts" t="Include">
                   <e p="InputNode.cs" t="Include" />
                   <e p="Node.cs" t="Include" />
                   <e p="OutputNode.cs" t="Include" />
                   <e p="ValueNode.cs" t="Include" />
                 </e>
-                <e p="AbstractSlot.cs" t="Include" />
                 <e p="Boolean" t="Include">
                   <e p="EqualsNode.cs" t="Include" />
                   <e p="GreaterEqualNode.cs" t="Include" />
@@ -56,6 +54,7 @@
                 <e p="Misc" t="Include">
                   <e p="NodeConnection.cs" t="Include" />
                 </e>
+                <e p="NodeBase.cs" t="Include" />
                 <e p="Nodes" t="Include">
                   <e p="ClassNode.cs" t="Include" />
                   <e p="CodeBranchNode.cs" t="Include" />
@@ -76,6 +75,7 @@
                   <e p="Vector2OutputNode.cs" t="Include" />
                 </e>
                 <e p="SlotAttribute.cs" t="Include" />
+                <e p="SlotBase.cs" t="Include" />
                 <e p="SlotType.cs" t="Include" />
                 <e p="SlotValueType.cs" t="Include" />
                 <e p="ValueNodes" t="Include">

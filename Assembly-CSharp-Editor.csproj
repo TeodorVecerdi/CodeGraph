@@ -70,8 +70,6 @@
      <Compile Include="Assets\CodeGraph\Editor\Backend\Interfaces\INode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Interfaces\NodeSlot.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Math.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\AbstractNode.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\AbstractSlot.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\Abstracts\InputNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\Abstracts\Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\Abstracts\OutputNode.cs" />
@@ -90,6 +88,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\InputNodes\StringInputNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\InputNodes\Vector2InputNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\Misc\NodeConnection.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\NodeBase.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\Nodes\ClassNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\Nodes\CodeBranchNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\Nodes\DebugLogNode.cs" />
@@ -106,6 +105,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\OutputNodes\StringOutputNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\OutputNodes\Vector2OutputNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\SlotAttribute.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\SlotBase.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\SlotType.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\SlotValueType.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Backend\Nodes\ValueNodes\BooleanValueNode.cs" />

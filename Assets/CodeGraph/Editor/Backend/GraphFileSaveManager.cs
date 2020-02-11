@@ -17,7 +17,7 @@ namespace CodeGraph {
         public static CodeGraphObject LoadGraphFile(string path) {
             // string savePath = Application.dataPath + "/Code Graph/" + graphFileName;
             // if (!savePath.EndsWith(".codegraph")) savePath += ".codegraph";
-            if (!File.Exists(path)) {
+            if (!File.Exists(path) || !path.EndsWith(".codegraph")) {
                 // Debug.LogError($"Could not find graph at path {savePath}");
                 return null;
             }

@@ -11,26 +11,41 @@ namespace CodeGraph {
         [SerializeField] public string MonoBehaviourName;
         [SerializeField] public string AssetGuid;
         [NonSerialized] public CodeGraphObject Owner;
-        [SerializeField] private List<AbstractNode> nodes = new List<AbstractNode>();
-        [SerializeField] private Dictionary<Guid, AbstractNode> nodeDictionary = new Dictionary<Guid, AbstractNode>();
+        [SerializeField] private List<NodeBase> nodes = new List<NodeBase>();
+        [SerializeField] private Dictionary<Guid, NodeBase> nodeDictionary = new Dictionary<Guid, NodeBase>();
         public IEnumerable<T> GetNodes<T>() => nodes.Where(x => x != null).OfType<T>();
 
         [SerializeField] private List<Connection> connections = new List<Connection>();
-        [SerializeField] private Dictionary<Guid, List<Connection>> nodeConnections = new Dictionary<Guid, List<Connection>>();
+        [SerializeField] private Dictionary<Guid, List<Connection>> connectionDictionary = new Dictionary<Guid, List<Connection>>();
         public IEnumerable<Connection> Connections => connections;
 
-        public void AddNode(AbstractNode node) {
+        public void AddNode(NodeBase node) {
             node.Owner = this;
             nodes.Add(node);
             nodeDictionary.Add(node.Guid, node);
         }
 
-        public void RemoveNode(AbstractNode node) {
+        public void RemoveNode(NodeBase node) {
             if (!nodeDictionary.ContainsKey(node.Guid)) {
                 throw new InvalidOperationException("Cannot remove node that doesn't exist.");
             }
             nodes.Remove(node);
             nodeDictionary.Remove(node.Guid);
+        }
+
+        public void RemoveConnection(Connection connection) {
+            connection = connections.FirstOrDefault(x => x.Equals(connection));
+            if (connection == null)
+                throw new ArgumentException("Trying to remove an edge that does not exist.", nameof(connection));
+            connections.Remove(connection);
+
+            List<Connection> inputNodeConnections;
+            if (connectionDictionary.TryGetValue(connection.InputSlot.NodeGuid, out inputNodeConnections))
+                inputNodeConnections.Remove(connection);
+
+            List<Connection> outputNodeConnections;
+            if (connectionDictionary.TryGetValue(connection.OutputSlot.NodeGuid, out outputNodeConnections))
+                outputNodeConnections.Remove(connection);
         }
         
 
@@ -42,14 +57,14 @@ namespace CodeGraph {
             Connections = connections;
         }*/
         
-        public AbstractNode GetNodeFromGuid(Guid guid) {
+        public NodeBase GetNodeFromGuid(Guid guid) {
             nodeDictionary.TryGetValue(guid, out var node);
             return node;
         }
 
         public bool ContainsNodeGuid(Guid guid) => nodeDictionary.ContainsKey(guid);
         
-        public T GetNodeFromGuid<T>(Guid guid) where T : AbstractNode {
+        public T GetNodeFromGuid<T>(Guid guid) where T : NodeBase {
             var node = GetNodeFromGuid(guid);
             return node is T abstractNode ? abstractNode : default;
         }
@@ -60,8 +75,8 @@ namespace CodeGraph {
             if (node == null) {
                 return null;
             }
-            var slot = node.FindSlot<AbstractSlot>(s.SlotId);
-            if (!nodeConnections.TryGetValue(s.NodeGuid, out var availableConnections))
+            var slot = node.FindSlot<SlotBase>(s.SlotId);
+            if (!connectionDictionary.TryGetValue(s.NodeGuid, out var availableConnections))
                 return null;
             connections.AddRange(
                 from connection in availableConnections

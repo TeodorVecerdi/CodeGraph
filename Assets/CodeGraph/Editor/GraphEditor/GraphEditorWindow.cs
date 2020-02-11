@@ -47,7 +47,7 @@ namespace CodeGraph.Editor {
             EditorZoomArea.Begin(zoom, zoomArea);
 
             if (GraphObject != null) {
-                foreach (var asset in GraphObject.Graph.GetNodes<AbstractNode>()) {
+                foreach (var asset in GraphObject.Graph.GetNodes<NodeBase>()) {
                     // TODO REMAKE
                     // GUI.Box(new Rect(asset.Position.x - zoomCoordsOrigin.x, asset.Position.y - zoomCoordsOrigin.y, asset.Size.x, asset.Size.y), asset.Title);
                 }

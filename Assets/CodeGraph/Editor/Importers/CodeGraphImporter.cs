@@ -10,7 +10,7 @@ namespace CodeGraph {
             var graph = GraphFileSaveManager.LoadGraphFile(ctx.assetPath);
             Debug.Log(AssetDatabase.AssetPathToGUID(ctx.assetPath));
             
-            Texture2D texture = Resources.Load<Texture2D>("Icons/sg_graph_icon@64");
+            Texture2D texture = Resources.Load<Texture2D>("Icons/codegraph_256");
             // var obj = ScriptableObject.CreateInstance<CodeGraphObject>();
             // obj.Init(graph);
             ctx.AddObjectToAsset("MainAsset", graph, texture);
