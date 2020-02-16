@@ -1,0 +1,3 @@
+[submodule "Assets/GeoTetra/GTLogicGraph"]
+	path = Assets/GeoTetra/GTLogicGraph
+	url = https://github.com/rygo6/GTLogicGraph.git
