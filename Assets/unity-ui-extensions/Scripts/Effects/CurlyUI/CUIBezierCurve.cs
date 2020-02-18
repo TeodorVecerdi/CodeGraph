@@ -1,7 +1,9 @@
 ﻿/// Credit Titinious (https://github.com/Titinious)
 /// Sourced from - https://github.com/Titinious/CurlyUI
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+
+namespace Scripts.Effects.CurlyUI
 {
     /// <summary>
     /// Assume to be a cubic bezier curve at the moment.

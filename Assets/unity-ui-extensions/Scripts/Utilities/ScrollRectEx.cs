@@ -7,9 +7,11 @@ Simply place the script on the ScrollRect that contains the selectable children 
 and drag'n'drop the RectTransform of the options "container" that we'll be scrolling.*/
 
 using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     [AddComponentMenu("UI/Extensions/ScrollRectEx")]
     public class ScrollRectEx : ScrollRect

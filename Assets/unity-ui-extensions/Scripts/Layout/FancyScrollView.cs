@@ -2,8 +2,9 @@
 /// Sourced from - https://github.com/setchi/FancyScrollView
 
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Layout
 {
     public class FancyScrollView<TData, TContext> : MonoBehaviour where TContext : class
     {

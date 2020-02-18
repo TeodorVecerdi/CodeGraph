@@ -2,7 +2,10 @@
 /// Sourced from - http://forum.unity3d.com/threads/draw-circles-or-primitives-on-the-new-ui-canvas.272488/#post-2293224
 /// Updated from - https://bitbucket.org/ddreaper/unity-ui-extensions/issues/65/a-better-uicircle
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Primitives
 {
     [AddComponentMenu("UI/Extensions/Primitives/UI Circle")]
     public class UICircle : UIPrimitiveBase

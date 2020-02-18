@@ -1,7 +1,10 @@
 ﻿/// Credit Slipp Douglas Thompson 
 /// Sourced from - https://gist.github.com/capnslipp/349c18283f2fea316369
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Utilities
 {
     /// A concrete subclass of the Unity UI `Graphic` class that just skips drawing.
     /// Useful for providing a raycast target without actually drawing anything.

@@ -3,9 +3,11 @@
 /// Updated by SimonDarksideJ - removed dependency on a custom ScrollRect script. Now implements drag interfaces and standard Scroll Rect.
 /// Updated by SimonDarksideJ - major refactoring on updating current position and scroll management
 
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Layout
 {
     [RequireComponent(typeof(ScrollRect))]
     [AddComponentMenu("Layout/Extensions/Vertical Scroll Snap")]

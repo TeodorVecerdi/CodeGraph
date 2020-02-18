@@ -1,7 +1,10 @@
 /// Credit CiaccoDavide
 /// Sourced from - http://ciaccodavi.de/unity/UIPolygon
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Primitives
 {
     [AddComponentMenu("UI/Extensions/Primitives/UI Polygon")]
     public class UIPolygon : UIPrimitiveBase

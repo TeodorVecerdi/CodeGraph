@@ -1,10 +1,13 @@
-﻿namespace UnityEngine.UI.Extensions.Examples
+﻿using Scripts.Layout;
+using UnityEngine;
+
+namespace Examples
 {
     public class UpdateScrollSnap : MonoBehaviour
     {
 
-        public UnityEngine.UI.Extensions.HorizontalScrollSnap HSS;
-        public UnityEngine.UI.Extensions.VerticalScrollSnap VSS;
+        public HorizontalScrollSnap HSS;
+        public VerticalScrollSnap VSS;
         public GameObject HorizontalPagePrefab;
         public GameObject VerticalPagePrefab;
         public UnityEngine.UI.InputField JumpPage;

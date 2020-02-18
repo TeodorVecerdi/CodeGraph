@@ -1,10 +1,11 @@
 ﻿///Credit judah4
 ///Sourced from - http://forum.unity3d.com/threads/color-picker.267043/
 
+using Scripts.Controls;
 using UnityEditor;
 using UnityEditor.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Editor
 {
     [CustomEditor(typeof(BoxSlider), true)]
 	[CanEditMultipleObjects]

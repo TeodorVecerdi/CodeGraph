@@ -3,10 +3,10 @@
 /// Demo - https://youtu.be/uVTV7Udx78k?t=1m33s Dynamic scalling of text or image (including button) based on curves. works on scrollrect scale so you can pretty much use it for any ui type. 
 /// Notes In some cases it can create spikes due to redrawing on change, it is recommended to use it on simple objects in separated canvases to avoid redrawing full canvas.
 
-
 using System.Collections;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     /// <summary>
     /// Dynamic scalling of text or image (including button) based on curves

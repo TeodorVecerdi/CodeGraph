@@ -1,7 +1,10 @@
 ﻿///Credit Martin Nerurkar // www.martin.nerurkar.de // www.sharkbombs.com
 ///Sourced from - http://www.sharkbombs.com/2015/02/10/tooltips-with-the-new-unity-ui-ugui/
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.ToolTips.BoundTooltip
 {
     [AddComponentMenu("UI/Extensions/Bound Tooltip/Tooltip Item")]
     public class BoundTooltipItem : MonoBehaviour

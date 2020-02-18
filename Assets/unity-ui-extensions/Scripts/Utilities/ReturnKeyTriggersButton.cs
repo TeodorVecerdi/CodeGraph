@@ -2,8 +2,11 @@
 /// Sourced from - http://forum.unity3d.com/members/melang.593409/
 /// Updated ddreaper - reworked to 4.6.1 standards
 
+using UnityEngine;
 using UnityEngine.EventSystems;
-namespace UnityEngine.UI
+using UnityEngine.UI;
+
+namespace Scripts.Utilities
 {
     [RequireComponent(typeof(InputField))]
     [AddComponentMenu("UI/Extensions/Return Key Trigger")]

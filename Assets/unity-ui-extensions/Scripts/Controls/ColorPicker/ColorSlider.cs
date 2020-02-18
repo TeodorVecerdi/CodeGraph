@@ -1,7 +1,10 @@
 ﻿///Credit judah4
 ///Sourced from - http://forum.unity3d.com/threads/color-picker.267043/
 
-namespace UnityEngine.UI.Extensions.ColorPicker
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Controls.ColorPicker
 {
     /// <summary>
     /// Displays one of the color values of aColorPicker

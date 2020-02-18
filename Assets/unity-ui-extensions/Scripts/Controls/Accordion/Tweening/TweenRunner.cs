@@ -2,8 +2,9 @@
 ///Sourced from - http://forum.unity3d.com/threads/accordion-type-layout.271818/
 
 using System.Collections;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions.Tweens
+namespace Scripts.Controls.Accordion.Tweening
 {
     // Tween runner, executes the given tween.
     // The coroutine will live within the given 

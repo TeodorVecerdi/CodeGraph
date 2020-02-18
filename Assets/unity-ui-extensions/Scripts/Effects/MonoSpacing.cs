@@ -42,8 +42,10 @@ break down entirely, but it doesn't really do what you'd want either.
 */
 
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Effects
 {
     [AddComponentMenu("UI/Effects/Extensions/Mono Spacing")]
     [RequireComponent(typeof(Text))]

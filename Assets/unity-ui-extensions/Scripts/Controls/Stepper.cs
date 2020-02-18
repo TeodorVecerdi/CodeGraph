@@ -2,10 +2,12 @@
 /// Sourced from - https://bitbucket.org/UnityUIExtensions/unity-ui-extensions/pull-requests/11
 
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls
 {
     // Stepper control
     [AddComponentMenu("UI/Extensions/Stepper")]

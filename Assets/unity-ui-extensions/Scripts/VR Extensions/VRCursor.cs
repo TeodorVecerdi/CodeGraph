@@ -1,7 +1,9 @@
 ﻿/// Credit Ralph Barbagallo (www.flarb.com /www.ralphbarbagallo.com / @flarb)
 /// Sourced from - http://forum.unity3d.com/threads/vr-cursor-possible-unity-4-6-gui-bug-or-is-it-me
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+
+namespace Scripts.VR_Extensions
 {
     [AddComponentMenu("UI/Extensions/VR Cursor")]
     public class VRCursor : MonoBehaviour

@@ -2,8 +2,9 @@
 /// Sourced from - https://github.com/YousicianGit/UnityMenuSystem
 /// Updated by SimonDarksideJ - Refactored to be a more generic component
 
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.MenuSystem
 {
     public abstract class Menu<T> : Menu where T : Menu<T>
     {

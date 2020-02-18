@@ -3,10 +3,12 @@
 /// Updated to include lerping features and programatic access to angle/value
 
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls
 {
     [AddComponentMenu("UI/Extensions/Radial Slider")]
     [RequireComponent(typeof(Image))]

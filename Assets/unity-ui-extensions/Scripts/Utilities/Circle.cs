@@ -2,8 +2,9 @@
 /// Original Sourced from - https://www.youtube.com/watch?v=Or3fA-UjnwU
 /// Updated and modified for UI Extensions to be more generic
 
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     public class Circle
     {

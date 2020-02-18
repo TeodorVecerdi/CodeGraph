@@ -1,7 +1,10 @@
 /// Credit Simon (darkside) Jackson
 /// Sourced from - UI SIM source and My Brain
 
-namespace UnityEngine.EventSystems
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+namespace Scripts.InputModules
 {
     [AddComponentMenu("Event/Extensions/GamePad Input Module")]
     public class GamePadInputModule : BaseInputModule

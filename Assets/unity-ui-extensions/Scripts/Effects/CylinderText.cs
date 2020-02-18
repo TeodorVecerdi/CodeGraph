@@ -2,7 +2,10 @@
 /// Credit Breyer
 /// Sourced from - http://forum.unity3d.com/threads/scripts-useful-4-6-scripts-collection.264161/#post-1777407
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Effects
 {
     [RequireComponent(typeof(Text), typeof(RectTransform))]
     [AddComponentMenu("UI/Effects/Extensions/Cylinder Text")]

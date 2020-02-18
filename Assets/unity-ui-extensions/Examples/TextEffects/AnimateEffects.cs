@@ -1,4 +1,7 @@
-﻿namespace UnityEngine.UI.Extensions.Examples
+﻿using Scripts.Effects;
+using UnityEngine;
+
+namespace Examples.TextEffects
 {
     public class AnimateEffects : MonoBehaviour
     {

@@ -2,10 +2,12 @@
 ///Sourced from - http://forum.unity3d.com/threads/color-picker.267043/
 
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls
 {
     [RequireComponent(typeof(RectTransform))]
     [AddComponentMenu("UI/Extensions/BoxSlider")]

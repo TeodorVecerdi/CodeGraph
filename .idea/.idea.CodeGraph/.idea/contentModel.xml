@@ -10,100 +10,124 @@
       <e p="Assets" t="Include">
         <e p="CodeGraph" t="Include">
           <e p="Editor" t="Include">
-            <e p="AssetCallbacks" t="Include">
-              <e p="CreateCodeGraph.cs" t="Include" />
-            </e>
-            <e p="Backend" t="Include">
-              <e p="AddInputsTest.cs" t="Include" />
-              <e p="CodeGraphData.cs" t="Include" />
-              <e p="EditorZoomArea.cs" t="Include" />
-              <e p="GraphFileConnection.cs" t="Include" />
-              <e p="GraphFileNode.cs" t="Include" />
-              <e p="GraphFileSaveManager.cs" t="Include" />
-              <e p="Interfaces" t="Include">
-                <e p="Connection.cs" t="Include" />
-                <e p="IGeneratesCode.cs" t="Include" />
-                <e p="INode.cs" t="Include" />
-                <e p="NodeSlot.cs" t="Include" />
-              </e>
-              <e p="Math.cs" t="Include" />
-              <e p="Nodes" t="Include">
-                <e p="Abstracts" t="Include">
-                  <e p="InputNode.cs" t="Include" />
-                  <e p="Node.cs" t="Include" />
-                  <e p="OutputNode.cs" t="Include" />
-                  <e p="ValueNode.cs" t="Include" />
-                </e>
-                <e p="Boolean" t="Include">
-                  <e p="EqualsNode.cs" t="Include" />
-                  <e p="GreaterEqualNode.cs" t="Include" />
-                  <e p="GreaterNode.cs" t="Include" />
-                  <e p="LessEqualNode.cs" t="Include" />
-                  <e p="LessNode.cs" t="Include" />
-                  <e p="NotEqualsNode.cs" t="Include" />
-                </e>
-                <e p="InputNodes" t="Include">
-                  <e p="AnyInputNode.cs" t="Include" />
-                  <e p="BooleanInputNode.cs" t="Include" />
-                  <e p="CodeBranchInputNode.cs" t="Include" />
-                  <e p="FloatInputNode.cs" t="Include" />
-                  <e p="IntegerInputNode.cs" t="Include" />
-                  <e p="StringInputNode.cs" t="Include" />
-                  <e p="Vector2InputNode.cs" t="Include" />
-                </e>
-                <e p="Misc" t="Include">
-                  <e p="NodeConnection.cs" t="Include" />
-                </e>
-                <e p="NodeBase.cs" t="Include" />
-                <e p="Nodes" t="Include">
-                  <e p="ClassNode.cs" t="Include" />
-                  <e p="CodeBranchNode.cs" t="Include" />
-                  <e p="DebugLogNode.cs" t="Include" />
-                  <e p="IfNode.cs" t="Include" />
-                  <e p="StartEventNode.cs" t="Include" />
-                  <e p="TEMP_SemicolonNode.cs" t="Include" />
-                  <e p="UpdateEventNode.cs" t="Include" />
-                  <e p="Vector2Node.cs" t="Include" />
-                </e>
-                <e p="OutputNodes" t="Include">
-                  <e p="AnyOutputNode.cs" t="Include" />
-                  <e p="BooleanOutputNode.cs" t="Include" />
-                  <e p="CodeBranchOutputNode.cs" t="Include" />
-                  <e p="FloatOutputNode.cs" t="Include" />
-                  <e p="IntegerOutputNode.cs" t="Include" />
-                  <e p="StringOutputNode.cs" t="Include" />
-                  <e p="Vector2OutputNode.cs" t="Include" />
-                </e>
-                <e p="SlotAttribute.cs" t="Include" />
-                <e p="SlotBase.cs" t="Include" />
-                <e p="SlotType.cs" t="Include" />
-                <e p="SlotValueType.cs" t="Include" />
-                <e p="ValueNodes" t="Include">
-                  <e p="BooleanValueNode.cs" t="Include" />
-                  <e p="FloatValueNode.cs" t="Include" />
-                  <e p="IntegerValueNode.cs" t="Include" />
-                  <e p="StringValueNode.cs" t="Include" />
-                  <e p="TextValueNode.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Utils" t="Include">
-                <e p="CodeGraphUtils.cs" t="Include" />
-              </e>
-            </e>
+            <e p="CodeGraph.cs" t="Include" />
             <e p="CodeGraphFileOpener.cs" t="Include" />
-            <e p="GraphEditor" t="Include">
-              <e p="GraphEditorWindow.cs" t="Include" />
-              <e p="NewNodeWindow.cs" t="Include" />
+            <e p="CodeGraphImporter.cs" t="Include" />
+            <e p="CodeGraphView.cs" t="Include" />
+            <e p="CreateCodeGraph.cs" t="Include" />
+            <e p="Extensions" t="Include">
+              <e p="VisualElementExtensions.cs" t="Include" />
             </e>
-            <e p="Importers" t="Include">
-              <e p="CodeGraphImporter.cs" t="Include" />
+            <e p="Nodes" t="Include">
+              <e p="CodeNode.cs" t="Include" />
+              <e p="FloatValueNode.cs" t="Include" />
+              <e p="SplitVector2Node.cs" t="Include" />
+              <e p="SplitVector3Node.cs" t="Include" />
+              <e p="StartNode.cs" t="Include" />
+              <e p="Vector2Node.cs" t="Include" />
+              <e p="Vector2ValueNode.cs" t="Include" />
+              <e p="Vector3Node.cs" t="Include" />
+              <e p="Vector3ValueNode.cs" t="Include" />
             </e>
-            <e p="TestWindow.cs" t="Include" />
-            <e p="TestWindow.uss" t="Include" />
-            <e p="TestWindow.uxml" t="Include" />
-            <e p="UI" t="Include">
-              <e p="Manipulators" t="Include">
-                <e p="Draggable.cs" t="Include" />
+            <e p="SaveUtility.cs" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="CodeGraph.uss" t="Include" />
+            <e p="CodeNode.uss" t="Include" />
+          </e>
+          <e p="Runtime" t="Include">
+            <e p="CodeGraphData.cs" t="Include" />
+            <e p="CodeGraphObject.cs" t="Include" />
+            <e p="SerializedEdge.cs" t="Include" />
+            <e p="SerializedNode.cs" t="Include" />
+            <e p="Types" t="Include">
+              <e p="AnyType.cs" t="Include" />
+              <e p="Vector1.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="GeoTetra" t="Include">
+          <e p="GTLogicGraph" t="Include">
+            <e p="Resources" t="Include">
+              <e p="Styles" t="Include">
+                <e p="Controls" t="Include">
+                  <e p="BooleanSlotControlView.uss" t="Include" />
+                  <e p="ChannelEnumControlView.uss" t="Include" />
+                  <e p="ChannelEnumMaskControlView.uss" t="Include" />
+                  <e p="ColorControlView.uss" t="Include" />
+                  <e p="IntegerControlView.uss" t="Include" />
+                  <e p="MultiFloatControlView.uss" t="Include" />
+                  <e p="MultiFloatSlotControlView.uss" t="Include" />
+                  <e p="ToggleControlView.uss" t="Include" />
+                </e>
+                <e p="LogicGraphEditorView.uss" t="Include" />
+                <e p="LogicGraphView.uss" t="Include" />
+                <e p="LogicNodeView.uss" t="Include" />
+                <e p="LogicPort.uss" t="Include" />
+                <e p="PortInputView.uss" t="Include" />
+                <e p="VectorControlView.uss" t="Include" />
+              </e>
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Editor" t="Include">
+                <e p="Controls" t="Include">
+                  <e p="EnumControl.cs" t="Include" />
+                  <e p="INodeControlAttribute.cs" t="Include" />
+                  <e p="ToggleControl.cs" t="Include" />
+                  <e p="VectorControl.cs" t="Include" />
+                </e>
+                <e p="EdgeConnectorListener.cs" t="Include" />
+                <e p="LogicGraphEditor.cs" t="Include" />
+                <e p="LogicGraphEditorObject.cs" t="Include" />
+                <e p="LogicGraphEditorView.cs" t="Include" />
+                <e p="LogicGraphEditorWindow.cs" t="Include" />
+                <e p="LogicGraphImporter.cs" t="Include" />
+                <e p="LogicGraphImporterEditor.cs" t="Include" />
+                <e p="LogicGraphInstanceEditor.cs" t="Include" />
+                <e p="LogicGraphView.cs" t="Include" />
+                <e p="Nodes" t="Include">
+                  <e p="AbstractLogicNodeEditor.cs" t="Include" />
+                  <e p="IInputNode.cs" t="Include" />
+                  <e p="IOutputNode.cs" t="Include" />
+                  <e p="LogicNodeView.cs" t="Include" />
+                  <e p="NodeEditorType.cs" t="Include" />
+                  <e p="Vector1InputLogicNodeEditor.cs" t="Include" />
+                  <e p="Vector1LogicNodeEditor.cs" t="Include" />
+                  <e p="Vector1OutputLogicNodeEditor.cs" t="Include" />
+                  <e p="Vector3InputLogicNodeEditor.cs" t="Include" />
+                </e>
+                <e p="Ports" t="Include">
+                  <e p="BooleanSlot.cs" t="Include" />
+                  <e p="BooleanSlotControlView.cs" t="Include" />
+                  <e p="LogicPort.cs" t="Include" />
+                  <e p="LogicSlot.cs" t="Include" />
+                  <e p="MultiFloatSlotControlView.cs" t="Include" />
+                  <e p="PortInputView.cs" t="Include" />
+                  <e p="VectorLogicSlot.cs" t="Include" />
+                </e>
+                <e p="SearchWindowProvider.cs" t="Include" />
+                <e p="TitleAttribute.cs" t="Include" />
+              </e>
+              <e p="Extensions" t="Include">
+                <e p="VisualElementExtensions.cs" t="Include" />
+              </e>
+              <e p="IInputComponent.cs" t="Include" />
+              <e p="LogicGraphData.cs" t="Include" />
+              <e p="LogicGraphInstance.cs" t="Include" />
+              <e p="LogicGraphObject.cs" t="Include" />
+              <e p="LogicNodes" t="Include">
+                <e p="AddLogicNode.cs" t="Include" />
+                <e p="InputAttribute.cs" t="Include" />
+                <e p="LogicNode.cs" t="Include" />
+                <e p="Vector1InputLogicNode.cs" t="Include" />
+                <e p="Vector1LogicNode.cs" t="Include" />
+                <e p="Vector1OutputLogicNode.cs" t="Include" />
+                <e p="Vector3InputLogicNode.cs" t="Include" />
+              </e>
+              <e p="Types" t="Include">
+                <e p="Bool2.cs" t="Include" />
+                <e p="Bool3.cs" t="Include" />
+                <e p="Bool4.cs" t="Include" />
               </e>
             </e>
           </e>

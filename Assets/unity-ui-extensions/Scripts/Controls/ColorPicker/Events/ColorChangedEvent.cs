@@ -2,8 +2,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[Serializable]
-public class ColorChangedEvent : UnityEvent<Color>
-{
+namespace Scripts.Controls.ColorPicker.Events {
+    [Serializable]
+    public class ColorChangedEvent : UnityEvent<Color>
+    {
 
+    }
 }

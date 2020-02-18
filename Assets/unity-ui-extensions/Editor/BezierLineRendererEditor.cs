@@ -1,9 +1,11 @@
 ﻿///Credit Jason Horsburgh
 ///Sourced from - https://bitbucket.org/UnityUIExtensions/unity-ui-extensions/issues/127/uilinerenderer-mesh-not-updating-in-editor
 
+using Scripts.Primitives;
 using UnityEditor;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Editor
 {
     [CustomEditor(typeof(UILineRenderer))]
     public class BezierLineRendererEditor : UnityEditor.Editor

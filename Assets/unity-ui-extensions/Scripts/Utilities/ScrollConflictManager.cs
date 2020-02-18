@@ -1,13 +1,15 @@
 /// Credit srinivas sunil 
 /// sourced from: https://bitbucket.org/ddreaper/unity-ui-extensions/pull-requests/21/develop_53/diff
 
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// This is the most efficient way to handle scroll conflicts when there are multiple scroll rects, this is useful when there is a vertical scrollrect in/on a horizontal scrollrect or vice versa
 /// Attach the script to the  rect scroll and assign other rectscroll in the inspecter (one is verticle and other is horizontal) gathered and modified from unity answers(delta snipper)
 /// </summary>
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     [RequireComponent(typeof(ScrollRect))]
     [AddComponentMenu("UI/Extensions/Scrollrect Conflict Manager")]

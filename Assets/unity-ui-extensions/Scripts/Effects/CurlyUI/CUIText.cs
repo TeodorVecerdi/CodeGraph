@@ -1,7 +1,10 @@
 ﻿/// Credit Titinious (https://github.com/Titinious)
 /// Sourced from - https://github.com/Titinious/CurlyUI
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Effects.CurlyUI
 {
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(Text))]

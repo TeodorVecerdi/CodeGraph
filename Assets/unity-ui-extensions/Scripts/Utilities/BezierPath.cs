@@ -13,10 +13,10 @@
 
 */
 
-
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     /**
         Class for representing a Bezier path, and methods for getting suitable points to 

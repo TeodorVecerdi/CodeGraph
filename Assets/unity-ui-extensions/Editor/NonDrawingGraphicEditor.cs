@@ -1,10 +1,12 @@
 ﻿/// Credit Slipp Douglas Thompson 
 /// Sourced from - https://gist.github.com/capnslipp/349c18283f2fea316369
 /// 
+using Scripts.Utilities;
 using UnityEditor;
 using UnityEditor.UI;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Editor
 {
     [CanEditMultipleObjects, CustomEditor(typeof(NonDrawingGraphic), false)]
     public class NonDrawingGraphicEditor : GraphicEditor

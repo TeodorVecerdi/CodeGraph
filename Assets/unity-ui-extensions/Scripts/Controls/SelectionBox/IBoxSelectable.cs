@@ -3,8 +3,9 @@
 ///Updated Credit BenZed
 ///Sourced from - http://forum.unity3d.com/threads/color-picker.267043/
 
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls.SelectionBox
 {
 
     /*

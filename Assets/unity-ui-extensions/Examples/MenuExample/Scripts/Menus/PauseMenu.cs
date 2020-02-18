@@ -1,4 +1,6 @@
-﻿namespace UnityEngine.UI.Extensions.Examples
+﻿using Scripts.MenuSystem;
+
+namespace Examples.MenuExample.Scripts.Menus
 {
     public class PauseMenu : SimpleMenu<PauseMenu>
     {

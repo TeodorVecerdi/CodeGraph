@@ -1,7 +1,11 @@
 ﻿/// Credit SimonDarksideJ
 /// Sourced from my head
 
-namespace UnityEngine.UI.Extensions.Examples
+using Scripts.Controls;
+using Scripts.Effects;
+using UnityEngine;
+
+namespace Examples.Cooldown
 {
     [RequireComponent(typeof(SoftMaskScript))]
     public class CooldownEffect_SAUIM : MonoBehaviour {

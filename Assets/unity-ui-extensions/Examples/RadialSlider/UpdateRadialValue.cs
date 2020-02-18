@@ -1,9 +1,12 @@
-﻿namespace UnityEngine.UI.Extensions.Examples
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+namespace Examples.RadialSlider
 {
     public class UpdateRadialValue : MonoBehaviour
     {
         public InputField input;
-        public RadialSlider slider;
+        public Scripts.Controls.RadialSlider slider;
 
         // Use this for initialization
         void Start()

@@ -4,11 +4,11 @@
 /// Canvas border fix (CaoMengde777) - http://forum.unity3d.com/threads/scripts-useful-4-6-scripts-collection.264161/#post-1781658
 /// Canvas reset position fix (TroyDavis)- http://forum.unity3d.com/threads/scripts-useful-4-6-scripts-collection.264161/#post-1782214
 
-
 using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts
 {
     /// <summary>
     /// Includes a few fixes of my own, mainly to tidy up duplicates, remove unneeded stuff and testing. (nothing major, all the crew above did the hard work!)

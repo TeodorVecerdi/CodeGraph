@@ -1,10 +1,11 @@
 ﻿///Credit ChoMPHi
 ///Sourced from - http://forum.unity3d.com/threads/accordion-type-layout.271818/
 
+using Scripts.Controls.Accordion;
 using UnityEditor;
 using UnityEditor.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Editor
 {
     [CustomEditor(typeof(AccordionElement), true)]
 	public class AccordionElementEditor : ToggleEditor {

@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using Scripts.Utilities;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions.Examples
+namespace Examples.UILineRenderer
 {
-    [RequireComponent(typeof(UILineRenderer))]
+    [RequireComponent(typeof(Scripts.Primitives.UILineRenderer))]
     public class LineRendererOrbit : MonoBehaviour
     {
-        UILineRenderer lr;
+        Scripts.Primitives.UILineRenderer lr;
         Circle circle;
         public GameObject OrbitGO;
         RectTransform orbitGOrt;
@@ -43,7 +45,7 @@ namespace UnityEngine.UI.Extensions.Examples
         // Use this for initialization
         void Awake()
         {
-            lr = GetComponent<UILineRenderer>();
+            lr = GetComponent<Scripts.Primitives.UILineRenderer>();
             orbitGOrt = OrbitGO.GetComponent<RectTransform>();
             GenerateOrbit();
         }

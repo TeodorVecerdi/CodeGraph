@@ -1,7 +1,11 @@
 ﻿/// Credit SimonDarksideJ
 /// Sourced from my head
 
-namespace UnityEngine.UI.Extensions.Examples
+using Scripts.Controls;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Examples.Cooldown
 {
     [RequireComponent(typeof(Image))]
     public class CooldownEffect_Image : MonoBehaviour

@@ -1,4 +1,7 @@
-﻿namespace UnityEngine.UI.Extensions.Examples
+﻿using Scripts.MenuSystem;
+using UnityEngine.UI;
+
+namespace Examples.MenuExample.Scripts.Menus
 {
     public class OptionsMenu : SimpleMenu<OptionsMenu>
     {

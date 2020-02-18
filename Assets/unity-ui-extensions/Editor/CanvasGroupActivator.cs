@@ -4,8 +4,9 @@
 /// Updated ddreaper - removed Linq use, not required.
 
 using UnityEditor;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Editor
 {
     public class CanvasGroupActivator : EditorWindow
     {

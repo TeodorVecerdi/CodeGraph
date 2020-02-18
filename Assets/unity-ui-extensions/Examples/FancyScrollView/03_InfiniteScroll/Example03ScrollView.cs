@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Scripts.Layout;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions.Examples
+namespace Examples.FancyScrollView._03_InfiniteScroll
 {
     public class Example03ScrollView : FancyScrollView<Example03CellDto, Example03ScrollViewContext>
     {

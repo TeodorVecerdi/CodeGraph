@@ -1,7 +1,10 @@
 /// Credit Chris Trueman
 /// Sourced from - http://forum.unity3d.com/threads/use-reticle-like-mouse-for-worldspace-uis.295271/
 
-namespace UnityEngine.EventSystems.Extensions
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+namespace Scripts.InputModules
 {
     [RequireComponent(typeof(EventSystem))]
     [AddComponentMenu("Event/Extensions/Aimer Input Module")]

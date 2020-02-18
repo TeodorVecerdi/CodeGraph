@@ -5,7 +5,11 @@
 /// Please donate: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RJ8D9FRFQF9VS
 /// </summary>
 
-namespace UnityEngine.UI.Extensions.Examples
+using Scripts.Layout;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Examples.UIVerticalScrollerDemo.Scripts
 {
     public class ScrollingCalendar : MonoBehaviour
     {

@@ -1,4 +1,6 @@
-﻿namespace UnityEngine.UI.Extensions.Examples
+﻿using UnityEngine;
+
+namespace Examples.ComboBox
 {
     public class ComboBoxChanged : MonoBehaviour
     {

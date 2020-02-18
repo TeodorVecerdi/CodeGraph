@@ -1,4 +1,4 @@
-﻿namespace UnityEngine.UI.Extensions.Examples
+﻿namespace Examples.FancyScrollView._02_CellEventHandling
 {
     public class Example02ScrollViewContext
     {

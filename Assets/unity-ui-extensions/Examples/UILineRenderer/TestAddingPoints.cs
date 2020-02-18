@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions.Examples
+namespace Examples.UILineRenderer
 {
     public class TestAddingPoints : MonoBehaviour
     {
-        public UILineRenderer LineRenderer;
+        public Scripts.Primitives.UILineRenderer LineRenderer;
         public Text XValue;
         public Text YValue;
 

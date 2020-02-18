@@ -3,7 +3,10 @@
 /// Updated Credit BenZed
 /// Sourced from - http://forum.unity3d.com/threads/color-picker.267043/
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Controls.SelectionBox
 {
     public class ExampleSelectable : MonoBehaviour, IBoxSelectable
     {

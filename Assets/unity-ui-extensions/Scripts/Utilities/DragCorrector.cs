@@ -4,9 +4,10 @@
 /*USAGE:
 Simply place the script on the EventSystem in the scene to correct the drag thresholds*/
 
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     [RequireComponent(typeof(EventSystem))]
     [AddComponentMenu("UI/Extensions/DragCorrector")]

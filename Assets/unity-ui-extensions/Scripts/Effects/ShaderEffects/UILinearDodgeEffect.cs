@@ -1,8 +1,10 @@
 ﻿/// Credit 00christian00
 /// Sourced from - http://forum.unity3d.com/threads/any-way-to-show-part-of-an-image-without-using-mask.360085/#post-2332030
 
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Effects.ShaderEffects
 {
     [AddComponentMenu("UI/Effects/Extensions/UILinearDodgeEffect")]
     [ExecuteInEditMode]

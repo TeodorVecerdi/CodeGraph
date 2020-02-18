@@ -3,8 +3,9 @@
 /// Updated for UI / 2D - SimonDarksideJ
 
 using System;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     [System.Serializable]
     public class CableCurve

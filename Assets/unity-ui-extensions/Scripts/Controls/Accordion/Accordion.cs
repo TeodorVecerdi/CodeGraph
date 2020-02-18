@@ -1,8 +1,10 @@
 ﻿///Credit ChoMPHi
 ///Sourced from - http://forum.unity3d.com/threads/accordion-type-layout.271818/
 
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls.Accordion
 {
     [RequireComponent(typeof(VerticalLayoutGroup), typeof(ContentSizeFitter), typeof(ToggleGroup))]
 	[AddComponentMenu("UI/Extensions/Accordion/Accordion Group")]

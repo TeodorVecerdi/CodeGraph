@@ -1,6 +1,7 @@
 ﻿using System.Linq;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions.Examples
+namespace Examples.FancyScrollView._03_InfiniteScroll
 {
     public class Example03Scene : MonoBehaviour
     {

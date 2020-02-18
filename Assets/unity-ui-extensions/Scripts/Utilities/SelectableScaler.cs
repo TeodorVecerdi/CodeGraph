@@ -2,9 +2,11 @@
 ///Sourced from - https://pastebin.com/NXYu37jC
 
 using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     [AddComponentMenu("UI/Extensions/Selectable Scalar")]
     [RequireComponent(typeof(Button))]

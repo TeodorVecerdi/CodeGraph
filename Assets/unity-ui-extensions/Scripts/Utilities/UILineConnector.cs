@@ -1,7 +1,10 @@
 ﻿/// Credit Alastair Aitchison
 /// Sourced from - https://bitbucket.org/UnityUIExtensions/unity-ui-extensions/issues/123/uilinerenderer-issues-with-specifying
 
-namespace UnityEngine.UI.Extensions
+using Scripts.Primitives;
+using UnityEngine;
+
+namespace Scripts.Utilities
 {
     [AddComponentMenu("UI/Extensions/UI Line Connector")]
     [RequireComponent(typeof(UILineRenderer))]

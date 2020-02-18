@@ -27,9 +27,11 @@
  */
 
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls.SelectionBox
 {
     [RequireComponent(typeof(Canvas))]
 	[AddComponentMenu("UI/Extensions/Selection Box")]

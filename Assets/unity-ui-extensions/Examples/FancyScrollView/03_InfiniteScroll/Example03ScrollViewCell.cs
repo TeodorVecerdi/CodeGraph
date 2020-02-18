@@ -1,4 +1,8 @@
-﻿namespace UnityEngine.UI.Extensions.Examples
+﻿using Scripts.Layout;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Examples.FancyScrollView._03_InfiniteScroll
 {
     public class Example03ScrollViewCell
         : FancyScrollViewCell<Example03CellDto, Example03ScrollViewContext>

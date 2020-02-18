@@ -1,9 +1,11 @@
 /// Credit drobina, w34edrtfg, playemgames 
 /// Sourced from - http://forum.unity3d.com/threads/sprite-icons-with-text-e-g-emoticons.265927/
 
+using Scripts.Controls;
 using UnityEditor;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Editor
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(TextPic))]

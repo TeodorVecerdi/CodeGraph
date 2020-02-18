@@ -3,8 +3,10 @@
 /// Sourced from - http://forum.unity3d.com/threads/new-ui-and-line-drawing.253772/
 
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Primitives
 {
     [AddComponentMenu("UI/Extensions/Primitives/UILineTextureRenderer")]
     public class UILineTextureRenderer : UIPrimitiveBase

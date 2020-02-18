@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Scripts.Layout;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions.Examples
+namespace Examples.FancyScrollView._02_CellEventHandling
 {
 	public class Example02ScrollView : FancyScrollView<Example02CellDto, Example02ScrollViewContext>
 	{

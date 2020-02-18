@@ -4,8 +4,9 @@
 
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.MenuSystem
 {
     [AddComponentMenu("UI/Extensions/Menu Manager")]
     [DisallowMultipleComponent]

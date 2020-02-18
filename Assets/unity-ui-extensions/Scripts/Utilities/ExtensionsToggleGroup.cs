@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace UnityEngine.UI
+namespace Scripts.Utilities
 {
     [AddComponentMenu("UI/Extensions/Extensions Toggle Group")]
     [DisallowMultipleComponent]

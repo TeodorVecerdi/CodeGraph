@@ -4,10 +4,12 @@
 /// Extended to include a HELD state that continually fires while the button is held down.
 /// Refactored so it can be added to any button and expose the events in the editor.
 
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
 	/// <summary>
 	/// UIButton

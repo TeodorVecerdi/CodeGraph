@@ -2,8 +2,9 @@
 ///Sourced from - http://forum.unity3d.com/threads/receive-onclick-event-and-pass-it-on-to-lower-ui-elements.293642/
 
 using System;
+using UnityEngine;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls.ComboBox
 {
     [Serializable]
     public class DropDownListItem

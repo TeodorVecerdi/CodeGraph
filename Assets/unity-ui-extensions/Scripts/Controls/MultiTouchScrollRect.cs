@@ -1,8 +1,10 @@
 /// Credit Erdener Gonenc - @PixelEnvision
 /*USAGE: Simply use that instead of the regular ScrollRect */
 
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls
 {
     [AddComponentMenu ("UI/Extensions/MultiTouchScrollRect")]
 	public class MultiTouchScrollRect : ScrollRect

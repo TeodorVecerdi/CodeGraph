@@ -1,8 +1,10 @@
 /// Credit John Hattan (http://thecodezone.com/)
 /// Sourced from - https://bitbucket.org/UnityUIExtensions/unity-ui-extensions/issues/117/uigridrenderer
 
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Primitives
 {
     [AddComponentMenu("UI/Extensions/Primitives/UIGridRenderer")]
 	public class UIGridRenderer : UILineRenderer

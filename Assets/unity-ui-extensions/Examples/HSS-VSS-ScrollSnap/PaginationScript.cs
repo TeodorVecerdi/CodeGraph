@@ -1,6 +1,8 @@
-﻿using UnityEngine.EventSystems;
+﻿using Scripts.Layout;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
-namespace UnityEngine.UI.Extensions.Examples
+namespace Examples
 {
     public class PaginationScript : MonoBehaviour, IPointerClickHandler
     {

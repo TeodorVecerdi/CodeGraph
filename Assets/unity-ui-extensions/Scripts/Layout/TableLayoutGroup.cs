@@ -1,7 +1,10 @@
 /// Credit RahulOfTheRamanEffect
 /// Sourced from - https://forum.unity3d.com/members/rahuloftheramaneffect.773241/
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Layout
 {
     /// <summary>
     /// Arranges child objects into a non-uniform grid, with fixed column widths and flexible row heights

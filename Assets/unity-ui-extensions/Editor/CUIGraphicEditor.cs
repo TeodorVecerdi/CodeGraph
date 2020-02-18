@@ -1,9 +1,12 @@
 ﻿/// Credit Titinious (https://github.com/Titinious)
 /// Sourced from - https://github.com/Titinious/CurlyUI
 
+using Scripts.Effects.CurlyUI;
 using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Editor
 {
     [CustomEditor(typeof(CUIGraphic), true)]
     public class CUIGraphicEditor : UnityEditor.Editor {

@@ -1,9 +1,21 @@
-﻿using UnityEngine;
+﻿using Scripts;
+using Scripts.Controls;
+using Scripts.Controls.Accordion;
+using Scripts.Controls.ComboBox;
+using Scripts.Controls.ReorderableList;
+using Scripts.Controls.SelectionBox;
+using Scripts.Effects;
+using Scripts.Layout;
+using Scripts.MenuSystem;
+using Scripts.Primitives;
+using Scripts.ToolTips.BoundTooltip;
+using Scripts.Utilities;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.UI.Extensions;
 
-namespace UnityEditor.UI
+namespace Editor
 {
     /// <summary>
     /// This script adds the Extensions UI menu options to the Unity Editor.
@@ -666,7 +678,7 @@ namespace UnityEditor.UI
 			inputFieldRT.anchorMin = UnityEngine.Vector2.zero;
 			inputFieldRT.anchorMax = UnityEngine.Vector2.one;
 			inputFieldRT.sizeDelta = UnityEngine.Vector2.zero;
-			Events.UnityEventTools.AddPersistentListener<string>(inputField.GetComponent<InputField>().onValueChanged, new UnityEngine.Events.UnityAction<string>(autoCompleteComboBox.OnValueChanged));
+			UnityEditor.Events.UnityEventTools.AddPersistentListener<string>(inputField.GetComponent<InputField>().onValueChanged, new UnityEngine.Events.UnityAction<string>(autoCompleteComboBox.OnValueChanged));
 
 			//Setup Overlay
 			var overlayRT = overlay.GetComponent<RectTransform>();
@@ -675,7 +687,7 @@ namespace UnityEditor.UI
 			overlayRT.sizeDelta = new UnityEngine.Vector2(0f, 1f);
 			overlayRT.pivot = new UnityEngine.Vector2(0f, 1f);
 			overlay.AddComponent<Image>().color = new Color(0.243f, 0.871f, 0f, 0f);
-			Events.UnityEventTools.AddBoolPersistentListener(overlay.AddComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(autoCompleteComboBox.ToggleDropdownPanel), true);
+			UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(overlay.AddComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(autoCompleteComboBox.ToggleDropdownPanel), true);
 			//Overlay Scroll Panel
 			var overlayScrollPanelRT = overlayScrollPanel.GetComponent<RectTransform>();
 			overlayScrollPanelRT.position += new Vector3(0, -cbbRT.sizeDelta.y, 0);
@@ -717,7 +729,7 @@ namespace UnityEditor.UI
 			arrowButtonRT.anchorMax = UnityEngine.Vector2.one;
 			arrowButtonRT.sizeDelta = new UnityEngine.Vector2(cbbRT.sizeDelta.y, cbbRT.sizeDelta.y);
 			arrowButtonRT.pivot = UnityEngine.Vector2.one;
-			Events.UnityEventTools.AddBoolPersistentListener(arrowButton.GetComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(autoCompleteComboBox.ToggleDropdownPanel), true);
+			UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(arrowButton.GetComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(autoCompleteComboBox.ToggleDropdownPanel), true);
 			arrowButton.GetComponentInChildren<Text>().text = "▼";
 
 			Selection.activeGameObject = autoCompleteComboBoxRoot;
@@ -762,7 +774,7 @@ namespace UnityEditor.UI
 			inputFieldRT.anchorMin = UnityEngine.Vector2.zero;
 			inputFieldRT.anchorMax = UnityEngine.Vector2.one;
 			inputFieldRT.sizeDelta = UnityEngine.Vector2.zero;
-			Events.UnityEventTools.AddPersistentListener<string>(inputField.GetComponent<InputField>().onValueChanged, new UnityEngine.Events.UnityAction<string>(comboBox.OnValueChanged));
+			UnityEditor.Events.UnityEventTools.AddPersistentListener<string>(inputField.GetComponent<InputField>().onValueChanged, new UnityEngine.Events.UnityAction<string>(comboBox.OnValueChanged));
 
 			//Setup Overlay
 			var overlayRT = overlay.GetComponent<RectTransform>();
@@ -771,7 +783,7 @@ namespace UnityEditor.UI
 			overlayRT.sizeDelta = new UnityEngine.Vector2(0f, 1f);
 			overlayRT.pivot = new UnityEngine.Vector2(0f, 1f);
 			overlay.AddComponent<Image>().color = new Color(0.243f, 0.871f, 0f, 0f);
-			Events.UnityEventTools.AddBoolPersistentListener(overlay.AddComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(comboBox.ToggleDropdownPanel), true);
+			UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(overlay.AddComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(comboBox.ToggleDropdownPanel), true);
 			//Overlay Scroll Panel
 			var overlayScrollPanelRT = overlayScrollPanel.GetComponent<RectTransform>();
 			overlayScrollPanelRT.position += new Vector3(0, -cbbRT.sizeDelta.y, 0);
@@ -813,7 +825,7 @@ namespace UnityEditor.UI
 			arrowButtonRT.anchorMax = UnityEngine.Vector2.one;
 			arrowButtonRT.sizeDelta = new UnityEngine.Vector2(cbbRT.sizeDelta.y, cbbRT.sizeDelta.y);
 			arrowButtonRT.pivot = UnityEngine.Vector2.one;
-			Events.UnityEventTools.AddBoolPersistentListener(arrowButton.GetComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(comboBox.ToggleDropdownPanel), true);
+			UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(arrowButton.GetComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(comboBox.ToggleDropdownPanel), true);
 			arrowButton.GetComponentInChildren<Text>().text = "▼";
 
 			Selection.activeGameObject = comboBoxRoot;
@@ -872,7 +884,7 @@ namespace UnityEditor.UI
 			mainButtonRT.anchorMin = UnityEngine.Vector2.zero;
 			mainButtonRT.anchorMax = UnityEngine.Vector2.one;
 			mainButtonRT.sizeDelta = UnityEngine.Vector2.zero;
-			Events.UnityEventTools.AddBoolPersistentListener(mainButton.GetComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(dropDownList.ToggleDropdownPanel), true);
+			UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(mainButton.GetComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(dropDownList.ToggleDropdownPanel), true);
 			var mainButtonText = mainButton.GetComponentInChildren<Text>();
 			mainButtonText.alignment = TextAnchor.MiddleLeft;
 			mainButtonText.text = "Select Item...";
@@ -900,7 +912,7 @@ namespace UnityEditor.UI
 			overlayRT.sizeDelta = new UnityEngine.Vector2(0f, 1f);
 			overlayRT.pivot = new UnityEngine.Vector2(0f, 1f);
 			overlay.AddComponent<Image>().color = new Color(0.243f, 0.871f, 0f, 0f);
-			Events.UnityEventTools.AddBoolPersistentListener(overlay.AddComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(dropDownList.ToggleDropdownPanel), true);
+			UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(overlay.AddComponent<Button>().onClick, new UnityEngine.Events.UnityAction<bool>(dropDownList.ToggleDropdownPanel), true);
 			//Overlay Scroll Panel
 			var overlayScrollPanelRT = overlayScrollPanel.GetComponent<RectTransform>();
 			overlayScrollPanelRT.position += new Vector3(0, -cbbRT.sizeDelta.y, 0);

@@ -7,7 +7,10 @@
 /// 
 /// </summary>
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Layout
 {
     /// <summary>
     /// TODO:

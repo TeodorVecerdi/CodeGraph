@@ -1,7 +1,9 @@
 ﻿/// Credit setchi (https://github.com/setchi)
 /// Sourced from - https://github.com/setchi/FancyScrollView
 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+
+namespace Scripts.Layout
 {
 
     public class FancyScrollViewCell<TData, TContext> : MonoBehaviour where TContext : class

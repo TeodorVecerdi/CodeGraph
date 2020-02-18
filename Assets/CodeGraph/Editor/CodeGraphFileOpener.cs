@@ -1,4 +1,5 @@
-using System;
+using System.IO;
+using System.Text;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,14 +9,18 @@ namespace CodeGraph.Editor {
         [UnityEditor.Callbacks.OnOpenAsset(1)]
         public static bool OnOpenAsset(int instanceID, int line) {
             string assetPath = AssetDatabase.GetAssetPath(instanceID);
-            var graph = GraphFileSaveManager.LoadGraphFile(assetPath);
-            if (graph != null) {
-                var window = EditorWindow.GetWindow<GraphEditorWindow>();
-                window.SetGraph(graph);
-                window.Init();
-                return true;
-            }
-            return false; //let unity open it.
+            if (!assetPath.EndsWith(".codegraph"))
+                return false; //let unity open it.
+            
+            var textGraph = File.ReadAllText(assetPath, Encoding.UTF8);
+            var graph = JsonUtility.FromJson<CodeGraphData>(textGraph);
+            var graphObject = ScriptableObject.CreateInstance<CodeGraphObject>();
+            graphObject.Initialize(graph);
+                
+            var window = EditorWindow.GetWindow<CodeGraph>();
+            window.SetGraph(graphObject);
+            window.Initialize();
+            return true;
         }
     }
 }

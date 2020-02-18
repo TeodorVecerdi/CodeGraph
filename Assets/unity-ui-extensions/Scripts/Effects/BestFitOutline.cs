@@ -2,7 +2,10 @@
 /// Sourced from - http://forum.unity3d.com/members/melang.593409/
 
 using System.Collections.Generic;
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Scripts.Effects
 {
     [AddComponentMenu("UI/Effects/Extensions/BestFit Outline")]
 	public class BestFitOutline : Shadow

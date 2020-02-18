@@ -1,6 +1,8 @@
 ﻿/// Credit Simon (darkside) Jackson
 /// Sourced from - My head
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+
+namespace Scripts.Utilities
 {
     public static class UIExtensionMethods
     {

@@ -2,7 +2,9 @@
 /// Tool script taken from the UI source as it's set to Internal for some reason. So to use in the extensions project it is needed here also.
 /// </summary>
 /// 
-namespace UnityEngine.UI.Extensions
+using UnityEngine;
+
+namespace Scripts.Utilities
 {
     internal static class SetPropertyUtility
     {

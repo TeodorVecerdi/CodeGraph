@@ -2,8 +2,10 @@
 /// Sourced from - http://forum.unity3d.com/threads/vr-cursor-possible-unity-4-6-gui-bug-or-is-it-me
 /// Fix supplied by - http://forum.unity3d.com/threads/vr-cursor-possible-unity-4-6-gui-bug-or-is-it-me.296934/
 
+using UnityEngine;
 using UnityEngine.EventSystems;
-namespace UnityEngine.UI.Extensions
+
+namespace Scripts.VR_Extensions
 {
     [AddComponentMenu("Event/VR Input Module")]
     public class VRInputModule : BaseInputModule

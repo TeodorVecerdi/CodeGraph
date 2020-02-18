@@ -1,0 +1,21 @@
+CodeNode #title {
+    background-color: rgba(47, 115, 66, 0.91);
+}
+:selected > #selection-border {
+    border-left-color: darkorange !important;
+    border-top-color: deeppink !important;
+    border-right-color: deepskyblue !important;
+    border-bottom-color: lawngreen !important;
+}
+:hover > #selection-border {
+    border-left-color: darkorange !important;
+    border-top-color: deeppink !important;
+    border-right-color: deepskyblue !important;
+    border-bottom-color: lawngreen !important;
+}
+:hover:selected > #selection-border {
+    border-left-color: darkorange !important;
+    border-top-color: deeppink !important;
+    border-right-color: deepskyblue !important;
+    border-bottom-color: lawngreen !important;
+}

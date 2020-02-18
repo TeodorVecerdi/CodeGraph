@@ -1,9 +1,12 @@
 ﻿/// Credit SimonDarksideJ
 /// Sourced from - Issue Proposal #153
 
+using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     [AddComponentMenu("UI/Extensions/UI Highlightable Extension")]
     [RequireComponent(typeof(RectTransform), typeof(Graphic))]
@@ -14,7 +17,7 @@ namespace UnityEngine.UI.Extensions
         private bool m_Pressed;
 
         [System.Serializable]
-        public class InteractableChangedEvent : Events.UnityEvent<bool> { }
+        public class InteractableChangedEvent : UnityEvent<bool> { }
 
         [SerializeField][Tooltip("Can this panel be interacted with or is it disabled? (does not affect child components)")]
         private bool m_Interactable = true;

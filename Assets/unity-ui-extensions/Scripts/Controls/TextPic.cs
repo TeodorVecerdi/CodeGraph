@@ -5,10 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Controls
 {
     // Image according to the label inside the name attribute to load, read from the Resources directory. The size of the image is controlled by the size property.
     // Use: <quad name=NAME size=25 width=1 />

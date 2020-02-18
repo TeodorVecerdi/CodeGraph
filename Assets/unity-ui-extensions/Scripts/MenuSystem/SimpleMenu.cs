@@ -2,7 +2,7 @@
 /// Sourced from - https://github.com/YousicianGit/UnityMenuSystem
 /// Updated by SimonDarksideJ - Refactored to be a more generic component
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.MenuSystem
 {
     /// <summary>
     /// A base menu class that implements parameterless Show and Hide methods

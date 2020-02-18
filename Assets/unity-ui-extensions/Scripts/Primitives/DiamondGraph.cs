@@ -2,8 +2,10 @@
 /// Sourced from - http://forum.unity3d.com/threads/onfillvbo-to-onpopulatemesh-help.353977/#post-2299311
 
 using System;
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Primitives
 {
     [AddComponentMenu("UI/Extensions/Primitives/Diamond Graph")]
     public class DiamondGraph : UIPrimitiveBase

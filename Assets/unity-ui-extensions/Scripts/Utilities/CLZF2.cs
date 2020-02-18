@@ -84,7 +84,7 @@
 
 using System;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     /// <summary>
     /// Improved C# LZF Compressor, a very small data compression library. The compression algorithm is extremely fast.

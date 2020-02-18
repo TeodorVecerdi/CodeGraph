@@ -2,9 +2,11 @@
 /// Sourced from - http://www.sharkbombs.com/2015/08/26/unity-ui-scrollrect-tools/
 
 using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
+namespace Scripts.Utilities
 {
     [RequireComponent(typeof(ScrollRect))]
 	[AddComponentMenu("UI/Extensions/ScrollRectTweener")]
