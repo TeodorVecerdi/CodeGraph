@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -39,6 +40,7 @@ namespace CodeGraph.Editor {
 
             graphObject.CodeGraphData.LastEditedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
             File.WriteAllText(fileName, JsonUtility.ToJson(graphObject.CodeGraphData, true));
+            AssetDatabase.Refresh();
         }
     }
 }

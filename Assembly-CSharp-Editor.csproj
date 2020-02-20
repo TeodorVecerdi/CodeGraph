@@ -64,6 +64,7 @@
      <Compile Include="Assets\CodeGraph\Editor\CodeGraphView.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CreateCodeGraph.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\VisualElementExtensions.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Interfaces\IGeneratesCode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\CodeNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\FloatValueNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\SplitVector2Node.cs" />

@@ -10,18 +10,20 @@ namespace CodeGraph.Editor {
             this.AddStyleSheet("CodeNode");
             var ip1 = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(Vector2));
             ip1.portName = "(2)";
-            inputContainer.Add(ip1);
-            
+            AddPort(ip1);
             var op1 = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
             op1.portName = "x";
             var op2 = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
             op2.portName = "y";
-            outputContainer.Add(op1);
-            outputContainer.Add(op2);
+            AddPort(op1, false);
+            AddPort(op2, false);
 
             RefreshExpandedState();
             RefreshPorts();
             base.SetPosition(new Rect(Vector2.zero, DefaultNodeSize));
+        }
+        public override string GetCode() {
+            return "";
         }
     }
 }

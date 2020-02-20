@@ -18,6 +18,9 @@
             <e p="Extensions" t="Include">
               <e p="VisualElementExtensions.cs" t="Include" />
             </e>
+            <e p="Interfaces" t="Include">
+              <e p="IGeneratesCode.cs" t="Include" />
+            </e>
             <e p="Nodes" t="Include">
               <e p="CodeNode.cs" t="Include" />
               <e p="FloatValueNode.cs" t="Include" />

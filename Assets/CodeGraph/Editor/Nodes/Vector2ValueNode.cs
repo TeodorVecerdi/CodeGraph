@@ -14,7 +14,7 @@ namespace CodeGraph.Editor {
             this.AddStyleSheet("CodeNode");
             var port = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(Vector2));
             port.portName = "(2)";
-            outputContainer.Add(port);
+            AddPort(port, false);
 
             var floatField = new FloatField {label = "x:", value = 0};
             floatField.labelElement.style.minWidth = 0;
@@ -29,6 +29,10 @@ namespace CodeGraph.Editor {
             RefreshExpandedState();
             RefreshPorts();
             base.SetPosition(new Rect(Vector2.zero, DefaultNodeSize));
+        }
+
+        public override string GetCode() {
+            return $"new Vector2({value.x}f,{value.y}f)";
         }
     }
 }

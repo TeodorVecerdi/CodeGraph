@@ -24,12 +24,12 @@ namespace CodeGraph.Editor {
             grid.StretchToParentSize();
 
             AddElement(new FloatValueNode());
-            AddElement(new FloatValueNode());
-            AddElement(new FloatValueNode());
-            AddElement(new FloatValueNode());
-            AddElement(new FloatValueNode());
-            AddElement(new FloatValueNode());
-            AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
             AddElement(new Vector2Node());
             AddElement(new Vector3Node());
             AddElement(new SplitVector2Node());
