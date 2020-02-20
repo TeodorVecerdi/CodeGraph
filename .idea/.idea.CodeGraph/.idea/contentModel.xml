@@ -57,7 +57,6 @@
           <e p="Runtime" t="Include">
             <e p="CodeGraphData.cs" t="Include" />
             <e p="CodeGraphObject.cs" t="Include" />
-            <e p="NewCodeGraph.cs" t="Include" />
             <e p="SerializedEdge.cs" t="Include" />
             <e p="SerializedNode.cs" t="Include" />
             <e p="Types" t="Include">
