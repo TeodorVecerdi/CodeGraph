@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 namespace CodeGraph.Editor {
     public class CodeGraphView : GraphView {
         public readonly Vector2 DefaultNodeSize = new Vector2(200, 150);
+        public StartEventNode StartEventNode;
+        public UpdateEventNode UpdateEventNode;
 
         public CodeGraphView() {
             this.AddStyleSheet("CodeGraph");
@@ -23,17 +25,31 @@ namespace CodeGraph.Editor {
             Insert(0, grid);
             grid.StretchToParentSize();
 
-            AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            AddElement(new Vector2Node());
+            StartEventNode = new StartEventNode();
+            UpdateEventNode = new UpdateEventNode();
+            AddElement(StartEventNode);
+            AddElement(UpdateEventNode);
+            AddElement(new FloatNode());
+            AddElement(new FloatNode());
+            AddElement(new FloatNode());
             AddElement(new Vector3Node());
-            AddElement(new SplitVector2Node());
             AddElement(new SplitVector3Node());
+            AddElement(new PrintNode());
+            AddElement(new PrintNode());
+            AddElement(new PrintNode());
+            AddElement(new PrintNode());
+            AddElement(new PrintNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new FloatValueNode());
+            // AddElement(new Vector2Node());
+            // AddElement(new Vector3Node());
+            // AddElement(new SplitVector2Node());
+            // AddElement(new SplitVector3Node());
         }
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) {

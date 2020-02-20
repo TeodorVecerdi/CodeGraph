@@ -15,7 +15,7 @@ namespace CodeGraph.Editor {
             var startIndex = pathName.LastIndexOf('/');
             var endIndex = pathName.LastIndexOf('.');
             var graphName = pathName.Substring(startIndex + 1, endIndex - startIndex - 1);
-            var graph = new CodeGraphData {AssetPath = pathName};
+            var graph = new CodeGraphData {AssetPath = pathName, GraphName = graphName};
             var json = JsonUtility.ToJson(graph, true);
             File.WriteAllText(pathName, json);
             AssetDatabase.SaveAssets();

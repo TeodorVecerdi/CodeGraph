@@ -22,15 +22,31 @@
               <e p="IGeneratesCode.cs" t="Include" />
             </e>
             <e p="Nodes" t="Include">
-              <e p="CodeNode.cs" t="Include" />
-              <e p="FloatValueNode.cs" t="Include" />
-              <e p="SplitVector2Node.cs" t="Include" />
-              <e p="SplitVector3Node.cs" t="Include" />
-              <e p="StartNode.cs" t="Include" />
-              <e p="Vector2Node.cs" t="Include" />
-              <e p="Vector2ValueNode.cs" t="Include" />
-              <e p="Vector3Node.cs" t="Include" />
-              <e p="Vector3ValueNode.cs" t="Include" />
+              <e p="Abstracts" t="Include">
+                <e p="AbstractEndNode.cs" t="Include" />
+                <e p="AbstractEventNode.cs" t="Include" />
+                <e p="AbstractMiddleNode.cs" t="Include" />
+                <e p="AbstractNode.cs" t="Include" />
+                <e p="AbstractStartNode.cs" t="Include" />
+              </e>
+              <e p="EndNodes" t="Include">
+                <e p="PrintNode.cs" t="Include" />
+              </e>
+              <e p="EventNodes" t="Include">
+                <e p="StartEventNode.cs" t="Include" />
+                <e p="UpdateEventNode.cs" t="Include" />
+              </e>
+              <e p="MiddleNodes" t="Include">
+                <e p="SplitVector3Node.cs" t="Include" />
+                <e p="Vector3Node.cs" t="Include" />
+              </e>
+              <e p="StartNodes" t="Include">
+                <e p="FloatNode.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Ports" t="Include">
+              <e p="InputPort.cs" t="Include" />
+              <e p="OutputPort.cs" t="Include" />
             </e>
             <e p="SaveUtility.cs" t="Include" />
           </e>
@@ -41,10 +57,12 @@
           <e p="Runtime" t="Include">
             <e p="CodeGraphData.cs" t="Include" />
             <e p="CodeGraphObject.cs" t="Include" />
+            <e p="NewCodeGraph.cs" t="Include" />
             <e p="SerializedEdge.cs" t="Include" />
             <e p="SerializedNode.cs" t="Include" />
             <e p="Types" t="Include">
               <e p="AnyType.cs" t="Include" />
+              <e p="EventType.cs" t="Include" />
               <e p="Vector1.cs" t="Include" />
             </e>
           </e>

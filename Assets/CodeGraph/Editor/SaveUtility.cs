@@ -10,7 +10,7 @@ using UnityEngine;
 namespace CodeGraph.Editor {
     public class SaveUtility {
         private List<Edge> Edges => graphView.edges.ToList();
-        private List<CodeNode> Nodes => graphView.nodes.ToList().Cast<CodeNode>().ToList();
+        private List<AbstractNode> Nodes => graphView.nodes.ToList().Cast<AbstractNode>().ToList();
         private CodeGraphObject graphObject;
         private CodeGraphView graphView;
 
@@ -22,8 +22,8 @@ namespace CodeGraph.Editor {
             var connectedEdges = Edges.Where(x => x.input.node != null).ToArray();
 
             foreach (var edge in connectedEdges) {
-                var inputNode = edge.input.node as CodeNode;
-                var outputNode = edge.output.node as CodeNode;
+                var inputNode = edge.input.node as AbstractNode;
+                var outputNode = edge.output.node as AbstractNode;
                 graphObject.CodeGraphData.Edges.Add(new SerializedEdge {
                     SourceNodeGUID = inputNode?.GUID,
                     TargetNodeGUID = outputNode?.GUID

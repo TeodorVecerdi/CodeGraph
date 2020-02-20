@@ -12,11 +12,14 @@ namespace CodeGraph.Editor {
         public override void OnImportAsset(AssetImportContext ctx) {
             var textGraph = File.ReadAllText(ctx.assetPath, Encoding.UTF8);
             var fileIcon = Resources.Load<Texture2D>("codegraph_256");
-
+            
+            var startIndex = ctx.assetPath.LastIndexOf('/');
+            var endIndex = ctx.assetPath.LastIndexOf('.');
+            var graphName = ctx.assetPath.Substring(startIndex + 1, endIndex - startIndex - 1);
             // Create new graph object from json
             var graph = JsonUtility.FromJson<CodeGraphData>(textGraph);
-            if (string.IsNullOrEmpty(graph.AssetPath))
-                graph.AssetPath = ctx.assetPath;
+            graph.AssetPath = ctx.assetPath;
+            graph.GraphName = graphName;
             var codeGraphObject = ScriptableObject.CreateInstance<CodeGraphObject>();
             codeGraphObject.Initialize(graph);
             ctx.AddObjectToAsset("MainAsset", codeGraphObject, fileIcon);

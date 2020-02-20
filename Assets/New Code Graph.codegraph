@@ -1,23 +1,169 @@
 {
     "AssetPath": "Assets/New Code Graph.codegraph",
-    "LastEditedAt": "02/20/2020 17:11:50",
+    "GraphName": "",
+    "LastEditedAt": "02/20/2020 21:04:44",
     "Nodes": [
         {
-            "GUID": "c831fb29-c3bb-4afd-b743-20e3047f9b0b",
-            "NodeType": "FloatValueNode",
+            "GUID": "8ec7396b-b4ad-4f96-adcf-2728fd9239a5",
+            "NodeType": "PrintNode",
             "Position": {
-                "x": 135.0,
-                "y": 32.0
+                "x": 558.0,
+                "y": -34.0
             }
         },
         {
-            "GUID": "6eb3b0f9-9b21-4e33-a862-f501f558f250",
-            "NodeType": "FloatValueNode",
+            "GUID": "3a37758d-c043-4be0-8e1e-93aa34911ca5",
+            "NodeType": "Vector3Node",
             "Position": {
-                "x": 218.0,
-                "y": 182.0
+                "x": 213.0,
+                "y": -48.0
+            }
+        },
+        {
+            "GUID": "6aecfa4a-1075-47bc-a8e0-9120bde32134",
+            "NodeType": "FloatNode",
+            "Position": {
+                "x": 20.0,
+                "y": -21.0
+            }
+        },
+        {
+            "GUID": "2b167117-0949-4e7d-bfb2-1c137b4d5eec",
+            "NodeType": "FloatNode",
+            "Position": {
+                "x": 20.0,
+                "y": 52.0
+            }
+        },
+        {
+            "GUID": "d0594e96-a387-43b7-b934-6a8cd4bb4475",
+            "NodeType": "FloatNode",
+            "Position": {
+                "x": 21.0,
+                "y": -97.0
+            }
+        },
+        {
+            "GUID": "5539f201-dad2-4395-955d-bc2712d5bc24",
+            "NodeType": "SplitVector3Node",
+            "Position": {
+                "x": 386.0,
+                "y": -48.0
+            }
+        },
+        {
+            "GUID": "900c9076-432b-4637-a774-5329a005c260",
+            "NodeType": "PrintNode",
+            "Position": {
+                "x": 560.0,
+                "y": 64.0
+            }
+        },
+        {
+            "GUID": "183abe20-56a1-4127-b31c-de074c2348db",
+            "NodeType": "PrintNode",
+            "Position": {
+                "x": 562.0,
+                "y": 160.0
+            }
+        },
+        {
+            "GUID": "99c7732b-a441-448a-8c7f-0944ea187a6f",
+            "NodeType": "PrintNode",
+            "Position": {
+                "x": 449.0,
+                "y": 300.0
+            }
+        },
+        {
+            "GUID": "4ff2dcbe-2d14-46bf-8a34-f03ff4eddb3b",
+            "NodeType": "PrintNode",
+            "Position": {
+                "x": 449.0,
+                "y": 399.0
+            }
+        },
+        {
+            "GUID": "438e034a-3820-41a1-901b-534b3b116fe6",
+            "NodeType": "UpdateEventNode",
+            "Position": {
+                "x": 143.0,
+                "y": 402.0
+            }
+        },
+        {
+            "GUID": "e3459d19-e6a3-4577-b60e-c63d72369173",
+            "NodeType": "StartEventNode",
+            "Position": {
+                "x": 153.0,
+                "y": 139.0
             }
         }
     ],
-    "Edges": []
+    "Edges": [
+        {
+            "SourceNodeGUID": "3a37758d-c043-4be0-8e1e-93aa34911ca5",
+            "TargetNodeGUID": "d0594e96-a387-43b7-b934-6a8cd4bb4475"
+        },
+        {
+            "SourceNodeGUID": "3a37758d-c043-4be0-8e1e-93aa34911ca5",
+            "TargetNodeGUID": "6aecfa4a-1075-47bc-a8e0-9120bde32134"
+        },
+        {
+            "SourceNodeGUID": "3a37758d-c043-4be0-8e1e-93aa34911ca5",
+            "TargetNodeGUID": "2b167117-0949-4e7d-bfb2-1c137b4d5eec"
+        },
+        {
+            "SourceNodeGUID": "5539f201-dad2-4395-955d-bc2712d5bc24",
+            "TargetNodeGUID": "3a37758d-c043-4be0-8e1e-93aa34911ca5"
+        },
+        {
+            "SourceNodeGUID": "99c7732b-a441-448a-8c7f-0944ea187a6f",
+            "TargetNodeGUID": "3a37758d-c043-4be0-8e1e-93aa34911ca5"
+        },
+        {
+            "SourceNodeGUID": "4ff2dcbe-2d14-46bf-8a34-f03ff4eddb3b",
+            "TargetNodeGUID": "2b167117-0949-4e7d-bfb2-1c137b4d5eec"
+        },
+        {
+            "SourceNodeGUID": "8ec7396b-b4ad-4f96-adcf-2728fd9239a5",
+            "TargetNodeGUID": "5539f201-dad2-4395-955d-bc2712d5bc24"
+        },
+        {
+            "SourceNodeGUID": "900c9076-432b-4637-a774-5329a005c260",
+            "TargetNodeGUID": "5539f201-dad2-4395-955d-bc2712d5bc24"
+        },
+        {
+            "SourceNodeGUID": "183abe20-56a1-4127-b31c-de074c2348db",
+            "TargetNodeGUID": "5539f201-dad2-4395-955d-bc2712d5bc24"
+        },
+        {
+            "SourceNodeGUID": "8ec7396b-b4ad-4f96-adcf-2728fd9239a5",
+            "TargetNodeGUID": "e3459d19-e6a3-4577-b60e-c63d72369173"
+        },
+        {
+            "SourceNodeGUID": "900c9076-432b-4637-a774-5329a005c260",
+            "TargetNodeGUID": "e3459d19-e6a3-4577-b60e-c63d72369173"
+        },
+        {
+            "SourceNodeGUID": "183abe20-56a1-4127-b31c-de074c2348db",
+            "TargetNodeGUID": "e3459d19-e6a3-4577-b60e-c63d72369173"
+        },
+        {
+            "SourceNodeGUID": "99c7732b-a441-448a-8c7f-0944ea187a6f",
+            "TargetNodeGUID": "e3459d19-e6a3-4577-b60e-c63d72369173"
+        },
+        {
+            "SourceNodeGUID": "99c7732b-a441-448a-8c7f-0944ea187a6f",
+            "TargetNodeGUID": "438e034a-3820-41a1-901b-534b3b116fe6"
+        },
+        {
+            "SourceNodeGUID": "4ff2dcbe-2d14-46bf-8a34-f03ff4eddb3b",
+            "TargetNodeGUID": "e3459d19-e6a3-4577-b60e-c63d72369173"
+        },
+        {
+            "SourceNodeGUID": "4ff2dcbe-2d14-46bf-8a34-f03ff4eddb3b",
+            "TargetNodeGUID": "438e034a-3820-41a1-901b-534b3b116fe6"
+        }
+    ]
 }

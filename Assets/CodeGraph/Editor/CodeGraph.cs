@@ -34,8 +34,20 @@ namespace CodeGraph.Editor {
         private void GenerateToolbar() {
             var toolbar = new Toolbar();
             toolbar.Add(new Button(() => SaveUtility.GetInstance(graphView).Save(graphObject.CodeGraphData.AssetPath)) {text = "Save Graph"});
+            toolbar.Add(new Button(() => GenerateClass()) {text = "Compile Graph"});
             rootVisualElement.Add(toolbar);
         }
+
+        private void GenerateClass() {
+            var monobehaviourName = graphObject.CodeGraphData.GraphName;
+            monobehaviourName = monobehaviourName.Replace(" ", "");
+            var @class = $"using UnityEngine;\npublic class {monobehaviourName} : MonoBehaviour {{\n";
+            @class += graphView.StartEventNode.GetCode() + "\n";
+            @class += graphView.UpdateEventNode.GetCode() + "\n";
+            @class += "}";
+            Debug.Log(@class);
+        }
+        
 
         private void GenerateMiniMap() {
             return;
