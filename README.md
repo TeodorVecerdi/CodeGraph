@@ -35,6 +35,20 @@ If you would like to contribute to this project feel free to submit a **pull req
 - Custom EditorWindow is mostly implemented
 - CodeGraph files are mostly implemented & have a custom importer (Some errors happen on reimport that don't affect the user at all)
 
+**CodeGraph Editor Window w/ Nodes**
+![CodeGraph Editor Window w/ Nodes](img/readme_editor1.jpg "CodeGraph Editor Window w/ Nodes")
 
-**Example of generated code from nodes and error given**  
-![Example of generated code from nodes and error](img/readme_img1.jpeg "Example of generated code from nodes and error")
+**Generated Code**
+```c#
+using UnityEngine;
+public class NewCodeGraph : MonoBehaviour {
+    private void Start() {
+        Debug.Log(new Vector3(10f,20f,30f));
+        Debug.Log(new Vector3(10f,20f,30f).x);
+        Debug.Log(new Vector3(10f,20f,30f).y);
+    }
+    private void Update() {
+        Debug.Log(new Vector3(10f,20f,30f));
+    }
+}
+```
