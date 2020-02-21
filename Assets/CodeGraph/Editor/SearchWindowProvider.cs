@@ -9,65 +9,49 @@ using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace GeoTetra.GTLogicGraph
-{
-    public class SearchWindowProvider : ScriptableObject, ISearchWindowProvider
-    {
-        private LogicGraphEditorWindow _editorWindow;
-        private LogicGraphEditorView _logicGraphEditorView;
-        private LogicGraphView _graphView;
+namespace CodeGraph.Editor {
+    public class SearchWindowProvider : ScriptableObject, ISearchWindowProvider {
+        private CodeGraph editorWindow;
+        private CodeGraphView graphView;
         private Texture2D m_Icon;
-        public LogicPort ConnectedLogicPort { get; set; }
+        public Port ConnectedPort { get; set; }
         public bool nodeNeedsRepositioning { get; set; }
         public Vector2 targetPosition { get; private set; }
 
-        public void Initialize(LogicGraphEditorWindow editorWindow, 
-            LogicGraphEditorView logicGraphEditorView, 
-            LogicGraphView graphView)
-        {
-            _editorWindow = editorWindow;
-            _logicGraphEditorView = logicGraphEditorView;
-            _graphView = graphView;
-            
+        public void Initialize(CodeGraph editorWindow,
+            CodeGraphView graphView) {
+            this.editorWindow = editorWindow;
+            this.graphView = graphView;
+
             // Transparent icon to trick search window into indenting items
             m_Icon = new Texture2D(1, 1);
             m_Icon.SetPixel(0, 0, new Color(0, 0, 0, 0));
             m_Icon.Apply();
         }
 
-        void OnDestroy()
-        {
-            if (m_Icon != null)
-            {
+        void OnDestroy() {
+            if (m_Icon != null) {
                 DestroyImmediate(m_Icon);
                 m_Icon = null;
             }
         }
 
-        struct NodeEntry
-        {
-            public string[] title;
-            public AbstractLogicNodeEditor LogicNodeEditor;
-            public string compatibleSlotId;
+        struct NodeEntry {
+            public string[] Title;
+            public AbstractNode Node;
         }
 
         List<int> m_Ids;
-        List<LogicSlot> m_Slots = new List<LogicSlot>();
 
-        public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
-        {
+        public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context) {
             // First build up temporary data structure containing group & title as an array of strings (the last one is the actual title) and associated node type.
             var nodeEntries = new List<NodeEntry>();
-            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                foreach (var type in GetTypesOrNothing(assembly))
-                {
-                    if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(AbstractLogicNodeEditor)))
-                    {
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies()) {
+                foreach (var type in GetTypesOrNothing(assembly)) {
+                    if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(AbstractNode))) {
                         var attrs = type.GetCustomAttributes(typeof(TitleAttribute), false) as TitleAttribute[];
-                        if (attrs != null && attrs.Length > 0)
-                        {
-                            var node = (AbstractLogicNodeEditor)Activator.CreateInstance(type);
+                        if (attrs != null && attrs.Length > 0) {
+                            var node = (AbstractNode) Activator.CreateInstance(type);
                             AddEntries(node, attrs[0].title, nodeEntries);
                         }
                     }
@@ -79,21 +63,19 @@ namespace GeoTetra.GTLogicGraph
             // - Art/BlendMode
             // - Art/Adjustments/ColorBalance
             // - Art/Adjustments/Contrast
-            nodeEntries.Sort((entry1, entry2) =>
-            {
-                for (var i = 0; i < entry1.title.Length; i++)
-                {
-                    if (i >= entry2.title.Length)
+            nodeEntries.Sort((entry1, entry2) => {
+                for (var i = 0; i < entry1.Title.Length; i++) {
+                    if (i >= entry2.Title.Length)
                         return 1;
-                    var value = entry1.title[i].CompareTo(entry2.title[i]);
-                    if (value != 0)
-                    {
+                    var value = entry1.Title[i].CompareTo(entry2.Title[i]);
+                    if (value != 0) {
                         // Make sure that leaves go before nodes
-                        if (entry1.title.Length != entry2.title.Length && (i == entry1.title.Length - 1 || i == entry2.title.Length - 1))
-                            return entry1.title.Length < entry2.title.Length ? -1 : 1;
+                        if (entry1.Title.Length != entry2.Title.Length && (i == entry1.Title.Length - 1 || i == entry2.Title.Length - 1))
+                            return entry1.Title.Length < entry2.Title.Length ? -1 : 1;
                         return value;
                     }
                 }
+
                 return 0;
             });
 
@@ -103,29 +85,25 @@ namespace GeoTetra.GTLogicGraph
             var groups = new List<string>();
 
             // First item in the tree is the title of the window.
-            var tree = new List<SearchTreeEntry>
-            {
+            var tree = new List<SearchTreeEntry> {
                 new SearchTreeGroupEntry(new GUIContent("Create Node"), 0),
             };
 
-            foreach (var nodeEntry in nodeEntries)
-            {
+            foreach (var nodeEntry in nodeEntries) {
                 // `createIndex` represents from where we should add new group entries from the current entry's group path.
                 var createIndex = int.MaxValue;
 
                 // Compare the group path of the current entry to the current group path.
-                for (var i = 0; i < nodeEntry.title.Length - 1; i++)
-                {
-                    var group = nodeEntry.title[i];
-                    if (i >= groups.Count)
-                    {
+                for (var i = 0; i < nodeEntry.Title.Length - 1; i++) {
+                    var group = nodeEntry.Title[i];
+                    if (i >= groups.Count) {
                         // The current group path matches a prefix of the current entry's group path, so we add the
                         // rest of the group path from the currrent entry.
                         createIndex = i;
                         break;
                     }
-                    if (groups[i] != group)
-                    {
+
+                    if (groups[i] != group) {
                         // A prefix of the current group path matches a prefix of the current entry's group path,
                         // so we remove everyfrom from the point where it doesn't match anymore, and then add the rest
                         // of the group path from the current entry.
@@ -137,104 +115,42 @@ namespace GeoTetra.GTLogicGraph
 
                 // Create new group entries as needed.
                 // If we don't need to modify the group path, `createIndex` will be `int.MaxValue` and thus the loop won't run.
-                for (var i = createIndex; i < nodeEntry.title.Length - 1; i++)
-                {
-                    var group = nodeEntry.title[i];
+                for (var i = createIndex; i < nodeEntry.Title.Length - 1; i++) {
+                    var group = nodeEntry.Title[i];
                     groups.Add(group);
-                    tree.Add(new SearchTreeGroupEntry(new GUIContent(group)) { level = i + 1 });
+                    tree.Add(new SearchTreeGroupEntry(new GUIContent(group)) {level = i + 1});
                 }
 
                 // Finally, add the actual entry.
-                tree.Add(new SearchTreeEntry(new GUIContent(nodeEntry.title.Last(), m_Icon)) { level = nodeEntry.title.Length, userData = nodeEntry });
+                tree.Add(new SearchTreeEntry(new GUIContent(nodeEntry.Title.Last(), m_Icon)) {level = nodeEntry.Title.Length, userData = nodeEntry});
             }
 
             return tree;
         }
 
-        public static IEnumerable<Type> GetTypesOrNothing(Assembly assembly)
-        {
-            try
-            {
+        public static IEnumerable<Type> GetTypesOrNothing(Assembly assembly) {
+            try {
                 return assembly.GetTypes();
-            }
-            catch
-            {
+            } catch {
                 return Enumerable.Empty<Type>();
             }
         }
-        
-        void AddEntries(AbstractLogicNodeEditor logicNodeEditor, string[] title, List<NodeEntry> nodeEntries)
-        {
-            if (ConnectedLogicPort == null)
-            {
-                nodeEntries.Add(new NodeEntry
-                {
-                    LogicNodeEditor = logicNodeEditor,
-                    title = title,
-                    compatibleSlotId = ""
-                });
-                return;
-            }
 
-            var connectedSlot = ConnectedLogicPort.Slot;
-            m_Slots.Clear();
-            logicNodeEditor.GetSlots(m_Slots);
-            var hasSingleSlot = m_Slots.Count(s => s.isOutputSlot != connectedSlot.isOutputSlot) == 1;
-            m_Slots.RemoveAll(slot =>
-            {
-                var logicSlot = (LogicSlot)slot;
-                return !logicSlot.IsCompatibleWith(connectedSlot);
+        void AddEntries(AbstractNode node, string[] title, List<NodeEntry> nodeEntries) {
+            nodeEntries.Add(new NodeEntry {
+                Node = node,
+                Title = title
             });
-
-            if (hasSingleSlot && m_Slots.Count == 1)
-            {
-                nodeEntries.Add(new NodeEntry
-                {
-                    LogicNodeEditor = logicNodeEditor,
-                    title = title,
-                    compatibleSlotId = m_Slots.First().MemberName
-                });
-                return;
-            }
-
-            foreach (var slot in m_Slots)
-            {
-                var entryTitle = new string[title.Length];
-                title.CopyTo(entryTitle, 0);
-                entryTitle[entryTitle.Length - 1] += ": " + slot.DisplayName;
-                nodeEntries.Add(new NodeEntry
-                {
-                    title = entryTitle,
-                    LogicNodeEditor = logicNodeEditor,
-                    compatibleSlotId = slot.MemberName
-                });
-            }
         }
 
-        public bool OnSelectEntry(SearchTreeEntry entry, SearchWindowContext context)
-        {
-            var nodeEntry = (NodeEntry)entry.userData;
-            var nodeEditor = nodeEntry.LogicNodeEditor;
-            
-            var windowMousePosition = _editorWindow.rootVisualElement.ChangeCoordinatesTo(_editorWindow.rootVisualElement.parent, context.screenMousePosition - _editorWindow.position.position);
-            var graphMousePosition = _graphView.contentViewContainer.WorldToLocal(windowMousePosition);
-            nodeEditor.Position = new Vector3(graphMousePosition.x, graphMousePosition.y, 0);
-            
-            _logicGraphEditorView.AddNode(nodeEditor);
+        public bool OnSelectEntry(SearchTreeEntry entry, SearchWindowContext context) {
+            var nodeEntry = (NodeEntry) entry.userData;
+            var node = nodeEntry.Node;
+            var windowMousePosition = editorWindow.rootVisualElement.ChangeCoordinatesTo(editorWindow.rootVisualElement.parent, context.screenMousePosition - editorWindow.position.position);
+            var graphMousePosition = graphView.contentViewContainer.WorldToLocal(windowMousePosition);
 
-            if (ConnectedLogicPort != null)
-            {
-                var connectedSlotReference = ConnectedLogicPort.Slot;
-                var compatibleSlotReference = nodeEditor.FindOutputSlot<LogicSlot>(nodeEntry.compatibleSlotId);
-
-                var fromReference = ConnectedLogicPort.Slot.isOutputSlot ? connectedSlotReference : compatibleSlotReference;
-                var toReference = ConnectedLogicPort.Slot.isOutputSlot ? compatibleSlotReference : connectedSlotReference;
-
-                _logicGraphEditorView.RemoveEdgesConnectedTo(ConnectedLogicPort);
-                
-                _logicGraphEditorView.AddEdge(fromReference, toReference);
-            }
-
+            node.SetPosition(new Rect(new Vector2(graphMousePosition.x, graphMousePosition.y), AbstractNode.DefaultNodeSize));
+            graphView.AddElement(node);
             return true;
         }
     }

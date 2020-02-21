@@ -10,10 +10,12 @@ using Random = UnityEngine.Random;
 namespace CodeGraph.Editor {
     public class CodeGraphView : GraphView {
         public readonly Vector2 DefaultNodeSize = new Vector2(200, 150);
-        public StartEventNode StartEventNode;
-        public UpdateEventNode UpdateEventNode;
 
-        public CodeGraphView() {
+        private SearchWindowProvider searchWindowProvider;
+        private CodeGraph editorWindow;
+
+        public CodeGraphView(CodeGraph editorWindow) {
+            this.editorWindow = editorWindow;
             this.AddStyleSheet("CodeGraph");
             SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
             this.AddManipulator(new ContentDragger());
@@ -24,32 +26,34 @@ namespace CodeGraph.Editor {
             var grid = new GridBackground();
             Insert(0, grid);
             grid.StretchToParentSize();
+            
+            searchWindowProvider = ScriptableObject.CreateInstance<SearchWindowProvider>();
+            searchWindowProvider.Initialize(editorWindow, this);
+            nodeCreationRequest = c => SearchWindow.Open(new SearchWindowContext(c.screenMousePosition), searchWindowProvider);
+            graphViewChanged += OnGraphViewChanged; 
+        }
 
-            // StartEventNode = new StartEventNode();
-            // UpdateEventNode = new UpdateEventNode();
-            // AddElement(StartEventNode);
-            // AddElement(UpdateEventNode);
-            // AddElement(new FloatNode());
-            // AddElement(new FloatNode());
-            // AddElement(new FloatNode());
-            // AddElement(new Vector3Node());
-            // AddElement(new SplitVector3Node());
-            // AddElement(new PrintNode());
-            // AddElement(new PrintNode());
-            // AddElement(new PrintNode());
-            // AddElement(new PrintNode());
-            // AddElement(new PrintNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new FloatValueNode());
-            // AddElement(new Vector2Node());
-            // AddElement(new Vector3Node());
-            // AddElement(new SplitVector2Node());
-            // AddElement(new SplitVector3Node());
+        private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange) {
+            if (graphViewChange.edgesToCreate?.Count > 0) {
+                graphViewChange.edgesToCreate.ForEach(edge => {
+                    var input = edge.input.node as AbstractNode;
+                    var output = edge.output.node as AbstractNode;
+                    EventExtenderNode extenderNode = null;
+                    AbstractNode other = null;
+                    if (input is EventExtenderNode) {
+                        extenderNode = input as EventExtenderNode;
+                        other = output;
+                    } else if (output is EventExtenderNode) {
+                        extenderNode = output as EventExtenderNode;
+                        other = input;
+                    }
+                    if (extenderNode != null) {
+                        extenderNode.UpdateSourceTitle(other.title);
+                    }
+                });
+            }
+
+            return graphViewChange;
         }
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) {

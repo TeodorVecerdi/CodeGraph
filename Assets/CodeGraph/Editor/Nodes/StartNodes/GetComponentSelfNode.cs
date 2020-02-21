@@ -1,20 +1,35 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
-    [Title("General", "Get Transform (Self)")]
-    public class GetTransformSelfNode : AbstractStartNode {
-        public GetTransformSelfNode() {
-            Initialize("Get Transform", DefaultNodePosition);
+    [Title("General", "Get Component (Self)")]
+    public class GetComponentSelfNode : AbstractStartNode {
+        private string ComponentType;
+        public GetComponentSelfNode() {
+            Initialize("Get Component", DefaultNodePosition);
+            
+            var componentTypeField = new TextField {label = "Type: ", value = "Transform"};
+            componentTypeField.labelElement.style.minWidth = 0;
+            componentTypeField.RegisterValueChangedCallback(evt => ComponentType = evt.newValue);
+            inputContainer.Add(componentTypeField);
+            
             var valuePort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));
-            valuePort.portName = "transform";
-            AddOutputPort(valuePort, () => $"transform");
+            valuePort.portName = "component";
+            AddOutputPort(valuePort, () => $"GetComponent<{ComponentType}>()");
             Refresh();
         }
-        public override void SetNodeData(string jsonData) {
-            // This node does not not require any data
-        }
         public override string GetNodeData() {
-            return "";
+            var root = new JObject();
+            root["ComponentType"] = ComponentType;
+            return root.ToString(Formatting.None);
+        }
+
+        public override  void SetNodeData(string jsonData) {
+            var root = JObject.Parse(jsonData);
+            ComponentType = root.Value<string>("ComponentType");
+            inputContainer.Q<TextField>().SetValueWithoutNotify(ComponentType);
         }
     }
 }

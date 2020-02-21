@@ -3,24 +3,24 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
-    [Title("Transform", "Get Position")]
-    public class GetPositionNode : AbstractMiddleNode{
-        public GetPositionNode() {
-            Initialize("Get Position", DefaultNodePosition);
+    [Title("General", "Get Transform")]
+    public class GetTransformNode : AbstractMiddleNode{
+        public GetTransformNode() {
+            Initialize("Get Transform", DefaultNodePosition);
             var inputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
-            inputPort.portName = "transformable";
+            inputPort.portName = "component";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"new Transform() /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"new GameObject() /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"new Transform() /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"new GameObject() /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             
             var outputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));
-            outputPort.portName = "(3)";
-            AddOutputPort(outputPort, () => $"{InputPortDictionary[inputPort].RequestCode()}.position");
+            outputPort.portName = "transform";
+            AddOutputPort(outputPort, () => $"{InputPortDictionary[inputPort].RequestCode()}.transform");
             Refresh();
         }
         

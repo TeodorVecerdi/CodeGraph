@@ -1,23 +1,35 @@
-- [x] (HIGH PRIORITY) Loading of saved graphs
 - [ ] (MEDIUM/HIGH PRIORITY) Add more essential nodes (see incomplete* list below)
-- [ ] (HIGH PRIORITY) Compile generated code and give errors
-- [ ] (HIGH PRIORITY) Write generated code to file if no errors and trigger a Unity Reimport
+- [ ] (MEDIUM PRIORITY) Change line endings in code generation to be consistent
+- [ ] (MEDIUM PRIORITY) Add examples 
+- [ ] (LOW PRIORITY) Add sticky notes / comments
+- [ ] (LOW/VERY LOW PRIORITY) Add copy/paste
+- [ ] (VERY LOW PRIORITY) Add Undo/Redo
+- [x] (HIGH PRIORITY) Add create node menu (and title attribute to populate create node menu) (leech off of GTLogicGraph; it had a really nice implementation)
+- [x] (HIGH PRIORITY) Loading of saved graphs
+- [x] (HIGH PRIORITY) Compile generated code and give errors
+- [x] (HIGH PRIORITY) Write generated code to file if no errors and trigger a Unity Reimport
         - AssetDatabase.Refresh - For all files (http://docs.unity3d.com/Documentation/ScriptReference/AssetDatabase.Refresh.html)
         - AssetDatabase.ImportAsset - For specific file (http://docs.unity3d.com/Documentation/ScriptReference/AssetDatabase.ImportAsset.html)
-- [ ] (LOW PRIORITY) Embed node GUIDs in generated code in order to provide error feedback directly on nodes. This can also be used to provide runtime error feedback, not just compile-time
-- [ ] (LOW PRIORITY) Add sticky notes / comments
-- [ ] (HIGH PRIORITY) Add create node menu (and title attribute to populate create node menu) (leech off of GTLogicGraph; it had a really nice implementation)
+- [x] (MEDIUM PRIORITY) Make event nodes unable to be deleted
+- [x] (LOW PRIORITY) Embed node GUIDs in generated code in order to provide error feedback directly on nodes. This can also be used to provide runtime error feedback, not just compile-time
+- [x] (CANCELED)(MEDIUM PRIORITY) Add Event nodes to graph on file creation
+
 
 **Essential nodes (the incomplete list)**
-- (HIGH PRIORITY) Math nodes (most important)
-- (HIGH PRIORITY) Vector2 node
-- (HIGH PRIORITY) Vector2 and Vector3 member nodes
-- (VERY HIGH PRIORITY) Basic C# and Unity types start nodes (i.e. value nodes)
-- (HIGH PRIORITY) Transform nodes (position, scale, rotation)
-- (VERY LOW PRIORITY) GetComponent node (w/ dynamic enum generation for component types)
-- (HIGH PRIORITY) GetComponent node (just string input for component type and trust user ;) )
-- (MEDIUM PRIORITY) Camera nodes
-- (HIGH PRIORITY) Properties (One node for creating properties, one node for accessing)
-- (MEDIUM PRIORITY) Variables (One node for creating variables, one node for accessing)
-- (VERY HIGH PRIORITY) Assign node
-- (VERY HIGH PRIORITY) Function node (without params or return values): basically use an event node for defining a function, simple end node (with text input for method name) for calling
+- [ ] (VERY HIGH PRIORITY) Basic Unity types
+- [ ] (HIGH PRIORITY) Function node (without params or return values): basically use an event node for defining a function, simple end node (with text input for method name) for calling
+- [ ] (HIGH PRIORITY) FixedUpdate, LateUpdate, Awake
+- [ ] (HIGH PRIORITY) Math nodes (most important)
+- [ ] (HIGH PRIORITY) Vector2 and Vector3 member nodes
+- [ ] (MEDIUM PRIORITY) Bool Value Node (requires custom InputField) (might be able to leech off of GTLogicGraph)
+- [ ] (MEDIUM PRIORITY) Camera nodes
+- [ ] (MEDIUM PRIORITY) Variables (One node for creating variables, one node for accessing)
+- [ ] (LOW PRIORITY) Trigger, Trigger2D, Collision, Collision2D events (Enter, Exit, Stay)
+- [ ] (VERY LOW PRIORITY) GetComponent node (w/ dynamic enum generation for component types)
+- [x] (VERY HIGH PRIORITY) Basic C# data types
+- [x] (VERY HIGH PRIORITY) Assign node
+- [x] (HIGH PRIORITY) Vector2 node
+- [x] (HIGH PRIORITY) Transform nodes (position, scale, rotation)
+- [x] (HIGH PRIORITY) GetComponent node (just string input for component type and trust user ;) )
+- [x] (HIGH PRIORITY) Properties (One node for creating properties, one node for accessing)
+- [x] (VERY LOW PRIORITY) Add event splitter / extender node which just takes the event as an input and splits it into multiple ports for cleaner code

@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
+    [Title("Vector3", "Create Vector3")]
     public class Vector3Node : AbstractMiddleNode {
         public Vector3Node() {
             Initialize("Vector3", DefaultNodePosition);

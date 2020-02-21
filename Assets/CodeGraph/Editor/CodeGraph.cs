@@ -1,3 +1,8 @@
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
@@ -33,7 +38,7 @@ namespace CodeGraph.Editor {
         }
 
         private void ConstructGraphView() {
-            graphView = new CodeGraphView {
+            graphView = new CodeGraphView(this) {
                 name = "Code Graph"
             };
             graphView.StretchToParentSize();
@@ -46,18 +51,68 @@ namespace CodeGraph.Editor {
         private void GenerateToolbar() {
             var toolbar = new Toolbar();
             toolbar.Add(new Button(() => SaveGraph()) {text = "Save Graph"});
-            toolbar.Add(new Button(() => GenerateClass()) {text = "Compile Graph"});
+            toolbar.Add(new Button(() => {
+                var code = GenerateCode();
+                var errors = CompileCode(code);
+                if (errors.Any()) {
+                    errors.ForEach(error=>Debug.LogError($"Error {error.ErrorNumber} => \"{error.ErrorText} at line number {error.Line}\"\r\n"));
+                    return;
+                }
+                var assetPath = WriteCodeToFile(code);
+                AssetDatabase.ImportAsset(assetPath);
+            }) {text = "Compile Graph"});
             rootVisualElement.Add(toolbar);
         }
 
-        private void GenerateClass() {
+        private string GenerateCode() {
             var monobehaviourName = graphObject.CodeGraphData.GraphName;
             monobehaviourName = monobehaviourName.Replace(" ", "");
-            var @class = $"using UnityEngine;\npublic class {monobehaviourName} : MonoBehaviour {{\n";
-            @class += graphView.StartEventNode.GetCode() + "\n";
-            @class += graphView.UpdateEventNode.GetCode() + "\n";
-            @class += "}";
-            Debug.Log(@class);
+            var code = $"using UnityEngine;\npublic class {monobehaviourName} : MonoBehaviour {{\n";
+            
+            // Property Nodes
+            foreach (var node in graphView.nodes.ToList()) {
+                if (node is CreatePropertyNode propertyNode) {
+                    code += propertyNode.GetCode() + "\n";
+                }
+            }
+            // Event Nodes
+            foreach (var node in graphView.nodes.ToList()) {
+                if (node is AbstractEventNode eventNode && eventNode.IsBaseEventNode) {
+                    code += eventNode.GetCode() + "\n";
+                }
+            }
+            // var eventNodes = (from node in graphView.nodes.ToList().AsEnumerable() select node into eventNode where (AbstractEventNode) eventNode != null && ((AbstractEventNode) eventNode).IsBaseEventNode select eventNode).ToList();
+            // eventNodes.ForEach(node => code +=  ((AbstractEventNode)node).GetCode() + "\n");
+            // code += graphView.StartEventNode.GetCode() + "\n";
+            // code += graphView.UpdateEventNode.GetCode() + "\n";
+            code += "}";
+            Debug.Log(code);
+            return code;
+        }
+
+        private List<CompilerError> CompileCode(string code) {
+            var provider = CodeDomProvider.CreateProvider("CSharp");
+            var assemblies = AppDomain.CurrentDomain
+                .GetAssemblies()
+                .Where(a => !a.IsDynamic)
+                .Select(a => a.Location);   
+            var parameters = new CompilerParameters {GenerateExecutable = false, IncludeDebugInformation = true};
+            parameters.ReferencedAssemblies.AddRange(assemblies.ToArray());
+            var results = provider.CompileAssemblyFromSource(parameters, code);
+            var errors = new List<CompilerError>();
+            if (results.Errors.Count <= 0)
+                return errors;
+            errors.AddRange(results.Errors.Cast<CompilerError>());
+            return errors;
+        }
+        
+        private string WriteCodeToFile(string code) {
+            var graphPath = graphObject.CodeGraphData.AssetPath;
+            var graphFileIndex = graphPath.LastIndexOf("/", StringComparison.Ordinal);
+            var graphPath2 = graphPath.Substring(0, graphFileIndex+1);
+            var assetPath = graphPath2 + graphObject.CodeGraphData.GraphName.Replace(" ", "") + ".cs";
+            File.WriteAllText(assetPath, code);
+            return assetPath;
         }
         
 

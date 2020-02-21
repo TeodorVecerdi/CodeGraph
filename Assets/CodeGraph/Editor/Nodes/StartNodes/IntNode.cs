@@ -5,20 +5,20 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
-    [Title("Basic", "Double Input")]
-    public class DoubleNode : AbstractStartNode {
-        private double value;
+    [Title("Basic", "Integer Input")]
+    public class IntNode : AbstractStartNode {
+        private int value;
 
-        public DoubleNode() {
-            Initialize("Double", DefaultNodePosition);
-            var floatField = new DoubleField() {label = "x:", value = 0};
-            floatField.labelElement.style.minWidth = 0;
-            floatField.RegisterValueChangedCallback(evt => value = evt.newValue);
-            inputContainer.Add(floatField);
+        public IntNode() {
+            Initialize("Integer", DefaultNodePosition);
+            var inputField = new IntegerField() {label = "x:", value = 0};
+            inputField.labelElement.style.minWidth = 0;
+            inputField.RegisterValueChangedCallback(evt => value = evt.newValue);
+            inputContainer.Add(inputField);
 
             var valuePort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));
             valuePort.portName = "value";
-            AddOutputPort(valuePort, () => $"{value}d");
+            AddOutputPort(valuePort, () => $"{value}");
             Refresh();
         }
         
@@ -30,8 +30,8 @@ namespace CodeGraph.Editor {
 
         public override  void SetNodeData(string jsonData) {
             var root = JObject.Parse(jsonData);
-            value = root.Value<double>("value");
-            inputContainer.Q<DoubleField>().SetValueWithoutNotify(value);
+            value = root.Value<int>("value");
+            inputContainer.Q<IntegerField>().SetValueWithoutNotify(value);
         }
     }
 }

@@ -1,0 +1,342 @@
+{
+    "AssetPath": "Assets/Test.codegraph",
+    "GraphName": "Test",
+    "LastEditedAt": "02/21/2020 18:29:09",
+    "Nodes": [
+        {
+            "GUID": "86f51ccb-afda-4cdf-bc6c-d1dc4e69c5e5",
+            "NodeType": "SplitVector3Node",
+            "Position": {
+                "x": 1183.0,
+                "y": -93.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "281c8df5-04f1-484f-9caa-badebd866d41",
+            "NodeType": "Vector3Node",
+            "Position": {
+                "x": 1016.0,
+                "y": -94.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "145306aa-252c-48fb-ac06-5eafc22c9bb1",
+            "NodeType": "FloatNode",
+            "Position": {
+                "x": 844.0,
+                "y": -128.0
+            },
+            "NodeData": "{\"value\":10.0}"
+        },
+        {
+            "GUID": "6f29062e-5f82-401b-aef9-4640bced4e43",
+            "NodeType": "FloatNode",
+            "Position": {
+                "x": 844.0,
+                "y": -55.0
+            },
+            "NodeData": "{\"value\":20.0}"
+        },
+        {
+            "GUID": "0e4933d4-5f49-4c9b-8560-df7529f877a8",
+            "NodeType": "PrintNode",
+            "Position": {
+                "x": 1456.0,
+                "y": -64.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "420cf748-a2a9-4efd-afe3-acbdae22a1c3",
+            "NodeType": "PrintNode",
+            "Position": {
+                "x": 1456.0,
+                "y": 35.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "b2056daf-9581-4c94-b79b-eeb114928cda",
+            "NodeType": "PrintNode",
+            "Position": {
+                "x": 1185.0,
+                "y": 39.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "e9fc4119-de27-4601-b6e8-5c015fc7d2f5",
+            "NodeType": "FloatNode",
+            "Position": {
+                "x": 847.0,
+                "y": 17.0
+            },
+            "NodeData": "{\"value\":30.0}"
+        },
+        {
+            "GUID": "384538bd-5ea1-4f99-abe6-ec413922a71b",
+            "NodeType": "EventExtenderNode",
+            "Position": {
+                "x": 1018.0,
+                "y": 197.0
+            },
+            "NodeData": "{\"PortCount\":3,\"SourceTitle\":\"Assign\"}"
+        },
+        {
+            "GUID": "d46f6a3d-ed03-48ce-9bb4-0041a37f4e4f",
+            "NodeType": "CreatePropertyNode",
+            "Position": {
+                "x": -115.0,
+                "y": -49.0
+            },
+            "NodeData": "{\"PropertyName\":\"Offset\",\"PropertyType\":\"Vector3\"}"
+        },
+        {
+            "GUID": "7c8b9ca7-a21b-4d6d-880c-6ff5c747387d",
+            "NodeType": "CreatePropertyNode",
+            "Position": {
+                "x": 31.0,
+                "y": -46.0
+            },
+            "NodeData": "{\"PropertyName\":\"Target\",\"PropertyType\":\"Transform\"}"
+        },
+        {
+            "GUID": "9fd7604a-bb0c-4db7-8013-41b0356de0fd",
+            "NodeType": "CreatePropertyNode",
+            "Position": {
+                "x": 178.0,
+                "y": -43.0
+            },
+            "NodeData": "{\"PropertyName\":\"Smooth\",\"PropertyType\":\"float\"}"
+        },
+        {
+            "GUID": "130a7e58-c74d-4bcf-84c8-b8584d88751d",
+            "NodeType": "UpdateEventNode",
+            "Position": {
+                "x": -134.0,
+                "y": 61.0
+            },
+            "NodeData": "{\"PortCount\":2}"
+        },
+        {
+            "GUID": "c875666a-a03e-4649-82d0-2419ff09f83a",
+            "NodeType": "GetPropertyNode",
+            "Position": {
+                "x": 1191.0,
+                "y": 347.0
+            },
+            "NodeData": "{\"PropertyName\":\"Smooth\"}"
+        },
+        {
+            "GUID": "f60f40b0-7c2e-49c5-a243-bad85177e4bc",
+            "NodeType": "FloatNode",
+            "Position": {
+                "x": 1245.0,
+                "y": 420.0
+            },
+            "NodeData": "{\"value\":0.3}"
+        },
+        {
+            "GUID": "fc48cb6f-1473-4d68-8fb2-3eb16ae55653",
+            "NodeType": "AssignNode",
+            "Position": {
+                "x": 1423.0,
+                "y": 276.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "2ea176c8-0d15-4cf4-a454-4768946dbad8",
+            "NodeType": "StartEventNode",
+            "Position": {
+                "x": -130.0,
+                "y": 165.0
+            },
+            "NodeData": "{\"PortCount\":3}"
+        },
+        {
+            "GUID": "2abb3512-4e7e-428c-a817-78ff7609562d",
+            "NodeType": "AssignNode",
+            "Position": {
+                "x": 656.0,
+                "y": 291.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "b2605e5a-25a9-46f5-b4ed-0a472dcb7b39",
+            "NodeType": "GetPositionNode",
+            "Position": {
+                "x": 360.0,
+                "y": 426.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "ade65da7-ddb4-4c37-8fbe-b8603aca9236",
+            "NodeType": "GetTransformNode",
+            "Position": {
+                "x": 168.0,
+                "y": 426.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "a4d3625c-6b04-4a9f-be66-9bbd906dc268",
+            "NodeType": "MainCameraNode",
+            "Position": {
+                "x": 45.0,
+                "y": 427.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "b3e82b81-1198-4104-b713-7f455071566f",
+            "NodeType": "GetPositionNode",
+            "Position": {
+                "x": 248.0,
+                "y": 511.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "4429ad21-3a54-4e48-bce0-2be7463e98ad",
+            "NodeType": "GetPropertyNode",
+            "Position": {
+                "x": 48.0,
+                "y": 510.0
+            },
+            "NodeData": "{\"PropertyName\":\"Target\"}"
+        }
+    ],
+    "Edges": [
+        {
+            "SourceNodeGUID": "281c8df5-04f1-484f-9caa-badebd866d41",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "86f51ccb-afda-4cdf-bc6c-d1dc4e69c5e5",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "145306aa-252c-48fb-ac06-5eafc22c9bb1",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "281c8df5-04f1-484f-9caa-badebd866d41",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "6f29062e-5f82-401b-aef9-4640bced4e43",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "281c8df5-04f1-484f-9caa-badebd866d41",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "e9fc4119-de27-4601-b6e8-5c015fc7d2f5",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "281c8df5-04f1-484f-9caa-badebd866d41",
+            "TargetNodeIndex": 2
+        },
+        {
+            "SourceNodeGUID": "86f51ccb-afda-4cdf-bc6c-d1dc4e69c5e5",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "0e4933d4-5f49-4c9b-8560-df7529f877a8",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "86f51ccb-afda-4cdf-bc6c-d1dc4e69c5e5",
+            "SourceNodeIndex": 1,
+            "TargetNodeGUID": "420cf748-a2a9-4efd-afe3-acbdae22a1c3",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "281c8df5-04f1-484f-9caa-badebd866d41",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "b2056daf-9581-4c94-b79b-eeb114928cda",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "2ea176c8-0d15-4cf4-a454-4768946dbad8",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "b2056daf-9581-4c94-b79b-eeb114928cda",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "384538bd-5ea1-4f99-abe6-ec413922a71b",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "0e4933d4-5f49-4c9b-8560-df7529f877a8",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "384538bd-5ea1-4f99-abe6-ec413922a71b",
+            "SourceNodeIndex": 1,
+            "TargetNodeGUID": "420cf748-a2a9-4efd-afe3-acbdae22a1c3",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "2ea176c8-0d15-4cf4-a454-4768946dbad8",
+            "SourceNodeIndex": 1,
+            "TargetNodeGUID": "384538bd-5ea1-4f99-abe6-ec413922a71b",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "c875666a-a03e-4649-82d0-2419ff09f83a",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "fc48cb6f-1473-4d68-8fb2-3eb16ae55653",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "f60f40b0-7c2e-49c5-a243-bad85177e4bc",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "fc48cb6f-1473-4d68-8fb2-3eb16ae55653",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "b2605e5a-25a9-46f5-b4ed-0a472dcb7b39",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "2abb3512-4e7e-428c-a817-78ff7609562d",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "4429ad21-3a54-4e48-bce0-2be7463e98ad",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "b3e82b81-1198-4104-b713-7f455071566f",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "b3e82b81-1198-4104-b713-7f455071566f",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "2abb3512-4e7e-428c-a817-78ff7609562d",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "130a7e58-c74d-4bcf-84c8-b8584d88751d",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "b2056daf-9581-4c94-b79b-eeb114928cda",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "384538bd-5ea1-4f99-abe6-ec413922a71b",
+            "SourceNodeIndex": 2,
+            "TargetNodeGUID": "fc48cb6f-1473-4d68-8fb2-3eb16ae55653",
+            "TargetNodeIndex": 2
+        },
+        {
+            "SourceNodeGUID": "130a7e58-c74d-4bcf-84c8-b8584d88751d",
+            "SourceNodeIndex": 1,
+            "TargetNodeGUID": "2abb3512-4e7e-428c-a817-78ff7609562d",
+            "TargetNodeIndex": 2
+        },
+        {
+            "SourceNodeGUID": "a4d3625c-6b04-4a9f-be66-9bbd906dc268",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "ade65da7-ddb4-4c37-8fbe-b8603aca9236",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "ade65da7-ddb4-4c37-8fbe-b8603aca9236",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "b2605e5a-25a9-46f5-b4ed-0a472dcb7b39",
+            "TargetNodeIndex": 0
+        }
+    ]
+}

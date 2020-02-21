@@ -2,23 +2,23 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
-    [Title("Basic", "Float Input")]
-    public class FloatNode : AbstractStartNode {
-        private float value;
+    [Title("Basic", "String Input")]
+    public class StringNode : AbstractStartNode {
+        private string value;
 
-        public FloatNode() {
-            Initialize("Float", DefaultNodePosition);
-            var i = new FloatField {label = "x:", value = 0};
-            i.labelElement.style.minWidth = 0;
-            i.RegisterValueChangedCallback(evt => value = evt.newValue);
-            inputContainer.Add(i);
-
+        public StringNode() {
+            Initialize("String", DefaultNodePosition);
+            var inputField = new TextField {label = "x:", value = ""};
+            inputField.labelElement.style.minWidth = 0;
+            inputField.RegisterValueChangedCallback(evt => value = evt.newValue);
+            inputContainer.Add(inputField);
             var valuePort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));
             valuePort.portName = "value";
-            AddOutputPort(valuePort, () => $"{value}f");
+            AddOutputPort(valuePort, () => $"\"{value}\"");
             Refresh();
         }
         
@@ -30,8 +30,8 @@ namespace CodeGraph.Editor {
 
         public override  void SetNodeData(string jsonData) {
             var root = JObject.Parse(jsonData);
-            value = root.Value<float>("value");
-            inputContainer.Q<FloatField>().SetValueWithoutNotify(value);
+            value = root.Value<string>("value");
+            inputContainer.Q<TextField>().SetValueWithoutNotify(value);
         }
     }
 }

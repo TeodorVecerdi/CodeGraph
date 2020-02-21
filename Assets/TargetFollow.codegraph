@@ -1,0 +1,102 @@
+{
+    "AssetPath": "Assets/TargetFollow.codegraph",
+    "GraphName": "TargetFollow",
+    "LastEditedAt": "02/21/2020 18:35:37",
+    "Nodes": [
+        {
+            "GUID": "63a322ad-794c-4055-b746-a4b6d3767071",
+            "NodeType": "GetPropertyNode",
+            "Position": {
+                "x": 399.0,
+                "y": 161.0
+            },
+            "NodeData": "{\"PropertyName\":\"Target\"}"
+        },
+        {
+            "GUID": "610bb257-1120-4924-a9bb-8a0253a99d32",
+            "NodeType": "GetPositionNode",
+            "Position": {
+                "x": 567.0,
+                "y": 161.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
+            "NodeType": "GetPositionNode",
+            "Position": {
+                "x": 638.0,
+                "y": 76.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "8b624349-2ec6-4456-b0e7-d68c0964abc4",
+            "NodeType": "UpdateEventNode",
+            "Position": {
+                "x": 266.0,
+                "y": 317.0
+            },
+            "NodeData": "{\"PortCount\":1}"
+        },
+        {
+            "GUID": "f7e49d90-8a77-4867-9929-274dbd0281cc",
+            "NodeType": "CreatePropertyNode",
+            "Position": {
+                "x": 266.0,
+                "y": 391.0
+            },
+            "NodeData": "{\"PropertyName\":\"Target\",\"PropertyType\":\"Transform\"}"
+        },
+        {
+            "GUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "NodeType": "AssignNode",
+            "Position": {
+                "x": 842.0,
+                "y": 185.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "9df9ed5c-65fa-416f-812c-9a027cbc2283",
+            "NodeType": "GetTransformSelfNode",
+            "Position": {
+                "x": 449.0,
+                "y": 76.0
+            },
+            "NodeData": ""
+        }
+    ],
+    "Edges": [
+        {
+            "SourceNodeGUID": "63a322ad-794c-4055-b746-a4b6d3767071",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "610bb257-1120-4924-a9bb-8a0253a99d32",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "610bb257-1120-4924-a9bb-8a0253a99d32",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "8b624349-2ec6-4456-b0e7-d68c0964abc4",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeIndex": 2
+        },
+        {
+            "SourceNodeGUID": "9df9ed5c-65fa-416f-812c-9a027cbc2283",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
+            "TargetNodeIndex": 0
+        }
+    ]
+}

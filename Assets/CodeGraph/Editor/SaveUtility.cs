@@ -63,7 +63,7 @@ namespace CodeGraph.Editor {
             graphObject.CodeGraphData.LastEditedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
             graphObject.CodeGraphData.GraphName = graphName;
             File.WriteAllText(fileName, JsonUtility.ToJson(graphObject.CodeGraphData, true));
-            AssetDatabase.Refresh();
+            AssetDatabase.ImportAsset(fileName);
             return graphObject;
         }
 
@@ -84,30 +84,14 @@ namespace CodeGraph.Editor {
         private void GenerateNodes() {
             foreach (var serializedNode in graphObject.CodeGraphData.Nodes) {
                 var type = Type.GetType("CodeGraph.Editor." + serializedNode.NodeType);
-
-                // Debug.Log("CodeGraph.Nodes." + serializedNode.NodeType + " | TEST: "+ typeof(StartEventNode).FullName);
                 var tempNode = (AbstractNode) Activator.CreateInstance(type);
                 tempNode.GUID = serializedNode.GUID;
                 tempNode.SetNodeData(serializedNode.NodeData);
                 tempNode.SetPosition(new Rect(serializedNode.Position, AbstractNode.DefaultNodeSize));
-                if (serializedNode.NodeType == "StartEventNode") {
-                    var startEventNode = tempNode as StartEventNode;
-                    graphView.StartEventNode = startEventNode;
-                    for (var i = 0; i < startEventNode.PortCount - 1; i++) startEventNode.AddChildPort(false);
-
-                    // var nodePorts = graphObject.CodeGraphData.Edges.Where(x => x.SourceNodeGUID == serializedNode.GUID).ToList();
-                    // nodePorts.ForEach(_ => startEventNode.AddChildPort());
+                
+                if (tempNode is AbstractEventNode eventNode) {
+                    for (var i = 0; i < eventNode.PortCount; i++) eventNode.AddChildPort(false);
                 }
-
-                if (serializedNode.NodeType == "UpdateEventNode") {
-                    var updateEventNode = tempNode as UpdateEventNode;
-                    graphView.UpdateEventNode = updateEventNode;
-                    for (var i = 0; i < updateEventNode.PortCount - 1; i++) updateEventNode.AddChildPort(false);
-
-                    // var nodePorts = graphObject.CodeGraphData.Edges.Where(x => x.SourceNodeGUID == serializedNode.GUID).ToList();
-                    // nodePorts.ForEach(_ => updateEventNode.AddChildPort());
-                }
-
                 graphView.AddElement(tempNode);
             }
         }
@@ -116,9 +100,6 @@ namespace CodeGraph.Editor {
             foreach (var connection in graphObject.CodeGraphData.Edges) {
                 var sourceNode = Nodes.First(x => x.GUID == connection.SourceNodeGUID);
                 var targetNode = Nodes.First(x => x.GUID == connection.TargetNodeGUID);
-
-                // var sourceOutputContainerLength = sourceNode.outputContainer.childCount;
-                // var targetInputContainerLength = targetNode.inputContainer.childCount;
                 LinkNodesTogether(sourceNode.outputContainer[connection.SourceNodeIndex].Q<Port>(),
                     targetNode.inputContainer[connection.TargetNodeIndex].Q<Port>());
             }

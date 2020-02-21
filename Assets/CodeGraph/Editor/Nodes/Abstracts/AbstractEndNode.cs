@@ -8,7 +8,6 @@ namespace CodeGraph.Editor {
             throw new NotSupportedException("End nodes cannot have Output ports");
         }
 
-        protected string GetDebugData => $"//BEGIN_NODE_GUID/{GUID}/END_NODE_GUID";
         public abstract string GetCode();
     }
 }
