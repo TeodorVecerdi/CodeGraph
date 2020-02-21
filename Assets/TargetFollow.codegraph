@@ -1,7 +1,7 @@
 {
     "AssetPath": "Assets/TargetFollow.codegraph",
     "GraphName": "TargetFollow",
-    "LastEditedAt": "02/21/2020 18:35:37",
+    "LastEditedAt": "02/21/2020 23:37:04",
     "Nodes": [
         {
             "GUID": "63a322ad-794c-4055-b746-a4b6d3767071",
@@ -11,15 +11,6 @@
                 "y": 161.0
             },
             "NodeData": "{\"PropertyName\":\"Target\"}"
-        },
-        {
-            "GUID": "610bb257-1120-4924-a9bb-8a0253a99d32",
-            "NodeType": "GetPositionNode",
-            "Position": {
-                "x": 567.0,
-                "y": 161.0
-            },
-            "NodeData": ""
         },
         {
             "GUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
@@ -65,26 +56,23 @@
                 "y": 76.0
             },
             "NodeData": ""
+        },
+        {
+            "GUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
+            "NodeType": "SplitTransformNode",
+            "Position": {
+                "x": 580.0,
+                "y": 161.0
+            },
+            "NodeData": ""
         }
     ],
     "Edges": [
-        {
-            "SourceNodeGUID": "63a322ad-794c-4055-b746-a4b6d3767071",
-            "SourceNodeIndex": 0,
-            "TargetNodeGUID": "610bb257-1120-4924-a9bb-8a0253a99d32",
-            "TargetNodeIndex": 0
-        },
         {
             "SourceNodeGUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
             "SourceNodeIndex": 0,
             "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
             "TargetNodeIndex": 0
-        },
-        {
-            "SourceNodeGUID": "610bb257-1120-4924-a9bb-8a0253a99d32",
-            "SourceNodeIndex": 0,
-            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
-            "TargetNodeIndex": 1
         },
         {
             "SourceNodeGUID": "8b624349-2ec6-4456-b0e7-d68c0964abc4",
@@ -97,6 +85,18 @@
             "SourceNodeIndex": 0,
             "TargetNodeGUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
             "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "63a322ad-794c-4055-b746-a4b6d3767071",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeIndex": 1
         }
     ]
 }

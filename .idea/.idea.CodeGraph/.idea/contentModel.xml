@@ -58,6 +58,7 @@
                 <e p="IntNode.cs" t="Include" />
                 <e p="MainCameraNode.cs" t="Include" />
                 <e p="StringNode.cs" t="Include" />
+                <e p="TimeNode.cs" t="Include" />
               </e>
             </e>
             <e p="Ports" t="Include">

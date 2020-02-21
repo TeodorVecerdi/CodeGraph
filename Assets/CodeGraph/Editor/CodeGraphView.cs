@@ -17,7 +17,7 @@ namespace CodeGraph.Editor {
         public CodeGraphView(CodeGraph editorWindow) {
             this.editorWindow = editorWindow;
             this.AddStyleSheet("CodeGraph");
-            SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
+            SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale * 10);
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());

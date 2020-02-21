@@ -1,9 +1,10 @@
 - [ ] (MEDIUM/HIGH PRIORITY) Add more essential nodes (see incomplete* list below)
+- [ ] (MEDIUM/HIGH PRIORITY) Add clear ports button to event nodes that moves connections and removes unused ports
 - [ ] (MEDIUM PRIORITY) Change line endings in code generation to be consistent
 - [ ] (MEDIUM PRIORITY) Add examples 
-- [ ] (LOW PRIORITY) Add sticky notes / comments
-- [ ] (LOW/VERY LOW PRIORITY) Add copy/paste
-- [ ] (VERY LOW PRIORITY) Add Undo/Redo
+- [ ] (LOW PRIORITY) Add Undo/Redo
+- [ ] (LOW PRIORITY) Add copy/paste
+- [ ] (LOW/VERY LOW PRIORITY) Add sticky notes / comments
 - [x] (HIGH PRIORITY) Add create node menu (and title attribute to populate create node menu) (leech off of GTLogicGraph; it had a really nice implementation)
 - [x] (HIGH PRIORITY) Loading of saved graphs
 - [x] (HIGH PRIORITY) Compile generated code and give errors
@@ -28,6 +29,7 @@
 - [ ] (VERY LOW PRIORITY) GetComponent node (w/ dynamic enum generation for component types)
 - [x] (VERY HIGH PRIORITY) Basic C# data types
 - [x] (VERY HIGH PRIORITY) Assign node
+- [x] (HIGH PRIORITY) Time Node
 - [x] (HIGH PRIORITY) Vector2 node
 - [x] (HIGH PRIORITY) Transform nodes (position, scale, rotation)
 - [x] (HIGH PRIORITY) GetComponent node (just string input for component type and trust user ;) )
