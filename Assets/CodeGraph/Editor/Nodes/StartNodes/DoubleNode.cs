@@ -11,7 +11,7 @@ namespace CodeGraph.Editor {
 
         public DoubleNode() {
             Initialize("Double", DefaultNodePosition);
-            var inputField = new DoubleField() {label = "x:", value = 0};
+            var inputField = new DoubleField {label = "x:", value = 0};
             inputField.labelElement.style.minWidth = 0;
             inputField.RegisterValueChangedCallback(evt => value = evt.newValue);
             inputContainer.Add(inputField);

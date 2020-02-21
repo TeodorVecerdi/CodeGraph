@@ -11,7 +11,7 @@ namespace CodeGraph.Editor {
 
         public IntNode() {
             Initialize("Integer", DefaultNodePosition);
-            var inputField = new IntegerField() {label = "x:", value = 0};
+            var inputField = new IntegerField {label = "x:", value = 0};
             inputField.labelElement.style.minWidth = 0;
             inputField.RegisterValueChangedCallback(evt => value = evt.newValue);
             inputContainer.Add(inputField);

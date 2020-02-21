@@ -3,6 +3,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
@@ -67,27 +68,28 @@ namespace CodeGraph.Editor {
         private string GenerateCode() {
             var monobehaviourName = graphObject.CodeGraphData.GraphName;
             monobehaviourName = monobehaviourName.Replace(" ", "");
-            var code = $"using UnityEngine;\npublic class {monobehaviourName} : MonoBehaviour {{\n";
+            var code = new StringBuilder();
+            code.AppendLine($"using UnityEngine;\npublic class {monobehaviourName} : MonoBehaviour {{");
             
             // Property Nodes
             foreach (var node in graphView.nodes.ToList()) {
                 if (node is CreatePropertyNode propertyNode) {
-                    code += propertyNode.GetCode() + "\n";
+                    code.AppendLine(propertyNode.GetCode());
                 }
             }
             // Event Nodes
             foreach (var node in graphView.nodes.ToList()) {
                 if (node is AbstractEventNode eventNode && eventNode.IsBaseEventNode) {
-                    code += eventNode.GetCode() + "\n";
+                    code.AppendLine(eventNode.GetCode());
                 }
             }
             // var eventNodes = (from node in graphView.nodes.ToList().AsEnumerable() select node into eventNode where (AbstractEventNode) eventNode != null && ((AbstractEventNode) eventNode).IsBaseEventNode select eventNode).ToList();
             // eventNodes.ForEach(node => code +=  ((AbstractEventNode)node).GetCode() + "\n");
             // code += graphView.StartEventNode.GetCode() + "\n";
             // code += graphView.UpdateEventNode.GetCode() + "\n";
-            code += "}";
-            Debug.Log(code);
-            return code;
+            code.Append("}");
+            // Debug.Log(code);
+            return code.ToString();
         }
 
         private List<CompilerError> CompileCode(string code) {

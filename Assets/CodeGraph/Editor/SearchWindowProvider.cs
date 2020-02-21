@@ -29,19 +29,31 @@ namespace CodeGraph.Editor {
             m_Icon.Apply();
         }
 
-        void OnDestroy() {
+        private void OnDestroy() {
             if (m_Icon != null) {
                 DestroyImmediate(m_Icon);
                 m_Icon = null;
             }
         }
 
-        struct NodeEntry {
+        private struct NodeEntry : IEquatable<NodeEntry> {
             public string[] Title;
             public AbstractNode Node;
-        }
 
-        List<int> m_Ids;
+            public bool Equals(NodeEntry other) {
+                return Equals(Title, other.Title) && Equals(Node, other.Node);
+            }
+
+            public override bool Equals(object obj) {
+                return obj is NodeEntry other && Equals(other);
+            }
+
+            public override int GetHashCode() {
+                unchecked {
+                    return ((Title != null ? Title.GetHashCode() : 0) * 397) ^ (Node != null ? Node.GetHashCode() : 0);
+                }
+            }
+        }
 
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context) {
             // First build up temporary data structure containing group & title as an array of strings (the last one is the actual title) and associated node type.
@@ -67,7 +79,7 @@ namespace CodeGraph.Editor {
                 for (var i = 0; i < entry1.Title.Length; i++) {
                     if (i >= entry2.Title.Length)
                         return 1;
-                    var value = entry1.Title[i].CompareTo(entry2.Title[i]);
+                    var value = string.Compare(entry1.Title[i], entry2.Title[i], StringComparison.Ordinal);
                     if (value != 0) {
                         // Make sure that leaves go before nodes
                         if (entry1.Title.Length != entry2.Title.Length && (i == entry1.Title.Length - 1 || i == entry2.Title.Length - 1))
