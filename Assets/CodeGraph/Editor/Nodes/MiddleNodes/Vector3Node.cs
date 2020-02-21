@@ -42,7 +42,7 @@ namespace CodeGraph.Editor {
         }
         
         public override void SetNodeData(string jsonData) {
-            
+            // This node does not not require any data
         }
         public override string GetNodeData() {
             return "";

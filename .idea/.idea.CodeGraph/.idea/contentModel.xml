@@ -59,7 +59,6 @@
             <e p="CodeGraphObject.cs" t="Include" />
             <e p="SerializedEdge.cs" t="Include" />
             <e p="SerializedNode.cs" t="Include" />
-            <e p="TEST.cs" t="Include" />
             <e p="Types" t="Include">
               <e p="AnyType.cs" t="Include" />
               <e p="EventType.cs" t="Include" />

@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     public class FloatNode : AbstractStartNode {
-        private float value = 0.0f;
+        private float value;
 
         public FloatNode() {
             Initialize("Float", DefaultNodePosition);
