@@ -59,6 +59,7 @@
             <e p="CodeGraphObject.cs" t="Include" />
             <e p="SerializedEdge.cs" t="Include" />
             <e p="SerializedNode.cs" t="Include" />
+            <e p="TEST.cs" t="Include" />
             <e p="Types" t="Include">
               <e p="AnyType.cs" t="Include" />
               <e p="EventType.cs" t="Include" />
@@ -151,6 +152,9 @@
               </e>
             </e>
           </e>
+        </e>
+        <e p="Newtonsoft.Json" t="Include">
+          <e p="Newtonsoft.Json.xml" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

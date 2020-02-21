@@ -378,6 +378,9 @@
  <Reference Include="UnityEditor.LinuxStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f5/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
+ </Reference>
  <Reference Include="ICSharpCode.NRefactory">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>

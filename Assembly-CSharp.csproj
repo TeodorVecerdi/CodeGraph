@@ -282,6 +282,7 @@
      <None Include="Assets\GeoTetra\GTLogicGraph\Resources\Styles\PortInputView.uss" />
      <None Include="Assets\GeoTetra\GTLogicGraph\Resources\Styles\Controls\ChannelEnumMaskControlView.uss" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\Newtonsoft.Json\Newtonsoft.Json.xml" />
      <None Include="Assets\unity-ui-extensions\Shaders\UISoftAdditive.shader" />
      <None Include="Assets\unity-ui-extensions\Shaders\UI Particle AddSmooth.shader" />
      <None Include="Assets\GeoTetra\GTLogicGraph\Resources\Styles\VectorControlView.uss" />
@@ -532,6 +533,9 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f5/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f5/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

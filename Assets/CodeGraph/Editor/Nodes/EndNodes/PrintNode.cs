@@ -29,7 +29,14 @@ namespace CodeGraph.Editor {
         }
         
         public override string GetCode() {
-            return $"Debug.Log({InputPorts[0].RequestCode()});";
+            return $"Debug.Log({InputPorts[0].RequestCode()});{GetDebugData}";
+        }
+
+        public override void SetNodeData(string jsonData) {
+            
+        }
+        public override string GetNodeData() {
+            return "";
         }
     }
 }

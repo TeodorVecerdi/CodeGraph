@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     public abstract class AbstractNode : Node {
-        protected static readonly Vector2 DefaultNodeSize = new Vector2(200, 150);
+        public static readonly Vector2 DefaultNodeSize = new Vector2(200, 150);
         protected static readonly Rect DefaultNodePosition = new Rect(Vector2.zero, DefaultNodeSize);
 
         public string GUID;
@@ -63,5 +63,8 @@ namespace CodeGraph.Editor {
             RefreshExpandedState();
             RefreshPorts();
         }
+
+        public abstract void SetNodeData(string jsonData);
+        public abstract string GetNodeData();
     }
 }

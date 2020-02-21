@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
@@ -17,6 +18,18 @@ namespace CodeGraph.Editor {
             valuePort.portName = "value";
             AddOutputPort(valuePort, () => $"{value}f");
             Refresh();
+        }
+        
+        public override string GetNodeData() {
+            var root = new JObject();
+            root["value"] = value;
+            return root.ToString();
+        }
+
+        public override  void SetNodeData(string jsonData) {
+            var root = JObject.Parse(jsonData);
+            value = root.Value<float>("value");
+            inputContainer.Q<FloatField>().SetValueWithoutNotify(value);
         }
     }
 }

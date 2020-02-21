@@ -7,5 +7,6 @@ namespace CodeGraph {
         public string GUID;
         public string NodeType;
         public Vector2 Position;
+        public string NodeData;
     }
 }

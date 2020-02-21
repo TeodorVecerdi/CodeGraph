@@ -20,7 +20,16 @@ namespace CodeGraph.Editor {
         }
 
         public void Initialize() {
-            
+            LoadGraph();
+        }
+
+        public void LoadGraph() {
+            SaveUtility.GetInstance(graphView).LoadGraph(graphObject);
+        }
+
+        public void SaveGraph() {
+            var newGraphObject = SaveUtility.GetInstance(graphView).Save(graphObject.CodeGraphData.AssetPath);
+            graphObject = newGraphObject;
         }
 
         private void ConstructGraphView() {
@@ -29,11 +38,14 @@ namespace CodeGraph.Editor {
             };
             graphView.StretchToParentSize();
             rootVisualElement.Add(graphView);
+            if (graphObject != null) {
+                SaveUtility.GetInstance(graphView).LoadGraph(graphObject);
+            }
         }
 
         private void GenerateToolbar() {
             var toolbar = new Toolbar();
-            toolbar.Add(new Button(() => SaveUtility.GetInstance(graphView).Save(graphObject.CodeGraphData.AssetPath)) {text = "Save Graph"});
+            toolbar.Add(new Button(() => SaveGraph()) {text = "Save Graph"});
             toolbar.Add(new Button(() => GenerateClass()) {text = "Compile Graph"});
             rootVisualElement.Add(toolbar);
         }

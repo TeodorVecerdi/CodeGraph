@@ -40,5 +40,12 @@ namespace CodeGraph.Editor {
             AddOutputPort(vector3OutputPort, () => $"new Vector3({InputPorts[0].RequestCode()},{InputPorts[1].RequestCode()},{InputPorts[2].RequestCode()})");
             Refresh();
         }
+        
+        public override void SetNodeData(string jsonData) {
+            
+        }
+        public override string GetNodeData() {
+            return "";
+        }
     }
 }

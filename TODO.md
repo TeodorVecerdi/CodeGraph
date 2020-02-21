@@ -1,4 +1,4 @@
-- [ ] (HIGH PRIORITY) Loading of saved graphs
+- [x] (HIGH PRIORITY) Loading of saved graphs
 - [ ] (MEDIUM/HIGH PRIORITY) Add more essential nodes (see incomplete* list below)
 - [ ] (HIGH PRIORITY) Compile generated code and give errors
 - [ ] (HIGH PRIORITY) Write generated code to file if no errors and trigger a Unity Reimport
