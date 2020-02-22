@@ -1,3 +1,4 @@
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine.UIElements;
@@ -33,10 +34,12 @@ namespace CodeGraph.Editor {
             var root = new JObject();
             root["PropertyName"] = PropertyName;
             root["PropertyType"] = PropertyType;
+            root.Merge(JObject.Parse(base.GetNodeData()));
             return root.ToString(Formatting.None);
         }
 
         public override void SetNodeData(string jsonData) {
+            base.SetNodeData(jsonData);
             var root = JObject.Parse(jsonData);
             PropertyName = root.Value<string>("PropertyName");
             PropertyType = root.Value<string>("PropertyType");

@@ -51,6 +51,7 @@
               </e>
               <e p="StartNodes" t="Include">
                 <e p="CreatePropertyNode.cs" t="Include" />
+                <e p="CreateVector2Node.cs" t="Include" />
                 <e p="DoubleNode.cs" t="Include" />
                 <e p="FloatNode.cs" t="Include" />
                 <e p="GetComponentSelfNode.cs" t="Include" />

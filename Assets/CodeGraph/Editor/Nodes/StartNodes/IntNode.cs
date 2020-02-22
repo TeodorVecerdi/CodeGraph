@@ -21,14 +21,16 @@ namespace CodeGraph.Editor {
             AddOutputPort(valuePort, () => $"{value}");
             Refresh();
         }
-        
+
         public override string GetNodeData() {
             var root = new JObject();
             root["value"] = value;
+            root.Merge(JObject.Parse(base.GetNodeData()));
             return root.ToString(Formatting.None);
         }
 
-        public override  void SetNodeData(string jsonData) {
+        public override void SetNodeData(string jsonData) {
+            base.SetNodeData(jsonData);
             var root = JObject.Parse(jsonData);
             value = root.Value<int>("value");
             inputContainer.Q<IntegerField>().SetValueWithoutNotify(value);

@@ -31,12 +31,5 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             return $"Debug.Log({InputPorts[1].RequestCode()});{GetDebugData}";
         }
-
-        public override void SetNodeData(string jsonData) {
-            // This node does not not require any data
-        }
-        public override string GetNodeData() {
-            return "";
-        }
     }
 }

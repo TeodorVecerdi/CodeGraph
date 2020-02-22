@@ -25,10 +25,12 @@ namespace CodeGraph.Editor {
         public override string GetNodeData() {
             var root = new JObject();
             root["value"] = value;
+            root.Merge(JObject.Parse(base.GetNodeData()));
             return root.ToString(Formatting.None);
         }
 
         public override  void SetNodeData(string jsonData) {
+            base.SetNodeData(jsonData);
             var root = JObject.Parse(jsonData);
             value = root.Value<double>("value");
             inputContainer.Q<DoubleField>().SetValueWithoutNotify(value);

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -43,8 +45,15 @@ namespace CodeGraph.Editor {
             RefreshPorts();
         }
 
-        public abstract void SetNodeData(string jsonData);
-        public abstract string GetNodeData();
+        public virtual void SetNodeData(string jsonData) {
+            var root = JObject.Parse(jsonData);
+            base.expanded = root.Value<bool>("expanded");
+        }
 
+        public virtual string GetNodeData() {
+            var root = new JObject();
+            root["expanded"] = base.expanded;
+            return root.ToString(Formatting.None);
+        }
     }
 }

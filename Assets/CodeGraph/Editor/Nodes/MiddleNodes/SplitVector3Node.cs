@@ -28,12 +28,5 @@ namespace CodeGraph.Editor {
             AddOutputPort(zOutputPort, () => $"{InputPortDictionary[vector3InputPort].RequestCode()}.z");
             Refresh();
         }
-        
-        public override void SetNodeData(string jsonData) {
-            // This node does not not require any data
-        }
-        public override string GetNodeData() {
-            return "";
-        }
     }
 }

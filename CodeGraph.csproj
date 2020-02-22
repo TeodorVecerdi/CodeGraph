@@ -85,6 +85,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\Vector2Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\Vector3Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreatePropertyNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreateVector2Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\DoubleNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\FloatNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\GetComponentSelfNode.cs" />

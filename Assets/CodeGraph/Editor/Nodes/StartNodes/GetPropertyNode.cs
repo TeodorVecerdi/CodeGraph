@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     [Title("Properties", "Get Property")]
-    public class GetPropertyNode : AbstractStartNode{
+    public class GetPropertyNode : AbstractStartNode {
         private string PropertyName;
 
         public GetPropertyNode() {
@@ -21,14 +21,16 @@ namespace CodeGraph.Editor {
             AddOutputPort(valuePort, () => $"{PropertyName}");
             Refresh();
         }
-        
+
         public override string GetNodeData() {
             var root = new JObject();
             root["PropertyName"] = PropertyName;
+            root.Merge(JObject.Parse(base.GetNodeData()));
             return root.ToString(Formatting.None);
         }
 
-        public override  void SetNodeData(string jsonData) {
+        public override void SetNodeData(string jsonData) {
+            base.SetNodeData(jsonData);
             var root = JObject.Parse(jsonData);
             PropertyName = root.Value<string>("PropertyName");
             inputContainer.Q<TextField>().SetValueWithoutNotify(PropertyName);

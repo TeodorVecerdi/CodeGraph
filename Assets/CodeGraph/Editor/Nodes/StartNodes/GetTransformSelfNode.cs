@@ -10,11 +10,5 @@ namespace CodeGraph.Editor {
             AddOutputPort(valuePort, () => $"transform");
             Refresh();
         }
-        public override void SetNodeData(string jsonData) {
-            // This node does not not require any data
-        }
-        public override string GetNodeData() {
-            return "";
-        }
     }
 }

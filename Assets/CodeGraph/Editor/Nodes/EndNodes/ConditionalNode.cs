@@ -59,12 +59,6 @@ namespace CodeGraph.Editor {
 
             return code.ToString();
         }
-        public override void SetNodeData(string jsonData) {
-            // This node does not not require any data
-        }
-        public override string GetNodeData() {
-            return "";
-        }
         
         private new void AddOutputPort(Port portReference, Func<string> getCode) {
             var outputPort = new OutputPort(this, portReference, getCode); 

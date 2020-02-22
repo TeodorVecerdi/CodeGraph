@@ -28,10 +28,12 @@ namespace CodeGraph.Editor {
             var root = new JObject();
             root["PortCount"] = PortCount;
             root["SourceTitle"] = SourceTitle;
+            root.Merge(JObject.Parse(base.GetNodeData()));
             return root.ToString(Formatting.None);
         }
 
         public override void SetNodeData(string jsonData) {
+            base.SetNodeData(jsonData);
             var root = JObject.Parse(jsonData);
             PortCount = root.Value<int>("PortCount");
             SourceTitle = root.Value<string>("SourceTitle");

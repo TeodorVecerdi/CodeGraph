@@ -47,12 +47,5 @@ namespace CodeGraph.Editor {
             AddOutputPort(parentPort, () => $"{InputPortDictionary[inputPort].RequestCode()}.parent");
             Refresh();
         }
-        
-        public override void SetNodeData(string jsonData) {
-            // This node does not not require any data
-        }
-        public override string GetNodeData() {
-            return "";
-        }
     }
 }
