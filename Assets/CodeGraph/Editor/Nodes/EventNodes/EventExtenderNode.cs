@@ -18,8 +18,8 @@ namespace CodeGraph.Editor {
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
             var eventPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
-            eventPort.portName = "event";
-            eventPort.portColor = new Color(0.02f, 0.65f, 0.83f);
+            eventPort.portName = "branch";
+            eventPort.portColor = Color.white;
             AddInputPort(eventPort, () => "");
             Refresh();
         }

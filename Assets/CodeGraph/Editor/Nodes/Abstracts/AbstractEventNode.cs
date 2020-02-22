@@ -7,7 +7,7 @@ namespace CodeGraph.Editor {
         public int PortCount;
         public bool IsBaseEventNode;
         protected AbstractEventNode() {
-            capabilities &= ~Capabilities.Deletable;
+            // capabilities &= ~Capabilities.Deletable;
             IsBaseEventNode = true;
         }
         [Obsolete("Event nodes cannot have Input ports", true)]
@@ -17,8 +17,8 @@ namespace CodeGraph.Editor {
         
         public void AddChildPort(bool incrementPortCount = true) {
             var outputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
-            outputPort.portName = $"Child {OutputPorts.Count + 1}";
-            outputPort.portColor = new Color(0.53f, 0f, 0.67f);
+            outputPort.portName = $"child {OutputPorts.Count + 1}";
+            outputPort.portColor = Color.white;
             AddOutputPort(outputPort, () => "");
             if (incrementPortCount) PortCount++;
             Refresh();

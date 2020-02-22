@@ -62,6 +62,7 @@ namespace CodeGraph.Editor {
                 var assetPath = WriteCodeToFile(code);
                 AssetDatabase.ImportAsset(assetPath);
             }) {text = "Compile Graph"});
+            toolbar.Add(new Button(() => Debug.Log(GenerateCode())) {text = "Print Code"});
             rootVisualElement.Add(toolbar);
         }
 

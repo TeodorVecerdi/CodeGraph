@@ -1,7 +1,7 @@
 {
     "AssetPath": "Assets/TargetFollow.codegraph",
     "GraphName": "TargetFollow",
-    "LastEditedAt": "02/21/2020 23:37:04",
+    "LastEditedAt": "02/22/2020 20:32:52",
     "Nodes": [
         {
             "GUID": "63a322ad-794c-4055-b746-a4b6d3767071",
@@ -40,15 +40,6 @@
             "NodeData": "{\"PropertyName\":\"Target\",\"PropertyType\":\"Transform\"}"
         },
         {
-            "GUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
-            "NodeType": "AssignNode",
-            "Position": {
-                "x": 842.0,
-                "y": 185.0
-            },
-            "NodeData": ""
-        },
-        {
             "GUID": "9df9ed5c-65fa-416f-812c-9a027cbc2283",
             "NodeType": "GetTransformSelfNode",
             "Position": {
@@ -61,25 +52,22 @@
             "GUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
             "NodeType": "SplitTransformNode",
             "Position": {
-                "x": 580.0,
+                "x": 605.0,
                 "y": 161.0
+            },
+            "NodeData": ""
+        },
+        {
+            "GUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "NodeType": "AssignNode",
+            "Position": {
+                "x": 865.0,
+                "y": 261.0
             },
             "NodeData": ""
         }
     ],
     "Edges": [
-        {
-            "SourceNodeGUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
-            "SourceNodeIndex": 0,
-            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
-            "TargetNodeIndex": 0
-        },
-        {
-            "SourceNodeGUID": "8b624349-2ec6-4456-b0e7-d68c0964abc4",
-            "SourceNodeIndex": 0,
-            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
-            "TargetNodeIndex": 2
-        },
         {
             "SourceNodeGUID": "9df9ed5c-65fa-416f-812c-9a027cbc2283",
             "SourceNodeIndex": 0,
@@ -93,10 +81,22 @@
             "TargetNodeIndex": 0
         },
         {
-            "SourceNodeGUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
+            "SourceNodeGUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
             "SourceNodeIndex": 0,
             "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
             "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeIndex": 2
+        },
+        {
+            "SourceNodeGUID": "8b624349-2ec6-4456-b0e7-d68c0964abc4",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeIndex": 0
         }
     ]
 }

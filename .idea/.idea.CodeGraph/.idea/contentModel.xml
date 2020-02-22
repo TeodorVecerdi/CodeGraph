@@ -32,6 +32,7 @@
               </e>
               <e p="EndNodes" t="Include">
                 <e p="AssignNode.cs" t="Include" />
+                <e p="ConditionalNode.cs" t="Include" />
                 <e p="PrintNode.cs" t="Include" />
               </e>
               <e p="EventNodes" t="Include">

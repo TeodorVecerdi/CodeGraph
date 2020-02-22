@@ -1,5 +1,6 @@
 - [ ] (MEDIUM/HIGH PRIORITY) Add more essential nodes (see incomplete* list below)
 - [ ] (MEDIUM/HIGH PRIORITY) Add clear ports button to event nodes that moves connections and removes unused ports
+- [ ] (HIGH PRIORITY) Add collapsed state to node data
 - [ ] (MEDIUM PRIORITY) Change line endings in code generation to be consistent
 - [ ] (MEDIUM PRIORITY) Add examples 
 - [ ] (LOW PRIORITY) Add Undo/Redo
@@ -27,6 +28,7 @@
 - [ ] (MEDIUM PRIORITY) Variables (One node for creating variables, one node for accessing)
 - [ ] (LOW PRIORITY) Trigger, Trigger2D, Collision, Collision2D events (Enter, Exit, Stay)
 - [ ] (VERY LOW PRIORITY) GetComponent node (w/ dynamic enum generation for component types)
+- [x] (VERY HIGH PRIORITY) Conditional node
 - [x] (VERY HIGH PRIORITY) Basic C# data types
 - [x] (VERY HIGH PRIORITY) Assign node
 - [x] (HIGH PRIORITY) Time Node

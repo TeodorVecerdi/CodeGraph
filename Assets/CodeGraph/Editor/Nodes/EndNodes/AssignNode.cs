@@ -9,7 +9,11 @@ namespace CodeGraph.Editor {
     public class AssignNode : AbstractEndNode{
         public AssignNode() {
             Initialize("Assign", DefaultNodePosition);
-
+            var eventInputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
+            eventInputPort.portName = "branch";
+            eventInputPort.portColor = Color.white;
+            AddInputPort(eventInputPort, GetCode);
+            
             var lhsPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
             lhsPort.portName = "lhs";
             AddInputPort(lhsPort, () => {
@@ -32,17 +36,14 @@ namespace CodeGraph.Editor {
                 return node.OutputPortDictionary[output].GetCode();
             });
 
-            var eventInputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
-            eventInputPort.portName = "event";
-            eventInputPort.portColor = new Color(1f, 0.27f, 0f);
-            AddInputPort(eventInputPort, GetCode);
+            
             
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())){text="Get Code"});
             Refresh();
         }
         
         public override string GetCode() {
-            return $"{InputPorts[0].RequestCode()}={InputPorts[1].RequestCode()};{GetDebugData}";
+            return $"{InputPorts[1].RequestCode()}={InputPorts[2].RequestCode()};{GetDebugData}";
         }
 
         public override void SetNodeData(string jsonData) {
