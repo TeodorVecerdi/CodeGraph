@@ -7,15 +7,15 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
-    [Title("Events", "Start Event")]
-    public class StartEventNode : AbstractEventNode {
-        public StartEventNode() {
-            Initialize("Start", DefaultNodePosition);
+    [Title("Events", "Late Update Event")]
+    public class LateUpdateEventNode : AbstractEventNode {
+        public LateUpdateEventNode() {
+            Initialize("Late Update", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
             Refresh();
         }
-        
+
         public override string GetNodeData() {
             var root = new JObject();
             root["PortCount"] = PortCount;
@@ -31,7 +31,7 @@ namespace CodeGraph.Editor {
 
         public override string GetCode() {
             var code = new StringBuilder();
-            code.AppendLine("private void Start() {");
+            code.AppendLine("private void LateUpdate() {");
             var nodes = (from outputPort in OutputPorts
                     select outputPort.PortReference.connections.ToList()
                     into connections

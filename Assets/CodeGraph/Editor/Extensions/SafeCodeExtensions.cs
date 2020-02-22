@@ -20,5 +20,9 @@ namespace CodeGraph.Editor {
             }
             return safeName;
         }
+
+        public static string ToSafeGUID(this string guid) {
+            return guid.Replace("-", "");
+        }
     }
 }

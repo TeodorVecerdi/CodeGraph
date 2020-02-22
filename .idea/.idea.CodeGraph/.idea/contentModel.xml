@@ -36,11 +36,17 @@
                 <e p="PrintNode.cs" t="Include" />
               </e>
               <e p="EventNodes" t="Include">
+                <e p="AwakeEventNode.cs" t="Include" />
                 <e p="EventExtenderNode.cs" t="Include" />
+                <e p="FixedUpdateEventNode.cs" t="Include" />
+                <e p="LateUpdateEventNode.cs" t="Include" />
                 <e p="StartEventNode.cs" t="Include" />
                 <e p="UpdateEventNode.cs" t="Include" />
               </e>
               <e p="MiddleNodes" t="Include">
+                <e p="AddNode.cs" t="Include" />
+                <e p="CompareNode.cs" t="Include" />
+                <e p="GetComponentNode.cs" t="Include" />
                 <e p="GetPositionNode.cs" t="Include" />
                 <e p="GetTransformNode.cs" t="Include" />
                 <e p="SplitTransformNode.cs" t="Include" />
@@ -52,6 +58,7 @@
               <e p="StartNodes" t="Include">
                 <e p="CreatePropertyNode.cs" t="Include" />
                 <e p="CreateVector2Node.cs" t="Include" />
+                <e p="CreateVector3Node.cs" t="Include" />
                 <e p="DoubleNode.cs" t="Include" />
                 <e p="FloatNode.cs" t="Include" />
                 <e p="GetComponentSelfNode.cs" t="Include" />
@@ -176,6 +183,8 @@
         <e p="Newtonsoft.Json" t="Include">
           <e p="Newtonsoft.Json.xml" t="Include" />
         </e>
+        <e p="PlayerController.cs" t="Include" />
+        <e p="TargetFollow.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />

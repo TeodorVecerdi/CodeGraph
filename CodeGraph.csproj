@@ -74,9 +74,15 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\AssignNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\ConditionalNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\PrintNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\AwakeEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\EventExtenderNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\FixedUpdateEventNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\LateUpdateEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\StartEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\UpdateEventNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\AddNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\CompareNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\GetComponentNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\GetPositionNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\GetTransformNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SplitTransformNode.cs" />
@@ -86,6 +92,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\Vector3Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreatePropertyNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreateVector2Node.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreateVector3Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\DoubleNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\FloatNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\GetComponentSelfNode.cs" />

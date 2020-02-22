@@ -7,10 +7,10 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
-    [Title("Events", "Start Event")]
-    public class StartEventNode : AbstractEventNode {
-        public StartEventNode() {
-            Initialize("Start", DefaultNodePosition);
+    [Title("Events", "Awake Event")]
+    public class AwakeEventNode : AbstractEventNode {
+        public AwakeEventNode() {
+            Initialize("Awake", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
             Refresh();
@@ -31,7 +31,7 @@ namespace CodeGraph.Editor {
 
         public override string GetCode() {
             var code = new StringBuilder();
-            code.AppendLine("private void Start() {");
+            code.AppendLine("private void Awake() {");
             var nodes = (from outputPort in OutputPorts
                     select outputPort.PortReference.connections.ToList()
                     into connections

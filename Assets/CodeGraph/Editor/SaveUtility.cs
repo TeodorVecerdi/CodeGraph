@@ -72,6 +72,7 @@ namespace CodeGraph.Editor {
             ClearGraph();
             GenerateNodes();
             ConnectNodes();
+            PostInitNodes();
         }
 
         private void ClearGraph() {
@@ -103,6 +104,10 @@ namespace CodeGraph.Editor {
                 LinkNodesTogether(sourceNode.outputContainer[connection.SourceNodeIndex].Q<Port>(),
                     targetNode.inputContainer[connection.TargetNodeIndex].Q<Port>());
             }
+        }
+        
+        private void PostInitNodes() {
+            graphView.nodes.ForEach(node => ((AbstractNode) node).Refresh());
         }
 
         private void LinkNodesTogether(Port outputSocket, Port inputSocket) {

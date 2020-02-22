@@ -99,7 +99,7 @@ namespace CodeGraph.Editor {
                 .GetAssemblies()
                 .Where(a => !a.IsDynamic)
                 .Select(a => a.Location);   
-            var parameters = new CompilerParameters {GenerateExecutable = false, IncludeDebugInformation = true};
+            var parameters = new CompilerParameters {GenerateExecutable = false, IncludeDebugInformation = true, TreatWarningsAsErrors = false, WarningLevel = 1};
             parameters.ReferencedAssemblies.AddRange(assemblies.ToArray());
             var results = provider.CompileAssemblyFromSource(parameters, code);
             var errors = new List<CompilerError>();

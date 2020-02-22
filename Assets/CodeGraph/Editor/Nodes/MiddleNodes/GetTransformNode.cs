@@ -8,7 +8,7 @@ namespace CodeGraph.Editor {
         public GetTransformNode() {
             Initialize("Get Transform", DefaultNodePosition);
             var inputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
-            inputPort.portName = "component";
+            inputPort.portName = "gameobject";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
                 if (connections.Count == 0) return $"new GameObject() /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";

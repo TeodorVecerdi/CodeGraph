@@ -73,6 +73,8 @@
      <Compile Include="Assets\GeoTetra\GTLogicGraph\Scripts\Types\Bool2.cs" />
      <Compile Include="Assets\GeoTetra\GTLogicGraph\Scripts\Types\Bool3.cs" />
      <Compile Include="Assets\GeoTetra\GTLogicGraph\Scripts\Types\Bool4.cs" />
+     <Compile Include="Assets\PlayerController.cs" />
+     <Compile Include="Assets\TargetFollow.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\GeoTetra\GTLogicGraph\Resources\Styles\Controls\ColorControlView.uss" />

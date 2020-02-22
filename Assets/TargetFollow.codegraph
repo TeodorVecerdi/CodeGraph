@@ -1,101 +1,176 @@
 {
     "AssetPath": "Assets/TargetFollow.codegraph",
     "GraphName": "TargetFollow",
-    "LastEditedAt": "02/22/2020 20:32:52",
+    "LastEditedAt": "02/23/2020 00:46:26",
     "Nodes": [
         {
-            "GUID": "63a322ad-794c-4055-b746-a4b6d3767071",
+            "GUID": "a2a19e30-bd85-4c4c-bfc4-eb4a3f19cc45",
             "NodeType": "GetPropertyNode",
             "Position": {
-                "x": 399.0,
-                "y": 161.0
+                "x": 316.0,
+                "y": 217.0
             },
-            "NodeData": "{\"PropertyName\":\"Target\"}"
+            "NodeData": "{\"PropertyName\":\"Target\",\"expanded\":true}"
         },
         {
-            "GUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
-            "NodeType": "GetPositionNode",
-            "Position": {
-                "x": 638.0,
-                "y": 76.0
-            },
-            "NodeData": ""
-        },
-        {
-            "GUID": "8b624349-2ec6-4456-b0e7-d68c0964abc4",
-            "NodeType": "UpdateEventNode",
-            "Position": {
-                "x": 266.0,
-                "y": 317.0
-            },
-            "NodeData": "{\"PortCount\":1}"
-        },
-        {
-            "GUID": "f7e49d90-8a77-4867-9929-274dbd0281cc",
+            "GUID": "aeadd7ff-d9c4-431f-9696-78470f4ac544",
             "NodeType": "CreatePropertyNode",
             "Position": {
-                "x": 266.0,
-                "y": 391.0
+                "x": 180.0,
+                "y": 216.0
             },
-            "NodeData": "{\"PropertyName\":\"Target\",\"PropertyType\":\"Transform\"}"
+            "NodeData": "{\"PropertyName\":\"Target\",\"PropertyType\":\"Transform\",\"expanded\":true}"
         },
         {
-            "GUID": "9df9ed5c-65fa-416f-812c-9a027cbc2283",
-            "NodeType": "GetTransformSelfNode",
+            "GUID": "e0c18633-70c0-4f3a-8c4c-ebf35b28f76b",
+            "NodeType": "CreatePropertyNode",
             "Position": {
-                "x": 449.0,
-                "y": 76.0
+                "x": 179.0,
+                "y": 307.0
             },
-            "NodeData": ""
+            "NodeData": "{\"PropertyName\":\"Offset\",\"PropertyType\":\"Vector3\",\"expanded\":true}"
         },
         {
-            "GUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
-            "NodeType": "SplitTransformNode",
+            "GUID": "db9377f2-89ab-4e8c-8544-71ad126a8a30",
+            "NodeType": "CompareNode",
             "Position": {
-                "x": 605.0,
-                "y": 161.0
+                "x": 515.0,
+                "y": 217.0
             },
-            "NodeData": ""
+            "NodeData": "{\"expanded\":false}"
         },
         {
-            "GUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "GUID": "50995a65-60d9-4bdd-a236-933448eabd56",
+            "NodeType": "ConditionalNode",
+            "Position": {
+                "x": 643.0,
+                "y": 144.0
+            },
+            "NodeData": "{\"expanded\":true}"
+        },
+        {
+            "GUID": "3033761e-a248-4838-9e3c-2e5bae159c5e",
             "NodeType": "AssignNode",
             "Position": {
-                "x": 865.0,
-                "y": 261.0
+                "x": 1018.0,
+                "y": 293.0
             },
-            "NodeData": ""
+            "NodeData": "{\"expanded\":true}"
+        },
+        {
+            "GUID": "beef7c13-f7b2-4e2e-86e7-2ec2f81e092d",
+            "NodeType": "SplitTransformNode",
+            "Position": {
+                "x": 558.0,
+                "y": 389.0
+            },
+            "NodeData": "{\"expanded\":false}"
+        },
+        {
+            "GUID": "2ea2fc4b-8b57-49d8-b01e-d0d0caf73d33",
+            "NodeType": "GetPropertyNode",
+            "Position": {
+                "x": 568.0,
+                "y": 460.0
+            },
+            "NodeData": "{\"PropertyName\":\"Offset\",\"expanded\":true}"
+        },
+        {
+            "GUID": "10042c61-9e7e-41a5-b7e4-3106946a5947",
+            "NodeType": "AddNode",
+            "Position": {
+                "x": 755.0,
+                "y": 389.0
+            },
+            "NodeData": "{\"expanded\":true}"
+        },
+        {
+            "GUID": "b0069dd3-5ebc-449a-897b-cfdee02501f9",
+            "NodeType": "SplitTransformNode",
+            "Position": {
+                "x": 755.0,
+                "y": 318.0
+            },
+            "NodeData": "{\"expanded\":false}"
+        },
+        {
+            "GUID": "3fe450c5-0a9a-4865-9dbd-cec733d5d5bc",
+            "NodeType": "GetTransformSelfNode",
+            "Position": {
+                "x": 597.0,
+                "y": 318.0
+            },
+            "NodeData": "{\"expanded\":true}"
+        },
+        {
+            "GUID": "e40fb188-590d-43fc-83b6-090f729374f0",
+            "NodeType": "LateUpdateEventNode",
+            "Position": {
+                "x": 180.0,
+                "y": 145.0
+            },
+            "NodeData": "{\"PortCount\":1,\"expanded\":true}"
         }
     ],
     "Edges": [
         {
-            "SourceNodeGUID": "9df9ed5c-65fa-416f-812c-9a027cbc2283",
+            "SourceNodeGUID": "a2a19e30-bd85-4c4c-bfc4-eb4a3f19cc45",
             "SourceNodeIndex": 0,
-            "TargetNodeGUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
+            "TargetNodeGUID": "db9377f2-89ab-4e8c-8544-71ad126a8a30",
             "TargetNodeIndex": 0
         },
         {
-            "SourceNodeGUID": "63a322ad-794c-4055-b746-a4b6d3767071",
+            "SourceNodeGUID": "a2a19e30-bd85-4c4c-bfc4-eb4a3f19cc45",
             "SourceNodeIndex": 0,
-            "TargetNodeGUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
+            "TargetNodeGUID": "beef7c13-f7b2-4e2e-86e7-2ec2f81e092d",
             "TargetNodeIndex": 0
         },
         {
-            "SourceNodeGUID": "f0a64ef5-e72c-442e-8899-7e689a6388f2",
+            "SourceNodeGUID": "3fe450c5-0a9a-4865-9dbd-cec733d5d5bc",
             "SourceNodeIndex": 0,
-            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeGUID": "b0069dd3-5ebc-449a-897b-cfdee02501f9",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "50995a65-60d9-4bdd-a236-933448eabd56",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "3033761e-a248-4838-9e3c-2e5bae159c5e",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "db9377f2-89ab-4e8c-8544-71ad126a8a30",
+            "SourceNodeIndex": 1,
+            "TargetNodeGUID": "50995a65-60d9-4bdd-a236-933448eabd56",
             "TargetNodeIndex": 1
         },
         {
-            "SourceNodeGUID": "6cda0a09-5f44-47cb-a7f9-0499f9181114",
+            "SourceNodeGUID": "2ea2fc4b-8b57-49d8-b01e-d0d0caf73d33",
             "SourceNodeIndex": 0,
-            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeGUID": "10042c61-9e7e-41a5-b7e4-3106946a5947",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "beef7c13-f7b2-4e2e-86e7-2ec2f81e092d",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "10042c61-9e7e-41a5-b7e4-3106946a5947",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "10042c61-9e7e-41a5-b7e4-3106946a5947",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "3033761e-a248-4838-9e3c-2e5bae159c5e",
             "TargetNodeIndex": 2
         },
         {
-            "SourceNodeGUID": "8b624349-2ec6-4456-b0e7-d68c0964abc4",
+            "SourceNodeGUID": "b0069dd3-5ebc-449a-897b-cfdee02501f9",
             "SourceNodeIndex": 0,
-            "TargetNodeGUID": "1debe135-5e0a-421f-9849-f37cc23ef2c6",
+            "TargetNodeGUID": "3033761e-a248-4838-9e3c-2e5bae159c5e",
+            "TargetNodeIndex": 1
+        },
+        {
+            "SourceNodeGUID": "e40fb188-590d-43fc-83b6-090f729374f0",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "50995a65-60d9-4bdd-a236-933448eabd56",
             "TargetNodeIndex": 0
         }
     ]

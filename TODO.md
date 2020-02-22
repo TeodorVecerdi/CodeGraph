@@ -18,19 +18,19 @@
 
 
 **Essential nodes (the incomplete list)**
-- [ ] (VERY HIGH PRIORITY) Basic Unity types
 - [ ] (HIGH PRIORITY) Function node (without params or return values): basically use an event node for defining a function, simple end node (with text input for method name) for calling
-- [ ] (HIGH PRIORITY) FixedUpdate, LateUpdate, Awake
 - [ ] (HIGH PRIORITY) Math nodes (most important)
 - [ ] (HIGH PRIORITY) Vector2 and Vector3 member nodes
 - [ ] (MEDIUM PRIORITY) Bool Value Node (requires custom InputField) (might be able to leech off of GTLogicGraph)
-- [ ] (MEDIUM PRIORITY) Camera nodes
 - [ ] (MEDIUM PRIORITY) Variables (One node for creating variables, one node for accessing)
 - [ ] (LOW PRIORITY) Trigger, Trigger2D, Collision, Collision2D events (Enter, Exit, Stay)
-- [ ] (VERY LOW PRIORITY) GetComponent node (w/ dynamic enum generation for component types)
+- [ ] (VERY LOW PRIORITY) Camera nodes
+- [ ] (VERY VERY LOW PRIORITY) GetComponent node (w/ dynamic enum generation for component types)
+- [x] (VERY HIGH PRIORITY) Basic Unity types
 - [x] (VERY HIGH PRIORITY) Conditional node
 - [x] (VERY HIGH PRIORITY) Basic C# data types
 - [x] (VERY HIGH PRIORITY) Assign node
+- [x] (HIGH PRIORITY) FixedUpdate, LateUpdate, Awake
 - [x] (HIGH PRIORITY) Time Node
 - [x] (HIGH PRIORITY) Vector2 node
 - [x] (HIGH PRIORITY) Transform nodes (position, scale, rotation)

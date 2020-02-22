@@ -40,7 +40,7 @@ namespace CodeGraph.Editor {
             this.AddStyleSheet("CodeNode");
         }
 
-        protected void Refresh() {
+        public void Refresh() {
             RefreshExpandedState();
             RefreshPorts();
         }
