@@ -1,0 +1,26 @@
+{
+    "AssetPath": "Assets/Test.codegraph",
+    "GraphName": "Test",
+    "LastEditedAt": "02/23/2020 16:06:08",
+    "Nodes": [
+        {
+            "GUID": "df0c89da-99b5-412e-9ec9-14d73579c017",
+            "NodeType": "UpdateEventNode",
+            "Position": {
+                "x": 183.0,
+                "y": 153.0
+            },
+            "NodeData": "{\"PortCount\":0,\"expanded\":true}"
+        },
+        {
+            "GUID": "1f67afdb-4f7f-4659-a8d7-218013f47441",
+            "NodeType": "GetComponentNode",
+            "Position": {
+                "x": 567.0,
+                "y": 179.0
+            },
+            "NodeData": "{\"ComponentType\":\"Animator\",\"expanded\":true}"
+        }
+    ],
+    "Edges": []
+}

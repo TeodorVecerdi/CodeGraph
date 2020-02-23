@@ -40,6 +40,7 @@
                 <e p="EventExtenderNode.cs" t="Include" />
                 <e p="FixedUpdateEventNode.cs" t="Include" />
                 <e p="LateUpdateEventNode.cs" t="Include" />
+                <e p="OtherUnityEvents.cs" t="Include" />
                 <e p="StartEventNode.cs" t="Include" />
                 <e p="UpdateEventNode.cs" t="Include" />
               </e>

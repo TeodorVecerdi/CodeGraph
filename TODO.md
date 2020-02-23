@@ -23,9 +23,9 @@
 - [ ] (HIGH PRIORITY) Vector2 and Vector3 member nodes
 - [ ] (MEDIUM PRIORITY) Bool Value Node (requires custom InputField) (might be able to leech off of GTLogicGraph)
 - [ ] (MEDIUM PRIORITY) Variables (One node for creating variables, one node for accessing)
-- [ ] (LOW PRIORITY) Trigger, Trigger2D, Collision, Collision2D events (Enter, Exit, Stay)
 - [ ] (VERY LOW PRIORITY) Camera nodes
-- [ ] (VERY VERY LOW PRIORITY) GetComponent node (w/ dynamic enum generation for component types)
+- [x] (LOW PRIORITY) All event nodes (except event nodes with parameters)
+- [x] (VERY VERY LOW PRIORITY) GetComponent node (w/ dynamic generation for component types)
 - [x] (VERY HIGH PRIORITY) Basic Unity types
 - [x] (VERY HIGH PRIORITY) Conditional node
 - [x] (VERY HIGH PRIORITY) Basic C# data types
@@ -37,3 +37,26 @@
 - [x] (HIGH PRIORITY) GetComponent node (just string input for component type and trust user ;) )
 - [x] (HIGH PRIORITY) Properties (One node for creating properties, one node for accessing)
 - [x] (VERY LOW PRIORITY) Add event splitter / extender node which just takes the event as an input and splits it into multiple ports for cleaner code
+
+**Event nodes remaining**
+- [ ] OnAnimatorIK(int layerIndex)
+- [ ] OnApplicationFocus(bool hasFocus)
+- [ ] OnApplicationPause(bool pauseStatus)
+- [ ] OnAudioFilterRead(float[] data, int channels)
+- [ ] OnCollisionEnter(Collision other)
+- [ ] OnCollisionEnter2D(Collision2D other)
+- [ ] OnCollisionExit(Collision other)
+- [ ] OnCollisionExit2D(Collision2D other)
+- [ ] OnCollisionStay(Collision other)
+- [ ] OnCollisionStay2D(Collision2D other)
+- [ ] OnControllerColliderHit(ControllerColliderHit hit)
+- [ ] OnJointBreak(float breakForce)
+- [ ] OnJointBreak2D(Joint2D brokenJoint)
+- [ ] OnParticleCollision(GameObject other)
+- [ ] OnRenderImage(RenderTexture src, RenderTexture dest)
+- [ ] OnTriggerEnter(Collider other)
+- [ ] OnTriggerEnter2D(Collider2D other)
+- [ ] OnTriggerExit(Collider other)
+- [ ] OnTriggerExit2D(Collider2D other)
+- [ ] OnTriggerStay(Collider other)
+- [ ] OnTriggerStay2D(Collider2D other)

@@ -12,6 +12,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     public class CodeGraph : EditorWindow {
+        public static CodeGraph Instance;
         private CodeGraphView graphView;
         private CodeGraphObject graphObject;
 
@@ -63,6 +64,11 @@ namespace CodeGraph.Editor {
                 AssetDatabase.ImportAsset(assetPath);
             }) {text = "Compile Graph"});
             toolbar.Add(new Button(() => Debug.Log(GenerateCode())) {text = "Print Code"});
+            toolbar.Add(new Button(() => Debug.Log(graphView.contentViewContainer.worldBound)) {text = "World Bound"});
+            // toolbar.Add(new Button(() => Debug.Log(graphView.contentViewContainer.)) {text = "Layout"});
+            // toolbar.Add(new Button(() => Debug.Log(graphView[0].worldBound)) {text = "World Bound"});
+            // toolbar.Add(new Button(() => Debug.Log(graphView[0].contentRect)) {text = "Content Rect"});
+            // toolbar.Add(new Button(() => Debug.Log(graphView[0].layout)) {text = "Layout"});
             rootVisualElement.Add(toolbar);
         }
 

@@ -78,6 +78,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\EventExtenderNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\FixedUpdateEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\LateUpdateEventNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\OtherUnityEvents.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\StartEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\UpdateEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\AddNode.cs" />

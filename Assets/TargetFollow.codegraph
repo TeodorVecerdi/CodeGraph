@@ -1,7 +1,7 @@
 {
     "AssetPath": "Assets/TargetFollow.codegraph",
     "GraphName": "TargetFollow",
-    "LastEditedAt": "02/23/2020 00:46:26",
+    "LastEditedAt": "02/23/2020 16:36:12",
     "Nodes": [
         {
             "GUID": "a2a19e30-bd85-4c4c-bfc4-eb4a3f19cc45",
@@ -58,15 +58,6 @@
             "NodeData": "{\"expanded\":true}"
         },
         {
-            "GUID": "beef7c13-f7b2-4e2e-86e7-2ec2f81e092d",
-            "NodeType": "SplitTransformNode",
-            "Position": {
-                "x": 558.0,
-                "y": 389.0
-            },
-            "NodeData": "{\"expanded\":false}"
-        },
-        {
             "GUID": "2ea2fc4b-8b57-49d8-b01e-d0d0caf73d33",
             "NodeType": "GetPropertyNode",
             "Position": {
@@ -85,24 +76,6 @@
             "NodeData": "{\"expanded\":true}"
         },
         {
-            "GUID": "b0069dd3-5ebc-449a-897b-cfdee02501f9",
-            "NodeType": "SplitTransformNode",
-            "Position": {
-                "x": 755.0,
-                "y": 318.0
-            },
-            "NodeData": "{\"expanded\":false}"
-        },
-        {
-            "GUID": "3fe450c5-0a9a-4865-9dbd-cec733d5d5bc",
-            "NodeType": "GetTransformSelfNode",
-            "Position": {
-                "x": 597.0,
-                "y": 318.0
-            },
-            "NodeData": "{\"expanded\":true}"
-        },
-        {
             "GUID": "e40fb188-590d-43fc-83b6-090f729374f0",
             "NodeType": "LateUpdateEventNode",
             "Position": {
@@ -110,6 +83,33 @@
                 "y": 145.0
             },
             "NodeData": "{\"PortCount\":1,\"expanded\":true}"
+        },
+        {
+            "GUID": "beef7c13-f7b2-4e2e-86e7-2ec2f81e092d",
+            "NodeType": "SplitTransformNode",
+            "Position": {
+                "x": 568.0,
+                "y": 387.0
+            },
+            "NodeData": "{\"expanded\":false}"
+        },
+        {
+            "GUID": "3fe450c5-0a9a-4865-9dbd-cec733d5d5bc",
+            "NodeType": "GetTransformSelfNode",
+            "Position": {
+                "x": 569.0,
+                "y": 318.0
+            },
+            "NodeData": "{\"expanded\":true}"
+        },
+        {
+            "GUID": "b0069dd3-5ebc-449a-897b-cfdee02501f9",
+            "NodeType": "SplitTransformNode",
+            "Position": {
+                "x": 756.0,
+                "y": 317.0
+            },
+            "NodeData": "{\"expanded\":false}"
         }
     ],
     "Edges": [
@@ -123,12 +123,6 @@
             "SourceNodeGUID": "a2a19e30-bd85-4c4c-bfc4-eb4a3f19cc45",
             "SourceNodeIndex": 0,
             "TargetNodeGUID": "beef7c13-f7b2-4e2e-86e7-2ec2f81e092d",
-            "TargetNodeIndex": 0
-        },
-        {
-            "SourceNodeGUID": "3fe450c5-0a9a-4865-9dbd-cec733d5d5bc",
-            "SourceNodeIndex": 0,
-            "TargetNodeGUID": "b0069dd3-5ebc-449a-897b-cfdee02501f9",
             "TargetNodeIndex": 0
         },
         {
@@ -171,6 +165,12 @@
             "SourceNodeGUID": "e40fb188-590d-43fc-83b6-090f729374f0",
             "SourceNodeIndex": 0,
             "TargetNodeGUID": "50995a65-60d9-4bdd-a236-933448eabd56",
+            "TargetNodeIndex": 0
+        },
+        {
+            "SourceNodeGUID": "3fe450c5-0a9a-4865-9dbd-cec733d5d5bc",
+            "SourceNodeIndex": 0,
+            "TargetNodeGUID": "b0069dd3-5ebc-449a-897b-cfdee02501f9",
             "TargetNodeIndex": 0
         }
     ]

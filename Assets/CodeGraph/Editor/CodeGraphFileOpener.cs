@@ -18,6 +18,7 @@ namespace CodeGraph.Editor {
             graphObject.Initialize(graph);
                 
             var window = EditorWindow.GetWindow<CodeGraph>();
+            CodeGraph.Instance = window;
             window.titleContent = new GUIContent("CodeGraph Editor", Resources.Load<Texture2D>("codegraph_256"));
             window.SetGraph(graphObject);
             window.Initialize();
