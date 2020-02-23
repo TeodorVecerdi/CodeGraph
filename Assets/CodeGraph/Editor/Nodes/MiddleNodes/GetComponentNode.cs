@@ -1,7 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UI;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
@@ -17,6 +21,25 @@ namespace CodeGraph.Editor {
             componentTypeField.RegisterValueChangedCallback(evt => ComponentType = evt.newValue);
             inputContainer.Add(componentTypeField);
 
+            var foldout = new Foldout();
+            foldout.text = "Type (click to select)";
+            List<string> components = new List<string> {"Component1", "Component2", "Component3", "Component4","Component1", "Component2", "Component3", "Component4"};
+            var listView = new ListView(components, 20, () => new Label(), (visualElement, index) => {
+                var element = (Label) visualElement;
+                element.text = components[index];
+            });
+            listView.onSelectionChanged += selection => {
+                var text = (string) selection[0];
+                ComponentType = text;
+                componentTypeField.SetValueWithoutNotify(text);
+                foldout.text = $"Type ({text})";
+                foldout.SetValueWithoutNotify(false);
+            };
+            listView.style.height = 100;
+            foldout.contentContainer.Add(listView);
+            foldout.SetValueWithoutNotify(false);
+            inputContainer.Add(foldout);
+
             var inputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
             inputPort.portName = "gameobject";
             AddInputPort(inputPort, () => {
@@ -27,7 +50,7 @@ namespace CodeGraph.Editor {
                 if (node == null) return $"new GameObject() /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
                 return node.OutputPortDictionary[output].GetCode();
             });
-            
+
             var valuePort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));
             valuePort.portName = "component";
             AddOutputPort(valuePort, () => $"{InputPortDictionary[inputPort].RequestCode()}.GetComponent<{ComponentType}>()");

@@ -1,11 +1,11 @@
 - [ ] (MEDIUM/HIGH PRIORITY) Add more essential nodes (see incomplete* list below)
 - [ ] (MEDIUM/HIGH PRIORITY) Add clear ports button to event nodes that moves connections and removes unused ports
-- [ ] (HIGH PRIORITY) Add collapsed state to node data
 - [ ] (MEDIUM PRIORITY) Change line endings in code generation to be consistent
 - [ ] (MEDIUM PRIORITY) Add examples 
 - [ ] (LOW PRIORITY) Add Undo/Redo
 - [ ] (LOW PRIORITY) Add copy/paste
 - [ ] (LOW/VERY LOW PRIORITY) Add sticky notes / comments
+- [x] (HIGH PRIORITY) Add collapsed state to node data
 - [x] (HIGH PRIORITY) Add create node menu (and title attribute to populate create node menu) (leech off of GTLogicGraph; it had a really nice implementation)
 - [x] (HIGH PRIORITY) Loading of saved graphs
 - [x] (HIGH PRIORITY) Compile generated code and give errors
