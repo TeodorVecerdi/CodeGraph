@@ -12,7 +12,7 @@ namespace CodeGraph.Editor {
             Initialize("Conditional", DefaultNodePosition);
             var branchInputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
             branchInputPort.portName = "branch";
-            branchInputPort.portColor = Color.white;
+            branchInputPort.portColor = new Color(1,1,1,0.2f);
             AddInputPort(branchInputPort, GetCode);
             var conditionInputNode = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
             conditionInputNode.portName = "condition";
@@ -26,10 +26,10 @@ namespace CodeGraph.Editor {
             });
             var trueOutputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
             trueOutputPort.portName = "true";
-            trueOutputPort.portColor = Color.white;
+            trueOutputPort.portColor = new Color(1,1,1,0.2f);
             var falseOutputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
             falseOutputPort.portName = "false";
-            falseOutputPort.portColor = Color.white;
+            falseOutputPort.portColor = new Color(1,1,1,0.2f);
             AddOutputPort(trueOutputPort, () => "");
             AddOutputPort(falseOutputPort, () => "");
             

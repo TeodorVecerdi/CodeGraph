@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -18,9 +20,29 @@ namespace CodeGraph.Editor {
         public void AddChildPort(bool incrementPortCount = true) {
             var outputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
             outputPort.portName = $"child {OutputPorts.Count + 1}";
-            outputPort.portColor = Color.white;
+            outputPort.portColor = new Color(1,1,1,0.2f);
             AddOutputPort(outputPort, () => "");
             if (incrementPortCount) PortCount++;
+            Refresh();
+        }
+        public void CleanPorts() {
+            var portsToRemove = new List<OutputPort>();
+            (from port in OutputPorts 
+                    let portConnections = port.PortReference.connections.ToList() 
+                    where portConnections.Count == 0 
+                    select port).ToList()
+                .ForEach(port => {
+                    outputContainer.Remove(port.PortReference);
+                    port.PortReference = null;
+                    portsToRemove.Add(port);
+                    PortCount--;
+                });
+            portsToRemove.ForEach(p => OutputPorts.Remove(p));
+            var i = 1;
+            OutputPorts.ForEach(port => {
+                port.PortReference.portName = $"child {i}";
+                i++;
+            });
             Refresh();
         }
 

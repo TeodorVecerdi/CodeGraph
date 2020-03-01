@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 namespace CodeGraph.Editor {
     [Title("Properties", "Create Property")]
     public class CreatePropertyNode : AbstractStartNode {
-        public string PropertyName;
-        public string PropertyType;
+        private string PropertyName = "varName";
+        private string PropertyType = "int";
 
         public CreatePropertyNode() {
             Initialize("Create Property", DefaultNodePosition);

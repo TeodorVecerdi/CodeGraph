@@ -17,7 +17,7 @@ namespace CodeGraph.Editor {
 
         public static SaveUtility GetInstance(CodeGraphView graphView) => new SaveUtility {graphView = graphView};
 
-        public CodeGraphObject Save(string fileName) {
+        public CodeGraphObject Save(string fileName, bool shouldRefreshAssets = true) {
             graphObject = ScriptableObject.CreateInstance<CodeGraphObject>();
             graphObject.Initialize(new CodeGraphData {AssetPath = fileName});
             var connectedEdges = Edges.Where(x => x.input.node != null).ToArray();
@@ -63,7 +63,7 @@ namespace CodeGraph.Editor {
             graphObject.CodeGraphData.LastEditedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
             graphObject.CodeGraphData.GraphName = graphName;
             File.WriteAllText(fileName, JsonUtility.ToJson(graphObject.CodeGraphData, true));
-            AssetDatabase.ImportAsset(fileName);
+            if(shouldRefreshAssets) AssetDatabase.ImportAsset(fileName);
             return graphObject;
         }
 

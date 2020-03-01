@@ -41,8 +41,8 @@ namespace CodeGraph.Editor {
         }
 
         public void Refresh() {
-            RefreshExpandedState();
             RefreshPorts();
+            RefreshExpandedState();
         }
 
         public virtual void SetNodeData(string jsonData) {

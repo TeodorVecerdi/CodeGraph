@@ -12,6 +12,7 @@ namespace CodeGraph.Editor {
             Initialize("OnAnimatorMove", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -54,6 +55,7 @@ namespace CodeGraph.Editor {
             Initialize("OnApplicationQuit", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -96,6 +98,7 @@ namespace CodeGraph.Editor {
             Initialize("OnBecameInvisible", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -138,6 +141,7 @@ namespace CodeGraph.Editor {
             Initialize("OnBecameVisible", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -180,6 +184,7 @@ namespace CodeGraph.Editor {
             Initialize("OnBeforeTransformParentChanged", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -222,6 +227,7 @@ namespace CodeGraph.Editor {
             Initialize("OnCanvasGroupChanged", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -264,6 +270,7 @@ namespace CodeGraph.Editor {
             Initialize("OnCanvasHierarchyChanged", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -306,6 +313,7 @@ namespace CodeGraph.Editor {
             Initialize("OnDestroy", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -348,6 +356,7 @@ namespace CodeGraph.Editor {
             Initialize("OnDidApplyAnimationProperties", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -390,6 +399,7 @@ namespace CodeGraph.Editor {
             Initialize("OnDisable", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -432,6 +442,7 @@ namespace CodeGraph.Editor {
             Initialize("OnDrawGizmos", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -474,6 +485,7 @@ namespace CodeGraph.Editor {
             Initialize("OnDrawGizmosSelected", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -516,6 +528,7 @@ namespace CodeGraph.Editor {
             Initialize("OnEnable", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -558,6 +571,7 @@ namespace CodeGraph.Editor {
             Initialize("OnGUI", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -600,6 +614,7 @@ namespace CodeGraph.Editor {
             Initialize("OnMouseDown", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -642,6 +657,7 @@ namespace CodeGraph.Editor {
             Initialize("OnMouseDrag", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -684,6 +700,7 @@ namespace CodeGraph.Editor {
             Initialize("OnMouseEnter", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -726,6 +743,7 @@ namespace CodeGraph.Editor {
             Initialize("OnMouseExit", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -768,6 +786,7 @@ namespace CodeGraph.Editor {
             Initialize("OnMouseOver", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -810,6 +829,7 @@ namespace CodeGraph.Editor {
             Initialize("OnMouseUp", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -852,6 +872,7 @@ namespace CodeGraph.Editor {
             Initialize("OnMouseUpAsButton", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -894,6 +915,7 @@ namespace CodeGraph.Editor {
             Initialize("OnParticleSystemStopped", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -936,6 +958,7 @@ namespace CodeGraph.Editor {
             Initialize("OnParticleTrigger", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -978,6 +1001,7 @@ namespace CodeGraph.Editor {
             Initialize("OnParticleUpdateJobScheduled", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1020,6 +1044,7 @@ namespace CodeGraph.Editor {
             Initialize("OnPostRender", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1062,6 +1087,7 @@ namespace CodeGraph.Editor {
             Initialize("OnPreCull", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1104,6 +1130,7 @@ namespace CodeGraph.Editor {
             Initialize("OnPreRender", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1146,6 +1173,7 @@ namespace CodeGraph.Editor {
             Initialize("OnRectTransformDimensionsChange", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1188,6 +1216,7 @@ namespace CodeGraph.Editor {
             Initialize("OnRenderObject", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1230,6 +1259,7 @@ namespace CodeGraph.Editor {
             Initialize("OnTransformChildrenChanged", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1272,6 +1302,7 @@ namespace CodeGraph.Editor {
             Initialize("OnTransformParentChanged", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1314,6 +1345,7 @@ namespace CodeGraph.Editor {
             Initialize("OnValidate", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1356,6 +1388,7 @@ namespace CodeGraph.Editor {
             Initialize("OnWillRenderObject", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -1398,6 +1431,7 @@ namespace CodeGraph.Editor {
             Initialize("Reset", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 

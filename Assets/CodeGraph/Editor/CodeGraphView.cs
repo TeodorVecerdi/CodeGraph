@@ -17,7 +17,7 @@ namespace CodeGraph.Editor {
         public CodeGraphView(CodeGraph editorWindow) {
             this.editorWindow = editorWindow;
             this.AddStyleSheet("CodeGraph");
-            SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale * 10);
+            SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
@@ -40,10 +40,10 @@ namespace CodeGraph.Editor {
                     var output = edge.output.node as AbstractNode;
                     EventExtenderNode extenderNode = null;
                     AbstractNode other = null;
-                    if (input is EventExtenderNode) {
+                    if (input is EventExtenderNode && edge.input.direction != Direction.Output) {
                         extenderNode = input as EventExtenderNode;
                         other = output;
-                    } else if (output is EventExtenderNode) {
+                    } else if (output is EventExtenderNode && edge.output.direction != Direction.Output) {
                         extenderNode = output as EventExtenderNode;
                         other = input;
                     }

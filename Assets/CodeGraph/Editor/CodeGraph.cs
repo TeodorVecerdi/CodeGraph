@@ -3,6 +3,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -13,7 +14,7 @@ using UnityEngine.UIElements;
 namespace CodeGraph.Editor {
     public class CodeGraph : EditorWindow {
         public static CodeGraph Instance;
-        private CodeGraphView graphView;
+        public CodeGraphView GraphView;
         private CodeGraphObject graphObject;
 
         [MenuItem("Graph/Code Graph")]
@@ -31,22 +32,22 @@ namespace CodeGraph.Editor {
         }
 
         public void LoadGraph() {
-            SaveUtility.GetInstance(graphView).LoadGraph(graphObject);
+            SaveUtility.GetInstance(GraphView).LoadGraph(graphObject);
         }
 
-        public void SaveGraph() {
-            var newGraphObject = SaveUtility.GetInstance(graphView).Save(graphObject.CodeGraphData.AssetPath);
+        public void SaveGraph(bool shouldRefreshAssets = true) {
+            var newGraphObject = SaveUtility.GetInstance(GraphView).Save(graphObject.CodeGraphData.AssetPath, shouldRefreshAssets);
             graphObject = newGraphObject;
         }
 
         private void ConstructGraphView() {
-            graphView = new CodeGraphView(this) {
+            GraphView = new CodeGraphView(this) {
                 name = "Code Graph"
             };
-            graphView.StretchToParentSize();
-            rootVisualElement.Add(graphView);
+            GraphView.StretchToParentSize();
+            rootVisualElement.Add(GraphView);
             if (graphObject != null) {
-                SaveUtility.GetInstance(graphView).LoadGraph(graphObject);
+                SaveUtility.GetInstance(GraphView).LoadGraph(graphObject);
             }
         }
 
@@ -54,6 +55,7 @@ namespace CodeGraph.Editor {
             var toolbar = new Toolbar();
             toolbar.Add(new Button(() => SaveGraph()) {text = "Save Graph"});
             toolbar.Add(new Button(() => {
+                SaveGraph(false);
                 var code = GenerateCode();
                 var errors = CompileCode(code);
                 if (errors.Any()) {
@@ -63,9 +65,26 @@ namespace CodeGraph.Editor {
                 var assetPath = WriteCodeToFile(code);
                 AssetDatabase.ImportAsset(assetPath);
             }) {text = "Compile Graph"});
-            toolbar.Add(new Button(() => Debug.Log(GenerateCode())) {text = "Print Code"});
-            toolbar.Add(new Button(() => Debug.Log(graphView.contentViewContainer.worldBound)) {text = "World Bound"});
-            // toolbar.Add(new Button(() => Debug.Log(graphView.contentViewContainer.)) {text = "Layout"});
+            // toolbar.Add(new Button(() => Debug.Log(GenerateCode())) {text = "Print Code"});
+            // toolbar.Add(new Button(() => Debug.Log(graphView.contentViewContainer.worldBound)) {text = "World Bound"});
+            /*
+            toolbar.Add(new Button(() => {
+                var types = new List<Type>();
+                AppDomain.CurrentDomain.GetAssemblies().ToList().ForEach(asm => types.AddRange(asm.GetTypes().Where(t => {
+                    var cond = t.IsValueType && t.BaseType != typeof(Attribute);
+                    cond &= t.IsPublic;
+                    cond &= t.IsPrimitive;
+                    cond &= !t.IsAbstract;
+                    cond &= !t.Name.Contains("<");
+                    cond &= !t.Name.Contains(">");
+                    cond &= !t.Name.Contains("`");
+                    return cond;
+                })));
+                var sb = new StringBuilder();
+                types.ForEach(t => sb.AppendLine(t.Name));
+                File.WriteAllText("AllTypes_Cond2.txt", sb.ToString());
+            }) {text = "Test"});
+            */
             // toolbar.Add(new Button(() => Debug.Log(graphView[0].worldBound)) {text = "World Bound"});
             // toolbar.Add(new Button(() => Debug.Log(graphView[0].contentRect)) {text = "Content Rect"});
             // toolbar.Add(new Button(() => Debug.Log(graphView[0].layout)) {text = "Layout"});
@@ -79,13 +98,13 @@ namespace CodeGraph.Editor {
             code.AppendLine($"using UnityEngine;\npublic class {monobehaviourName} : MonoBehaviour {{");
             
             // Property Nodes
-            foreach (var node in graphView.nodes.ToList()) {
+            foreach (var node in GraphView.nodes.ToList()) {
                 if (node is CreatePropertyNode propertyNode) {
                     code.AppendLine(propertyNode.GetCode());
                 }
             }
             // Event Nodes
-            foreach (var node in graphView.nodes.ToList()) {
+            foreach (var node in GraphView.nodes.ToList()) {
                 if (node is AbstractEventNode eventNode && eventNode.IsBaseEventNode) {
                     code.AppendLine(eventNode.GetCode());
                 }
@@ -129,7 +148,7 @@ namespace CodeGraph.Editor {
             return;
             var miniMap = new MiniMap {anchored = true};
             miniMap.SetPosition(new Rect(10, 30, 200, 140));
-            graphView.Add(miniMap);
+            GraphView.Add(miniMap);
         }
 
         private void OnEnable() {
@@ -139,7 +158,7 @@ namespace CodeGraph.Editor {
         }
 
         private void OnDisable() {
-            rootVisualElement.Remove(graphView);
+            rootVisualElement.Remove(GraphView);
         }
     }
 }

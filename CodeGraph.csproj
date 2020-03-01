@@ -73,7 +73,12 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\Abstracts\AbstractStartNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\AssignNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\ConditionalNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\CreateVariableNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\CustomCodeNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\DoNTimesNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\DoWithEachNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\PrintNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\WhileNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\AwakeEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\EventExtenderNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\FixedUpdateEventNode.cs" />
@@ -83,23 +88,31 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\UpdateEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\AddNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\CompareNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\DivideNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\GetComponentNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\GetPositionNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\GetTransformNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\InputNodes.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\MultiplyNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SplitTransformNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SplitVector2Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SplitVector3Node.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SubtractNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\Vector2Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\Vector3Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreatePropertyNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreateVector2Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreateVector3Node.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CustomCodeOutputNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\DoubleNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\FloatNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\GetComponentSelfNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\GetPropertyNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\GetTransformSelfNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\GetVariableNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\InputNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\IntNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\KeyCodeNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\MainCameraNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\StringNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\TimeNode.cs" />
@@ -315,23 +328,23 @@
  <Reference Include="Newtonsoft.Json">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
  </Reference>
- <Reference Include="ICSharpCode.NRefactory">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
- </Reference>
  <Reference Include="GitHub.Api.45">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll</HintPath>
+ </Reference>
+ <Reference Include="GitHub.Logging">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.Unity.45">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
  </Reference>
- <Reference Include="sfw.net">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
- </Reference>
  <Reference Include="GitHub.UnityShim">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
  </Reference>
- <Reference Include="GitHub.Logging">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
+ <Reference Include="sfw.net">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

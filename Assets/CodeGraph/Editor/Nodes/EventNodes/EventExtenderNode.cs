@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
@@ -17,9 +18,10 @@ namespace CodeGraph.Editor {
             Initialize("EXTENDER (none)", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
+            titleButtonContainer.Add(new Button(() => CleanPorts()) {text = "Clean Ports"});
             var eventPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
             eventPort.portName = "branch";
-            eventPort.portColor = Color.white;
+            eventPort.portColor = new Color(1,1,1,0.2f);
             AddInputPort(eventPort, () => "");
             Refresh();
         }

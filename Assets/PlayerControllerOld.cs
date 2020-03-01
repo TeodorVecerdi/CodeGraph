@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerControllerOld : MonoBehaviour {
     public float Speed = 5f;
-    void Update() {
+    private void Update() {
         transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f) * (Speed * Time.deltaTime);
     }
-    
-    
 }

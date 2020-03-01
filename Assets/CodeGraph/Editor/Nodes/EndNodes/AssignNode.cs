@@ -11,7 +11,7 @@ namespace CodeGraph.Editor {
             Initialize("Assign", DefaultNodePosition);
             var eventInputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
             eventInputPort.portName = "branch";
-            eventInputPort.portColor = Color.white;
+            eventInputPort.portColor = new Color(1,1,1,0.2f);
             AddInputPort(eventInputPort, GetCode);
             
             var lhsPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));

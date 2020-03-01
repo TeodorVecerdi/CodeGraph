@@ -19,3 +19,14 @@
     border-right-color: deepskyblue !important;
     border-bottom-color: lawngreen !important;
 }
+
+.experimental-warning {
+    background-color: gold;
+    -unity-font-style: bold;   
+}
+.experimental-warning > TextElement {
+    color: red;
+    font-size: 12;
+    padding: 6px;
+    overflow: scroll;
+}

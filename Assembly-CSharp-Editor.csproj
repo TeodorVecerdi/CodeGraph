@@ -347,23 +347,23 @@
  <Reference Include="Newtonsoft.Json">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
  </Reference>
- <Reference Include="ICSharpCode.NRefactory">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
- </Reference>
  <Reference Include="GitHub.Api.45">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll</HintPath>
+ </Reference>
+ <Reference Include="GitHub.Logging">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.Unity.45">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
  </Reference>
- <Reference Include="sfw.net">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
- </Reference>
  <Reference Include="GitHub.UnityShim">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
  </Reference>
- <Reference Include="GitHub.Logging">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
+ <Reference Include="sfw.net">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
