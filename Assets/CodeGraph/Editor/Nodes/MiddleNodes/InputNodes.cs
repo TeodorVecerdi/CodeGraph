@@ -24,6 +24,12 @@ namespace CodeGraph.Editor {
             AddOutputPort(outputPort, () => $"Input.GetAxis({InputPorts[0].RequestCode()})");
             Refresh();
         }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position = new Rect(nodePosition, DefaultNodeSize);
+            position.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<StringNode>(position, 0, 0, this);
+        }
     }
 
     [Title("Input", "GetAxisRaw")]
@@ -46,6 +52,12 @@ namespace CodeGraph.Editor {
             outputPort.portName = "float";
             AddOutputPort(outputPort, () => $"Input.GetAxisRaw({InputPorts[0].RequestCode()})");
             Refresh();
+        }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position = new Rect(nodePosition, DefaultNodeSize);
+            position.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<StringNode>(position, 0, 0, this);
         }
     }
 
@@ -70,6 +82,12 @@ namespace CodeGraph.Editor {
             AddOutputPort(outputPort, () => $"Input.GetButton({InputPorts[0].RequestCode()})");
             Refresh();
         }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position = new Rect(nodePosition, DefaultNodeSize);
+            position.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<StringNode>(position, 0, 0, this);
+        }
     }
 
     [Title("Input", "GetButtonDown")]
@@ -92,6 +110,12 @@ namespace CodeGraph.Editor {
             outputPort.portName = "bool";
             AddOutputPort(outputPort, () => $"Input.GetButtonDown({InputPorts[0].RequestCode()})");
             Refresh();
+        }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position = new Rect(nodePosition, DefaultNodeSize);
+            position.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<StringNode>(position, 0, 0, this);
         }
     }
 
@@ -116,6 +140,12 @@ namespace CodeGraph.Editor {
             AddOutputPort(outputPort, () => $"Input.GetButtonUp({InputPorts[0].RequestCode()})");
             Refresh();
         }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position = new Rect(nodePosition, DefaultNodeSize);
+            position.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<StringNode>(position, 0, 0, this);
+        }
     }
 
     [Title("Input", "GetMouseButton")]
@@ -138,6 +168,12 @@ namespace CodeGraph.Editor {
             outputPort.portName = "bool";
             AddOutputPort(outputPort, () => $"Input.GetMouseButton({InputPorts[0].RequestCode()})");
             Refresh();
+        }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position = new Rect(nodePosition, DefaultNodeSize);
+            position.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<IntNode>(position, 0, 0, this);
         }
     }
 
@@ -162,6 +198,12 @@ namespace CodeGraph.Editor {
             AddOutputPort(outputPort, () => $"Input.GetMouseButtonDown({InputPorts[0].RequestCode()})");
             Refresh();
         }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position = new Rect(nodePosition, DefaultNodeSize);
+            position.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<IntNode>(position, 0, 0, this);
+        }
     }
 
     [Title("Input", "GetMouseButtonUp")]
@@ -184,6 +226,12 @@ namespace CodeGraph.Editor {
             outputPort.portName = "bool";
             AddOutputPort(outputPort, () => $"Input.GetMouseButtonUp({InputPorts[0].RequestCode()})");
             Refresh();
+        }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position = new Rect(nodePosition, DefaultNodeSize);
+            position.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<IntNode>(position, 0, 0, this);
         }
     }
 
@@ -208,6 +256,12 @@ namespace CodeGraph.Editor {
             AddOutputPort(outputPort, () => $"Input.GetKey({InputPorts[0].RequestCode()})");
             Refresh();
         }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var keyNodePos = new Rect(nodePosition, DefaultNodeSize);
+            keyNodePos.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<KeyCodeNode>(keyNodePos, 0, 0, this);
+        }
     }
 
     [Title("Input", "GetKeyUp")]
@@ -231,7 +285,12 @@ namespace CodeGraph.Editor {
             AddOutputPort(outputPort, () => $"Input.GetKeyUp({InputPorts[0].RequestCode()})");
             Refresh();
         }
-        
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var keyNodePos = new Rect(nodePosition, DefaultNodeSize);
+            keyNodePos.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<KeyCodeNode>(keyNodePos, 0, 0, this);
+        }
     }
 
     [Title("Input", "GetKeyDown")]
@@ -254,6 +313,12 @@ namespace CodeGraph.Editor {
             outputPort.portName = "bool";
             AddOutputPort(outputPort, () => $"Input.GetKeyDown({InputPorts[0].RequestCode()})");
             Refresh();
+        }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var keyNodePos = new Rect(nodePosition, DefaultNodeSize);
+            keyNodePos.center += new Vector2(-DefaultNodeSize.x / 1.5f, 0);
+            CreateAndConnectNode<KeyCodeNode>(keyNodePos, 0, 0, this);
         }
     }
 }

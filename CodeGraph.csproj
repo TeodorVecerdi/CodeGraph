@@ -65,7 +65,8 @@
      <Compile Include="Assets\CodeGraph\Editor\CreateCodeGraph.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\SafeCodeExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\VisualElementExtensions.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\Interfaces\IGeneratesCode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\GroupData.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Interfaces\IGroupItem.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\Abstracts\AbstractEndNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\Abstracts\AbstractEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\Abstracts\AbstractMiddleNode.cs" />
@@ -77,6 +78,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\CustomCodeNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\DoNTimesNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\DoWithEachNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\InstantiateNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\PrintNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\WhileNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\AwakeEventNode.cs" />
@@ -94,12 +96,16 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\GetTransformNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\InputNodes.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\MultiplyNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\QuaternionEulerNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\QuaternionGetEulerAnglesNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\QuaternionNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SplitTransformNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SplitVector2Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SplitVector3Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\SubtractNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\Vector2Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\MiddleNodes\Vector3Node.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\BoolNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreatePropertyNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreateVector2Node.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\CreateVector3Node.cs" />
@@ -114,6 +120,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\IntNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\KeyCodeNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\MainCameraNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\QuaternionIdentityNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\StringNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\StartNodes\TimeNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Ports\InputPort.cs" />

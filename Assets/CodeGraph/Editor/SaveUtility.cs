@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -53,6 +54,7 @@ namespace CodeGraph.Editor {
                     GUID = node.GUID,
                     NodeType = node.GetType().Name,
                     Position = node.GetPosition().position,
+                    GroupGUID = node.GroupGuid.ToString(),
                     NodeData = node.GetNodeData()
                 });
             }
@@ -87,6 +89,7 @@ namespace CodeGraph.Editor {
                 var type = Type.GetType("CodeGraph.Editor." + serializedNode.NodeType);
                 var tempNode = (AbstractNode) Activator.CreateInstance(type);
                 tempNode.GUID = serializedNode.GUID;
+                tempNode.GroupGuid = new Guid(serializedNode.GroupGUID);
                 tempNode.SetNodeData(serializedNode.NodeData);
                 tempNode.SetPosition(new Rect(serializedNode.Position, AbstractNode.DefaultNodeSize));
                 

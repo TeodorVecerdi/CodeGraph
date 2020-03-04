@@ -161,7 +161,9 @@ namespace CodeGraph.Editor {
             var windowMousePosition = editorWindow.rootVisualElement.ChangeCoordinatesTo(editorWindow.rootVisualElement.parent, context.screenMousePosition - editorWindow.position.position);
             var graphMousePosition = graphView.contentViewContainer.WorldToLocal(windowMousePosition);
 
-            node.SetPosition(new Rect(new Vector2(graphMousePosition.x, graphMousePosition.y), AbstractNode.DefaultNodeSize));
+            var nodePosition = new Vector2(graphMousePosition.x, graphMousePosition.y);
+            node.SetPosition(new Rect(nodePosition, AbstractNode.DefaultNodeSize));
+            node.OnCreateFromSearchWindow(nodePosition);
             graphView.AddElement(node);
             return true;
         }

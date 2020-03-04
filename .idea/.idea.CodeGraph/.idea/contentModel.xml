@@ -20,8 +20,9 @@
               <e p="SafeCodeExtensions.cs" t="Include" />
               <e p="VisualElementExtensions.cs" t="Include" />
             </e>
+            <e p="GroupData.cs" t="Include" />
             <e p="Interfaces" t="Include">
-              <e p="IGeneratesCode.cs" t="Include" />
+              <e p="IGroupItem.cs" t="Include" />
             </e>
             <e p="Nodes" t="Include">
               <e p="Abstracts" t="Include">
@@ -38,6 +39,7 @@
                 <e p="CustomCodeNode.cs" t="Include" />
                 <e p="DoNTimesNode.cs" t="Include" />
                 <e p="DoWithEachNode.cs" t="Include" />
+                <e p="InstantiateNode.cs" t="Include" />
                 <e p="PrintNode.cs" t="Include" />
                 <e p="WhileNode.cs" t="Include" />
               </e>
@@ -59,6 +61,9 @@
                 <e p="GetTransformNode.cs" t="Include" />
                 <e p="InputNodes.cs" t="Include" />
                 <e p="MultiplyNode.cs" t="Include" />
+                <e p="QuaternionEulerNode.cs" t="Include" />
+                <e p="QuaternionGetEulerAnglesNode.cs" t="Include" />
+                <e p="QuaternionNode.cs" t="Include" />
                 <e p="SplitTransformNode.cs" t="Include" />
                 <e p="SplitVector2Node.cs" t="Include" />
                 <e p="SplitVector3Node.cs" t="Include" />
@@ -67,6 +72,7 @@
                 <e p="Vector3Node.cs" t="Include" />
               </e>
               <e p="StartNodes" t="Include">
+                <e p="BoolNode.cs" t="Include" />
                 <e p="CreatePropertyNode.cs" t="Include" />
                 <e p="CreateVector2Node.cs" t="Include" />
                 <e p="CreateVector3Node.cs" t="Include" />
@@ -81,6 +87,7 @@
                 <e p="IntNode.cs" t="Include" />
                 <e p="KeyCodeNode.cs" t="Include" />
                 <e p="MainCameraNode.cs" t="Include" />
+                <e p="QuaternionIdentityNode.cs" t="Include" />
                 <e p="StringNode.cs" t="Include" />
                 <e p="TimeNode.cs" t="Include" />
               </e>

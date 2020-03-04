@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Title("Basic", "Compare")]
@@ -46,6 +47,15 @@ namespace CodeGraph.Editor {
             AddOutputPort(lessEqualOutputPort, () => $"{InputPortDictionary[firstInputPort].RequestCode()} is IComparable first_le_{GUID.ToSafeGUID()} && {InputPortDictionary[secondInputPort].RequestCode()} is IComparable second_le_{GUID.ToSafeGUID()} && first_le_{GUID.ToSafeGUID()}.CompareTo(second_le_{GUID.ToSafeGUID()}) <= 0");
             AddOutputPort(greaterEqualOutputPort, () =>$"{InputPortDictionary[firstInputPort].RequestCode()} is IComparable first_ge_{GUID.ToSafeGUID()} && {InputPortDictionary[secondInputPort].RequestCode()} is IComparable second_ge_{GUID.ToSafeGUID()} && first_ge_{GUID.ToSafeGUID()}.CompareTo(second_ge_{GUID.ToSafeGUID()}) >= 0");
             Refresh();
+        }
+        
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var position1 = new Rect(nodePosition, DefaultNodeSize);
+            position1.center += new Vector2(-DefaultNodeSize.x/1.5f, -25f);
+            var position2 = new Rect(nodePosition, DefaultNodeSize);
+            position2.center += new Vector2(-DefaultNodeSize.x/1.5f, 50f);
+            CreateAndConnectNode<BoolNode>(position1, 0, 0, this);
+            CreateAndConnectNode<BoolNode>(position2, 0, 1, this);
         }
     }
 }

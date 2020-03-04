@@ -3,10 +3,10 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
-    [Title("Vector3", "Vector3")]
-    public class Vector3Node : AbstractMiddleNode {
-        public Vector3Node() {
-            Initialize("Vector3", DefaultNodePosition);
+    [Title("Quaternion", "Quaternion Euler")]
+    public class QuaternionEulerNode : AbstractMiddleNode {
+        public QuaternionEulerNode() {
+            Initialize("Quaternion Euler", DefaultNodePosition);
             var xInputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
             xInputPort.portName = "x";
             var yInputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
@@ -38,8 +38,8 @@ namespace CodeGraph.Editor {
                 return node.OutputPortDictionary[output].GetCode();
             });
             var vector3OutputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));
-            vector3OutputPort.portName = "(3)";
-            AddOutputPort(vector3OutputPort, () => $"new Vector3({InputPorts[0].RequestCode()},{InputPorts[1].RequestCode()},{InputPorts[2].RequestCode()})");
+            vector3OutputPort.portName = "Q";
+            AddOutputPort(vector3OutputPort, () => $"Quaternion.Euler({InputPorts[0].RequestCode()},{InputPorts[1].RequestCode()},{InputPorts[2].RequestCode()})");
             Refresh();
         }
         

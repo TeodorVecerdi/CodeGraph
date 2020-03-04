@@ -13,7 +13,6 @@ namespace CodeGraph.Editor {
     public class EventExtenderNode : AbstractEventNode {
         public string SourceTitle = "none";
         public EventExtenderNode() {
-            capabilities |= Capabilities.Deletable;
             IsBaseEventNode = false;
             Initialize("EXTENDER (none)", DefaultNodePosition);
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});

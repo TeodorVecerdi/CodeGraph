@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -26,11 +27,11 @@ namespace CodeGraph.Editor {
             var grid = new GridBackground();
             Insert(0, grid);
             grid.StretchToParentSize();
-            
+
             searchWindowProvider = ScriptableObject.CreateInstance<SearchWindowProvider>();
             searchWindowProvider.Initialize(this.editorWindow, this);
             nodeCreationRequest = c => SearchWindow.Open(new SearchWindowContext(c.screenMousePosition), searchWindowProvider);
-            graphViewChanged += OnGraphViewChanged; 
+            graphViewChanged += OnGraphViewChanged;
         }
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange) {
@@ -47,6 +48,7 @@ namespace CodeGraph.Editor {
                         extenderNode = output as EventExtenderNode;
                         other = input;
                     }
+
                     if (extenderNode != null) {
                         extenderNode.UpdateSourceTitle(other.title);
                     }
@@ -59,10 +61,67 @@ namespace CodeGraph.Editor {
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) {
             var compatiblePorts = new List<Port>();
             ports.ForEach(port => {
-                if (startPort != port && startPort.node != port.node && port.direction != startPort.direction) 
+                if (startPort != port && startPort.node != port.node && port.direction != startPort.direction)
                     compatiblePorts.Add(port);
             });
             return compatiblePorts;
+        }
+
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt) {
+            Vector2 mousePosition = evt.mousePosition;
+            base.BuildContextualMenu(evt);
+            
+            /*if (evt.target is GraphView) {
+                evt.menu.InsertAction(1, "Create Sticky Note", e => AddStickyNote(mousePosition));
+            }*/
+
+            if (evt.target is GraphView || evt.target is Node) {
+                evt.menu.AppendAction("Group Selection", GroupSelection, (a) => {
+                    var filteredSelection = new List<ISelectable>();
+                    foreach (ISelectable selectedObject in selection) {
+                        if (selectedObject is Group)
+                            return DropdownMenuAction.Status.Disabled;
+                        var visualElement = selectedObject as AbstractNode;
+                        filteredSelection.Add(visualElement);
+                    }
+
+                    return filteredSelection.Count > 0 ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled;
+                });
+
+                evt.menu.AppendAction("Ungroup Selection", RemoveFromGroupNode, (a) => {
+                    var filteredSelection = new List<ISelectable>();
+                    foreach (ISelectable selectedObject in selection) {
+                        if (selectedObject is Group)
+                            return DropdownMenuAction.Status.Disabled;
+                        var visualElement = selectedObject as AbstractNode;
+                        if (visualElement.GetContainingScope() is Group)
+                            filteredSelection.Add(selectedObject);
+                    }
+
+                    return filteredSelection.Count > 0 ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled;
+                });
+            }
+        }
+
+        private void GroupSelection(DropdownMenuAction action) {
+            var title = "New Group";
+            var groupData = new GroupData(title, new Vector2(10f, 10f));
+            editorWindow.GraphObject.CodeGraphData.CreateGroup(groupData);
+            foreach (var node in selection.OfType<AbstractNode>()) {
+                editorWindow.GraphObject.CodeGraphData.SetGroup(node, groupData);
+            }
+        }
+
+        private void RemoveFromGroupNode(DropdownMenuAction action) {
+            foreach (var selectable in selection) {
+                var node = selectable as Node;
+                if (node == null)
+                    continue;
+
+                if (node.GetContainingScope() is Group group) {
+                    group.RemoveElement(node);
+                }
+            }
         }
 
         /*public CodeNode CreateNode(string nodeName, int inputPorts = 1, int outputPorts = 1) {

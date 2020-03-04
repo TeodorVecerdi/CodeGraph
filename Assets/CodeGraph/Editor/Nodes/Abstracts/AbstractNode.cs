@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
-    public abstract class AbstractNode : Node {
+    public abstract class AbstractNode : Node, IGroupItem {
         public static readonly Vector2 DefaultNodeSize = new Vector2(200, 150);
         protected static readonly Rect DefaultNodePosition = new Rect(Vector2.zero, DefaultNodeSize);
 
@@ -55,5 +55,24 @@ namespace CodeGraph.Editor {
             root["expanded"] = base.expanded;
             return root.ToString(Formatting.None);
         }
+
+        public virtual void OnCreateFromSearchWindow(Vector2 nodePosition) {}
+        
+        protected static T CreateAndConnectNode<T>(Rect position, int outputIndex, int inputIndex, AbstractNode parent) where T : AbstractNode, new() {
+            var node = new T();
+            node.SetPosition(position);
+            CodeGraph.Instance.GraphView.AddElement(node);
+            var edge = new Edge {
+                output = node.OutputPorts[outputIndex].PortReference,
+                input = parent.InputPorts[inputIndex].PortReference
+            };
+            edge.input.Connect(edge);
+            edge.output.Connect(edge);
+            CodeGraph.Instance.GraphView.Add(edge);
+            node.Refresh();
+            return node;
+        }
+
+        public Guid GroupGuid { get; set; }
     }
 }

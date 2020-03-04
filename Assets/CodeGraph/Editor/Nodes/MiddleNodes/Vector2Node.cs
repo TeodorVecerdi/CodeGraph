@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Title("Vector2", "Vector2")]
@@ -30,6 +31,15 @@ namespace CodeGraph.Editor {
             vector3OutputPort.portName = "(2)";
             AddOutputPort(vector3OutputPort, () => $"new Vector2({InputPorts[0].RequestCode()},{InputPorts[1].RequestCode()})");
             Refresh();
+        }
+
+        public override void OnCreateFromSearchWindow(Vector2 nodePosition) {
+            var floatNode1Position = new Rect(nodePosition, DefaultNodeSize);
+            floatNode1Position.center += new Vector2(-DefaultNodeSize.x/1.5f, -25f);
+            var floatNode2Position = new Rect(nodePosition, DefaultNodeSize);
+            floatNode2Position.center += new Vector2(-DefaultNodeSize.x/1.5f, 50f);
+            CreateAndConnectNode<FloatNode>(floatNode1Position, 0, 0, this);
+            CreateAndConnectNode<FloatNode>(floatNode2Position, 0, 1, this);
         }
     }
 }
