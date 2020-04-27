@@ -17,6 +17,7 @@
             <e p="CodeGraphView.cs" t="Include" />
             <e p="CreateCodeGraph.cs" t="Include" />
             <e p="Extensions" t="Include">
+              <e p="GraphViewExtensions.cs" t="Include" />
               <e p="SafeCodeExtensions.cs" t="Include" />
               <e p="VisualElementExtensions.cs" t="Include" />
             </e>
@@ -107,12 +108,19 @@
           <e p="Runtime" t="Include">
             <e p="CodeGraphData.cs" t="Include" />
             <e p="CodeGraphObject.cs" t="Include" />
+            <e p="CopyPasteGraphData.cs" t="Include" />
+            <e p="SerializationHelper.cs" t="Include" />
             <e p="SerializedEdge.cs" t="Include" />
             <e p="SerializedNode.cs" t="Include" />
             <e p="Types" t="Include">
               <e p="AnyType.cs" t="Include" />
               <e p="EventType.cs" t="Include" />
               <e p="Vector1.cs" t="Include" />
+            </e>
+            <e p="Util" t="Include">
+              <e p="ListPool.cs" t="Include" />
+              <e p="ObjectPool.cs" t="Include" />
+              <e p="PooledObject.cs" t="Include" />
             </e>
           </e>
         </e>

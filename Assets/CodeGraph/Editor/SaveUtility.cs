@@ -52,14 +52,8 @@ namespace CodeGraph.Editor {
 
         private void GenerateNodes() {
             var deserializedNodes = SerializationHelper.DeserializeNodes(graphObject.CodeGraphData.Nodes);
-            deserializedNodes.ForEach(node => {
-                if (node is AbstractEventNode eventNode) {
-                    for (var i = 0; i < eventNode.PortCount; i++) {
-                        eventNode.AddChildPort(false);
-                    }
-                }
-                graphView.AddElement(node);
-            });
+            // deserializedNodes.ForEach(node => Debug.Log($"SaveUtility::GenerateNodes node pos: {node.worldBound.position}"));
+            deserializedNodes.ForEach(graphView.AddElement);
         }
 
         private void ConnectNodes() {

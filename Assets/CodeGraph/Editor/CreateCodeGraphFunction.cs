@@ -4,11 +4,11 @@ using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
-    public class CreateCodeGraph : EndNameEditAction {
-        [MenuItem ("Assets/Create/Empty Code Graph", false, 0)]
-        public static void CreateEmptyCodeGraph () {
+    public class CreateCodeGraphFunction : EndNameEditAction {
+        [MenuItem ("Assets/Create/Empty Code Graph Function", false, 0)]
+        public static void CreateEmptyCodeGraphFunction () {
             ProjectWindowUtil.StartNameEditingIfProjectWindowExists (0, CreateInstance<CreateCodeGraph> (),
-                "New Code Graph.codegraph", Resources.Load<Texture2D> ("codegraph_256"), null);
+                "New Code Graph Function.codegraphfunction", Resources.Load<Texture2D> ("codegraph_256"), null);
         }
 
         public override void Action (int instanceId, string pathName, string resourceFile) {

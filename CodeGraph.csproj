@@ -60,9 +60,13 @@
   <ItemGroup>
      <Compile Include="Assets\CodeGraph\Editor\CodeGraph.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CodeGraphFileOpener.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\CodeGraphFunctionFileOpener.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\CodeGraphFunctionImporter.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CodeGraphImporter.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CodeGraphView.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CreateCodeGraph.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\CreateCodeGraphFunction.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Extensions\GraphViewExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\SafeCodeExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\VisualElementExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\GroupData.cs" />
@@ -130,18 +134,23 @@
      <Compile Include="Assets\CodeGraph\Editor\TitleAttribute.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\CodeGraphData.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\CodeGraphObject.cs" />
+     <Compile Include="Assets\CodeGraph\Runtime\CopyPasteGraphData.cs" />
+     <Compile Include="Assets\CodeGraph\Runtime\SerializationHelper.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\SerializedEdge.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\SerializedNode.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\Types\AnyType.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\Types\EventType.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\Types\Vector1.cs" />
+     <Compile Include="Assets\CodeGraph\Runtime\Util\ListPool.cs" />
+     <Compile Include="Assets\CodeGraph\Runtime\Util\ObjectPool.cs" />
+     <Compile Include="Assets\CodeGraph\Runtime\Util\PooledObject.cs" />
      <None Include="Assets\CodeGraph\Resources\CodeGraph.uss" />
      <None Include="Assets\CodeGraph\Resources\CodeNode.uss" />
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -329,29 +338,32 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.WebGL.Extensions">
+ <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.LinuxStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Assets/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.Api.45">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.Logging">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.Unity.45">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.UnityShim">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
  </Reference>
  <Reference Include="sfw.net">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.NRefactory">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/Unity/CodeGraph/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

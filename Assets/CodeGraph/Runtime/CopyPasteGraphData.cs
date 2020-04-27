@@ -15,9 +15,15 @@ namespace CodeGraph {
         [SerializeField] private List<SerializedNode> serializedNodes = new List<SerializedNode>();
         [SerializeField] private List<SerializedEdge> serializedEdges = new List<SerializedEdge>();
 
+        public string SourceGraphGUID => sourceGraphGUID;
+        public HashSet<AbstractNode> Nodes => nodes;
+        public HashSet<Edge> Edges => edges;
+
         public CopyPasteGraphData(string sourceGraphGUID, List<AbstractNode> nodes, List<Edge> edges) {
             this.sourceGraphGUID = sourceGraphGUID;
+            nodes.ForEach(node => Debug.Log($"pos: {node.GetPosition().position}; layout: {node.layout.position}"));
             nodes.ForEach(AddNode);
+            edges.ForEach(AddEdge);
             nodes.ForEach(node => GetEdgesForNode(node).ForEach(AddEdge));
         }
 
@@ -26,23 +32,28 @@ namespace CodeGraph {
         }
 
         public void AddEdge(Edge edge) {
-            edges.Add(edge);
+            if(Nodes.Contains(edge.input.node) && Nodes.Contains(edge.output.node))
+                edges.Add(edge);
         }
 
         public void OnBeforeSerialize() {
             serializedNodes = SerializationHelper.SerializeNodes(nodes.ToList());
+            serializedNodes.ForEach(node => Debug.Log($"pos: {node.Position}"));
             serializedEdges = SerializationHelper.SerializeEdges(edges.ToList());
         }
 
         public void OnAfterDeserialize() {
             var deserializedNodes = SerializationHelper.DeserializeNodes(serializedNodes);
-            nodes.Clear();
+            nodes = new HashSet<AbstractNode>();
             foreach (var node in deserializedNodes)
                 nodes.Add(node);
             serializedNodes = null;
+            
+            nodes.ToList().ForEach(node => Debug.Log($"pos: {node.GetPosition().position}"));
+
 
             var deserializedEdges = SerializationHelper.DeserializeAndLinkEdges(serializedEdges, nodes.ToList());
-            edges.Clear();
+            edges = new HashSet<Edge>();
             foreach (var edge in deserializedEdges)
                 edges.Add(edge);
             serializedEdges = null;

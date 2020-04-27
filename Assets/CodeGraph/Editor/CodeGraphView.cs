@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -32,6 +33,40 @@ namespace CodeGraph.Editor {
             searchWindowProvider.Initialize(this.editorWindow, this);
             nodeCreationRequest = c => SearchWindow.Open(new SearchWindowContext(c.screenMousePosition), searchWindowProvider);
             graphViewChanged += OnGraphViewChanged;
+            serializeGraphElements += elements => {
+                Debug.Log($"Tried to copy: {elements.Count()}");
+                return string.Empty;
+            };
+            serializeGraphElements = SerializeGraphElementsImplementation;
+            // canPasteSerializedData = CanPasteSerializedDataImplementation;
+            unserializeAndPaste = UnserializeAndPasteImplementation;
+            // deleteSelection = DeleteSelectionImplementation;
+        }
+
+        private void UnserializeAndPasteImplementation(string operationName, string data) {
+            Undo.RegisterCompleteObjectUndo(CodeGraph.Instance.GraphObject, operationName);
+            var pastedGraph = CopyPasteGraphData.FromJson(data);
+            this.InsertCopyPasteGraph(pastedGraph);
+        }
+
+        private string SerializeGraphElementsImplementation(IEnumerable<GraphElement> elements) {
+            // var groups = elements.OfType<ShaderGroup>().Select(x => x.userData);
+            var nodes = elements.OfType<AbstractNode>().ToList();
+            var edges = elements.OfType<Edge>().ToList();
+            
+            // var inputs = selection.OfType<BlackboardField>().Select(x => x.userData as ShaderInput);
+            // var notes = enumerable.OfType<StickyNote>().Select(x => x.userData);
+
+            // Collect the property nodes and get the corresponding properties
+            // var propertyNodeGuids = nodes.OfType<PropertyNode>().Select(x => x.propertyGuid);
+            // var metaProperties = this.graph.properties.Where(x => propertyNodeGuids.Contains(x.guid));
+
+            // Collect the keyword nodes and get the corresponding keywords
+            // var keywordNodeGuids = nodes.OfType<KeywordNode>().Select(x => x.keywordGuid);
+            // var metaKeywords = this.graph.keywords.Where(x => keywordNodeGuids.Contains(x.guid));
+            var assetGUID = AssetDatabase.AssetPathToGUID(CodeGraph.Instance.GraphObject.CodeGraphData.AssetPath);
+            var graph = new CopyPasteGraphData(assetGUID, nodes, edges);
+            return JsonUtility.ToJson(graph, true);
         }
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange) {
@@ -70,7 +105,7 @@ namespace CodeGraph.Editor {
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt) {
             Vector2 mousePosition = evt.mousePosition;
             base.BuildContextualMenu(evt);
-            
+
             /*if (evt.target is GraphView) {
                 evt.menu.InsertAction(1, "Create Sticky Note", e => AddStickyNote(mousePosition));
             }*/
@@ -123,31 +158,5 @@ namespace CodeGraph.Editor {
                 }
             }
         }
-
-        /*public CodeNode CreateNode(string nodeName, int inputPorts = 1, int outputPorts = 1) {
-            var node = new CodeNode {
-                title = nodeName,
-                GUID = Guid.NewGuid().ToString()
-            };
-            node.AddStyleSheet("CodeNode");
-            for (var i = 0; i < inputPorts; i++) {
-                var port = node.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
-                port.portName = $"Input {i + 1}";
-                port.portColor = Random.ColorHSV();
-                node.inputContainer.Add(port);
-            }
-
-            for (var i = 0; i < outputPorts; i++) {
-                var port = node.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
-                port.portName = $"Output {i + 1}";
-                port.portColor = Random.ColorHSV();
-                node.outputContainer.Add(port);
-            }
-
-            node.RefreshExpandedState();
-            node.RefreshPorts();
-            node.SetPosition(new Rect(Vector2.zero, DefaultNodeSize));
-            return node;
-        }*/
     }
 }

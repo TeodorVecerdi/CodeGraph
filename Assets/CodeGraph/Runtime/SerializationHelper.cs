@@ -32,11 +32,10 @@ namespace CodeGraph {
             deserializedNode.GroupGuid = string.IsNullOrEmpty(serializedNode.GroupGUID) ? Guid.Empty : new Guid(serializedNode.GroupGUID);
             deserializedNode.SetNodeData(serializedNode.NodeData);
             deserializedNode.SetPosition(new Rect(serializedNode.Position, AbstractNode.DefaultNodeSize));
-                
             if (deserializedNode is AbstractEventNode eventNode) {
                 for (var i = 0; i < eventNode.PortCount; i++) eventNode.AddChildPort(false);
             }
-
+            deserializedNode.Refresh();
             return deserializedNode;
         }
 
@@ -93,7 +92,7 @@ namespace CodeGraph {
             return deserializedEdges;
         }
         
-        private static Edge LinkNodesTogether(Port outputSocket, Port inputSocket) {
+        public static Edge LinkNodesTogether(Port outputSocket, Port inputSocket) {
             var edge = new Edge {
                 output = outputSocket,
                 input = inputSocket
