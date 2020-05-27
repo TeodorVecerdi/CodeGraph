@@ -1,3 +1,6 @@
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/16a46e07a1254d60a36ce9f8555f54bb)](https://app.codacy.com/manual/TeodorVecerdi/CodeGraph?utm_source=github.com&utm_medium=referral&utm_content=TeodorVecerdi/CodeGraph&utm_campaign=Badge_Grade_Dashboard)
+
 <p align="center">
 <img alt="CodeGraph Banner" src="/img/readme_banner.jpg" width=920>  
 </p>
