@@ -63,6 +63,8 @@ namespace CodeGraph.Editor {
                     if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(AbstractNode))) {
                         var attrs = type.GetCustomAttributes(typeof(TitleAttribute), false) as TitleAttribute[];
                         if (attrs != null && attrs.Length > 0) {
+                            var nodeAttr = type.GetCustomAttribute<NodeAttribute>();
+                            if(nodeAttr == null || (editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnMonoBehaviourGraph) || (!editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnClassGraph)) continue;
                             var node = (AbstractNode) Activator.CreateInstance(type);
                             AddEntries(node, attrs[0].title, nodeEntries);
                         }
