@@ -80,6 +80,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\DoWithEachNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\InstantiateNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\PrintNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\ReturnNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\WhileNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\AwakeEventNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EventNodes\EventExtenderNode.cs" />
