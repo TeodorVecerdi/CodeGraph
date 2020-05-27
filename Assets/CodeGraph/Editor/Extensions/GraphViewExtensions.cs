@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
@@ -49,13 +47,15 @@ namespace CodeGraph.Editor {
 
             // Add new elements to selection
             graphView.ClearSelection();
-            graphView.graphElements.ForEach(element => {
+            copyGraph.Edges.ToList().ForEach(graphView.AddToSelection);
+            remappedNodes.ForEach(graphView.AddToSelection);
+            /*graphView.graphElements.ForEach(element => {
                 if (element is Edge edge && copyGraph.Edges.Contains(edge))
                     graphView.AddToSelection(edge);
 
                 if (element is AbstractNode nodeView && remappedNodes.Contains(nodeView))
                     graphView.AddToSelection(nodeView);
-            });
+            });*/
         }
     }
 }
