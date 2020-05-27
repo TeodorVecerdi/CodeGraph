@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Debug", "Print")]
     public class PrintNode : AbstractEndNode {
         public PrintNode() {

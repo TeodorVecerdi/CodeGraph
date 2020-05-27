@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(false, true)]
     [Title("Events", "Start Event")]
     public class StartEventNode : AbstractEventNode {
         public StartEventNode() {

@@ -5,6 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Experimental", "Custom Code Output")]
     public class CustomCodeOutputNode : AbstractStartNode {
         public string CustomCode;

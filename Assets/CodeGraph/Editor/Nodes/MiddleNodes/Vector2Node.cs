@@ -3,6 +3,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Vector2", "Vector2")]
     public class Vector2Node : AbstractMiddleNode {
         public Vector2Node() {

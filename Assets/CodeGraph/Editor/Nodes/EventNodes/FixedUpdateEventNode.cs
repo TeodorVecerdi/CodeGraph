@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(false, true)]
     [Title("Events", "Fixed Update Event")]
     public class FixedUpdateEventNode : AbstractEventNode {
         public FixedUpdateEventNode() {

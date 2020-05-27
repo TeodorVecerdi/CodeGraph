@@ -7,7 +7,7 @@ namespace CodeGraph.Editor {
     public class CreateCodeGraphFunction : EndNameEditAction {
         [MenuItem ("Assets/Create/Empty Code Graph Function", false, 0)]
         public static void CreateEmptyCodeGraphFunction () {
-            ProjectWindowUtil.StartNameEditingIfProjectWindowExists (0, CreateInstance<CreateCodeGraphMonoBehaviour> (),
+            ProjectWindowUtil.StartNameEditingIfProjectWindowExists (0, CreateInstance<CreateCodeGraphFunction> (),
                 "New Code Graph Function.codegraphfunction", Resources.Load<Texture2D> ("codegraph_256"), null);
         }
 

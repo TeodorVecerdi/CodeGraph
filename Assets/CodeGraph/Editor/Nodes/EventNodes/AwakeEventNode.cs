@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(false, true)]
     [Title("Events", "Awake Event")]
     public class AwakeEventNode : AbstractEventNode {
         public AwakeEventNode() {

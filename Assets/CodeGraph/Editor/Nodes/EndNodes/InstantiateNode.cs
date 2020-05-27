@@ -4,6 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
+    [Node(false, true)]
     [Title("Basic", "Instantiate")]
     public class InstantiateNode : AbstractEndNode {
         public InstantiateNode() {

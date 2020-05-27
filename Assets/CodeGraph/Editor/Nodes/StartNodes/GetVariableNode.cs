@@ -4,6 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "Get Variable")]
     public class GetVariableNode : AbstractStartNode {
         private string VariableName = "varName";

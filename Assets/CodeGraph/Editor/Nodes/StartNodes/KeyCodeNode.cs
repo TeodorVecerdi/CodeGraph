@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Input", "KeyCode")]
     public class KeyCodeNode : AbstractStartNode {
         private string KeyCode;

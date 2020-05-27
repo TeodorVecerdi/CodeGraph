@@ -5,6 +5,7 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "Boolean Input")]
     public class BoolNode : AbstractStartNode {
         private bool value;

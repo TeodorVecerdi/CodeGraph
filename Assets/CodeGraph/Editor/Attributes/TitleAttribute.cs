@@ -1,7 +1,7 @@
 using System;
 
 namespace CodeGraph.Editor {
-    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Event | AttributeTargets.Parameter | AttributeTargets.ReturnValue)]
+    [AttributeUsage( AttributeTargets.Class)]
     public class TitleAttribute : Attribute {
         public string[] title;
 

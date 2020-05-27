@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Properties", "Create Property")]
     public class CreatePropertyNode : AbstractStartNode {
         private string PropertyName = "varName";

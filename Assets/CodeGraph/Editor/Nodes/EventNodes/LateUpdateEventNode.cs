@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(false, true)]
     [Title("Events", "Late Update Event")]
     public class LateUpdateEventNode : AbstractEventNode {
         public LateUpdateEventNode() {

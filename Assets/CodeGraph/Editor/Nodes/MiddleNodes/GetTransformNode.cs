@@ -3,6 +3,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("General", "Get Transform")]
     public class GetTransformNode : AbstractMiddleNode{
         public GetTransformNode() {

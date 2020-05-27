@@ -13,6 +13,7 @@ using UnityEngine.UIElements;
 using PopupWindow = UnityEngine.UIElements.PopupWindow;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("General", "Get Component")]
     public class GetComponentNode : AbstractMiddleNode {
         private string ComponentType;

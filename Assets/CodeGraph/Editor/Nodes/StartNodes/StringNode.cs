@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "String Input")]
     public class StringNode : AbstractStartNode {
         private string value;

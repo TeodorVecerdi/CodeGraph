@@ -2,6 +2,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "Time")]
     public class TimeNode : AbstractStartNode {
         public TimeNode() {

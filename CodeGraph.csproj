@@ -51,6 +51,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\CodeGraph\Editor\Attributes\NodeAttribute.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Attributes\TitleAttribute.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CodeGraph.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CodeGraphView.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\GraphViewExtensions.cs" />
@@ -125,7 +127,6 @@
      <Compile Include="Assets\CodeGraph\Editor\Ports\OutputPort.cs" />
      <Compile Include="Assets\CodeGraph\Editor\SaveUtility.cs" />
      <Compile Include="Assets\CodeGraph\Editor\SearchWindowProvider.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\TitleAttribute.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\CodeGraphData.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\CodeGraphObject.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\CopyPasteGraphData.cs" />

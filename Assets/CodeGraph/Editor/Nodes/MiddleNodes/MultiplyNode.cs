@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "Math", "Multiply")]
     public class MultiplyNode : AbstractMiddleNode {
         public MultiplyNode() {

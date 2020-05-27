@@ -22,7 +22,7 @@ namespace CodeGraph.Editor {
         }
 
         public static string ToSafeGUID(this string guid) {
-            return guid.Replace("-", "");
+            return guid.Replace("-", "_");
         }
     }
 }

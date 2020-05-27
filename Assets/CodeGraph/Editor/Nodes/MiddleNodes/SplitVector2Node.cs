@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Vector2", "Split Vector2")]
     public class SplitVector2Node : AbstractMiddleNode {
         public SplitVector2Node() {

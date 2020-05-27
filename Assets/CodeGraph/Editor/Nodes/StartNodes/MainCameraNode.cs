@@ -1,6 +1,7 @@
 using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Camera", "Main Camera")]
     public class MainCameraNode : AbstractStartNode {
         public MainCameraNode() {

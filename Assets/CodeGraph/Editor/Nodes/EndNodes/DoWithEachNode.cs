@@ -4,6 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "Do With Each")]
     public class DoWithEachNode : AbstractEndNode {
         public DoWithEachNode() {

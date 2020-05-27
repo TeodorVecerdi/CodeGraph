@@ -3,6 +3,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Input", "GetAxis")]
     public class GetAxisNode : AbstractMiddleNode {
         public GetAxisNode() {
@@ -32,6 +33,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetAxisRaw")]
     public class GetAxisRawNode : AbstractMiddleNode {
         public GetAxisRawNode() {
@@ -61,6 +63,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetButton")]
     public class GetButtonNode : AbstractMiddleNode {
         public GetButtonNode() {
@@ -90,6 +93,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetButtonDown")]
     public class GetButtonDownNode : AbstractMiddleNode {
         public GetButtonDownNode() {
@@ -119,6 +123,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetButtonUp")]
     public class GetButtonUpNode : AbstractMiddleNode {
         public GetButtonUpNode() {
@@ -148,6 +153,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetMouseButton")]
     public class GetMouseButtonNode : AbstractMiddleNode {
         public GetMouseButtonNode() {
@@ -177,6 +183,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetMouseButtonDown")]
     public class GetMouseButtonDownNode : AbstractMiddleNode {
         public GetMouseButtonDownNode() {
@@ -206,6 +213,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetMouseButtonUp")]
     public class GetMouseButtonUpNode : AbstractMiddleNode {
         public GetMouseButtonUpNode() {
@@ -235,6 +243,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetKey")]
     public class GetKeyNode : AbstractMiddleNode {
         public GetKeyNode() {
@@ -264,6 +273,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetKeyUp")]
     public class GetKeyUpNode : AbstractMiddleNode {
         public GetKeyUpNode() {
@@ -293,6 +303,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(true, true)]
     [Title("Input", "GetKeyDown")]
     public class GetKeyDownNode : AbstractMiddleNode {
         public GetKeyDownNode() {

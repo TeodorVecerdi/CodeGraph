@@ -2,6 +2,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Input", "Input")]
     public class InputNode : AbstractStartNode {
         public InputNode() {

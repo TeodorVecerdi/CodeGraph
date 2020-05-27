@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Experimental", "Custom Code")]
     public class CustomCodeNode : AbstractEndNode {
         public string CustomCode = "";

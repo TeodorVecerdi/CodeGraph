@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Events", "Event Extender")]
     public class EventExtenderNode : AbstractEventNode {
         public string SourceTitle = "none";

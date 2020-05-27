@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(false, true)]
     [Title("General", "Get Component (Self)")]
     public class GetComponentSelfNode : AbstractStartNode {
         private string ComponentType;

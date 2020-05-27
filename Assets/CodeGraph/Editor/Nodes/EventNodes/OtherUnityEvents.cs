@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(false, true)]
     [Title("Events", "OnAnimatorMove Event")]
     public class OnAnimatorMoveEventNode : AbstractEventNode {
         public OnAnimatorMoveEventNode() {
@@ -49,6 +50,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnApplicationQuit Event")]
     public class OnApplicationQuitEventNode : AbstractEventNode {
         public OnApplicationQuitEventNode() {
@@ -92,6 +94,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnBecameInvisible Event")]
     public class OnBecameInvisibleEventNode : AbstractEventNode {
         public OnBecameInvisibleEventNode() {
@@ -135,6 +138,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnBecameVisible Event")]
     public class OnBecameVisibleEventNode : AbstractEventNode {
         public OnBecameVisibleEventNode() {
@@ -178,6 +182,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnBeforeTransformParentChanged Event")]
     public class OnBeforeTransformParentChangedEventNode : AbstractEventNode {
         public OnBeforeTransformParentChangedEventNode() {
@@ -221,6 +226,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnCanvasGroupChanged Event")]
     public class OnCanvasGroupChangedEventNode : AbstractEventNode {
         public OnCanvasGroupChangedEventNode() {
@@ -264,6 +270,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnCanvasHierarchyChanged Event")]
     public class OnCanvasHierarchyChangedEventNode : AbstractEventNode {
         public OnCanvasHierarchyChangedEventNode() {
@@ -307,6 +314,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnDestroy Event")]
     public class OnDestroyEventNode : AbstractEventNode {
         public OnDestroyEventNode() {
@@ -350,6 +358,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnDidApplyAnimationProperties Event")]
     public class OnDidApplyAnimationPropertiesEventNode : AbstractEventNode {
         public OnDidApplyAnimationPropertiesEventNode() {
@@ -393,6 +402,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnDisable Event")]
     public class OnDisableEventNode : AbstractEventNode {
         public OnDisableEventNode() {
@@ -436,6 +446,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnDrawGizmos Event")]
     public class OnDrawGizmosEventNode : AbstractEventNode {
         public OnDrawGizmosEventNode() {
@@ -479,6 +490,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnDrawGizmosSelected Event")]
     public class OnDrawGizmosSelectedEventNode : AbstractEventNode {
         public OnDrawGizmosSelectedEventNode() {
@@ -522,6 +534,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnEnable Event")]
     public class OnEnableEventNode : AbstractEventNode {
         public OnEnableEventNode() {
@@ -565,6 +578,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnGUI Event")]
     public class OnGUIEventNode : AbstractEventNode {
         public OnGUIEventNode() {
@@ -608,6 +622,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnMouseDown Event")]
     public class OnMouseDownEventNode : AbstractEventNode {
         public OnMouseDownEventNode() {
@@ -651,6 +666,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnMouseDrag Event")]
     public class OnMouseDragEventNode : AbstractEventNode {
         public OnMouseDragEventNode() {
@@ -694,6 +710,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnMouseEnter Event")]
     public class OnMouseEnterEventNode : AbstractEventNode {
         public OnMouseEnterEventNode() {
@@ -737,6 +754,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnMouseExit Event")]
     public class OnMouseExitEventNode : AbstractEventNode {
         public OnMouseExitEventNode() {
@@ -780,6 +798,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnMouseOver Event")]
     public class OnMouseOverEventNode : AbstractEventNode {
         public OnMouseOverEventNode() {
@@ -823,6 +842,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnMouseUp Event")]
     public class OnMouseUpEventNode : AbstractEventNode {
         public OnMouseUpEventNode() {
@@ -866,6 +886,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnMouseUpAsButton Event")]
     public class OnMouseUpAsButtonEventNode : AbstractEventNode {
         public OnMouseUpAsButtonEventNode() {
@@ -909,6 +930,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnParticleSystemStopped Event")]
     public class OnParticleSystemStoppedEventNode : AbstractEventNode {
         public OnParticleSystemStoppedEventNode() {
@@ -952,6 +974,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnParticleTrigger Event")]
     public class OnParticleTriggerEventNode : AbstractEventNode {
         public OnParticleTriggerEventNode() {
@@ -995,6 +1018,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnParticleUpdateJobScheduled Event")]
     public class OnParticleUpdateJobScheduledEventNode : AbstractEventNode {
         public OnParticleUpdateJobScheduledEventNode() {
@@ -1038,6 +1062,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnPostRender Event")]
     public class OnPostRenderEventNode : AbstractEventNode {
         public OnPostRenderEventNode() {
@@ -1081,6 +1106,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnPreCull Event")]
     public class OnPreCullEventNode : AbstractEventNode {
         public OnPreCullEventNode() {
@@ -1124,6 +1150,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnPreRender Event")]
     public class OnPreRenderEventNode : AbstractEventNode {
         public OnPreRenderEventNode() {
@@ -1167,6 +1194,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnRectTransformDimensionsChange Event")]
     public class OnRectTransformDimensionsChangeEventNode : AbstractEventNode {
         public OnRectTransformDimensionsChangeEventNode() {
@@ -1210,6 +1238,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnRenderObject Event")]
     public class OnRenderObjectEventNode : AbstractEventNode {
         public OnRenderObjectEventNode() {
@@ -1253,6 +1282,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnTransformChildrenChanged Event")]
     public class OnTransformChildrenChangedEventNode : AbstractEventNode {
         public OnTransformChildrenChangedEventNode() {
@@ -1296,6 +1326,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnTransformParentChanged Event")]
     public class OnTransformParentChangedEventNode : AbstractEventNode {
         public OnTransformParentChangedEventNode() {
@@ -1339,6 +1370,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnValidate Event")]
     public class OnValidateEventNode : AbstractEventNode {
         public OnValidateEventNode() {
@@ -1382,6 +1414,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "OnWillRenderObject Event")]
     public class OnWillRenderObjectEventNode : AbstractEventNode {
         public OnWillRenderObjectEventNode() {
@@ -1425,6 +1458,7 @@ namespace CodeGraph.Editor {
         }
     }
 
+    [Node(false, true)]
     [Title("Events", "Reset Event")]
     public class ResetEventNode : AbstractEventNode {
         public ResetEventNode() {

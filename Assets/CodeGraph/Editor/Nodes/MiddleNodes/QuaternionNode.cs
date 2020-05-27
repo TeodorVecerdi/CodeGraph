@@ -3,6 +3,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Quaternion", "Quaternion")]
     public class QuaternionNode : AbstractMiddleNode {
         public QuaternionNode() {

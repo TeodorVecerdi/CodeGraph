@@ -1,6 +1,7 @@
 using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
+    [Node(false, true)]
     [Title("General", "Get Transform (Self)")]
     public class GetTransformSelfNode : AbstractStartNode {
         public GetTransformSelfNode() {

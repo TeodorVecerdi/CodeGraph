@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "Create Variable")]
     public class CreateVariableNode : AbstractEndNode {
         private string VariableName = "varName";

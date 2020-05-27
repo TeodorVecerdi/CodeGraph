@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "Math", "Divide")]
     public class DivideNode : AbstractMiddleNode {
         public DivideNode() {

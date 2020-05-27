@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    [Node(true, true)]
     [Title("Basic", "Assign")]
     public class AssignNode : AbstractEndNode{
         public AssignNode() {
