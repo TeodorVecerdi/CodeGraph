@@ -62,6 +62,10 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.codegraph
+*.codegraph.meta
 *.codegraphfunction
+*.codegraphfunction.meta
+
+AllTypes*.txt
 
 .idea/
