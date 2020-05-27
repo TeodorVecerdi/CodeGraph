@@ -12,7 +12,8 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F800680B-E545-84A3-B3D3-D19CE4531125}</ProjectGuid>
+    <ProjectGuid>{0b6800f8-45e5-a384-b3d3-d19ce4531125}</ProjectGuid>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>CodeGraph</AssemblyName>
@@ -24,11 +25,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <OutputPath>Temp\Bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;UNITY_2019_3_2;UNITY_2019_3;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+    <NoWarn></NoWarn>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -38,7 +39,7 @@
     <OutputPath>Temp\bin\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+    <NoWarn></NoWarn>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -50,26 +51,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2019.3.2f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2019.3.2f1\Editor\Data\Managed/UnityEditor.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
      <Compile Include="Assets\CodeGraph\Editor\CodeGraph.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\CodeGraphFileOpener.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\CodeGraphFunctionFileOpener.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\CodeGraphFunctionImporter.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\CodeGraphImporter.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CodeGraphView.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\CreateCodeGraph.cs" />
-     <Compile Include="Assets\CodeGraph\Editor\CreateCodeGraphFunction.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\GraphViewExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\SafeCodeExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\VisualElementExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\GroupData.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\IO\CodeGraphFileOpener.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\IO\CodeGraphFunctionFileOpener.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\IO\CodeGraphFunctionImporter.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\IO\CodeGraphImporter.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\IO\CreateCodeGraphFunction.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\IO\CreateCodeGraphMonoBehaviour.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\IO\CreateCodeGraphStandard.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Interfaces\IGroupItem.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\Abstracts\AbstractEndNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\Abstracts\AbstractEventNode.cs" />
@@ -146,11 +140,8 @@
      <Compile Include="Assets\CodeGraph\Runtime\Util\PooledObject.cs" />
      <None Include="Assets\CodeGraph\Resources\CodeGraph.uss" />
      <None Include="Assets\CodeGraph\Resources\CodeNode.uss" />
- <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <Reference Include="UnityEngine">
+ <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -328,6 +319,9 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor">
+ <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.VR">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
@@ -719,9 +713,17 @@
  <Reference Include="Boo.Lang">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

@@ -16,9 +16,13 @@ namespace CodeGraph.Editor {
             var graph = JsonUtility.FromJson<CodeGraphData> (textGraph);
             var graphObject = ScriptableObject.CreateInstance<CodeGraphObject> ();
             graphObject.Initialize (graph);
-
-            var window = EditorWindow.GetWindow<CodeGraph> ();
-            CodeGraph.Instance = window;
+            
+            CodeGraph window;
+            if (CodeGraph.Instance == null) {
+                window = EditorWindow.GetWindow<CodeGraph>();
+                CodeGraph.Instance = window;
+            } else window = CodeGraph.Instance;
+            
             window.titleContent = new GUIContent ("CodeGraph Editor", Resources.Load<Texture2D> ("codegraph_256"));
             window.SetGraph (graphObject);
             window.Initialize ();

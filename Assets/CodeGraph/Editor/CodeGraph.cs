@@ -20,6 +20,7 @@ namespace CodeGraph.Editor {
         [MenuItem("Graph/Code Graph")]
         public static void CreateGraphViewWindow() {
             var window = GetWindow<CodeGraph>();
+            Instance = window;
             window.titleContent = new GUIContent("CodeGraph Editor", Resources.Load<Texture2D>("codegraph_256"));
         }
 
