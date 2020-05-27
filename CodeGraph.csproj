@@ -132,12 +132,6 @@
      <Compile Include="Assets\CodeGraph\Runtime\SerializationHelper.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\SerializedEdge.cs" />
      <Compile Include="Assets\CodeGraph\Runtime\SerializedNode.cs" />
-     <Compile Include="Assets\CodeGraph\Runtime\Types\AnyType.cs" />
-     <Compile Include="Assets\CodeGraph\Runtime\Types\EventType.cs" />
-     <Compile Include="Assets\CodeGraph\Runtime\Types\Vector1.cs" />
-     <Compile Include="Assets\CodeGraph\Runtime\Util\ListPool.cs" />
-     <Compile Include="Assets\CodeGraph\Runtime\Util\ObjectPool.cs" />
-     <Compile Include="Assets\CodeGraph\Runtime\Util\PooledObject.cs" />
      <None Include="Assets\CodeGraph\Resources\CodeGraph.uss" />
      <None Include="Assets\CodeGraph\Resources\CodeNode.uss" />
  <Reference Include="UnityEngine">
