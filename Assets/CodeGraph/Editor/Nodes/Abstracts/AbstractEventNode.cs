@@ -29,8 +29,8 @@ namespace CodeGraph.Editor {
 
         public void AddChildPort(bool incrementPortCount = true) {
             var outputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
-            outputPort.name = $"EventPort {OutputPorts.Count + 1}";
-            outputPort.portName = $"child {OutputPorts.Count + 1}";
+            outputPort.name = $"EventPort {EventPorts.Count + 1}";
+            outputPort.portName = $"child {EventPorts.Count + 1}";
             outputPort.portColor = new Color(1, 1, 1, 0.2f);
 
             // AddOutputPort(outputPort, () => "");
