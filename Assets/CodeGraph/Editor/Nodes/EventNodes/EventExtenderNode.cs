@@ -28,7 +28,6 @@ namespace CodeGraph.Editor {
         
         public override string GetNodeData() {
             var root = new JObject();
-            root["PortCount"] = PortCount;
             root["SourceTitle"] = SourceTitle;
             root.Merge(JObject.Parse(base.GetNodeData()));
             return root.ToString(Formatting.None);
@@ -37,20 +36,13 @@ namespace CodeGraph.Editor {
         public override void SetNodeData(string jsonData) {
             base.SetNodeData(jsonData);
             var root = JObject.Parse(jsonData);
-            PortCount = root.Value<int>("PortCount");
             SourceTitle = root.Value<string>("SourceTitle");
             UpdateSourceTitle(SourceTitle);
         }
 
         public override string GetCode() {
             var code = new StringBuilder();
-            (from outputPort in OutputPorts
-                    select outputPort.PortReference.connections.ToList()
-                    into connections
-                    where connections.Count != 0
-                    select connections[0].input.node)
-                .OfType<AbstractEndNode>().ToList()
-                .ForEach(node => code.AppendLine(node.GetCode()));
+            code.AppendLine(GetEventCode());
             return code.ToString();
         }
         
