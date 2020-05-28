@@ -63,6 +63,8 @@ namespace CodeGraph.Editor {
             OutputPortDictionary.Remove(port.PortReference);
             
             port.PortReference = null;
+            FixPortNames();
+            Refresh();
         }
 
         public void CleanPorts() {
@@ -82,12 +84,16 @@ namespace CodeGraph.Editor {
                 OutputPortDictionary.Remove(p.PortReference);
                 p.PortReference = null;
             });
+            FixPortNames();
+            Refresh();
+        }
+
+        private void FixPortNames() {
             var i = 1;
             EventPorts.ForEach(port => {
                 port.PortReference.portName = $"child {i}";
                 i++;
             });
-            Refresh();
         }
 
         public string GetEventCode() {
