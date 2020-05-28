@@ -137,6 +137,7 @@
      <Compile Include="Assets\CodeGraph\Runtime\SerializedNode.cs" />
      <None Include="Assets\CodeGraph\Resources\CodeGraph.uss" />
      <None Include="Assets\CodeGraph\Resources\CodeNode.uss" />
+     <None Include="Assets\CodeGraph\Resources\CreateMethodNode.uss" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

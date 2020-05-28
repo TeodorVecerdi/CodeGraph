@@ -7,12 +7,14 @@
     border-right-color: deepskyblue !important;
     border-bottom-color: lawngreen !important;
 }
+
 :hover > #selection-border {
     border-left-color: darkorange !important;
     border-top-color: deeppink !important;
     border-right-color: deepskyblue !important;
     border-bottom-color: lawngreen !important;
 }
+
 :hover:selected > #selection-border {
     border-left-color: darkorange !important;
     border-top-color: deeppink !important;
@@ -22,8 +24,9 @@
 
 .experimental-warning {
     background-color: gold;
-    -unity-font-style: bold;   
+    -unity-font-style: bold;
 }
+
 .experimental-warning > TextElement {
     color: red;
     font-size: 12;
