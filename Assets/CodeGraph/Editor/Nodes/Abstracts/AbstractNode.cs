@@ -19,18 +19,18 @@ namespace CodeGraph.Editor {
         public Dictionary<Port, OutputPort> OutputPortDictionary = new Dictionary<Port, OutputPort>();
         protected string GetDebugData => $"//BEGIN_NODE_GUID/{GUID}/END_NODE_GUID";
 
-        protected void AddInputPort(Port portReference, Func<string> requestCode) {
+        protected void AddInputPort(Port portReference, Func<string> requestCode, bool alsoAddToHierarchy = true) {
             var inputPort = new InputPort(this, portReference, requestCode);
             InputPorts.Add(inputPort);
             InputPortDictionary.Add(portReference, inputPort);
-            inputContainer.Add(portReference);
+            if(alsoAddToHierarchy) inputContainer.Add(portReference);
         }
 
-        protected void AddOutputPort(Port portReference, Func<string> getCode) {
+        protected void AddOutputPort(Port portReference, Func<string> getCode, bool alsoAddToHierarchy = true) {
             var outputPort = new OutputPort(this, portReference, getCode); 
             OutputPorts.Add(outputPort);
             OutputPortDictionary.Add(portReference, outputPort);
-            outputContainer.Add(portReference);
+            if(alsoAddToHierarchy) outputContainer.Add(portReference);
         }
 
         protected void Initialize(string nodeTitle, Rect position) {
