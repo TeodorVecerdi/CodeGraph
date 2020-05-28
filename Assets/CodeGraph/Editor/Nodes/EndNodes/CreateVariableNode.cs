@@ -9,7 +9,7 @@ namespace CodeGraph.Editor {
     [Title("Basic", "Create Variable")]
     public class CreateVariableNode : AbstractEndNode {
         private string VariableName = "varName";
-        private string VariableType = "int";
+        private string VariableType = "dynamic";
 
         public CreateVariableNode() {
             Initialize("Create Variable", DefaultNodePosition);
@@ -19,7 +19,7 @@ namespace CodeGraph.Editor {
             eventInputPort.portColor = new Color(1,1,1,0.2f);
             AddInputPort(eventInputPort, GetCode);
             
-            var variableType = new TextField {label = "Type:", value = "int"};
+            var variableType = new TextField {label = "Type:", value = "dynamic"};
             variableType.labelElement.style.minWidth = 0;
             variableType.name = "variableType";
             variableType.RegisterValueChangedCallback(evt => VariableType = evt.newValue);
