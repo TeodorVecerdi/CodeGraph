@@ -24,12 +24,12 @@ namespace CodeGraph.Editor {
             var connectedEdges = Edges.Where(x => x.input.node != null).ToList();
             graphObject.CodeGraphData.Edges.AddRange(SerializationHelper.SerializeEdges(connectedEdges));
             graphObject.CodeGraphData.Nodes.AddRange(SerializationHelper.SerializeNodes(Nodes));
-
-            var startIndex = fileName.LastIndexOf('/');
-            var endIndex = fileName.LastIndexOf('.');
-            var graphName = fileName.Substring(startIndex + 1, endIndex - startIndex - 1);
+            
             graphObject.CodeGraphData.LastEditedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
-            graphObject.CodeGraphData.GraphName = graphName;
+            graphObject.CodeGraphData.GraphName = CodeGraph.Instance.GraphObject.CodeGraphData.GraphName;
+            graphObject.CodeGraphData.SchemaVersion = CodeGraph.Instance.GraphObject.CodeGraphData.SchemaVersion;
+            graphObject.CodeGraphData.IsMonoBehaviour = CodeGraph.Instance.GraphObject.CodeGraphData.IsMonoBehaviour;
+            
             File.WriteAllText(fileName, JsonUtility.ToJson(graphObject.CodeGraphData, true));
             if(shouldRefreshAssets) AssetDatabase.ImportAsset(fileName);
             return graphObject;
