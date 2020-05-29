@@ -60,10 +60,11 @@ namespace CodeGraph.Editor {
                 SaveGraph(false);
                 var code = GenerateCode();
                 var errors = CompileCode(code);
-                if (errors.Any()) {
-                    errors.ForEach(error=>Debug.LogError($"Error {error.ErrorNumber} => \"{error.ErrorText} at line number {error.Line}\"\r\n"));
+                if (errors.Count > 0) {
+                    errors.ForEach(error => Debug.LogError($"Error {error.ErrorNumber} => \"{error.ErrorText} at line number {error.Line}\"\r\n"));
                     return;
                 }
+
                 var assetPath = WriteCodeToFile(code);
                 AssetDatabase.ImportAsset(assetPath);
             }) {text = "Compile Graph"});
@@ -75,19 +76,23 @@ namespace CodeGraph.Editor {
             monobehaviourName = monobehaviourName.Replace(" ", "");
             var code = new StringBuilder();
             code.AppendLine($"using UnityEngine;\npublic class {monobehaviourName} : MonoBehaviour {{");
-            
+            var allNodes = GraphView.nodes.ToList();
+
             // Property Nodes
-            foreach (var node in GraphView.nodes.ToList()) {
-                if (node is CreatePropertyNode propertyNode) {
-                    code.AppendLine(propertyNode.GetCode());
-                }
+            foreach (var node in allNodes.OfType<CreatePropertyNode>()) {
+                code.AppendLine(node.GetCode());
             }
+
             // Event Nodes
-            foreach (var node in GraphView.nodes.ToList()) {
-                if (node is AbstractEventNode eventNode && eventNode.IsBaseEventNode) {
-                    code.AppendLine(eventNode.GetCode());
-                }
+            foreach (var node in allNodes.OfType<AbstractEventNode>().Where(node => node.IsBaseEventNode)) {
+                code.AppendLine(node.GetCode());
             }
+            
+            // CreateMethod Nodes
+            foreach (var node in allNodes.OfType<CreateMethodNode>()) {
+                code.AppendLine(node.GetCode());
+            }
+
             code.Append("}");
             return code.ToString();
         }
@@ -97,7 +102,7 @@ namespace CodeGraph.Editor {
             var assemblies = AppDomain.CurrentDomain
                 .GetAssemblies()
                 .Where(a => !a.IsDynamic)
-                .Select(a => a.Location);   
+                .Select(a => a.Location);
             var parameters = new CompilerParameters {GenerateExecutable = false, IncludeDebugInformation = true, TreatWarningsAsErrors = false, WarningLevel = 1};
             parameters.ReferencedAssemblies.AddRange(assemblies.ToArray());
             var results = provider.CompileAssemblyFromSource(parameters, code);
@@ -107,16 +112,15 @@ namespace CodeGraph.Editor {
             errors.AddRange(results.Errors.Cast<CompilerError>());
             return errors;
         }
-        
+
         private string WriteCodeToFile(string code) {
             var graphPath = GraphObject.CodeGraphData.AssetPath;
             var graphFileIndex = graphPath.LastIndexOf("/", StringComparison.Ordinal);
-            var graphPath2 = graphPath.Substring(0, graphFileIndex+1);
+            var graphPath2 = graphPath.Substring(0, graphFileIndex + 1);
             var assetPath = graphPath2 + GraphObject.CodeGraphData.GraphName.Replace(" ", "") + ".cs";
             File.WriteAllText(assetPath, code);
             return assetPath;
         }
-        
 
         private void GenerateMiniMap() {
             return;
