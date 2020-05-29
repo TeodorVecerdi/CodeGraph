@@ -1,13 +1,16 @@
-/**/
-
 #method-name-input {
     background-color: rgba(63, 63, 63, 0.8);
     /*background-color: rgba(0.247, 0.247, 0.247, 0.804*255);      */
 }
 
-#horizontal-divider {
+.horizontal-divider {
     background-color: rgba(35, 35, 35, 0.8);
     border-color: rgba(35, 35, 35, 0.8);
     height: 0.01px;
     border-bottom-width: 1px;
+}
+
+.horizontal-divider.dark {
+    background-color: rgba(70, 70, 70, 0.8);
+    border-color: rgba(70, 70, 70, 0.8);
 }

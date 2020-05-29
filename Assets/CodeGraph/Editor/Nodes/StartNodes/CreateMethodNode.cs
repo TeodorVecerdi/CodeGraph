@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using GitHub.Unity;
 using Newtonsoft.Json;
@@ -33,24 +34,17 @@ namespace CodeGraph.Editor {
             methodNameInputContainer.Add(methodNameTextField);
 
             var contents = mainContainer.Q("contents");
-            var divider = new VisualElement {name = "horizontal-divider"};
+            var divider = new VisualElement {name = "horizontal-divider_1"};
+            divider.AddToClassList("horizontal-divider");
+            
             contents.Insert(0, methodNameInputContainer);
             contents.Insert(0, divider);
 
-            outputContainer.Add(new VisualElement {name = "parameter-ports"});
             titleButtonContainer.Add(new Button(() => AddParameter()) {text = "Add Parameter"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
             titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Print code"});
             Refresh();
-            //BUG=====================================================
-            //BUG    EDGE SERIALIZATION BREAKS BECAUSE OF THE
-            //BUG    parameter-ports VisualElement. SAY YOU HAVE
-            //BUG    4 PARAMS AND 1 EVENT PORT. THEN THE EVENT
-            //BUG    PORT WILL BE AT INDEX 1 INSTEAD OF 4 BECAUSE
-            //BUG    THE PARAMS GET TREATED AS ONE SINGLE CHILD
-            //BUG    (BECAUSE THEY ARE A CHILD OF parameter-ports)
-            //BUG=====================================================
         }
 
         private void AddParameter(int id = -1, string value = "") {
@@ -72,7 +66,8 @@ namespace CodeGraph.Editor {
             valuePort.name = $"{id}_paramPort";
             valuePort.portName = $"{value}";
             AddOutputPort(valuePort, () => GetCodeForParam(id), false);
-            outputContainer.Q("parameter-ports").Add(valuePort);
+            outputContainer.Add(valuePort);
+            SortPorts();
             Refresh();
         }
 
@@ -93,10 +88,20 @@ namespace CodeGraph.Editor {
         private void RemoveParameter(int id) {
             var textField = inputContainer.Q<TextField>(id + "_paramTextField");
             inputContainer.Remove(textField);
-            var port = outputContainer.Q("parameter-ports").Q<Port>(id + "_paramPort");
-            outputContainer.Q("parameter-ports").Remove(port);
+            var port = outputContainer.Q<Port>(id + "_paramPort");
+            outputContainer.Remove(port);
             parameters.Remove(id);
+            SortPorts();
             Refresh();
+        }
+
+        private void SortPorts() {
+            var allPorts = outputContainer.Children().Cast<Port>().ToList();
+            var eventPorts = allPorts.Where(port => port.name.StartsWith("EventPort")).ToList();
+            var paramPorts = allPorts.Where(port => port.name.EndsWith("_paramPort")).ToList();
+            outputContainer.Clear();
+            paramPorts.ForEach(outputContainer.Add);
+            eventPorts.ForEach(outputContainer.Add);
         }
 
         public override string GetNodeData() {
@@ -130,7 +135,7 @@ namespace CodeGraph.Editor {
             if (parameters.Count > 0) code.Append("dynamic ");
             code.Append(parameters.Values.Join(", dynamic "));
             code.AppendLine(") {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
