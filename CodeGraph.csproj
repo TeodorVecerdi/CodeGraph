@@ -73,6 +73,7 @@
      <Compile Include="Assets\CodeGraph\Editor\Nodes\Abstracts\AbstractNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\Abstracts\AbstractStartNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\AssignNode.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\CallMethodNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\ConditionalNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\CreateVariableNode.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Nodes\EndNodes\CustomCodeNode.cs" />
