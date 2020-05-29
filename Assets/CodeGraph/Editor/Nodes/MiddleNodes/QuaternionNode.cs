@@ -18,34 +18,34 @@ namespace CodeGraph.Editor {
             wInputPort.portName = "w";
             AddInputPort(xInputPort, () => {
                 var connections = xInputPort.connections.ToList();
-                if (connections.Count == 0) return $"0.0f /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"0.0f /* WARNING: You probably want connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"0.0f /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"0.0f /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             AddInputPort(yInputPort, () => {
                 var connections = yInputPort.connections.ToList();
-                if (connections.Count == 0) return $"0.0f /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"0.0f /* WARNING: You probably want connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"0.0f /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"0.0f /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             AddInputPort(zInputPort, () => {
                 var connections = zInputPort.connections.ToList();
-                if (connections.Count == 0) return $"0.0f /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"0.0f /* WARNING: You probably want connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"0.0f /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"0.0f /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             AddInputPort(wInputPort, () => {
                 var connections = wInputPort.connections.ToList();
-                if (connections.Count == 0) return $"1.0f /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"1.0f /* WARNING: You probably want connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"1.0f /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"1.0f /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             var vector3OutputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));

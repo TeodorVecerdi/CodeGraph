@@ -11,10 +11,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "(2)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"new Vector2(0.0f,0.0f) /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"new Vector2(0.0f,0.0f) /* WARNING: You probably want connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"new Vector2(0.0f,0.0f) /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"new Vector2(0.0f,0.0f) /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             

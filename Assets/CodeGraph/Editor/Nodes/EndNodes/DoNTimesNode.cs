@@ -18,10 +18,10 @@ namespace CodeGraph.Editor {
 
             AddInputPort(countPort, () => {
                 var connections = countPort.connections.ToList();
-                if (connections.Count == 0) return $"0 /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"0 /* WARNING: You probably want connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"0 /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"0 /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             var loopPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));

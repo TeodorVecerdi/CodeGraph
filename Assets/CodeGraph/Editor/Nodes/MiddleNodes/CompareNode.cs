@@ -13,20 +13,20 @@ namespace CodeGraph.Editor {
             firstInputPort.portName = "first";
             AddInputPort(firstInputPort, () => {
                 var connections = firstInputPort.connections.ToList();
-                if (connections.Count == 0) return $"((object)null) /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"((object)null) /* WARNING: You probably want connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"((object)null) /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"((object)null) /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             var secondInputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));
             secondInputPort.portName = "second";
             AddInputPort(secondInputPort, () => {
                 var connections = secondInputPort.connections.ToList();
-                if (connections.Count == 0) return $"((object)null) /* WARNING: You probably want connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"((object)null) /* WARNING: You probably want connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"((object)null) /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"((object)null) /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
             var equalsOutputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));

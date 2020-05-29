@@ -13,10 +13,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "axisName (str)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"\"\" /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"\"\" /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"\"\" /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"\"\" /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -43,10 +43,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "axisName (str)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"\"\" /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"\"\" /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"\"\" /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"\"\" /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -73,10 +73,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "buttonName (str)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -103,10 +103,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "buttonName (str)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -133,10 +133,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "buttonName (str)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -163,10 +163,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "button (int)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -193,10 +193,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "button (int)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -223,10 +223,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "button (int)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -253,10 +253,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "key (KeyCode)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -283,10 +283,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "key (KeyCode)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
@@ -313,10 +313,10 @@ namespace CodeGraph.Editor {
             inputPort.portName = "key (KeyCode)";
             AddInputPort(inputPort, () => {
                 var connections = inputPort.connections.ToList();
-                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. Node GUID: {GUID} */";
+                if (connections.Count == 0) return $"false /* WARNING: You probably want to connect this node to something. */";
                 var output = connections[0].output;
                 var node = output.node as AbstractNode;
-                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. Node GUID: {GUID} */";
+                if (node == null) return $"false /* ERROR: Something went wrong and the connected node ended up as null. */";
                 return node.OutputPortDictionary[output].GetCode();
             });
 
