@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
 
 namespace CodeGraph.Editor {
     public class CodeGraphView : GraphView {
         public readonly Vector2 DefaultNodeSize = new Vector2(200, 150);
+        public readonly List<CreateMethodNode> CreateMethodNodes = new List<CreateMethodNode>();
 
         private SearchWindowProvider searchWindowProvider;
         private CodeGraph editorWindow;

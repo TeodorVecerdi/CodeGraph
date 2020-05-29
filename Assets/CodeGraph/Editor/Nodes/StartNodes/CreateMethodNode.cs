@@ -16,19 +16,27 @@ namespace CodeGraph.Editor {
     public class CreateMethodNode : AbstractEventNode {
         private Dictionary<int, string> parameters;
         private int nextId;
-        private string methodName;
+        public string MethodName;
+        public (List<int> Keys, List<string> Values) Parameters => (parameters.Keys.ToList(), parameters.Values.ToList());
+        public Action<int, string, string> OnParameterUpdated;
+        public Action<int, string> OnParameterAdded;
+        public Action<int> OnParameterRemoved;
 
+        ~CreateMethodNode() {
+            CodeGraph.Instance.GraphView.CreateMethodNodes.Remove(this);
+        }
         public CreateMethodNode() {
+            CodeGraph.Instance.GraphView.CreateMethodNodes.Add(this);
             Initialize("Create Method", DefaultNodePosition);
             this.AddStyleSheet("CreateMethodNode");
             IsBaseEventNode = false;
             parameters = new Dictionary<int, string>();
             nextId = 0;
-            methodName = "ExampleMethod";
+            MethodName = "ExampleMethod";
 
-            var methodNameTextField = new TextField("Method name") {name = "method-name-text-field", value = methodName};
+            var methodNameTextField = new TextField("Method name") {name = "method-name-text-field", value = MethodName};
             methodNameTextField.labelElement.style.minWidth = 0;
-            methodNameTextField.RegisterValueChangedCallback(evt => methodName = evt.newValue);
+            methodNameTextField.RegisterValueChangedCallback(evt => MethodName = evt.newValue);
 
             var methodNameInputContainer = new VisualElement {name = "method-name-input"};
             methodNameInputContainer.Add(methodNameTextField);
@@ -69,6 +77,8 @@ namespace CodeGraph.Editor {
             outputContainer.Add(valuePort);
             SortPorts();
             Refresh();
+            
+            OnParameterAdded?.Invoke(id, value);
         }
 
         private string GetCodeForParam(int paramID) {
@@ -76,13 +86,15 @@ namespace CodeGraph.Editor {
         }
 
         private void UpdateParam(int id, string newValue) {
-            if (parameters.ContainsKey(id)) {
-                parameters[id] = newValue;
-            }
-
+            if (!parameters.ContainsKey(id)) return;
+            var oldValue = parameters[id];
+            
+            parameters[id] = newValue;
             var port = outputContainer.Q<Port>(id + "_paramPort");
             port.portName = newValue;
             Refresh();
+            
+            OnParameterUpdated?.Invoke(id, oldValue, newValue);
         }
 
         private void RemoveParameter(int id) {
@@ -93,6 +105,8 @@ namespace CodeGraph.Editor {
             parameters.Remove(id);
             SortPorts();
             Refresh();
+            
+            OnParameterRemoved?.Invoke(id);
         }
 
         private void SortPorts() {
@@ -107,7 +121,7 @@ namespace CodeGraph.Editor {
         public override string GetNodeData() {
             var root = new JObject();
             var @params = new JArray();
-            root["methodName"] = methodName;
+            root["methodName"] = MethodName;
             root["params"] = @params;
             foreach (var param in parameters) {
                 @params.Add(param.Value);
@@ -120,8 +134,8 @@ namespace CodeGraph.Editor {
         public override void SetNodeData(string jsonData) {
             base.SetNodeData(jsonData);
             var root = JObject.Parse(jsonData);
-            methodName = root.Value<string>("methodName");
-            mainContainer.Q<TextField>("method-name-text-field").SetValueWithoutNotify(methodName);
+            MethodName = root.Value<string>("methodName");
+            mainContainer.Q<TextField>("method-name-text-field").SetValueWithoutNotify(MethodName);
 
             var @params = root.Value<JArray>("params").ToObject<List<string>>();
             foreach (var param in @params) {
@@ -131,7 +145,7 @@ namespace CodeGraph.Editor {
 
         public override string GetCode() {
             var code = new StringBuilder();
-            code.Append($"public void {methodName}(");
+            code.Append($"public void {MethodName}(");
             if (parameters.Count > 0) code.Append("dynamic ");
             code.Append(parameters.Values.Join(", dynamic "));
             code.AppendLine(") {");

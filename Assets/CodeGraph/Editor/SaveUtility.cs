@@ -44,6 +44,7 @@ namespace CodeGraph.Editor {
         }
 
         private void ClearGraph() {
+            graphView.CreateMethodNodes.Clear();
             foreach (var node in Nodes) {
                 Edges.Where(x => x.input.node == node).ToList().ForEach(edge => graphView.RemoveElement(edge));
                 graphView.RemoveElement(node);

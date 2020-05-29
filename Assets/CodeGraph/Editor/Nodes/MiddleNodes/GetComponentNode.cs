@@ -49,7 +49,7 @@ namespace CodeGraph.Editor {
                     listView.itemsSource = components;
                     listView.Refresh();
                 } else {
-                    components = baseComponents.Where(s => true).ToList();
+                    components = baseComponents.ToList();
                     listView.itemsSource = components;
                     listView.Refresh();
                 }
