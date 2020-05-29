@@ -21,7 +21,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void Start() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }

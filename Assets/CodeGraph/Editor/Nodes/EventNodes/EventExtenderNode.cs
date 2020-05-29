@@ -42,15 +42,15 @@ namespace CodeGraph.Editor {
 
         public override string GetCode() {
             var code = new StringBuilder();
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             return code.ToString();
         }
         
-        private new void AddInputPort(Port portReference, Func<string> requestCode) {
+        private new void AddInputPort(Port portReference, Func<string> requestCode, bool alsoAddToHierarchy = true) {
             var inputPort = new InputPort(this, portReference, requestCode);
             InputPorts.Add(inputPort);
             InputPortDictionary.Add(portReference, inputPort);
-            inputContainer.Add(portReference);
+            if(alsoAddToHierarchy) inputContainer.Add(portReference);
         }
 
         public void UpdateSourceTitle(string otherTitle) {

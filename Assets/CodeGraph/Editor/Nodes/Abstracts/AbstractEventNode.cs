@@ -21,7 +21,7 @@ namespace CodeGraph.Editor {
         }
 
         [Obsolete("Event nodes cannot have Input ports", true)]
-        public new void AddInputPort(Port portReference, Func<string> requestCode) {
+        protected new void AddInputPort(Port portReference, Func<string> requestCode, bool alsoAddToHierarchy = true) {
             throw new NotSupportedException("Event nodes cannot have Input ports");
         }
 

@@ -70,11 +70,11 @@ namespace CodeGraph.Editor {
             return code;
         }
         
-        private new void AddOutputPort(Port portReference, Func<string> getCode) {
+        private new void AddOutputPort(Port portReference, Func<string> getCode, bool alsoAddToHierarchy = true) {
             var outputPort = new OutputPort(this, portReference, getCode); 
             OutputPorts.Add(outputPort);
             OutputPortDictionary.Add(portReference, outputPort);
-            outputContainer.Add(portReference);
+            if(alsoAddToHierarchy) outputContainer.Add(portReference);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnAnimatorMove() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -40,7 +40,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnApplicationQuit() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -60,7 +60,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnBecameInvisible() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -80,7 +80,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnBecameVisible() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -100,7 +100,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnBeforeTransformParentChanged() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -120,7 +120,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnCanvasGroupChanged() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -140,7 +140,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnCanvasHierarchyChanged() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -160,7 +160,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnDestroy() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -180,7 +180,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnDidApplyAnimationProperties() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -200,7 +200,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnDisable() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -220,7 +220,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnDrawGizmos() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -240,7 +240,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnDrawGizmosSelected() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -260,7 +260,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnEnable() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -280,7 +280,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnGUI() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -300,7 +300,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnMouseDown() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -320,7 +320,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnMouseDrag() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -340,7 +340,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnMouseEnter() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -360,7 +360,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnMouseExit() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -380,7 +380,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnMouseOver() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -400,7 +400,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnMouseUp() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -420,7 +420,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnMouseUpAsButton() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -440,7 +440,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnParticleSystemStopped() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -460,7 +460,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnParticleTrigger() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -480,7 +480,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnParticleUpdateJobScheduled() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -500,7 +500,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnPostRender() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -520,7 +520,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnPreCull() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -540,7 +540,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnPreRender() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -560,7 +560,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnRectTransformDimensionsChange() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -580,7 +580,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnRenderObject() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -600,7 +600,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnTransformChildrenChanged() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -620,7 +620,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnTransformParentChanged() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -640,7 +640,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnValidate() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -660,7 +660,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void OnWillRenderObject() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
@@ -680,7 +680,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.AppendLine("private void Reset() {");
-            code.AppendLine(GetEventCode());
+            code.Append(GetEventCode());
             code.AppendLine("}");
             return code.ToString();
         }
