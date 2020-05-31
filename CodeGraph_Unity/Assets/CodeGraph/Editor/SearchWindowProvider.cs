@@ -84,8 +84,6 @@ namespace CodeGraph.Editor {
                 }
             }
 
-            PrintEntries(nodeEntries);
-
             // Sort the entries lexicographically by group then title with the requirement that items always comes before sub-groups in the same group.
             // Example result:
             // - Art/BlendMode
