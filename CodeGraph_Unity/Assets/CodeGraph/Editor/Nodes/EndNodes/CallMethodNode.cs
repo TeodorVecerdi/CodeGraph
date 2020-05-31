@@ -10,36 +10,54 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
+    public class CreateMethodInfo {
+        public string Name;
+        public string ValidatedName;
+        public CreateMethodNode NodeReference;
+
+        public CreateMethodInfo(string name, string validatedName, CreateMethodNode nodeReference) {
+            Name = name;
+            ValidatedName = validatedName;
+            NodeReference = nodeReference;
+        }
+    }
+
     [Node(true, true)]
     [Title("Functions", "Call Method")]
     public class CallMethodNode : AbstractEndNode {
         private Dictionary<int, string> parameters;
-        private string methodName;
-        public string MethodName {
-            get => methodName;
-            set {
-                SetupListeners(methodName, value);
-                methodName = value;
+        private CreateMethodInfo method;
+        public CreateMethodInfo Method {
+            get => method;
+            private set {
+                SetupListeners(method, value);
+                method = value;
                 RedoParameters();
             }
         }
+
         private List<string> baseMethodNames => CodeGraph.Instance.GraphView.CreateMethodNodes.Select(node => node.MethodName).ToList();
+        private List<string> baseValidatedMethodNames => CodeGraph.Instance.GraphView.CreateMethodNodes.Select(node => node.ValidatedMethodName).ToList();
+        private List<CreateMethodInfo> cachedMethods;
+
+        private Foldout foldout;
+
         public CallMethodNode() {
             Initialize("Call Method", DefaultNodePosition);
             parameters = new Dictionary<int, string>();
-            
-            var foldout = new Foldout();
+
+            #region MethodNameFoldout
+            foldout = new Foldout();
             foldout.text = "Method (click to select)";
-            var methodNames = new List<string>();
-            methodNames.AddRange(baseMethodNames);
+            var methodNames = CacheMethods();
             var listView = new ListView(methodNames, 20, () => new Label(), (visualElement, index) => {
                 var element = (Label) visualElement;
-                element.text = methodNames[index];
+                element.text = methodNames[index].Name;
             });
             listView.onSelectionChanged += selection => {
-                var text = (string) selection[0];
-                MethodName = text;
-                foldout.text = $"Method ({text})";
+                var obj = (CreateMethodInfo) selection[0];
+                Method = obj;
+                foldout.text = $"Method ({obj.Name})";
                 foldout.SetValueWithoutNotify(false);
             };
             listView.style.height = 100;
@@ -47,11 +65,11 @@ namespace CodeGraph.Editor {
             searchBar.RegisterValueChangedCallback(evt => {
                 var value = evt.newValue.Trim();
                 if (!string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value)) {
-                    methodNames = baseMethodNames.Where(s => s.ToLower(CultureInfo.InvariantCulture).Contains(value.ToLower())).ToList();
+                    methodNames = cachedMethods.Where(s => s.Name.ToLower(CultureInfo.InvariantCulture).Contains(value.ToLower())).ToList();
                     listView.itemsSource = methodNames;
                     listView.Refresh();
                 } else {
-                    methodNames = baseMethodNames.ToList();
+                    methodNames = cachedMethods.ToList();
                     listView.itemsSource = methodNames;
                     listView.Refresh();
                 }
@@ -62,38 +80,49 @@ namespace CodeGraph.Editor {
             foldout.contentContainer.Add(listView);
             foldout.RegisterValueChangedCallback(evt => {
                 if (evt.newValue) {
+                    CacheMethods();
+                    methodNames = cachedMethods.ToList();
+                    listView.itemsSource = methodNames;
+                    listView.Refresh();
                     searchBar[0].Focus();
                     searchBar.value = "";
                 }
             });
             foldout.SetValueWithoutNotify(false);
             outputContainer.Add(foldout);
-            
+            #endregion
+
             var eventInputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(float));
             eventInputPort.portName = "branch";
-            eventInputPort.portColor = new Color(1,1,1,0.2f);
+            eventInputPort.portColor = new Color(1, 1, 1, 0.2f);
             AddInputPort(eventInputPort, GetCode);
-            
+
             titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Print code"});
+
+            Refresh();
         }
 
-        private void SetupListeners(string oldMethodName, string newMethodName) {
+        private List<CreateMethodInfo> CacheMethods() {
+            cachedMethods = CodeGraph.Instance.GraphView.CreateMethodNodes.Select(node => new CreateMethodInfo(node.MethodName, node.ValidatedMethodName, node)).ToList();
+            return cachedMethods;
+        }
+
+        private void SetupListeners(CreateMethodInfo oldMethod, CreateMethodInfo newMethod) {
             // Remove listeners from old method
-            if (!string.IsNullOrEmpty(oldMethodName)) {
-                var oldMethod = CodeGraph.Instance.GraphView.CreateMethodNodes.Find(node => node.MethodName == oldMethodName);
-                oldMethod.OnParameterAdded -= OnParameterAdded;
-                oldMethod.OnParameterRemoved -= OnParameterRemoved;
-                oldMethod.OnParameterUpdated -= OnParameterUpdated;
+            if (oldMethod?.NodeReference != null) {
+                oldMethod.NodeReference.OnParameterAdded -= OnParameterAdded;
+                oldMethod.NodeReference.OnParameterRemoved -= OnParameterRemoved;
+                oldMethod.NodeReference.OnParameterUpdated -= OnParameterUpdated;
+                oldMethod.NodeReference.OnMethodRemoved -= OnMethodRemoved;
             }
 
             // Add listeners to new method
-            if (!string.IsNullOrEmpty(newMethodName)) {
-                var newMethod = CodeGraph.Instance.GraphView.CreateMethodNodes.Find(node => node.MethodName == newMethodName);
-                newMethod.OnParameterAdded += OnParameterAdded;
-                newMethod.OnParameterRemoved += OnParameterRemoved;
-                newMethod.OnParameterUpdated += OnParameterUpdated;
+            if (newMethod?.NodeReference != null) {
+                newMethod.NodeReference.OnParameterAdded += OnParameterAdded;
+                newMethod.NodeReference.OnParameterRemoved += OnParameterRemoved;
+                newMethod.NodeReference.OnParameterUpdated += OnParameterUpdated;
+                newMethod.NodeReference.OnMethodRemoved += OnMethodRemoved;
             }
-
         }
 
         private void RedoParameters() {
@@ -102,7 +131,7 @@ namespace CodeGraph.Editor {
             foreach (var port in allPorts.Where(port => port.name.EndsWith("_paramPort"))) {
                 var connectionsToRemove = new List<Edge>();
                 connectionsToRemove.AddRange(port.connections);
-                while(connectionsToRemove.Count > 0) {
+                while (connectionsToRemove.Count > 0) {
                     var conn = connectionsToRemove[0];
                     CodeGraph.Instance.GraphView.RemoveElement(conn);
                     conn.input.Disconnect(conn);
@@ -113,14 +142,19 @@ namespace CodeGraph.Editor {
                 InputPorts.Remove(InputPortDictionary[port]);
                 inputContainer.Remove(port);
             }
+
             parameters.Clear();
+            
+            // Exit if current method is null. Probably means we just created the node.
+            if(method?.NodeReference == null) return;
+            
             // Add params
-            var method = CodeGraph.Instance.GraphView.CreateMethodNodes.Find(node => node.MethodName == MethodName);
-            var @params = method.Parameters;
+            var @params = method.NodeReference.Parameters;
             var count = @params.Keys.Count;
             for (var i = 0; i < count; i++) {
                 AddParameter(@params.Keys[i], @params.Values[i]);
             }
+
             Refresh();
         }
 
@@ -151,27 +185,37 @@ namespace CodeGraph.Editor {
             Refresh();
         }
 
+        private void OnMethodRemoved(CreateMethodNode node) {
+            // check if the selected method is the removed method
+            if (Method != null && Method.NodeReference.GUID == node.GUID) {
+                Method = null;
+                foldout.text = "Method (click to select)";
+            }
+        }
+
         private void OnParameterRemoved(int id) {
             var port = inputContainer.Q<Port>(id + "_paramPort");
+
             // Remove connections
             var connectionsToRemove = new List<Edge>();
             connectionsToRemove.AddRange(port.connections);
-            while(connectionsToRemove.Count > 0) {
+            while (connectionsToRemove.Count > 0) {
                 var conn = connectionsToRemove[0];
                 CodeGraph.Instance.GraphView.RemoveElement(conn);
                 conn.input.Disconnect(conn);
                 conn.output.Disconnect(conn);
                 connectionsToRemove.RemoveAt(0);
             }
-            
+
             inputContainer.Remove(port);
+            InputPorts.Remove(InputPortDictionary[port]);
             parameters.Remove(id);
             Refresh();
         }
-        
+
         public override string GetNodeData() {
             var root = new JObject();
-            root["MethodName"] = MethodName;
+            root["MethodName"] = Method.ValidatedName;
             root.Merge(JObject.Parse(base.GetNodeData()));
             return root.ToString(Formatting.None);
         }
@@ -179,13 +223,17 @@ namespace CodeGraph.Editor {
         public override void SetNodeData(string jsonData) {
             base.SetNodeData(jsonData);
             var root = JObject.Parse(jsonData);
-            MethodName = root.Value<string>("MethodName");
-            outputContainer.Q<Foldout>().text = $"Method ({(string.IsNullOrEmpty(MethodName) ? "none" : MethodName)})";;
+            var methodName = root.Value<string>("MethodName");
+            var tmpMth = CodeGraph.Instance.GraphView.CreateMethodNodes.Find(node => node.ValidatedMethodName == methodName);
+            Method = tmpMth == null ? null : new CreateMethodInfo(tmpMth.MethodName, tmpMth.ValidatedMethodName, tmpMth);
+            outputContainer.Q<Foldout>().text = $"Method ({(Method == null ? "click to select" : Method.Name)})";
         }
-        
+
         public override string GetCode() {
+            if (Method == null) return "";
+            
             var code = new StringBuilder();
-            code.Append(MethodName + "(");
+            code.Append(Method.ValidatedName + "(");
             var ports = InputPorts.Where(port => port.PortReference.name.EndsWith("_paramPort")).ToList();
             var paramCode = ports.Select(port => port.RequestCode()).ToList().Join(", ");
             code.Append(paramCode);

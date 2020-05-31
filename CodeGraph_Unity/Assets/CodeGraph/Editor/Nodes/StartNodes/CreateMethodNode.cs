@@ -14,23 +14,39 @@ namespace CodeGraph.Editor {
     [Node(true, true)]
     [Title("Functions", "Create Method")]
     public class CreateMethodNode : AbstractEventNode {
-        private Dictionary<int, string> parameters;
         private int nextId;
-        public string MethodName;
+        private Dictionary<int, string> parameters;
+        private Dictionary<int, string> validatedParameters;
+        private string methodName;
+        private string validatedMethodName;
+        public string MethodName {
+            get => methodName;
+            private set {
+                methodName = value;
+            } 
+        }
+
         public (List<int> Keys, List<string> Values) Parameters => (parameters.Keys.ToList(), parameters.Values.ToList());
+        public (List<int> Keys, List<string> Values) ValidatedParameters => (validatedParameters.Keys.ToList(), validatedParameters.Values.ToList());
+        public string ValidatedMethodName => validatedMethodName;
+        
         public Action<int, string, string> OnParameterUpdated;
         public Action<int, string> OnParameterAdded;
         public Action<int> OnParameterRemoved;
+        public Action<CreateMethodNode> OnMethodRemoved;
 
         ~CreateMethodNode() {
+            OnMethodRemoved?.Invoke(this);
             CodeGraph.Instance.GraphView.CreateMethodNodes.Remove(this);
         }
         public CreateMethodNode() {
             CodeGraph.Instance.GraphView.CreateMethodNodes.Add(this);
             Initialize("Create Method", DefaultNodePosition);
             this.AddStyleSheet("CreateMethodNode");
+            
             IsBaseEventNode = false;
             parameters = new Dictionary<int, string>();
+            validatedParameters = new Dictionary<int, string>();
             nextId = 0;
             MethodName = "ExampleMethod";
 
@@ -55,13 +71,19 @@ namespace CodeGraph.Editor {
             Refresh();
         }
 
+        public override void OnNodeDeserialized() {
+            base.OnNodeDeserialized();
+            validatedMethodName = "Method_" + GUID.ToSafeGUID();
+        }
+
         private void AddParameter(int id = -1, string value = "") {
             if (id == -1) id = nextId++;
             if (value == "") value = "param" + id;
             parameters.Add(id, value);
+            validatedParameters.Add(id, value.GenerateSafeName("parameter_"));
 
             // Create textfield
-            var paramNameField = new TextField("name:") {name = id + "_paramTextField", userData = id,};
+            var paramNameField = new TextField("name:") {name = id + "_paramTextField", userData = id};
             paramNameField.labelElement.style.minWidth = 0;
             paramNameField.RegisterValueChangedCallback(evt => { UpdateParam(id, evt.newValue); });
             paramNameField.SetValueWithoutNotify(value);
@@ -82,7 +104,7 @@ namespace CodeGraph.Editor {
         }
 
         private string GetCodeForParam(int paramID) {
-            return parameters[paramID];
+            return validatedParameters[paramID];
         }
 
         private void UpdateParam(int id, string newValue) {
@@ -90,6 +112,7 @@ namespace CodeGraph.Editor {
             var oldValue = parameters[id];
             
             parameters[id] = newValue;
+            validatedParameters[id] = newValue.GenerateSafeName("parameter_");
             var port = outputContainer.Q<Port>(id + "_paramPort");
             port.portName = newValue;
             Refresh();
@@ -102,7 +125,9 @@ namespace CodeGraph.Editor {
             inputContainer.Remove(textField);
             var port = outputContainer.Q<Port>(id + "_paramPort");
             outputContainer.Remove(port);
+            OutputPorts.Remove(OutputPortDictionary[port]);
             parameters.Remove(id);
+            validatedParameters.Remove(id);
             SortPorts();
             Refresh();
             
@@ -145,9 +170,9 @@ namespace CodeGraph.Editor {
 
         public override string GetCode() {
             var code = new StringBuilder();
-            code.Append($"public void {MethodName}(");
+            code.Append($"public void {ValidatedMethodName}(");
             if (parameters.Count > 0) code.Append("dynamic ");
-            code.Append(parameters.Values.Join(", dynamic "));
+            code.Append(validatedParameters.Values.Join(", dynamic "));
             code.AppendLine(") {");
             code.Append(GetEventCode());
             code.AppendLine("}");

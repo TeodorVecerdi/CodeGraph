@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CodeGraph.Editor {
     public static class SafeCodeExtensions {
@@ -23,6 +24,11 @@ namespace CodeGraph.Editor {
 
         public static string ToSafeGUID(this string guid) {
             return guid.Replace("-", "_");
+        }
+
+        public static string GenerateSafeName(this string name, string prefix = "variable", string suffix = "") {
+            var guidStr = Guid.NewGuid().ToString().ToSafeGUID();
+            return prefix + guidStr + suffix;
         }
     }
 }
