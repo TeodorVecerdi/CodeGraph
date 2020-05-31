@@ -11,9 +11,9 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     public class CreateMethodInfo {
-        public string Name;
-        public string ValidatedName;
-        public CreateMethodNode NodeReference;
+        public readonly string Name;
+        public readonly string ValidatedName;
+        public readonly CreateMethodNode NodeReference;
 
         public CreateMethodInfo(string name, string validatedName, CreateMethodNode nodeReference) {
             Name = name;
@@ -36,11 +36,8 @@ namespace CodeGraph.Editor {
             }
         }
 
-        private List<string> baseMethodNames => CodeGraph.Instance.GraphView.CreateMethodNodes.Select(node => node.MethodName).ToList();
-        private List<string> baseValidatedMethodNames => CodeGraph.Instance.GraphView.CreateMethodNodes.Select(node => node.ValidatedMethodName).ToList();
         private List<CreateMethodInfo> cachedMethods;
-
-        private Foldout foldout;
+        private readonly Foldout foldout;
 
         public CallMethodNode() {
             Initialize("Call Method", DefaultNodePosition);
