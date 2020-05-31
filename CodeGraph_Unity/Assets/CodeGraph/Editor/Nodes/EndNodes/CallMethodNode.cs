@@ -186,7 +186,7 @@ namespace CodeGraph.Editor {
         public override string GetCode() {
             var code = new StringBuilder();
             code.Append(MethodName + "(");
-            var ports = InputPorts.ToList().Where(port => port.PortReference.name.EndsWith("_paramPort")).ToList();
+            var ports = InputPorts.Where(port => port.PortReference.name.EndsWith("_paramPort")).ToList();
             var paramCode = ports.Select(port => port.RequestCode()).ToList().Join(", ");
             code.Append(paramCode);
             code.AppendLine($");{GetDebugData}");
