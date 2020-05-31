@@ -15,21 +15,12 @@ namespace CodeGraph.Editor {
     [Title("Functions", "Create Method")]
     public class CreateMethodNode : AbstractEventNode {
         private int nextId;
-        private Dictionary<int, string> parameters;
-        private Dictionary<int, string> validatedParameters;
-        private string methodName;
-        private string validatedMethodName;
-        public string MethodName {
-            get => methodName;
-            private set {
-                methodName = value;
-            } 
-        }
-
+        private readonly Dictionary<int, string> parameters;
+        private readonly Dictionary<int, string> validatedParameters;
+        public string MethodName { get; private set; }
+        public string ValidatedMethodName { get; private set; }
         public (List<int> Keys, List<string> Values) Parameters => (parameters.Keys.ToList(), parameters.Values.ToList());
-        public (List<int> Keys, List<string> Values) ValidatedParameters => (validatedParameters.Keys.ToList(), validatedParameters.Values.ToList());
-        public string ValidatedMethodName => validatedMethodName;
-        
+
         public Action<int, string, string> OnParameterUpdated;
         public Action<int, string> OnParameterAdded;
         public Action<int> OnParameterRemoved;
@@ -73,7 +64,7 @@ namespace CodeGraph.Editor {
 
         public override void OnNodeDeserialized() {
             base.OnNodeDeserialized();
-            validatedMethodName = "Method_" + GUID.ToSafeGUID();
+            ValidatedMethodName = "Method_" + GUID.ToSafeGUID();
         }
 
         private void AddParameter(int id = -1, string value = "") {
