@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Debug", "Print")]
+    [Title("Mono", "Print")]
     public class PrintNode : AbstractEndNode {
         public PrintNode() {
             Initialize("Print", DefaultNodePosition);

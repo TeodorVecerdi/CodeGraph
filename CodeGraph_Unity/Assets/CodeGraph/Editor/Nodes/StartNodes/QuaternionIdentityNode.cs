@@ -2,7 +2,7 @@ using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Quaternion", "Identity Quaternion")]
+    [Title("Math", "Quaternion", "Identity Quaternion")]
     public class QuaternionIdentityNode : AbstractStartNode {
         public QuaternionIdentityNode() {
             Initialize("Identity Quaternion", DefaultNodePosition);

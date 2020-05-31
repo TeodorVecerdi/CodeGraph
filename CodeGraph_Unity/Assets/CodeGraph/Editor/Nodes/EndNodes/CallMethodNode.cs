@@ -22,7 +22,7 @@ namespace CodeGraph.Editor {
     }
 
     [Node(true, true)]
-    [Title("Functions", "Call Method")]
+    [Title("Basic", "Functions", "Call Method")]
     public class CallMethodNode : AbstractEndNode {
         private Dictionary<int, string> parameters;
         private CreateMethodInfo method;

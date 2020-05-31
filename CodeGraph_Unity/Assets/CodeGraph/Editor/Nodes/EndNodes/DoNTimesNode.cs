@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Basic", "Do N Times")]
+    [Title("Basic", "Loops", "Do N Times")]
     public class DoNTimesNode : AbstractEndNode {
         public DoNTimesNode() {
             Initialize("Do N Times", DefaultNodePosition);

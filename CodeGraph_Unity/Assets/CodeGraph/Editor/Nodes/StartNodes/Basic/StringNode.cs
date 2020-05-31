@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Basic", "String Input")]
+    [Title("Basic", "Value Input", "String Input")]
     public class StringNode : AbstractStartNode {
         private string value;
 

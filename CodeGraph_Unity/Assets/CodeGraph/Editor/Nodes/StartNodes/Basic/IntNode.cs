@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Basic", "Integer Input")]
+    [Title("Basic", "Value Input", "Integer Input")]
     public class IntNode : AbstractStartNode {
         private int value;
 

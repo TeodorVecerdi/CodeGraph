@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Vector2", "Create Vector2")]
+    [Title("Math", "Vectors", "Create Vector2")]
     public class CreateVector2Node : AbstractStartNode {
         private float x;
         private float y;

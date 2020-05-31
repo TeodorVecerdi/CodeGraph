@@ -3,7 +3,7 @@ using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Transform", "Split Transform")]
+    [Title("Mono", "Transform", "Split Transform")]
     public class SplitTransformNode : AbstractMiddleNode {
         public SplitTransformNode() {
             Initialize("Split Transform", DefaultNodePosition);

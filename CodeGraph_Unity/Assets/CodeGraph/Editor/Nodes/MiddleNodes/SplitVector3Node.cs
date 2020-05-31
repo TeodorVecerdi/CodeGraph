@@ -3,7 +3,7 @@ using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Vector3", "Split Vector3")]
+    [Title("Math", "Vectors", "Split Vector3")]
     public class SplitVector3Node : AbstractMiddleNode {
         public SplitVector3Node() {
             Initialize("Split Vector3", DefaultNodePosition);

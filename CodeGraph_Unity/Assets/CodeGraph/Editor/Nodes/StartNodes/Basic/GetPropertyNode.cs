@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Properties", "Get Property")]
+    [Title("Basic", "Get Property")]
     public class GetPropertyNode : AbstractStartNode {
         private string PropertyName = "varName";
 

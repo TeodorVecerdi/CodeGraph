@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Basic", "While")]
+    [Title("Basic", "Loops", "While")]
     public class WhileNode : AbstractEndNode {
         public WhileNode() {
             Initialize("While", DefaultNodePosition);

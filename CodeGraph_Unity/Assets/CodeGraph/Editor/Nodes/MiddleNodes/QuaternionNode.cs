@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Quaternion", "Quaternion")]
+    [Title("Math", "Quaternion", "Quaternion")]
     public class QuaternionNode : AbstractMiddleNode {
         public QuaternionNode() {
             Initialize("Quaternion", DefaultNodePosition);

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Basic", "Do With Each")]
+    [Title("Basic", "Loops", "Do With Each")]
     public class DoWithEachNode : AbstractEndNode {
         public DoWithEachNode() {
             Initialize("Do With Each", DefaultNodePosition);

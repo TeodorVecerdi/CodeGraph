@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(false, true)]
-    [Title("Basic", "Instantiate")]
+    [Title("Mono", "Instantiate")]
     public class InstantiateNode : AbstractEndNode {
         public InstantiateNode() {
             Initialize("Instantiate", DefaultNodePosition);

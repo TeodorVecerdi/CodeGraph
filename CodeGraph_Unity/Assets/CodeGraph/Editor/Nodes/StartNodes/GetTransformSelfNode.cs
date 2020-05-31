@@ -2,7 +2,7 @@ using UnityEditor.Experimental.GraphView;
 
 namespace CodeGraph.Editor {
     [Node(false, true)]
-    [Title("General", "Get Transform (Self)")]
+    [Title("Mono", "Transform", "Get Transform (Self)")]
     public class GetTransformSelfNode : AbstractStartNode {
         public GetTransformSelfNode() {
             Initialize("Get Transform", DefaultNodePosition);

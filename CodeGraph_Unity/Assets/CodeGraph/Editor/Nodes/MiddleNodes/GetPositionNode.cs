@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Transform", "Get Position")]
+    [Title("Mono", "Transform", "Get Position")]
     public class GetPositionNode : AbstractMiddleNode{
         public GetPositionNode() {
             Initialize("Get Position", DefaultNodePosition);

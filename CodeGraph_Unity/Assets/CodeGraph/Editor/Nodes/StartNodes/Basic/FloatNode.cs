@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Basic", "Float Input")]
+    [Title("Basic", "Value Input", "Float Input")]
     public class FloatNode : AbstractStartNode {
         private float value;
 

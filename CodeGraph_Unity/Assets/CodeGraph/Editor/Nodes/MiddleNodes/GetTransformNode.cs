@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("General", "Get Transform")]
+    [Title("Mono", "Transform", "Get Transform")]
     public class GetTransformNode : AbstractMiddleNode{
         public GetTransformNode() {
             Initialize("Get Transform", DefaultNodePosition);

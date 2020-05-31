@@ -11,7 +11,7 @@ using Button = UnityEngine.UIElements.Button;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Functions", "Create Method")]
+    [Title("Basic", "Functions", "Create Method")]
     public class CreateMethodNode : AbstractEventNode {
         private int nextId;
         private readonly Dictionary<int, string> parameters;

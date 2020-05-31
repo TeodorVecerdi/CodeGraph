@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
-    [Title("Vector3", "Vector3")]
+    [Title("Math", "Vectors", "Vector3")]
     public class Vector3Node : AbstractMiddleNode {
         public Vector3Node() {
             Initialize("Vector3", DefaultNodePosition);
