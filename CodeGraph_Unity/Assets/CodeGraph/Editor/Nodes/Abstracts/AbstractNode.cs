@@ -39,7 +39,8 @@ namespace CodeGraph.Editor {
             GUID = Guid.NewGuid().ToString();
             this.AddStyleSheet("CodeNode");
         }
-
+        public virtual void OnNodeSerialized() {}
+        public virtual void OnNodeDeserialized() {}
         public void Refresh() {
             RefreshPorts();
             RefreshExpandedState();

@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 namespace CodeGraph {
     public static class SerializationHelper {
         public static SerializedNode SerializeNode(AbstractNode node) {
+            node.OnNodeSerialized();
             return new SerializedNode {
                 GUID = node.GUID,
                 NodeType = node.GetType().Name,
@@ -34,6 +35,7 @@ namespace CodeGraph {
             if (deserializedNode is AbstractEventNode eventNode) {
                 for (var i = 0; i < eventNode.PortCount; i++) eventNode.AddChildPort(false);
             }
+            deserializedNode.OnNodeDeserialized();
             deserializedNode.Refresh();
             return deserializedNode;
         }
