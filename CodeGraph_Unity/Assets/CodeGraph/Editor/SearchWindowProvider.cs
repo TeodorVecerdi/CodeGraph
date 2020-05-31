@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using GitHub.Unity;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Experimental.UIElements;
@@ -13,26 +15,23 @@ namespace CodeGraph.Editor {
     public class SearchWindowProvider : ScriptableObject, ISearchWindowProvider {
         private CodeGraph editorWindow;
         private CodeGraphView graphView;
-        private Texture2D m_Icon;
-        public Port ConnectedPort { get; set; }
-        public bool nodeNeedsRepositioning { get; set; }
-        public Vector2 targetPosition { get; private set; }
+        private Texture2D icon;
+        private List<SearchTreeEntry> searchTree;
 
-        public void Initialize(CodeGraph editorWindow,
-            CodeGraphView graphView) {
+        public void Initialize(CodeGraph editorWindow) {
             this.editorWindow = editorWindow;
-            this.graphView = graphView;
+            graphView = editorWindow.GraphView;
 
             // Transparent icon to trick search window into indenting items
-            m_Icon = new Texture2D(1, 1);
-            m_Icon.SetPixel(0, 0, new Color(0, 0, 0, 0));
-            m_Icon.Apply();
+            icon = new Texture2D(1, 1);
+            icon.SetPixel(0, 0, new Color(0, 0, 0, 0));
+            icon.Apply();
         }
 
         private void OnDestroy() {
-            if (m_Icon != null) {
-                DestroyImmediate(m_Icon);
-                m_Icon = null;
+            if (icon != null) {
+                DestroyImmediate(icon);
+                icon = null;
             }
         }
 
@@ -56,6 +55,19 @@ namespace CodeGraph.Editor {
         }
 
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context) {
+            return searchTree ?? (searchTree = BuildSearchTree());
+        }
+
+        private void PrintEntries(List<NodeEntry> entries) {
+            var sb = new StringBuilder();
+            sb.AppendLine("Node entries:");
+            foreach (var entry in entries) {
+                sb.AppendLine($"    {entry.Title.Join("/")} => {entry.Node.GetType().Name}");
+            }
+            Debug.Log(sb.ToString());
+        }
+
+        private List<SearchTreeEntry> BuildSearchTree() {
             // First build up temporary data structure containing group & title as an array of strings (the last one is the actual title) and associated node type.
             var nodeEntries = new List<NodeEntry>();
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies()) {
@@ -64,13 +76,15 @@ namespace CodeGraph.Editor {
                         var attrs = type.GetCustomAttributes(typeof(TitleAttribute), false) as TitleAttribute[];
                         if (attrs != null && attrs.Length > 0) {
                             var nodeAttr = type.GetCustomAttribute<NodeAttribute>();
-                            if(nodeAttr == null || (editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnMonoBehaviourGraph) || (!editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnClassGraph)) continue;
+                            if (nodeAttr == null || (editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnMonoBehaviourGraph) || (!editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnClassGraph)) continue;
                             var node = (AbstractNode) Activator.CreateInstance(type);
                             AddEntries(node, attrs[0].title, nodeEntries);
                         }
                     }
                 }
             }
+
+            PrintEntries(nodeEntries);
 
             // Sort the entries lexicographically by group then title with the requirement that items always comes before sub-groups in the same group.
             // Example result:
@@ -136,7 +150,7 @@ namespace CodeGraph.Editor {
                 }
 
                 // Finally, add the actual entry.
-                tree.Add(new SearchTreeEntry(new GUIContent(nodeEntry.Title.Last(), m_Icon)) {level = nodeEntry.Title.Length, userData = nodeEntry});
+                tree.Add(new SearchTreeEntry(new GUIContent(nodeEntry.Title.Last(), icon)) {level = nodeEntry.Title.Length, userData = nodeEntry});
             }
 
             return tree;

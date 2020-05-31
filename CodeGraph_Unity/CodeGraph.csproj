@@ -56,6 +56,7 @@
      <Compile Include="Assets\CodeGraph\Editor\CodeGraph.cs" />
      <Compile Include="Assets\CodeGraph\Editor\CodeGraphView.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\GraphViewExtensions.cs" />
+     <Compile Include="Assets\CodeGraph\Editor\Extensions\ListExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\SafeCodeExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\Extensions\VisualElementExtensions.cs" />
      <Compile Include="Assets\CodeGraph\Editor\GroupData.cs" />

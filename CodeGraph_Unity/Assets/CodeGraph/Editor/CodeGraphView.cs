@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -12,7 +11,7 @@ namespace CodeGraph.Editor {
         public readonly List<CreateMethodNode> CreateMethodNodes = new List<CreateMethodNode>();
 
         private SearchWindowProvider searchWindowProvider;
-        private CodeGraph editorWindow;
+        private readonly CodeGraph editorWindow;
 
         public CodeGraphView(CodeGraph editorWindow) {
             this.editorWindow = editorWindow;
@@ -28,16 +27,12 @@ namespace CodeGraph.Editor {
             grid.StretchToParentSize();
 
             searchWindowProvider = ScriptableObject.CreateInstance<SearchWindowProvider>();
-            searchWindowProvider.Initialize(this.editorWindow, this);
+            searchWindowProvider.Initialize(this.editorWindow);
             nodeCreationRequest = c => SearchWindow.Open(new SearchWindowContext(c.screenMousePosition), searchWindowProvider);
             graphViewChanged += OnGraphViewChanged;
-            serializeGraphElements += elements => {
-                Debug.Log($"Tried to copy: {elements.Count()}");
-                return string.Empty;
-            };
-            serializeGraphElements = SerializeGraphElementsImplementation;
+            serializeGraphElements += SerializeGraphElementsImplementation;
             // canPasteSerializedData = CanPasteSerializedDataImplementation;
-            unserializeAndPaste = UnserializeAndPasteImplementation;
+            unserializeAndPaste += UnserializeAndPasteImplementation;
             // deleteSelection = DeleteSelectionImplementation;
         }
 
