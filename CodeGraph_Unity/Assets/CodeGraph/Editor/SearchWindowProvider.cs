@@ -18,9 +18,9 @@ namespace CodeGraph.Editor {
         private Texture2D icon;
         private List<SearchTreeEntry> searchTree;
 
-        public void Initialize(CodeGraph editorWindow) {
+        public void Initialize(CodeGraph editorWindow, CodeGraphView graphView) {
             this.editorWindow = editorWindow;
-            graphView = editorWindow.GraphView;
+            this.graphView = graphView;
 
             // Transparent icon to trick search window into indenting items
             icon = new Texture2D(1, 1);

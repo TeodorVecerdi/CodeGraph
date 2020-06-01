@@ -27,7 +27,7 @@ namespace CodeGraph.Editor {
             grid.StretchToParentSize();
 
             searchWindowProvider = ScriptableObject.CreateInstance<SearchWindowProvider>();
-            searchWindowProvider.Initialize(this.editorWindow);
+            searchWindowProvider.Initialize(this.editorWindow, this);
             nodeCreationRequest = c => SearchWindow.Open(new SearchWindowContext(c.screenMousePosition), searchWindowProvider);
             graphViewChanged += OnGraphViewChanged;
             serializeGraphElements += SerializeGraphElementsImplementation;
