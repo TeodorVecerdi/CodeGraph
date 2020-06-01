@@ -51,11 +51,18 @@ namespace CodeGraph.Editor {
             if (GraphObject != null) {
                 SaveUtility.GetInstance(GraphView).LoadGraph(GraphObject);
             }
+            
+            GraphView.RegisterCallback<KeyDownEvent>(evt => {
+                if (evt.keyCode == KeyCode.S && evt.ctrlKey) {
+                    SaveGraph();
+                    evt.StopPropagation();
+                }
+            }, TrickleDown.TrickleDown);
         }
 
         private void GenerateToolbar() {
             var toolbar = new Toolbar();
-            toolbar.Add(new Button(() => SaveGraph()) {text = "Save Graph"});
+            toolbar.Add(new Button(() => SaveGraph()) {text = "Save Graph", tooltip = "Saves the current CodeGraph file. This does not compile the CodeGraph into C# code."});
             toolbar.Add(new Button(() => {
                 SaveGraph(false);
                 var code = GenerateCode();
@@ -67,7 +74,7 @@ namespace CodeGraph.Editor {
 
                 var assetPath = WriteCodeToFile(code);
                 AssetDatabase.ImportAsset(assetPath);
-            }) {text = "Compile Graph"});
+            }) {text = "Compile Graph", tooltip = "Compiles this CodeGraph into a C# file in the same directory as this CodeGraph file"});
             rootVisualElement.Add(toolbar);
         }
 
