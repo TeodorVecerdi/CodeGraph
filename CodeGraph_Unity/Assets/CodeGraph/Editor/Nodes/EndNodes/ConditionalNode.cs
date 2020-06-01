@@ -34,7 +34,7 @@ namespace CodeGraph.Editor {
             AddOutputPort(trueOutputPort, () => "");
             AddOutputPort(falseOutputPort, () => "");
             
-            titleButtonContainer.Add(new Button(()=>Debug.Log(GetCode())){text = "Get Code"});
+            // titleButtonContainer.Add(new Button(()=>Debug.Log(GetCode())){text = "Get Code"});
             Refresh();
         }
         public override string GetCode() {

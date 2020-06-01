@@ -12,9 +12,9 @@ namespace CodeGraph.Editor {
     public class StartEventNode : AbstractEventNode {
         public StartEventNode() {
             Initialize("Start", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
         

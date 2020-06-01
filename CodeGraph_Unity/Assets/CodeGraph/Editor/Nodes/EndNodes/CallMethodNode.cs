@@ -93,7 +93,7 @@ namespace CodeGraph.Editor {
             eventInputPort.portColor = new Color(1, 1, 1, 0.2f);
             AddInputPort(eventInputPort, GetCode);
 
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Print code"});
+            // titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Print code"});
 
             Refresh();
         }

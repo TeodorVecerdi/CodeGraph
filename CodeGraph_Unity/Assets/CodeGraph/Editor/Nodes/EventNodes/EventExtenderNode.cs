@@ -16,7 +16,7 @@ namespace CodeGraph.Editor {
         public EventExtenderNode() {
             IsBaseEventNode = false;
             Initialize("EXTENDER (none)", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            // titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
             titleButtonContainer.Add(new Button(() => CleanPorts()) {text = "Clean Ports"});
             var eventPort = base.InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(float));

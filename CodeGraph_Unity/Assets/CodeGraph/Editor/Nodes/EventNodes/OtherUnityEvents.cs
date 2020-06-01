@@ -11,9 +11,9 @@ namespace CodeGraph.Editor {
     public class OnAnimatorMoveEventNode : AbstractEventNode {
         public OnAnimatorMoveEventNode() {
             Initialize("OnAnimatorMove", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            // titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -31,9 +31,8 @@ namespace CodeGraph.Editor {
     public class OnApplicationQuitEventNode : AbstractEventNode {
         public OnApplicationQuitEventNode() {
             Initialize("OnApplicationQuit", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -51,9 +50,8 @@ namespace CodeGraph.Editor {
     public class OnBecameInvisibleEventNode : AbstractEventNode {
         public OnBecameInvisibleEventNode() {
             Initialize("OnBecameInvisible", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -71,9 +69,9 @@ namespace CodeGraph.Editor {
     public class OnBecameVisibleEventNode : AbstractEventNode {
         public OnBecameVisibleEventNode() {
             Initialize("OnBecameVisible", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -91,9 +89,9 @@ namespace CodeGraph.Editor {
     public class OnBeforeTransformParentChangedEventNode : AbstractEventNode {
         public OnBeforeTransformParentChangedEventNode() {
             Initialize("OnBeforeTransformParentChanged", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -111,9 +109,9 @@ namespace CodeGraph.Editor {
     public class OnCanvasGroupChangedEventNode : AbstractEventNode {
         public OnCanvasGroupChangedEventNode() {
             Initialize("OnCanvasGroupChanged", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -131,9 +129,9 @@ namespace CodeGraph.Editor {
     public class OnCanvasHierarchyChangedEventNode : AbstractEventNode {
         public OnCanvasHierarchyChangedEventNode() {
             Initialize("OnCanvasHierarchyChanged", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -151,9 +149,9 @@ namespace CodeGraph.Editor {
     public class OnDestroyEventNode : AbstractEventNode {
         public OnDestroyEventNode() {
             Initialize("OnDestroy", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -171,9 +169,9 @@ namespace CodeGraph.Editor {
     public class OnDidApplyAnimationPropertiesEventNode : AbstractEventNode {
         public OnDidApplyAnimationPropertiesEventNode() {
             Initialize("OnDidApplyAnimationProperties", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -191,9 +189,9 @@ namespace CodeGraph.Editor {
     public class OnDisableEventNode : AbstractEventNode {
         public OnDisableEventNode() {
             Initialize("OnDisable", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -211,9 +209,9 @@ namespace CodeGraph.Editor {
     public class OnDrawGizmosEventNode : AbstractEventNode {
         public OnDrawGizmosEventNode() {
             Initialize("OnDrawGizmos", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -231,9 +229,9 @@ namespace CodeGraph.Editor {
     public class OnDrawGizmosSelectedEventNode : AbstractEventNode {
         public OnDrawGizmosSelectedEventNode() {
             Initialize("OnDrawGizmosSelected", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -251,9 +249,9 @@ namespace CodeGraph.Editor {
     public class OnEnableEventNode : AbstractEventNode {
         public OnEnableEventNode() {
             Initialize("OnEnable", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -271,9 +269,9 @@ namespace CodeGraph.Editor {
     public class OnGUIEventNode : AbstractEventNode {
         public OnGUIEventNode() {
             Initialize("OnGUI", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -291,9 +289,9 @@ namespace CodeGraph.Editor {
     public class OnMouseDownEventNode : AbstractEventNode {
         public OnMouseDownEventNode() {
             Initialize("OnMouseDown", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -311,9 +309,9 @@ namespace CodeGraph.Editor {
     public class OnMouseDragEventNode : AbstractEventNode {
         public OnMouseDragEventNode() {
             Initialize("OnMouseDrag", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -331,9 +329,9 @@ namespace CodeGraph.Editor {
     public class OnMouseEnterEventNode : AbstractEventNode {
         public OnMouseEnterEventNode() {
             Initialize("OnMouseEnter", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -351,9 +349,9 @@ namespace CodeGraph.Editor {
     public class OnMouseExitEventNode : AbstractEventNode {
         public OnMouseExitEventNode() {
             Initialize("OnMouseExit", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -371,9 +369,9 @@ namespace CodeGraph.Editor {
     public class OnMouseOverEventNode : AbstractEventNode {
         public OnMouseOverEventNode() {
             Initialize("OnMouseOver", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -391,9 +389,9 @@ namespace CodeGraph.Editor {
     public class OnMouseUpEventNode : AbstractEventNode {
         public OnMouseUpEventNode() {
             Initialize("OnMouseUp", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -411,9 +409,9 @@ namespace CodeGraph.Editor {
     public class OnMouseUpAsButtonEventNode : AbstractEventNode {
         public OnMouseUpAsButtonEventNode() {
             Initialize("OnMouseUpAsButton", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -431,9 +429,9 @@ namespace CodeGraph.Editor {
     public class OnParticleSystemStoppedEventNode : AbstractEventNode {
         public OnParticleSystemStoppedEventNode() {
             Initialize("OnParticleSystemStopped", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -451,9 +449,9 @@ namespace CodeGraph.Editor {
     public class OnParticleTriggerEventNode : AbstractEventNode {
         public OnParticleTriggerEventNode() {
             Initialize("OnParticleTrigger", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -471,9 +469,9 @@ namespace CodeGraph.Editor {
     public class OnParticleUpdateJobScheduledEventNode : AbstractEventNode {
         public OnParticleUpdateJobScheduledEventNode() {
             Initialize("OnParticleUpdateJobScheduled", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -491,9 +489,9 @@ namespace CodeGraph.Editor {
     public class OnPostRenderEventNode : AbstractEventNode {
         public OnPostRenderEventNode() {
             Initialize("OnPostRender", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -511,9 +509,9 @@ namespace CodeGraph.Editor {
     public class OnPreCullEventNode : AbstractEventNode {
         public OnPreCullEventNode() {
             Initialize("OnPreCull", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -531,9 +529,9 @@ namespace CodeGraph.Editor {
     public class OnPreRenderEventNode : AbstractEventNode {
         public OnPreRenderEventNode() {
             Initialize("OnPreRender", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -551,9 +549,9 @@ namespace CodeGraph.Editor {
     public class OnRectTransformDimensionsChangeEventNode : AbstractEventNode {
         public OnRectTransformDimensionsChangeEventNode() {
             Initialize("OnRectTransformDimensionsChange", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -571,9 +569,9 @@ namespace CodeGraph.Editor {
     public class OnRenderObjectEventNode : AbstractEventNode {
         public OnRenderObjectEventNode() {
             Initialize("OnRenderObject", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -591,9 +589,9 @@ namespace CodeGraph.Editor {
     public class OnTransformChildrenChangedEventNode : AbstractEventNode {
         public OnTransformChildrenChangedEventNode() {
             Initialize("OnTransformChildrenChanged", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -611,9 +609,9 @@ namespace CodeGraph.Editor {
     public class OnTransformParentChangedEventNode : AbstractEventNode {
         public OnTransformParentChangedEventNode() {
             Initialize("OnTransformParentChanged", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -631,9 +629,9 @@ namespace CodeGraph.Editor {
     public class OnValidateEventNode : AbstractEventNode {
         public OnValidateEventNode() {
             Initialize("OnValidate", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -651,9 +649,9 @@ namespace CodeGraph.Editor {
     public class OnWillRenderObjectEventNode : AbstractEventNode {
         public OnWillRenderObjectEventNode() {
             Initialize("OnWillRenderObject", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 
@@ -671,9 +669,9 @@ namespace CodeGraph.Editor {
     public class ResetEventNode : AbstractEventNode {
         public ResetEventNode() {
             Initialize("Reset", DefaultNodePosition);
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
+            //titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Get Code"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
             Refresh();
         }
 

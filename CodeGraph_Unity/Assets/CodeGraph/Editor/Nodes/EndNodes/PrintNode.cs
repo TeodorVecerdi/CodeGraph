@@ -25,7 +25,7 @@ namespace CodeGraph.Editor {
                 return node.OutputPortDictionary[output].GetCode();
             });
 
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())){text="Get Code"});
+            // titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())){text="Get Code"});
             Refresh();
         }
         
