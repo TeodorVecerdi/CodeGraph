@@ -33,6 +33,7 @@ namespace CodeGraph.Editor {
             CodeGraph.Instance.GraphView.CreateMethodNodes.Add(this);
             Initialize("Create Method", DefaultNodePosition);
             this.AddStyleSheet("CreateMethodNode");
+            RemoveFromClassList("eventNode");
             
             IsBaseEventNode = false;
             parameters = new Dictionary<int, string>();
@@ -56,8 +57,8 @@ namespace CodeGraph.Editor {
 
             titleButtonContainer.Add(new Button(() => AddParameter()) {text = "Add Parameter"});
             titleButtonContainer.Add(new Button(() => AddChildPort()) {text = "Add New Port"});
-            titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
-            titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Print code"});
+            // titleButtonContainer.Add(new Button(CleanPorts) {text = "Clean Ports"});
+            // titleButtonContainer.Add(new Button(() => Debug.Log(GetCode())) {text = "Print code"});
             Refresh();
         }
 

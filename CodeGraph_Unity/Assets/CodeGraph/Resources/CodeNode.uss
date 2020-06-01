@@ -1,6 +1,6 @@
-/*.node2 #title {
-    background-color: rgba(47, 115, 66, 0.91);
-}*/
+.node.eventNode #title {
+    background-color: rgba(40, 80, 120, 0.8);
+}
 :selected > #selection-border {
     border-left-color: darkorange !important;
     border-top-color: deeppink !important;

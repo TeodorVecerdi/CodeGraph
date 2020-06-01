@@ -18,6 +18,7 @@ namespace CodeGraph.Editor {
         protected AbstractEventNode() {
             // capabilities &= ~Capabilities.Deletable;
             IsBaseEventNode = true;
+            AddToClassList("eventNode");
         }
 
         [Obsolete("Event nodes cannot have Input ports", true)]
