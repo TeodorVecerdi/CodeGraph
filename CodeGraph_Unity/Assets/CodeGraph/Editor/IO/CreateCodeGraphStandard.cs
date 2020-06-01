@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CodeGraph.Editor {
     public class CreateCodeGraphStandard : EndNameEditAction {
-        [MenuItem ("Assets/Create/Empty Code Graph Class", false, 0)]
+        // [MenuItem ("Assets/Create/Empty Code Graph Class", false, 0)]
         public static void CreateEmptyCodeGraph () {
             ProjectWindowUtil.StartNameEditingIfProjectWindowExists (0, CreateInstance<CreateCodeGraphStandard> (),
                 "New Code Graph Class.codegraph", Resources.Load<Texture2D> ("codegraph_256"), null);
