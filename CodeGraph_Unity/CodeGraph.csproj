@@ -338,18 +338,6 @@
  <Reference Include="Newtonsoft.Json">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/CodeGraph_Unity/Assets/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
  </Reference>
- <Reference Include="GitHub.Api.45">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/CodeGraph_Unity/Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll</HintPath>
- </Reference>
- <Reference Include="GitHub.Logging">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/CodeGraph_Unity/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
- </Reference>
- <Reference Include="GitHub.Unity.45">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/CodeGraph_Unity/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
- </Reference>
- <Reference Include="GitHub.UnityShim">
- <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/CodeGraph_Unity/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
- </Reference>
  <Reference Include="sfw.net">
  <HintPath>C:/Users/TeodorVecerdi/Desktop/Development/unity/CodeGraph/CodeGraph_Unity/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
  </Reference>

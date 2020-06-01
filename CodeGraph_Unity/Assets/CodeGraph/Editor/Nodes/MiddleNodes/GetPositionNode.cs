@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 
 namespace CodeGraph.Editor {
     [Node(true, true)]
