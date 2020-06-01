@@ -9,6 +9,8 @@
 </p>
 
 <h1 align="center">CONTRIBUTORS</h1>
-If you would like to contribute to this project feel free to submit a **pull request**, and take a look at the [Contributing](https://github.com/TeodorVecerdi/CodeGraph/blob/master/CONTRIBUTING.md) document provided to get a better insight into what **contributing** means.
+
+If you would like to contribute to this project feel free to submit a **pull request**, and take a look at the 
+[Contributing document](https://github.com/TeodorVecerdi/CodeGraph/blob/master/CONTRIBUTING.md "CONTRIBUTING.md") provided to get a better insight into what **contributing** means.
 
 **The first release of CodeGraph is coming soon, so make sure to come back for a complete document with examples, tutorials and more**
