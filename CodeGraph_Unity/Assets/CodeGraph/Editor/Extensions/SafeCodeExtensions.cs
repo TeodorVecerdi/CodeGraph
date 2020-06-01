@@ -25,7 +25,7 @@ namespace CodeGraph.Editor {
             return guid.Replace("-", "_");
         }
 
-        public static string GenerateSafeName(this string name, string prefix = "variable", string suffix = "") {
+        public static string GenerateSafeName(string prefix = "variable", string suffix = "") {
             var guidStr = Guid.NewGuid().ToString().ToSafeGUID();
             return prefix + guidStr + suffix;
         }

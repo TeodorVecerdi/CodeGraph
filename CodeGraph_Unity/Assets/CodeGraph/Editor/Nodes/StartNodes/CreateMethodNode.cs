@@ -70,7 +70,7 @@ namespace CodeGraph.Editor {
             if (id == -1) id = nextId++;
             if (value == "") value = "param" + id;
             parameters.Add(id, value);
-            validatedParameters.Add(id, value.GenerateSafeName("parameter_"));
+            validatedParameters.Add(id, SafeCodeExtensions.GenerateSafeName("parameter_"));
 
             // Create textfield
             var paramNameField = new TextField("name:") {name = id + "_paramTextField", userData = id};
@@ -102,7 +102,7 @@ namespace CodeGraph.Editor {
             var oldValue = parameters[id];
             
             parameters[id] = newValue;
-            validatedParameters[id] = newValue.GenerateSafeName("parameter_");
+            validatedParameters[id] = SafeCodeExtensions.GenerateSafeName("parameter_");
             var port = outputContainer.Q<Port>(id + "_paramPort");
             port.portName = newValue;
             Refresh();
