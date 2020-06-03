@@ -1,0 +1,10 @@
+This example showcases how to use the Create Property
+and Get Property nodes.
+With the Create Property node you specify the type and name
+of the property. This automatically adds a public variable to
+the generated code. Properties are fields you can access through
+the inspector inside the Unity Editor.
+With the Get Property node you can access the property and use it
+in various ways. In this example it is used to print the text
+"Your speed is: <Speed>" where <Speed> is the value of the property
+created previously.
