@@ -31,12 +31,17 @@ namespace CodeGraph.Editor {
             }
         }
 
-        private struct NodeEntry : IEquatable<NodeEntry> {
-            public string[] Title;
-            public AbstractNode Node;
+        private readonly struct NodeEntry : IEquatable<NodeEntry> {
+            public readonly string[] Title;
+            public readonly Type NodeType;
+
+            public NodeEntry(Type nodeType, string[] title) {
+                NodeType = nodeType;
+                Title = title;
+            }
 
             public bool Equals(NodeEntry other) {
-                return Equals(Title, other.Title) && Equals(Node, other.Node);
+                return Equals(Title, other.Title) && NodeType == other.NodeType;
             }
 
             public override bool Equals(object obj) {
@@ -45,7 +50,7 @@ namespace CodeGraph.Editor {
 
             public override int GetHashCode() {
                 unchecked {
-                    return ((Title != null ? Title.GetHashCode() : 0) * 397) ^ (Node != null ? Node.GetHashCode() : 0);
+                    return ((Title != null ? Title.GetHashCode() : 0) * 397) ^ (NodeType != null ? NodeType.GetHashCode() : 0);
                 }
             }
         }
@@ -58,7 +63,7 @@ namespace CodeGraph.Editor {
             var sb = new StringBuilder();
             sb.AppendLine("Node entries:");
             foreach (var entry in entries) {
-                sb.AppendLine($"    {entry.Title.Join("/")} => {entry.Node.GetType().Name}");
+                sb.AppendLine($"    {entry.Title.Join("/")} => {entry.NodeType.Name}");
             }
             Debug.Log(sb.ToString());
         }
@@ -71,10 +76,9 @@ namespace CodeGraph.Editor {
                     if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(AbstractNode))) {
                         var attrs = type.GetCustomAttributes(typeof(TitleAttribute), false) as TitleAttribute[];
                         if (attrs != null && attrs.Length > 0) {
-                            var nodeAttr = type.GetCustomAttribute<NodeAttribute>();
-                            if (nodeAttr == null || (editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnMonoBehaviourGraph) || (!editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnClassGraph)) continue;
-                            var node = (AbstractNode) Activator.CreateInstance(type);
-                            AddEntries(node, attrs[0].title, nodeEntries);
+                            // var nodeAttr = type.GetCustomAttribute<NodeAttribute>();
+                            // if (nodeAttr == null || (editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnMonoBehaviourGraph) || (!editorWindow.GraphObject.CodeGraphData.IsMonoBehaviour && !nodeAttr.AllowOnClassGraph)) continue;
+                            AddEntries(type, attrs[0].title, nodeEntries);
                         }
                     }
                 }
@@ -158,16 +162,14 @@ namespace CodeGraph.Editor {
             }
         }
 
-        void AddEntries(AbstractNode node, string[] title, List<NodeEntry> nodeEntries) {
-            nodeEntries.Add(new NodeEntry {
-                Node = node,
-                Title = title
-            });
+        void AddEntries(Type nodeType, string[] title, List<NodeEntry> nodeEntries) {
+            nodeEntries.Add(new NodeEntry(nodeType, title));
         }
 
         public bool OnSelectEntry(SearchTreeEntry entry, SearchWindowContext context) {
             var nodeEntry = (NodeEntry) entry.userData;
-            var node = nodeEntry.Node;
+            var nodeType = nodeEntry.NodeType;
+            var node = (AbstractNode) Activator.CreateInstance(nodeType);
             var windowMousePosition = editorWindow.rootVisualElement.ChangeCoordinatesTo(editorWindow.rootVisualElement.parent, context.screenMousePosition - editorWindow.position.position);
             var graphMousePosition = graphView.contentViewContainer.WorldToLocal(windowMousePosition);
 
