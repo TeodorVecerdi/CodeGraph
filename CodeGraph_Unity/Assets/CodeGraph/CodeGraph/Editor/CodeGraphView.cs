@@ -68,6 +68,16 @@ namespace CodeGraph.Editor {
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange) {
             editorWindow.InvalidateSaveButton();
+            if (graphViewChange.elementsToRemove?.Count > 0) {
+                foreach (var node in graphViewChange.elementsToRemove.OfType<AbstractNode>()) {
+                    if(node.GroupGuid == Guid.Empty || !GroupGuidDictionary.ContainsKey(node.GroupGuid))
+                        continue;
+                    var group = GroupGuidDictionary[node.GroupGuid].GroupReference;
+                    if (group.containedElements.Count() == 1) {
+                        RemoveGroup(group);
+                    }   
+                }
+            }
             if (graphViewChange.edgesToCreate?.Count > 0) {
                 graphViewChange.edgesToCreate.ForEach(edge => {
                     var input = edge.input.node as AbstractNode;
