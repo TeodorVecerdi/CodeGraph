@@ -27,7 +27,6 @@ namespace CodeGraph {
         public void SetGroup(IGroupItem node, GroupData group) {
             var groupGuid = group?.Guid ?? Guid.Empty;
             if (node.GroupGuid != Guid.Empty) {
-                Debug.Log(groupGuid);
                 var oldGroupNodes = GroupItems[groupGuid];
                 oldGroupNodes.Remove(node);
             }

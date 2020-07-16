@@ -23,8 +23,11 @@ namespace CodeGraph.Editor {
             graphObject.CodeGraphData.Edges.AddRange(SerializationHelper.SerializeEdges(connectedEdges));
             graphObject.CodeGraphData.Nodes.AddRange(SerializationHelper.SerializeNodes(Nodes));
             graphObject.CodeGraphData.LastEditedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
-            graphObject.CodeGraphData.Groups = CodeGraph.Instance.GraphObject.CodeGraphData.Groups;
+            graphObject.CodeGraphData.Groups = new List<GroupData>(CodeGraph.Instance.GraphObject.CodeGraphData.Groups);
             graphObject.CodeGraphData.Groups.ForEach(group => { group.Title = group.GroupReference.title; });
+            foreach (var groupItem in CodeGraph.Instance.GraphObject.CodeGraphData.GroupItems) {
+                graphObject.CodeGraphData.GroupItems.Add(groupItem.Key, CodeGraph.Instance.GraphObject.CodeGraphData.GroupItems[groupItem.Key]);
+            }
             graphObject.CodeGraphData.GraphName = CodeGraph.Instance.GraphObject.CodeGraphData.GraphName;
             graphObject.CodeGraphData.SchemaVersion = CodeGraph.Instance.GraphObject.CodeGraphData.SchemaVersion;
             graphObject.CodeGraphData.IsMonoBehaviour = CodeGraph.Instance.GraphObject.CodeGraphData.IsMonoBehaviour;
@@ -39,6 +42,7 @@ namespace CodeGraph.Editor {
             ClearGraph();
             CreateGroups();
             GenerateNodes();
+            ClearEmptyGroups();
             ConnectNodes();
             PostInitNodes();
         }
@@ -82,6 +86,18 @@ namespace CodeGraph.Editor {
                     group.AddElement(node);
                 }
             });
+        }
+
+        private void ClearEmptyGroups() {
+            foreach (var group in graphView.GroupDictionary.ToDictionary(pair => pair.Key, pair => pair.Value)) {
+                if (graphObject.CodeGraphData.GroupItems[group.Value.Guid].Count == 0) {
+                    graphView.RemoveElement(group.Key);
+                    graphObject.CodeGraphData.Groups.Remove(group.Value);
+                    graphObject.CodeGraphData.GroupItems.Remove(group.Value.Guid);
+                    graphView.GroupGuidDictionary.Remove(group.Value.Guid);
+                    graphView.GroupDictionary.Remove(group.Key);
+                }
+            }
         }
 
         private void ConnectNodes() {

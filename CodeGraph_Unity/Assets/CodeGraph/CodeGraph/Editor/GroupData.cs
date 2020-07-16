@@ -27,18 +27,10 @@ namespace CodeGraph.Editor {
             set => title = value;
         }
 
-        [SerializeField]
-        private Vector2 position;
 
-        public Vector2 Position {
-            get => position;
-            set => position = value;
-        }
-
-        public GroupData(string title, Vector2 position, Group groupReference) {
+        public GroupData(string title, Group groupReference) {
             guid = Guid.NewGuid();
             this.title = title;
-            this.position = position;
             GroupReference = groupReference;
         }
 

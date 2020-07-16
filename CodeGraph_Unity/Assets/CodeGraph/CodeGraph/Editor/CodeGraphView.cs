@@ -142,7 +142,7 @@ namespace CodeGraph.Editor {
 
             editorWindow.InvalidateSaveButton();
             var group = new Group {title = "New Group"};
-            var groupData = new GroupData("New Group", new Vector2(10f, 10f), group);
+            var groupData = new GroupData("New Group", group);
             editorWindow.GraphObject.CodeGraphData.AddGroup(groupData);
             foreach (var node in validSelection) {
                 if (node.GetContainingScope() is Group previousGroup) {
@@ -164,6 +164,7 @@ namespace CodeGraph.Editor {
                 if (!(selectable is Node node) || !(node.GetContainingScope() is Group group))
                     continue;
 
+                ((IGroupItem) node).GroupGuid = Guid.Empty;
                 group.RemoveElement(node);
                 if (!group.containedElements.Any())
                     RemoveGroup(group);
