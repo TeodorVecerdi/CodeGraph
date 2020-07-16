@@ -12,7 +12,10 @@ namespace CodeGraph.Editor {
             Initialize("Get Variable", DefaultNodePosition);
             var variableNameField = new TextField {label = "Name: ", value = "varName"};
             variableNameField.labelElement.style.minWidth = 0;
-            variableNameField.RegisterValueChangedCallback(evt => VariableName = evt.newValue);
+            variableNameField.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                VariableName = evt.newValue;
+            });
             inputContainer.Add(variableNameField);
 
             var valuePort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));

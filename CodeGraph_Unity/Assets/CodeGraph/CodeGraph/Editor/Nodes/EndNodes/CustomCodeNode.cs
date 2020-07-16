@@ -19,7 +19,10 @@ namespace CodeGraph.Editor {
             var propertyType = new TextField(int.MaxValue, true, false, ' ') {label = "Code"};
             propertyType.labelElement.style.minWidth = 0;
             propertyType.name = "customCode";
-            propertyType.RegisterValueChangedCallback(evt => CustomCode = evt.newValue);
+            propertyType.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                CustomCode = evt.newValue;
+            });
             inputContainer.Add(propertyType);
             
             // Experimental warning

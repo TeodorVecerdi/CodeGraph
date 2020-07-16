@@ -29,6 +29,7 @@ namespace CodeGraph.Editor {
         public CreateMethodInfo Method {
             get => method;
             private set {
+                CodeGraph.Instance.InvalidateSaveButton();
                 SetupListeners(method, value);
                 method = value;
                 RedoParameters();

@@ -15,6 +15,8 @@ namespace CodeGraph.Editor {
         public static CodeGraph Instance;
         public CodeGraphView GraphView;
         public CodeGraphObject GraphObject;
+        private Toolbar toolbar;
+        private Button saveButton;
 
         [MenuItem("Graph/Code Graph")]
         public static void CreateGraphViewWindow() {
@@ -36,6 +38,7 @@ namespace CodeGraph.Editor {
         }
 
         public void SaveGraph(bool shouldRefreshAssets = true) {
+            ValidateSaveButton();
             var newGraphObject = SaveUtility.GetInstance(GraphView).Save(GraphObject.CodeGraphData.AssetPath, shouldRefreshAssets);
             GraphObject = newGraphObject;
         }
@@ -56,12 +59,21 @@ namespace CodeGraph.Editor {
                     SaveGraph();
                     evt.StopPropagation();
                 }
+                if (evt.keyCode == KeyCode.G && evt.ctrlKey && !evt.shiftKey && GraphView.selection.Count > 0) {
+                    GraphView.GroupSelection();
+                    evt.StopPropagation();
+                }
+                if (evt.keyCode == KeyCode.G && evt.ctrlKey && evt.shiftKey && GraphView.selection.Count > 0) {
+                    GraphView.UngroupSelection();
+                    evt.StopPropagation();
+                }
             }, TrickleDown.TrickleDown);
         }
 
         private void GenerateToolbar() {
-            var toolbar = new Toolbar();
-            toolbar.Add(new Button(() => SaveGraph()) {text = "Save Graph", tooltip = "Saves the current CodeGraph file. This does not compile the CodeGraph into C# code."});
+            saveButton = new Button(() => SaveGraph()) {text = "Save Graph", tooltip = "Saves the current CodeGraph file. This does not compile the CodeGraph into C# code."};
+            toolbar = new Toolbar();
+            toolbar.Add(saveButton);
             toolbar.Add(new Button(() => {
                 SaveGraph(false);
                 var code = GenerateCode();
@@ -75,6 +87,18 @@ namespace CodeGraph.Editor {
                 AssetDatabase.ImportAsset(assetPath);
             }) {text = "Compile Graph", tooltip = "Compiles this CodeGraph into a C# file in the same directory as this CodeGraph file"});
             rootVisualElement.Add(toolbar);
+        }
+
+        private void ValidateSaveButton() {
+            saveButton.text = "Save Graph";
+            saveButton.tooltip = "Saves the current CodeGraph file. This does not compile the CodeGraph into C# code.";
+            saveButton.RemoveFromClassList("saveButton-unsaved");
+        }
+
+        public void InvalidateSaveButton() {
+            saveButton.text = "Save Graph (*)";
+            saveButton.tooltip = "There are unsaved changes! Saves the current CodeGraph file. This does not compile the CodeGraph into C# code.";
+            saveButton.AddToClassList("saveButton-unsaved");
         }
 
         private string GenerateCode() {
@@ -136,8 +160,11 @@ namespace CodeGraph.Editor {
         }
 
         private void OnEnable() {
-            ConstructGraphView();
+            rootVisualElement.AddStyleSheet("CodeGraphWindow");
             GenerateToolbar();
+            ConstructGraphView();
+            toolbar.BringToFront();
+            ValidateSaveButton();
             GenerateMiniMap();
         }
 

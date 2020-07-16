@@ -16,13 +16,19 @@ namespace CodeGraph.Editor {
             var inputField = new FloatField {label = "x:", value = 0};
             inputField.labelElement.style.minWidth = 0;
             inputField.name = "xInput";
-            inputField.RegisterValueChangedCallback(evt => x = evt.newValue);
+            inputField.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                x = evt.newValue;
+            });
             inputContainer.Add(inputField);
             
             var inputField2 = new FloatField {label = "y:", value = 0};
             inputField2.labelElement.style.minWidth = 0;
             inputField2.name = "yInput";
-            inputField2.RegisterValueChangedCallback(evt => y = evt.newValue);
+            inputField2.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                y = evt.newValue;
+            });
             inputContainer.Add(inputField2);
 
             var valuePort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));

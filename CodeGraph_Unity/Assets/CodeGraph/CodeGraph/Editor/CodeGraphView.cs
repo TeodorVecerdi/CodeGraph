@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -9,8 +10,9 @@ namespace CodeGraph.Editor {
     public class CodeGraphView : GraphView {
         public readonly Vector2 DefaultNodeSize = new Vector2(200, 150);
         public readonly List<CreateMethodNode> CreateMethodNodes = new List<CreateMethodNode>();
+        public readonly Dictionary<Group, GroupData> GroupDictionary = new Dictionary<Group, GroupData>();
+        public readonly Dictionary<Guid, GroupData> GroupGuidDictionary = new Dictionary<Guid, GroupData>();
 
-        private SearchWindowProvider searchWindowProvider;
         private readonly CodeGraph editorWindow;
 
         public CodeGraphView(CodeGraph editorWindow) {
@@ -26,13 +28,15 @@ namespace CodeGraph.Editor {
             Insert(0, grid);
             grid.StretchToParentSize();
 
-            searchWindowProvider = ScriptableObject.CreateInstance<SearchWindowProvider>();
+            var searchWindowProvider = ScriptableObject.CreateInstance<SearchWindowProvider>();
             searchWindowProvider.Initialize(this.editorWindow, this);
             nodeCreationRequest = c => SearchWindow.Open(new SearchWindowContext(c.screenMousePosition), searchWindowProvider);
             graphViewChanged += OnGraphViewChanged;
             serializeGraphElements += SerializeGraphElementsImplementation;
+
             // canPasteSerializedData = CanPasteSerializedDataImplementation;
             unserializeAndPaste += UnserializeAndPasteImplementation;
+
             // deleteSelection = DeleteSelectionImplementation;
         }
 
@@ -46,7 +50,7 @@ namespace CodeGraph.Editor {
             // var groups = elements.OfType<ShaderGroup>().Select(x => x.userData);
             var nodes = elements.OfType<AbstractNode>().ToList();
             var edges = elements.OfType<Edge>().ToList();
-            
+
             // var inputs = selection.OfType<BlackboardField>().Select(x => x.userData as ShaderInput);
             // var notes = enumerable.OfType<StickyNote>().Select(x => x.userData);
 
@@ -58,11 +62,29 @@ namespace CodeGraph.Editor {
             // var keywordNodeGuids = nodes.OfType<KeywordNode>().Select(x => x.keywordGuid);
             // var metaKeywords = this.graph.keywords.Where(x => keywordNodeGuids.Contains(x.guid));
             var assetGUID = AssetDatabase.AssetPathToGUID(CodeGraph.Instance.GraphObject.CodeGraphData.AssetPath);
-            var graph = new CopyPasteGraphData(assetGUID, nodes, edges);
+            var nodePositions = new Dictionary<string, Rect>();
+            foreach (var node in nodes) {
+                nodePositions.Add(node.GUID, node.GetPosition());
+            }
+            var graph = new CopyPasteGraphData(assetGUID, nodes, nodePositions, edges);
             return JsonUtility.ToJson(graph, true);
         }
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange) {
+            editorWindow.InvalidateSaveButton();
+            if (graphViewChange.movedElements?.Count > 0) {
+                Debug.Log(graphViewChange.movedElements[0].GetPosition().position);
+            }
+            if (graphViewChange.elementsToRemove?.Count > 0) {
+                foreach (var node in graphViewChange.elementsToRemove.OfType<AbstractNode>()) {
+                    if(node.GroupGuid == Guid.Empty || !GroupGuidDictionary.ContainsKey(node.GroupGuid))
+                        continue;
+                    var group = GroupGuidDictionary[node.GroupGuid].GroupReference;
+                    if (group.containedElements.Count() == 1) {
+                        RemoveGroup(group);
+                    }   
+                }
+            }
             if (graphViewChange.edgesToCreate?.Count > 0) {
                 graphViewChange.edgesToCreate.ForEach(edge => {
                     var input = edge.input.node as AbstractNode;
@@ -77,9 +99,7 @@ namespace CodeGraph.Editor {
                         other = input;
                     }
 
-                    if (extenderNode != null) {
-                        extenderNode.UpdateSourceTitle(other.title);
-                    }
+                    extenderNode?.UpdateSourceTitle(other.title);
                 });
             }
 
@@ -104,7 +124,7 @@ namespace CodeGraph.Editor {
             }*/
 
             if (evt.target is GraphView || evt.target is Node) {
-                evt.menu.AppendAction("Group Selection", GroupSelection, (a) => {
+                evt.menu.AppendAction("Group Selection", action => GroupSelection(), (a) => {
                     var filteredSelection = new List<ISelectable>();
                     foreach (ISelectable selectedObject in selection) {
                         if (selectedObject is Group)
@@ -116,7 +136,7 @@ namespace CodeGraph.Editor {
                     return filteredSelection.Count > 0 ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled;
                 });
 
-                evt.menu.AppendAction("Ungroup Selection", RemoveFromGroupNode, (a) => {
+                evt.menu.AppendAction("Ungroup Selection", action => UngroupSelection(), (a) => {
                     var filteredSelection = new List<ISelectable>();
                     foreach (ISelectable selectedObject in selection) {
                         if (selectedObject is Group)
@@ -131,25 +151,51 @@ namespace CodeGraph.Editor {
             }
         }
 
-        private void GroupSelection(DropdownMenuAction action) {
-            var title = "New Group";
-            var groupData = new GroupData(title, new Vector2(10f, 10f));
-            editorWindow.GraphObject.CodeGraphData.CreateGroup(groupData);
-            foreach (var node in selection.OfType<AbstractNode>()) {
+        public void GroupSelection() {
+            var validSelection = selection.OfType<AbstractNode>().ToList();
+            if (validSelection.Count == 0) {
+                return;
+            }
+
+            editorWindow.InvalidateSaveButton();
+            var group = new Group {title = "New Group"};
+            var groupData = new GroupData("New Group", group);
+            editorWindow.GraphObject.CodeGraphData.AddGroup(groupData);
+            foreach (var node in validSelection) {
+                if (node.GetContainingScope() is Group previousGroup) {
+                    RemoveElement(previousGroup);
+                }
+
                 editorWindow.GraphObject.CodeGraphData.SetGroup(node, groupData);
+            }
+
+            group.AddElements(validSelection);
+            AddElement(group);
+            GroupDictionary.Add(group, groupData);
+            GroupGuidDictionary.Add(groupData.Guid, groupData);
+        }
+
+        public void UngroupSelection() {
+            editorWindow.InvalidateSaveButton();
+            foreach (var selectable in selection) {
+                if (!(selectable is Node node) || !(node.GetContainingScope() is Group group))
+                    continue;
+
+                ((IGroupItem) node).GroupGuid = Guid.Empty;
+                group.RemoveElement(node);
+                if (!group.containedElements.Any())
+                    RemoveGroup(group);
             }
         }
 
-        private void RemoveFromGroupNode(DropdownMenuAction action) {
-            foreach (var selectable in selection) {
-                var node = selectable as Node;
-                if (node == null)
-                    continue;
-
-                if (node.GetContainingScope() is Group group) {
-                    group.RemoveElement(node);
-                }
-            }
+        private void RemoveGroup(Group group) {
+            RemoveElement(group);
+            var groupData = GroupDictionary[group];
+            GroupDictionary.Remove(group);
+            GroupGuidDictionary.Remove(groupData.Guid);
+            editorWindow.GraphObject.CodeGraphData.Groups.Remove(groupData);
+            editorWindow.GraphObject.CodeGraphData.GroupItems[groupData.Guid].ForEach(item => item.GroupGuid = Guid.Empty);
+            editorWindow.GraphObject.CodeGraphData.GroupItems.Remove(groupData.Guid);
         }
     }
 }

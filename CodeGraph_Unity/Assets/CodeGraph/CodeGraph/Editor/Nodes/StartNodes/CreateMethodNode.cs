@@ -42,7 +42,10 @@ namespace CodeGraph.Editor {
 
             var methodNameTextField = new TextField("Method name") {name = "method-name-text-field", value = MethodName};
             methodNameTextField.labelElement.style.minWidth = 0;
-            methodNameTextField.RegisterValueChangedCallback(evt => MethodName = evt.newValue);
+            methodNameTextField.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                MethodName = evt.newValue;
+            });
 
             var methodNameInputContainer = new VisualElement {name = "method-name-input"};
             methodNameInputContainer.Add(methodNameTextField);
@@ -67,6 +70,7 @@ namespace CodeGraph.Editor {
         }
 
         private void AddParameter(int id = -1, string value = "") {
+            CodeGraph.Instance.InvalidateSaveButton();
             if (id == -1) id = nextId++;
             if (value == "") value = "param" + id;
             parameters.Add(id, value);
@@ -75,7 +79,10 @@ namespace CodeGraph.Editor {
             // Create textfield
             var paramNameField = new TextField("name:") {name = id + "_paramTextField", userData = id};
             paramNameField.labelElement.style.minWidth = 0;
-            paramNameField.RegisterValueChangedCallback(evt => { UpdateParam(id, evt.newValue); });
+            paramNameField.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                UpdateParam(id, evt.newValue);
+            });
             paramNameField.SetValueWithoutNotify(value);
             var removeButton = new Button(() => RemoveParameter(id)) {text = "X"};
             paramNameField.contentContainer.Add(removeButton);
@@ -111,6 +118,7 @@ namespace CodeGraph.Editor {
         }
 
         private void RemoveParameter(int id) {
+            CodeGraph.Instance.InvalidateSaveButton();
             var textField = inputContainer.Q<TextField>(id + "_paramTextField");
             inputContainer.Remove(textField);
             var port = outputContainer.Q<Port>(id + "_paramPort");
@@ -125,6 +133,7 @@ namespace CodeGraph.Editor {
         }
 
         private void SortPorts() {
+            CodeGraph.Instance.InvalidateSaveButton();
             var allPorts = outputContainer.Children().Cast<Port>().ToList();
             var eventPorts = allPorts.Where(port => port.name.StartsWith("EventPort")).ToList();
             var paramPorts = allPorts.Where(port => port.name.EndsWith("_paramPort")).ToList();

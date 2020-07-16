@@ -14,7 +14,10 @@ namespace CodeGraph.Editor {
             Initialize("Double", DefaultNodePosition);
             var inputField = new DoubleField {label = "x:", value = 0};
             inputField.labelElement.style.minWidth = 0;
-            inputField.RegisterValueChangedCallback(evt => value = evt.newValue);
+            inputField.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                value = evt.newValue;
+            });
             inputContainer.Add(inputField);
 
             var valuePort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));
