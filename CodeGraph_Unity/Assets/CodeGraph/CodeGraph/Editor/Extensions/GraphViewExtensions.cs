@@ -14,8 +14,6 @@ namespace CodeGraph.Editor {
             var nodeGuidMap = new Dictionary<string, string>();
             var remappedNodes = new List<AbstractNode>();
             foreach (var node in copyGraph.Nodes) {
-                Debug.Log(node.mainContainer.layout.position);
-
                 var oldGuid = node.GUID;
                 var newGuid = Guid.NewGuid().ToString();
                 nodeGuidMap[oldGuid] = newGuid;

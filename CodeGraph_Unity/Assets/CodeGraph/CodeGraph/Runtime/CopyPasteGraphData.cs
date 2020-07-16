@@ -21,7 +21,6 @@ namespace CodeGraph {
 
         public CopyPasteGraphData(string sourceGraphGUID, List<AbstractNode> nodes, List<Edge> edges) {
             this.sourceGraphGUID = sourceGraphGUID;
-            nodes.ForEach(node => Debug.Log($"pos: {node.GetPosition().position}; layout: {node.layout.position}"));
             nodes.ForEach(AddNode);
             edges.ForEach(AddEdge);
             nodes.ForEach(node => GetEdgesForNode(node).ForEach(AddEdge));
@@ -38,7 +37,6 @@ namespace CodeGraph {
 
         public void OnBeforeSerialize() {
             serializedNodes = SerializationHelper.SerializeNodes(nodes.ToList());
-            serializedNodes.ForEach(node => Debug.Log($"pos: {node.Position}"));
             serializedEdges = SerializationHelper.SerializeEdges(edges.ToList());
         }
 
@@ -49,7 +47,6 @@ namespace CodeGraph {
                 nodes.Add(node);
             serializedNodes = null;
             
-            nodes.ToList().ForEach(node => Debug.Log($"pos: {node.GetPosition().position}"));
 
 
             var deserializedEdges = SerializationHelper.DeserializeAndLinkEdges(serializedEdges, nodes.ToList());
