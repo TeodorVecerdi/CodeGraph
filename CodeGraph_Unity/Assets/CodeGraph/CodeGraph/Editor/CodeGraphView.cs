@@ -63,6 +63,7 @@ namespace CodeGraph.Editor {
         }
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange) {
+            editorWindow.InvalidateSaveButton();
             if (graphViewChange.edgesToCreate?.Count > 0) {
                 graphViewChange.edgesToCreate.ForEach(edge => {
                     var input = edge.input.node as AbstractNode;
