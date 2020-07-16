@@ -62,12 +62,19 @@ namespace CodeGraph.Editor {
             // var keywordNodeGuids = nodes.OfType<KeywordNode>().Select(x => x.keywordGuid);
             // var metaKeywords = this.graph.keywords.Where(x => keywordNodeGuids.Contains(x.guid));
             var assetGUID = AssetDatabase.AssetPathToGUID(CodeGraph.Instance.GraphObject.CodeGraphData.AssetPath);
-            var graph = new CopyPasteGraphData(assetGUID, nodes, edges);
+            var nodePositions = new Dictionary<string, Rect>();
+            foreach (var node in nodes) {
+                nodePositions.Add(node.GUID, node.GetPosition());
+            }
+            var graph = new CopyPasteGraphData(assetGUID, nodes, nodePositions, edges);
             return JsonUtility.ToJson(graph, true);
         }
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange) {
             editorWindow.InvalidateSaveButton();
+            if (graphViewChange.movedElements?.Count > 0) {
+                Debug.Log(graphViewChange.movedElements[0].GetPosition().position);
+            }
             if (graphViewChange.elementsToRemove?.Count > 0) {
                 foreach (var node in graphViewChange.elementsToRemove.OfType<AbstractNode>()) {
                     if(node.GroupGuid == Guid.Empty || !GroupGuidDictionary.ContainsKey(node.GroupGuid))
