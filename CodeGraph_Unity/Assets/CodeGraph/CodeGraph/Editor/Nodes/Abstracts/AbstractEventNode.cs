@@ -28,6 +28,7 @@ namespace CodeGraph.Editor {
         public abstract string GetCode();
 
         public void AddChildPort(bool incrementPortCount = true) {
+            CodeGraph.Instance.InvalidateSaveButton();
             var outputPort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(float));
             outputPort.name = $"EventPort {EventPorts.Count + 1}";
             outputPort.portName = $"child {EventPorts.Count + 1}";
@@ -46,6 +47,7 @@ namespace CodeGraph.Editor {
         }
 
         private void RemovePort(OutputPort port) {
+            CodeGraph.Instance.InvalidateSaveButton();
             var connectionsToRemove = new List<Edge>();
             connectionsToRemove.AddRange(port.PortReference.connections);
             while(connectionsToRemove.Count > 0) {
@@ -68,6 +70,7 @@ namespace CodeGraph.Editor {
         }
 
         public void CleanPorts() {
+            CodeGraph.Instance.InvalidateSaveButton();
             var portsToRemove = new List<OutputPort>();
             (from port in EventPorts
                     let portConnections = port.PortReference.connections.ToList()
@@ -89,6 +92,7 @@ namespace CodeGraph.Editor {
         }
 
         private void FixPortNames() {
+            CodeGraph.Instance.InvalidateSaveButton();
             var i = 1;
             EventPorts.ForEach(port => {
                 port.PortReference.portName = $"child {i}";

@@ -27,6 +27,7 @@ namespace CodeGraph.Editor {
                 element.text = components[index];
             });
             listView.onSelectionChanged += selection => {
+                CodeGraph.Instance.InvalidateSaveButton();
                 var text = (string) selection[0];
                 ComponentType = text;
                 foldout.text = $"Type ({text})";

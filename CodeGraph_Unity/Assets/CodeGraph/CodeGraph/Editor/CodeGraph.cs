@@ -144,7 +144,11 @@ namespace CodeGraph.Editor {
         }
 
         private void GenerateMiniMap() {
-            // return;
+            var group = new Group();
+            // group.SetPosition(new Rect(50, 50, 300, 500));
+            // group.title = "Hello howdy";
+            // GraphView.AddElement(group);
+            return;
             var miniMap = new MiniMap {anchored = true};
             miniMap.SetPosition(new Rect(10, 30, 200, 140));
             GraphView.Add(miniMap);
@@ -152,8 +156,8 @@ namespace CodeGraph.Editor {
 
         private void OnEnable() {
             rootVisualElement.AddStyleSheet("CodeGraphWindow");
-            ConstructGraphView();
             GenerateToolbar();
+            ConstructGraphView();
             GenerateMiniMap();
         }
 

@@ -13,7 +13,10 @@ namespace CodeGraph.Editor {
             Initialize("String", DefaultNodePosition);
             var inputField = new TextField {label = "x:", value = ""};
             inputField.labelElement.style.minWidth = 0;
-            inputField.RegisterValueChangedCallback(evt => value = evt.newValue);
+            inputField.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                value = evt.newValue;
+            });
             inputContainer.Add(inputField);
             var valuePort = base.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(float));
             valuePort.portName = "value";

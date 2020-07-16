@@ -15,13 +15,19 @@ namespace CodeGraph.Editor {
             var propertyType = new TextField {label = "Type:", value = "int"};
             propertyType.labelElement.style.minWidth = 0;
             propertyType.name = "propertyType";
-            propertyType.RegisterValueChangedCallback(evt => PropertyType = evt.newValue);
+            propertyType.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                PropertyType = evt.newValue;
+            });
             inputContainer.Add(propertyType);
 
             var propertyName = new TextField {label = "Name:", value = "varName"};
             propertyName.labelElement.style.minWidth = 0;
             propertyName.name = "propertyName";
-            propertyName.RegisterValueChangedCallback(evt => PropertyName = evt.newValue);
+            propertyName.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                PropertyName = evt.newValue;
+            });
             inputContainer.Add(propertyName);
             Refresh();
         }

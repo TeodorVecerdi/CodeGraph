@@ -22,13 +22,19 @@ namespace CodeGraph.Editor {
             var variableType = new TextField {label = "Type:", value = "dynamic"};
             variableType.labelElement.style.minWidth = 0;
             variableType.name = "variableType";
-            variableType.RegisterValueChangedCallback(evt => VariableType = evt.newValue);
+            variableType.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                VariableType = evt.newValue;
+            });
             inputContainer.Add(variableType);
 
             var variableName = new TextField {label = "Name:", value = "varName"};
             variableName.labelElement.style.minWidth = 0;
             variableName.name = "variableName";
-            variableName.RegisterValueChangedCallback(evt => VariableName = evt.newValue);
+            variableName.RegisterValueChangedCallback(evt => {
+                CodeGraph.Instance.InvalidateSaveButton();
+                VariableName = evt.newValue;
+            });
             inputContainer.Add(variableName);
             Refresh();
         }
