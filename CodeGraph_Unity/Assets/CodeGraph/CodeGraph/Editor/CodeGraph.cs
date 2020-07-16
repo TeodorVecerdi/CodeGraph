@@ -15,6 +15,7 @@ namespace CodeGraph.Editor {
         public static CodeGraph Instance;
         public CodeGraphView GraphView;
         public CodeGraphObject GraphObject;
+        private Toolbar toolbar;
         private Button saveButton;
 
         [MenuItem("Graph/Code Graph")]
@@ -58,12 +59,20 @@ namespace CodeGraph.Editor {
                     SaveGraph();
                     evt.StopPropagation();
                 }
+                if (evt.keyCode == KeyCode.G && evt.ctrlKey && !evt.shiftKey && GraphView.selection.Count > 0) {
+                    GraphView.GroupSelection();
+                    evt.StopPropagation();
+                }
+                if (evt.keyCode == KeyCode.G && evt.ctrlKey && evt.shiftKey && GraphView.selection.Count > 0) {
+                    GraphView.UngroupSelection();
+                    evt.StopPropagation();
+                }
             }, TrickleDown.TrickleDown);
         }
 
         private void GenerateToolbar() {
-            var toolbar = new Toolbar();
             saveButton = new Button(() => SaveGraph()) {text = "Save Graph", tooltip = "Saves the current CodeGraph file. This does not compile the CodeGraph into C# code."};
+            toolbar = new Toolbar();
             toolbar.Add(saveButton);
             toolbar.Add(new Button(() => {
                 SaveGraph(false);
@@ -82,13 +91,13 @@ namespace CodeGraph.Editor {
 
         private void ValidateSaveButton() {
             saveButton.text = "Save Graph";
-            saveButton.tooltip = "Compiles this CodeGraph into a C# file in the same directory as this CodeGraph file";
+            saveButton.tooltip = "Saves the current CodeGraph file. This does not compile the CodeGraph into C# code.";
             saveButton.RemoveFromClassList("saveButton-unsaved");
         }
 
         public void InvalidateSaveButton() {
             saveButton.text = "Save Graph (*)";
-            saveButton.tooltip = "There are unsaved changes! Compiles this CodeGraph into a C# file in the same directory as this CodeGraph file";
+            saveButton.tooltip = "There are unsaved changes! Saves the current CodeGraph file. This does not compile the CodeGraph into C# code.";
             saveButton.AddToClassList("saveButton-unsaved");
         }
 
@@ -144,10 +153,6 @@ namespace CodeGraph.Editor {
         }
 
         private void GenerateMiniMap() {
-            var group = new Group();
-            // group.SetPosition(new Rect(50, 50, 300, 500));
-            // group.title = "Hello howdy";
-            // GraphView.AddElement(group);
             return;
             var miniMap = new MiniMap {anchored = true};
             miniMap.SetPosition(new Rect(10, 30, 200, 140));
@@ -158,6 +163,8 @@ namespace CodeGraph.Editor {
             rootVisualElement.AddStyleSheet("CodeGraphWindow");
             GenerateToolbar();
             ConstructGraphView();
+            toolbar.BringToFront();
+            ValidateSaveButton();
             GenerateMiniMap();
         }
 

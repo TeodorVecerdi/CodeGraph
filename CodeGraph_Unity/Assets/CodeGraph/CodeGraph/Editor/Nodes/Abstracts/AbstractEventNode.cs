@@ -65,6 +65,7 @@ namespace CodeGraph.Editor {
             OutputPortDictionary.Remove(port.PortReference);
             
             port.PortReference = null;
+            PortCount--;
             FixPortNames();
             Refresh();
         }
