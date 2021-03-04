@@ -9,8 +9,6 @@
 
 <p align="justify">
   <b>CodeGraph</b> is an open-source <b>visual programming</b> tool for artists, designers and other non-programmers alike who want to make games but don't know how to program. It's based on Unity's new UIElements library and GraphView, the same library Shader Graph is built on.
-
-  **DISCLAIMER**: Creating CodeGraph was a learning process for me as I have never experimented with expanding the Unity Editor through custom windows, nor have I ever used the UIElements library. There's a high chance you will encounter bugs while using CodeGraph. I've tried to fix all the bugs I found while developing the project but feel free to open an issue if you encounter bugs.
 </p>
 
 # Getting started
