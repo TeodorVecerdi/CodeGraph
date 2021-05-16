@@ -5,6 +5,8 @@
 <a href="https://github.com/TeodorVecerdi/CodeGraph/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/TeodorVecerdi/CodeGraph?color=e62c0b&label=issues"></a> <a href="https://www.codacy.com/manual/TeodorVecerdi/CodeGraph?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TeodorVecerdi/CodeGraph&amp;utm_campaign=Badge_Grade"><img alt="Codacy grade" src="https://img.shields.io/codacy/grade/4521530989444f0a8e00755a2faabb1e"></a> <a href="https://github.com/TeodorVecerdi/CodeGraph/releases/latest"><img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/TeodorVecerdi/CodeGraph?include_prereleases&label=release"></a> <a href="https://github.com/TeodorVecerdi/CodeGraph/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/TeodorVecerdi/CodeGraph?color=FFD700"></a> <a href="https://github.com/TeodorVecerdi/CodeGraph/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/TeodorVecerdi/CodeGraph?color=009a00"></a> <a href="https://github.com/TeodorVecerdi/CodeGraph/blob/master/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/TeodorVecerdi/CodeGraph"></a>
 </p>
 
+**CodeGraph is no longer maintained. Consider using another solution such as [Bolt/Unity Visual Scripting](https://unity.com/products/unity-visual-scripting).**
+
 # CodeGraph
 
 <p align="justify">
